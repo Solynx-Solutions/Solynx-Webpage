@@ -153,8 +153,8 @@ a:hover {
   padding: 100px 0;
   position: relative;
   margin: 0;
-  background-image: url('lynx-face-enhanced.png');
-  background-size: 400px;
+  background-image: url('lynx-mascot-logo.png');
+  background-size: 300px;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -235,7 +235,7 @@ a:hover {
 }
 
 .logo-image {
-  height: 100px;
+  height: 60px;
   width: auto;
   object-fit: contain;
   transition: transform var(--transition-base);
@@ -715,7 +715,7 @@ a:hover {
 }
 
 .footer-logo-image {
-  height: 40px;
+  height: 60px;
   width: auto;
   object-fit: contain;
 }
