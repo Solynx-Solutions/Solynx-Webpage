@@ -7,13 +7,13 @@
 
 /* CSS Variables - Design Tokens */
 :root {
-  /* Colors - Professional Tech Palette */
+  /* Colors - Modern Teal/Cyan Palette */
   --color-primary: #1e3a5f;
   --color-secondary: #f8f9fa;
   --color-tertiary: #5a7a9e;
-  --color-accent: #ff6b35;
-  --color-accent-alt: #ff8c61;
-  --color-accent-secondary: #4a90e2;
+  --color-accent: #14b8a6;
+  --color-accent-alt: #06b6d4;
+  --color-accent-secondary: #0891b2;
   --color-gradient-start: #1e3a5f;
   --color-gradient-end: #2c5282;
   --color-text-primary: #2d3748;
@@ -57,7 +57,7 @@
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
-  --shadow-glow: 0 0 30px rgba(255, 149, 0, 0.3);
+  --shadow-glow: 0 0 30px rgba(20, 184, 166, 0.3);
 
   /* Transitions */
   --transition-fast: 150ms ease-in-out;
@@ -153,6 +153,29 @@ a:hover {
   padding: 100px 0;
   position: relative;
   margin: 0;
+  background-image: url('lynx-background.png');
+  background-size: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 1;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.97);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.section>* {
+  position: relative;
+  z-index: 1;
 }
 
 .section-title {
@@ -408,7 +431,7 @@ a:hover {
 .btn-primary {
   background: var(--color-accent);
   color: white;
-  border-color: #fbff03;
+  border-color: var(--color-accent-alt);
   position: relative;
   overflow: hidden;
 }
@@ -432,7 +455,7 @@ a:hover {
   background: var(--color-gradient-end);
   border-color: var(--color-accent);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.15);
+  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
 }
 
 .btn-secondary {
