@@ -154,7 +154,7 @@ a:hover {
   position: relative;
   margin: 0;
   background-image: url('lynx-mascot-logo.png');
-  background-size: 300px;
+  background-size: 600px;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -231,11 +231,11 @@ a:hover {
 .nav-logo {
   display: flex;
   align-items: center;
-  height: 50px;
+  height: auto;
 }
 
 .logo-image {
-  height: 60px;
+  height: 90px;
   width: auto;
   object-fit: contain;
   transition: transform var(--transition-base);
@@ -715,7 +715,7 @@ a:hover {
 }
 
 .footer-logo-image {
-  height: 60px;
+  height: 90px;
   width: auto;
   object-fit: contain;
 }
