@@ -4,26 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="SOLYNX LLC - Strategic consultancy specializing in Business Development, Territory Management, and Branding for landscape, hardscape, and building materials industries.">
+    <meta name="description" content="SOLYNX LLC - Strategic consultancy. Systems that Scale.">
     <meta name="keywords"
         content="business development, territory management, branding, landscape industry, hardscape, building materials, strategic consulting, sales strategy, market expansion">
-    <title>SOLYNX LLC | Business Development & Strategic Consulting</title>
-    <link rel="stylesheet" href="style.css">
+    <title>SOLYNX: Systems That Scale</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-new.css">
+    <!-- Favicon could be added here -->
 </head>
 
 <body>
+    <canvas id="flowCanvas" class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="faint-sticky-bg"></div>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
-        <div class="nav-content">
-            <a href="#home" class="nav-logo">
-                <img src="solynx-text-logo.png" alt="Solynx LLC Logo" class="logo-image">
+        <div class="container nav-content">
+            <a href="https://solynx.com/#home" class="nav-logo">
+                <img src="assets/images/solynx-logo-v2.png" alt="Solynx LLC Logo" class="logo-image">
             </a>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="https://solynx.com/#platform" class="nav-link">PLATFORM</a></li>
+                <li><a href="https://solynx.com/#consulting" class="nav-link">CONSULTING</a></li>
+                <li><a href="https://solynx.com/#about" class="nav-link">ABOUT</a></li>
+                <li><a href="https://link.solynx.solutions/widget/form/XK9biK6AROXKJdkCzyMw"
+                        class="btn btn-primary nav-cta">GET
+                        STARTED</a></li>
             </ul>
             <button class="mobile-menu-toggle" id="mobileToggle" aria-label="Toggle mobile menu">
                 ☰
@@ -31,200 +36,172 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-background">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-        </div>
-        <div class="hero-content">
-            <h1 class="hero-title">Built for Linking, <br>Agility, and Growth</h1>
-            <p class="hero-subtitle">
-                Our AI‑powered solutions are designed to help your business adapt faster, connect smarter,
-                and grow stronger. With AI as your ally, you're not chasing innovation—you're leading it.
-            </p>
-            <div class="hero-buttons">
-                <a href="#services" class="btn btn-primary">Explore Services</a>
-                <a href="#contact" class="btn btn-secondary">Get Started</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="section">
+    <!-- Hero Section (SPINX Style: Split Layout) -->
+    <section id="home" class="hero-section">
+        <div class="hero-bg-glow"></div>
         <div class="container">
-            <div class="section-title">
-                <h2>Our <span class="gradient-text">Expertise</span></h2>
-                <p>Strategic consulting services designed to grow your business</p>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🌱</div>
-                    <h3 class="service-title">Business Development</h3>
-                    <p class="service-description">
-                        Strategic planning and market expansion strategies that help landscape, hardscape,
-                        and building materials companies achieve sustainable growth and competitive advantage.
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <h1 class="fade-in-up">
+                        Link it. Solve it. Scale it. <br><span class="gradient-text-orange">SOLYNX IT.</span>
+                    </h1>
+                    <h2 class="hero-subtitle fade-in-up delay-1">The All-In-One Business Solution</h2>
+                    <p class="hero-desc fade-in-up delay-2">
+                        Combine powerful <strong>AI Automation</strong>, <strong>CRM</strong>, and <strong>Strategic
+                            Consulting</strong> in one unified platform.
+                        <br>Built for Linking, Agility, and Growth.
                     </p>
+
+                    <div class="hero-badges fade-in-up delay-3">
+                        <div class="badge-item">
+                            <span class="badge-icon">🤖</span> AI Agent
+                        </div>
+                        <div class="badge-item">
+                            <span class="badge-icon">📊</span> CRM & Sales
+                        </div>
+                        <div class="badge-item">
+                            <span class="badge-icon">🚀</span> Growth
+                        </div>
+                    </div>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-icon">🧭</div>
-                    <h3 class="service-title">Territory Management</h3>
-                    <p class="service-description">
-                        Optimize geographic coverage and sales strategies to maximize market penetration,
-                        improve efficiency, and increase revenue across your sales territories.
-                    </p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🎨</div>
-                    <h3 class="service-title">Branding & Identity</h3>
-                    <p class="service-description">
-                        Craft compelling visual identity and messaging that reflects connection, growth,
-                        and agility—creating brands that resonate and stand out in your market.
-                    </p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">📊</div>
-                    <h3 class="service-title">Market Analysis</h3>
-                    <p class="service-description">
-                        Data-driven insights and competitive analysis to identify opportunities,
-                        understand market dynamics, and make informed strategic decisions.
-                    </p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🎯</div>
-                    <h3 class="service-title">Sales Strategy</h3>
-                    <p class="service-description">
-                        Develop and implement effective sales strategies tailored to the landscape
-                        and building materials industry to drive revenue and market share.
-                    </p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🤝</div>
-                    <h3 class="service-title">Strategic Partnerships</h3>
-                    <p class="service-description">
-                        Identify and cultivate strategic partnerships that expand your capabilities,
-                        reach new markets, and create mutual value.
-                    </p>
+                <!-- Hero Form (SPINX Style) -->
+                <div class="hero-form-wrapper fade-in-up delay-3">
+                    <div class="hero-form-card">
+                        <h3>Start Your Transformation</h3>
+                        <p class="form-sub">Request a demo or free market audit report.</p>
+                        <!-- Replaced inputs with direct CTA as requested -->
+                        <div class="text-center">
+                            <a href="https://link.solynx.solutions/widget/form/l9IL8R9Y8JIHteiCq8sB"
+                                class="btn btn-block btn-gradient">
+                                SOLYNX IT NOW <span class="arrow">→</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- Brands / Trust Ticker -->
+    <section class="brands-section">
+        <div class="container">
+            <h4 class="text-center section-eyebrow">HELPING BRANDS BIG AND SMALL</h4>
+            <div class="brands-grid">
+
+                <div class="brand-item">AeroVironment</div>
+                <div class="brand-item">Amazon</div>
+                <div class="brand-item">Beats</div>
+                <div class="brand-item">Biossance</div>
+                <div class="brand-item">S&B Filters</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Features Grid (Replacing "Services") -->
+    <section id="platform" class="section dark-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Everything You Need in <span class="gradient-text-cyan">One Platform</span>
+                </h2>
+                <p class="section-sub">Replace multiple disconnected tools with the Solynx Ecosystem.</p>
+            </div>
+
+            <div class="features-grid">
+                <!-- Row 1 -->
+                <div class="feature-card">
+                    <div class="card-glow"></div>
+                    <div class="icon-box cyan">🤖</div>
+                    <h3>AI Agent</h3>
+                    <p>Smart customer support and automated interactions 24/7.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="card-glow"></div>
+                    <div class="icon-box orange">📊</div>
+                    <h3>CRM & Pipelines</h3>
+                    <p>Visual sales stages, contact management, and deal tracking.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="card-glow"></div>
+                    <div class="icon-box cyan">📨</div>
+                    <h3>Unified Inbox</h3>
+                    <p>Bring SMS, email, and social messages into one stream.</p>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="feature-card">
+                    <div class="card-glow"></div>
+                    <div class="icon-box cyan">📈</div>
+                    <h3>Reporting Dashboard</h3>
+                    <p>Real-time analytics to track performance and ROI.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="card-glow"></div>
+                    <div class="icon-box orange">🚀</div>
+                    <h3>Marketing Tools</h3>
+                    <p>Run SMS & Email campaigns seamlessly from one place.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="card-glow"></div>
+                    <div class="icon-box cyan">💲</div>
+                    <h3>Invoicing</h3>
+                    <p>Create professional invoices and get paid faster.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consulting Section (Bridging the gap) -->
+    <section id="consulting" class="section glass-section">
+        <div class="container">
+            <div class="split-layout">
+                <div class="split-content">
+                    <h2 class="section-title">Strategic <span class="gradient-text-orange">Consulting</span></h2>
+                    <p class="section-sub">Technology is the vehicle. Strategy is the driver.</p>
+                    <p>
+                        SOLYNX delivers <strong>high‑level guidance</strong> that elevates business development,
+                        sharpens <strong>territory performance</strong>, and unlocks <strong>new market
+                            opportunities</strong>. We equip businesses of every size with the <strong>strategic
+                            clarity</strong> needed to grow with intention in the digital age.
+                    </p>
+                    <ul class="check-list">
+                        <li>✅ Territory Mapping & Optimization</li>
+                        <li>✅ Sales Team Training & Playbooks</li>
+                        <li>✅ Brand Positioning & Identity</li>
+                    </ul>
+                    <br>
+                    <a href="https://solynx.solutions/solynx-services-form" class="btn btn-outline">Explore Stats</a>
+                </div>
+                <div class="split-visual">
+                    <!-- Abstract Tech/Strategy Visual -->
+                    <div class="abstract-visual">
+                        <div class="circle c1"></div>
+                        <div class="circle c2"></div>
+                        <div class="glass-card float-card">
+                            <span>Growth +300%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Founder Section -->
     <section id="about" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>About <span class="gradient-text">SOLYNX</span></h2>
+        <div class="container text-center">
+            <h2 class="section-title">Built for the <span class="gradient-text-cyan">Bold.</span></h2>
+            <div class="max-w-800 mx-auto mb-10">
+                <p class="section-sub">Curiosity didn't just kill the cat—it built the empire. We don’t do "good
+                    enough." Solynx exists for the dreamers who dare to ask "what if?" and the doers who actually make
+                    it happen.</p>
             </div>
-
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>A Living System of Precision & Connection</h3>
-                    <p>
-                        SOLYNX LLC is more than a consultancy—it's a reflection of values: <strong>precision, clarity,
-                            and meaningful collaboration</strong>. We specialize in helping landscape, hardscape, and
-                        building
-                        materials companies achieve sustainable growth through strategic business development and
-                        territory optimization.
-                    </p>
-                    <p>
-                        In the Bay Area, we've seen many businesses miss the opportunities of technological shifts
-                        happening
-                        right around them. They struggle to keep up, not out of fear, but because they don't realize
-                        there's
-                        a more efficient way. <strong>We're here to open their eyes to those opportunities and guide
-                            them to maximize
-                            their growth with minimal investments.</strong>
-                    </p>
-                    <p>
-                        SOLYNX is built to be a living system that adapts, connects, and elevates—working alongside
-                        you to transform challenges into opportunities and vision into measurable results.
-                    </p>
-                </div>
-
-                <div class="about-image">
-                    <img src="hero-bg.png" alt="Professional consultant working"
-                        style="width: 100%; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-                </div>
-            </div>
-
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number" data-target="50">0</div>
-                    <div class="stat-label">Projects Completed</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-target="100">0</div>
-                    <div class="stat-label">Happy Clients</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-target="5">0</div>
-                    <div class="stat-label">Years Experience</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Get In <span class="gradient-text">Touch</span></h2>
-                <p>Ready to transform your business? Let's start the conversation.</p>
-            </div>
-
-            <div class="contact-container">
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label for="name" class="form-label">Full Name</label>
-                        <input type="text" id="name" name="name" class="form-input" required placeholder="John Doe">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email Address</label>
-                        <input type="email" id="email" name="email" class="form-input" required
-                            placeholder="john@example.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone" class="form-label">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="+1 (555) 123-4567">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea id="message" name="message" class="form-textarea" required
-                            placeholder="Tell us about your project..."></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">📧</div>
-                        <h4>Email</h4>
-                        <p>rafael@solynx.solutions</p>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">📱</div>
-                        <h4>Phone</h4>
-                        <p>855-408-5969</p>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <h4>Location</h4>
-                        <p>United States</p>
-                    </div>
+            <div class="about-card max-w-800 mx-auto">
+                <p class="quote-text">
+                    “Business is a playground. Strategy is the game. Let's play to <strong>win.</strong>”
+                </p>
+                <div class="founder-info">
+                    <div class="founder-name">Rafael Solano</div>
+                    <div class="founder-role">Founder, SOLYNX LLC</div>
                 </div>
             </div>
         </div>
@@ -233,58 +210,49 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <img src="lynx-mascot-logo.png" alt="Solynx" class="footer-logo-image">
-                        <h3>SOLYNX LLC</h3>
+            <div class="footer-signature">
+                <!-- Left Column: The Voice -->
+                <div class="footer-voice">
+                    <img src="assets/images/solynx-logo-v2.png" alt="Solynx Logo" class="footer-logo">
+                    <h2 class="voice-text">You've reached the bottom.<br>Now, aiming for the <a href="#home"
+                            class="gradient-text-orange">top?</a></h2>
+                    <p class="voice-sub">Systems that Scale. Connections that Matter.</p>
+                </div>
+
+                <!-- Right Column: The Utility -->
+                <div class="footer-utility">
+                    <div class="footer-nav-group">
+                        <a href="https://solynx.com/#platform">Platform</a>
+                        <a href="https://solynx.com/#about">Company</a>
+                        <a href="https://solynx.solutions/solynx-services-form">Contact</a>
+                        <a href="https://solynx.com/privacy-policy">Privacy</a>
                     </div>
-                    <p>Strategic consultancy for landscape, hardscape, and building materials industries.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Facebook">📘</a>
-                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
-                        <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
-                        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+
+                    <div class="footer-social-group">
+                        <span class="social-label">Stalk us responsibly:</span>
+                        <div class="social-icons-playful">
+                            <a href="https://www.linkedin.com/company/solynx-llc/" class="social-icon-tilt"
+                                aria-label="LinkedIn">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg>
+                            </a>
+                            <a href="https://www.instagram.com/solynx/" class="social-icon-tilt" aria-label="Instagram">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                </svg>
+                            </a>
+                        </div>
                     </div>
-                </div>
 
-                <div class="footer-section">
-                    <h3>Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="#services">Business Development</a></li>
-                        <li><a href="#services">Territory Management</a></li>
-                        <li><a href="#services">Branding & Identity</a></li>
-                        <li><a href="#services">Strategic Consulting</a></li>
-                    </ul>
+                    <p class="copyright-text">© 2026 Solynx LLC. Built with grit.</p>
                 </div>
-
-                <div class="footer-section">
-                    <h3>Company</h3>
-                    <ul class="footer-links">
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Our Services</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Resources</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Case Studies</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2026 SOLYNX LLC. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <script src="flow.js"></script>
     <script src="script.js"></script>
 </body>
-
-</html>

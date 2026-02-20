@@ -1,0 +1,44 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background matches new --color-bg-dark (#131b2e) -->
+  <rect width="400" height="400" fill="#131b2e"/>
+  
+  <!-- Subtle Grid/Texture matches --color-circuit-line -->
+  <defs>
+    <pattern id="smallGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#334155" opacity="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="400" fill="url(#smallGrid)"/>
+
+  <!-- Organic Circuit Traces -->
+  <g fill="none" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Top Left Cluster -->
+    <path d="M40 0 V40 L80 80 H120" opacity="0.6"/>
+    <path d="M20 0 V30 L50 60" opacity="0.4"/>
+    
+    <!-- Center Organic Flow -->
+    <path d="M0 200 H40 L80 160 H140 L180 200 H220 L260 240 H320" stroke-width="3" opacity="0.4"/>
+    <path d="M400 180 H360 L320 140 H260" opacity="0.5"/>
+    
+    <!-- Bottom Right Tech -->
+    <path d="M280 400 V360 L320 320 H360" opacity="0.6"/>
+    <path d="M340 400 V370" opacity="0.4"/>
+  </g>
+
+  <!-- Glowing Accents (Bright Cyan/Teal) matches new --color-glow / --color-accent -->
+  <g fill="#22d3ee" filter="drop-shadow(0 0 4px #22d3ee)">
+    <!-- Nodes -->
+    <circle cx="120" cy="80" r="3" opacity="0.8"/>
+    <circle cx="320" cy="240" r="3" opacity="0.8"/>
+    <circle cx="260" cy="140" r="2" opacity="0.6"/>
+    <circle cx="360" cy="320" r="2" opacity="0.6"/>
+    
+    <!-- Hexagon Motif (Subtle) -->
+    <path d="M200 190 L209 195 V205 L200 210 L191 205 V195 Z" fill="none" stroke="#0ea5e9" stroke-width="1.5" opacity="0.8"/>
+    <circle cx="200" cy="200" r="2" fill="#0ea5e9"/>
+  </g>
+
+  <!-- Dynamic Lines (Simulated Data Flow) -->
+  <path d="M80 160 H140 L180 200 H220" fill="none" stroke="#0ea5e9" stroke-width="1" stroke-dasharray="4 8" opacity="0.5"/>
+
+</svg>

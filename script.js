@@ -1,272 +1,89 @@
-// ===================================
-// SOLYNX LLC - Interactive JavaScript
-// ===================================
-
-// Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-    initNavbar();
-    initMobileMenu();
-    initSmoothScroll();
-    initScrollAnimations();
-    initFormValidation();
-    initCounters();
-});
-
-// ===================================
-// Navbar Scroll Effect
-// ===================================
-function initNavbar() {
-    const navbar = document.getElementById('navbar');
-    
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-}
-
-// ===================================
-// Mobile Menu Toggle
-// ===================================
-function initMobileMenu() {
+document.addEventListener('DOMContentLoaded', () => {
+    // Mobile Menu Toggle
     const mobileToggle = document.getElementById('mobileToggle');
     const navMenu = document.getElementById('navMenu');
     const navLinks = document.querySelectorAll('.nav-link');
-    
-    if (mobileToggle) {
-        mobileToggle.addEventListener('click', function() {
+
+    if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
-            // Change icon
+            mobileToggle.classList.toggle('active');
+
+            // Change icon based on state
             if (navMenu.classList.contains('active')) {
-                mobileToggle.textContent = '✕';
+                mobileToggle.textContent = '✕'; // Close icon
+                mobileToggle.setAttribute('aria-expanded', 'true');
             } else {
-                mobileToggle.textContent = '☰';
+                mobileToggle.textContent = '☰'; // Menu icon
+                mobileToggle.setAttribute('aria-expanded', 'false');
             }
         });
-        
-        // Close menu when clicking on a link
+
+        // Close menu when a link is clicked
         navLinks.forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
+                mobileToggle.classList.remove('active');
                 mobileToggle.textContent = '☰';
+                mobileToggle.setAttribute('aria-expanded', 'false');
             });
         });
-    }
-}
 
-// ===================================
-// Smooth Scrolling for Navigation Links
-// ===================================
-function initSmoothScroll() {
-    const navLinks = document.querySelectorAll('a[href^="#"]');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            
-            if (targetId === '#') return;
-            
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                const navbarHeight = document.getElementById('navbar').offsetHeight;
-                const targetPosition = targetSection.offsetTop - navbarHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target) && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                mobileToggle.classList.remove('active');
+                mobileToggle.textContent = '☰';
+                mobileToggle.setAttribute('aria-expanded', 'false');
             }
         });
-    });
-}
+    }
 
-// ===================================
-// Scroll Animations
-// ===================================
-function initScrollAnimations() {
+    // Navbar Scroll Effect
+    const navbar = document.getElementById('navbar');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.style.background = 'rgba(5, 10, 20, 0.95)';
+            navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
+        } else {
+            navbar.style.background = 'rgba(5, 10, 20, 0.85)';
+            navbar.style.boxShadow = 'none';
+        }
+    });
+
+    // Animation on Scroll (Intersection Observer)
+    const fadeElements = document.querySelectorAll('.fade-in-up');
+
     const observerOptions = {
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        rootMargin: "0px 0px -50px 0px"
     };
-    
-    const observer = new IntersectionObserver(function(entries) {
+
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
+                entry.target.style.animationPlayState = 'running';
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
-    
-    // Observe service cards
-    const serviceCards = document.querySelectorAll('.service-card');
-    serviceCards.forEach((card, index) => {
-        card.style.animationDelay = `${index * 0.1}s`;
-        observer.observe(card);
-    });
-    
-    // Observe other sections
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => {
-        observer.observe(section);
-    });
-}
 
-// ===================================
-// Animated Counter for Stats
-// ===================================
-function initCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    const speed = 200; // Animation duration in ms per increment
-    
-    const observerOptions = {
-        threshold: 0.5
-    };
-    
-    const counterObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const counter = entry.target;
-                const target = parseInt(counter.getAttribute('data-target'));
-                const increment = target / speed;
-                let current = 0;
-                
-                const updateCounter = () => {
-                    current += increment;
-                    if (current < target) {
-                        counter.textContent = Math.ceil(current);
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        counter.textContent = target + '+';
-                    }
-                };
-                
-                updateCounter();
-                counterObserver.unobserve(counter);
-            }
-        });
-    }, observerOptions);
-    
-    counters.forEach(counter => {
-        counterObserver.observe(counter);
+    fadeElements.forEach(el => {
+        el.style.animationPlayState = 'paused';
+        observer.observe(el);
     });
-}
-
-// ===================================
-// Form Validation and Submission
-// ===================================
-function initFormValidation() {
-    const form = document.getElementById('contactForm');
-    
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const message = document.getElementById('message').value.trim();
-            
-            // Validate
-            if (!name || !email || !message) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-            
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-            
-            // If validation passes
-            showSuccessMessage();
-            form.reset();
+    // Sticky Background Opacity Control
+    const stickyBg = document.querySelector('.faint-sticky-bg');
+    if (stickyBg) {
+        window.addEventListener('scroll', () => {
+            // Increase opacity as user scrolls down, maxing out at 0.3
+            const scrollPercent = Math.min(window.scrollY / 1000, 1);
+            const baseOpacity = 0.05;
+            const targetOpacity = baseOpacity + (scrollPercent * 0.25);
+            stickyBg.style.opacity = targetOpacity;
         });
     }
-}
 
-// ===================================
-// Success Message Display
-// ===================================
-function showSuccessMessage() {
-    // Create success message element
-    const successDiv = document.createElement('div');
-    successDiv.style.cssText = `
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: linear-gradient(135deg, #00d4ff, #0ea5e9);
-        color: #1a1a2e;
-        padding: 2rem 3rem;
-        border-radius: 1rem;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        z-index: 10000;
-        text-align: center;
-        font-size: 1.2rem;
-        font-weight: 600;
-        animation: fadeInUp 0.5s ease-out;
-    `;
-    successDiv.innerHTML = `
-        <div style="font-size: 3rem; margin-bottom: 1rem;">✓</div>
-        <div>Thank you for your message!</div>
-        <div style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.9;">We'll get back to you soon.</div>
-    `;
-    
-    document.body.appendChild(successDiv);
-    
-    // Remove after 3 seconds
-    setTimeout(() => {
-        successDiv.style.animation = 'fadeOut 0.5s ease-out forwards';
-        setTimeout(() => {
-            document.body.removeChild(successDiv);
-        }, 500);
-    }, 3000);
-}
-
-// ===================================
-// Parallax Effect for Hero Background
-// ===================================
-window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    const orbs = document.querySelectorAll('.gradient-orb');
-    
-    orbs.forEach((orb, index) => {
-        const speed = 0.5 + (index * 0.1);
-        orb.style.transform = `translateY(${scrolled * speed}px)`;
-    });
-});
-
-// ===================================
-// Keyboard Navigation Accessibility
-// ===================================
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        const navMenu = document.getElementById('navMenu');
-        const mobileToggle = document.getElementById('mobileToggle');
-        
-        if (navMenu.classList.contains('active')) {
-            navMenu.classList.remove('active');
-            mobileToggle.textContent = '☰';
-        }
-    }
-});
-
-// Add keyboard focus styles
-document.querySelectorAll('a, button, input, textarea').forEach(element => {
-    element.addEventListener('focus', function() {
-        this.style.outline = '2px solid #00d4ff';
-        this.style.outlineOffset = '2px';
-    });
-    
-    element.addEventListener('blur', function() {
-        this.style.outline = 'none';
-    });
 });
