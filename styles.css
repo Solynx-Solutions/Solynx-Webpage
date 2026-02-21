@@ -258,7 +258,7 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--spacing-lg) var(--spacing-xl);
+    padding: 4px var(--spacing-xl);
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -270,7 +270,7 @@ a:hover {
 }
 
 .logo-image {
-    height: 90px;
+    height: 200px;
     width: auto;
     object-fit: contain;
     transition: transform var(--transition-base);
@@ -337,7 +337,7 @@ a:hover {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    padding-top: 140px;
+    padding-top: 220px;
     /* Offset for fixed navbar */
     border-bottom: 2px solid var(--color-accent);
 }
@@ -493,25 +493,62 @@ a:hover {
     }
 }
 
-/* === Clean animated canvas background (Global) === */
+/* === Hero Video Background === */
+.hero-video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    object-fit: cover;
+    object-position: center center;
+    pointer-events: none;
+    /* Slight desaturation keeps it from competing with text */
+    filter: brightness(0.72) saturate(1.15);
+}
+
+/* Dark gradient overlay — keeps hero copy legible */
+.hero-video-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        /* deep vignette at edges */
+        radial-gradient(ellipse 130% 100% at 50% 0%, transparent 30%, rgba(5, 10, 20, 0.65) 100%),
+        /* solid base so sections below stay dark */
+        linear-gradient(to bottom,
+            rgba(5, 10, 20, 0.35) 0%,
+            rgba(5, 10, 20, 0.55) 45%,
+            rgba(5, 10, 20, 0.90) 100%);
+}
+
+/* === Aurora Canvas — subtle overlay on top of the video === */
 .hero-canvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1;
+    z-index: 0;
     pointer-events: none;
     display: block;
 
-    /* KEY: makes it “glow” without muddying your background */
+    /* screen blend lets the aurora add cyan glow without muddying the video */
     mix-blend-mode: screen;
-    opacity: 0.35;
+    opacity: 0.38;
+    will-change: transform;
 }
 
 .hero-bg-glow {
     position: absolute;
-    z-index: 1;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(0, 240, 255, 0.04) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 80% 75%, rgba(255, 144, 0, 0.04) 0%, transparent 60%);
 }
 
 .hero-section .container {
@@ -712,7 +749,26 @@ a:hover {
 .section-sub {
     font-size: 1.2rem;
     color: var(--color-text-muted);
-    margin-bottom: 60px;
+    margin-bottom: 4px;
+}
+
+.section-hint {
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+    margin-bottom: 48px;
+    animation: hintPulse 3s ease-in-out infinite;
+}
+
+@keyframes hintPulse {
+
+    0%,
+    100% {
+        opacity: 0.45;
+    }
+
+    50% {
+        opacity: 0.85;
+    }
 }
 
 .features-grid {
@@ -990,7 +1046,7 @@ a:hover {
 
 /* Footer logo image in footer-voice column */
 img.footer-logo {
-    height: 80px;
+    height: 240px;
     width: auto;
     object-fit: contain;
     margin-bottom: var(--spacing-lg);
