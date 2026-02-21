@@ -11,6 +11,72 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="styles-new.css">
     <!-- Favicon could be added here -->
+
+    <!-- ================================================
+         TRACKING & ANALYTICS — ADD YOUR IDs BELOW
+         ================================================ -->
+
+    <!-- 1. GOOGLE TAG MANAGER (GTM)
+         Replace GTM-XXXXXXX with your GTM Container ID.
+         Find it at: tagmanager.google.com
+    -->
+    <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script> -->
+
+    <!-- 2. GOOGLE ANALYTICS 4 (GA4)
+         Replace G-XXXXXXXXXX with your Measurement ID.
+         Find it at: analytics.google.com > Admin > Data Streams
+    -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script> -->
+
+    <!-- 3. GOOGLE ADS — GLOBAL SITE TAG (gTag)
+         Replace AW-XXXXXXXXXX with your Google Ads Conversion ID.
+         Find it at: ads.google.com > Tools > Conversions
+    -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-XXXXXXXXXX');
+    </script> -->
+
+    <!-- 4. FACEBOOK / META PIXEL
+         Replace YOUR_PIXEL_ID with your Pixel ID.
+         Find it at: business.facebook.com > Events Manager
+    -->
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '2068019090683264');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=2068019090683264&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <!-- ================================================
+         END TRACKING SECTION
+         ================================================ -->
 </head>
 
 <body>
@@ -25,7 +91,7 @@
     <nav class="navbar" id="navbar">
         <div class="container nav-content">
             <a href="https://solynx.com/#home" class="nav-logo">
-                <img src="assets/images/SLX-WRD.png" alt="Solynx LLC Logo" class="logo-image">
+                <img src="assets/images/SLX-WRD.png" alt="Solynx LLC Logo" class="logo-image pulse">
             </a>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="https://solynx.com/#platform" class="nav-link">PLATFORM</a></li>
@@ -115,44 +181,62 @@
 
             <div class="features-grid">
                 <!-- Row 1 -->
-                <div class="feature-card">
-                    <div class="card-glow"></div>
-                    <div class="icon-box cyan">🤖</div>
-                    <h3>AI Agent</h3>
-                    <p>Smart customer support and automated interactions 24/7.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="card-glow"></div>
-                    <div class="icon-box orange">📊</div>
-                    <h3>CRM & Pipelines</h3>
-                    <p>Visual sales stages, contact management, and deal tracking.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="card-glow"></div>
-                    <div class="icon-box cyan">📨</div>
-                    <h3>Unified Inbox</h3>
-                    <p>Bring SMS, email, and social messages into one stream.</p>
-                </div>
+                <a href="#ai-agent" class="feature-card-link" id="card-ai-agent">
+                    <div class="feature-card">
+                        <div class="card-glow"></div>
+                        <div class="icon-box cyan">🤖</div>
+                        <h3>AI Agent</h3>
+                        <p>Smart customer support and automated interactions 24/7.</p>
+                        <span class="card-cta">Learn more →</span>
+                    </div>
+                </a>
+                <a href="#crm-pipelines" class="feature-card-link" id="card-crm-pipelines">
+                    <div class="feature-card">
+                        <div class="card-glow"></div>
+                        <div class="icon-box orange">📊</div>
+                        <h3>CRM &amp; Pipelines</h3>
+                        <p>Visual sales stages, contact management, and deal tracking.</p>
+                        <span class="card-cta">Learn more →</span>
+                    </div>
+                </a>
+                <a href="#unified-inbox" class="feature-card-link" id="card-unified-inbox">
+                    <div class="feature-card">
+                        <div class="card-glow"></div>
+                        <div class="icon-box cyan">📨</div>
+                        <h3>Unified Inbox</h3>
+                        <p>Bring SMS, email, and social messages into one stream.</p>
+                        <span class="card-cta">Learn more →</span>
+                    </div>
+                </a>
 
                 <!-- Row 2 -->
-                <div class="feature-card">
-                    <div class="card-glow"></div>
-                    <div class="icon-box cyan">📈</div>
-                    <h3>Reporting Dashboard</h3>
-                    <p>Real-time analytics to track performance and ROI.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="card-glow"></div>
-                    <div class="icon-box orange">🚀</div>
-                    <h3>Marketing Tools</h3>
-                    <p>Run SMS & Email campaigns seamlessly from one place.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="card-glow"></div>
-                    <div class="icon-box cyan">💲</div>
-                    <h3>Invoicing</h3>
-                    <p>Create professional invoices and get paid faster.</p>
-                </div>
+                <a href="#reporting" class="feature-card-link" id="card-reporting">
+                    <div class="feature-card">
+                        <div class="card-glow"></div>
+                        <div class="icon-box cyan">📈</div>
+                        <h3>Reporting Dashboard</h3>
+                        <p>Real-time analytics to track performance and ROI.</p>
+                        <span class="card-cta">Learn more →</span>
+                    </div>
+                </a>
+                <a href="#marketing-tools" class="feature-card-link" id="card-marketing-tools">
+                    <div class="feature-card">
+                        <div class="card-glow"></div>
+                        <div class="icon-box orange">🚀</div>
+                        <h3>Marketing Tools</h3>
+                        <p>Run SMS &amp; Email campaigns seamlessly from one place.</p>
+                        <span class="card-cta">Learn more →</span>
+                    </div>
+                </a>
+                <a href="#invoicing" class="feature-card-link" id="card-invoicing">
+                    <div class="feature-card">
+                        <div class="card-glow"></div>
+                        <div class="icon-box cyan">💲</div>
+                        <h3>Invoicing</h3>
+                        <p>Create professional invoices and get paid faster.</p>
+                        <span class="card-cta">Learn more →</span>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -219,7 +303,7 @@
             <div class="footer-signature">
                 <!-- Left Column: The Voice -->
                 <div class="footer-voice">
-                    <img src="assets/images/solynx-logo-v2.png" alt="Solynx Logo" class="footer-logo">
+                    <img src="assets/images/solynx-logo-v2.png" alt="Solynx Logo" class="footer-logo pulse">
                     <h2 class="voice-text">You've reached the bottom.<br>Now, aiming for the <a href="#home"
                             class="gradient-text-orange">top?</a></h2>
                     <p class="voice-sub">Systems that Scale. Connections that Matter.</p>
@@ -231,7 +315,8 @@
                         <a href="https://solynx.com/#platform">Platform</a>
                         <a href="https://solynx.com/#about">Company</a>
                         <a href="https://solynx.solutions/solynx-services-form">Contact</a>
-                        <a href="https://solynx.com/privacy-policy">Privacy</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms &amp; Conditions</a>
                     </div>
 
                     <div class="footer-social-group">
@@ -277,6 +362,13 @@
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                     <path
                                         d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z" />
+                                </svg>
+                            </a>
+                            <a href="https://share.google/lj73H10WEGzgeloit" class="social-icon-tilt"
+                                aria-label="Google Business Profile" target="_blank" rel="noopener noreferrer">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z" />
                                 </svg>
                             </a>
                         </div>

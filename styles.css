@@ -777,6 +777,13 @@ a:hover {
     gap: 30px;
 }
 
+/* Clickable card wrapper */
+.feature-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 .feature-card {
     background: var(--color-bg-card);
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -785,6 +792,35 @@ a:hover {
     transition: 0.3s;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    cursor: pointer;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(0, 240, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
+}
+
+/* 'Learn more →' indicator */
+.card-cta {
+    display: block;
+    margin-top: auto;
+    padding-top: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-accent);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.feature-card-link:hover .card-cta {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .feature-card:hover {
@@ -1549,4 +1585,28 @@ img.footer-logo {
     font-weight: 700;
     font-size: 1.5rem;
     color: var(--color-text-muted);
+}
+
+/* =================================
+   Logo Pulse Glow
+   ================================= */
+@keyframes pulseGlow {
+    0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 5px rgba(255, 144, 0, 0.3));
+    }
+
+    50% {
+        transform: scale(1.04);
+        filter: drop-shadow(0 0 15px rgba(255, 144, 0, 0.75));
+    }
+
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 5px rgba(255, 144, 0, 0.3));
+    }
+}
+
+.pulse {
+    animation: pulseGlow 3s ease-in-out infinite;
 }
