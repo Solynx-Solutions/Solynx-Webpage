@@ -87,3 +87,56 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+/* =================================
+   Lost Leads Calculator Logic
+   ================================= */
+(function () {
+    const missedCallsEl = document.getElementById('llc-missedCalls');
+    const closeRateEl = document.getElementById('llc-closeRate');
+    const avgJobEl = document.getElementById('llc-avgJob');
+
+    const lostWeekEl = document.getElementById('llc-lostWeek');
+    const lostMonthEl = document.getElementById('llc-lostMonth');
+    const lostYearEl = document.getElementById('llc-lostYear');
+    const mathLineEl = document.getElementById('llc-mathLine');
+
+    if (!missedCallsEl || !closeRateEl || !avgJobEl) return;
+
+    const fmtUSD = (num) => {
+        return new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            maximumFractionDigits: 0
+        }).format(num);
+    };
+
+    function calculate() {
+        const missedCalls = Math.max(0, parseFloat(missedCallsEl.value) || 0);
+        const closeRatePct = Math.min(Math.max(parseFloat(closeRateEl.value) || 0, 0), 100);
+        const avgJob = Math.max(0, parseFloat(avgJobEl.value) || 0);
+
+        const closeRate = closeRatePct / 100;
+        const lostJobsPerWeek = missedCalls * closeRate;
+        const lostRevenueWeek = lostJobsPerWeek * avgJob;
+
+        const weeksPerMonth = 4.33;
+        const lostRevenueMonth = lostRevenueWeek * weeksPerMonth;
+        const lostRevenueYear = lostRevenueMonth * 12;
+
+        if (lostWeekEl) lostWeekEl.textContent = fmtUSD(lostRevenueWeek);
+        if (lostMonthEl) lostMonthEl.textContent = fmtUSD(lostRevenueMonth);
+        if (lostYearEl) lostYearEl.textContent = fmtUSD(lostRevenueYear);
+
+        if (mathLineEl) {
+            mathLineEl.textContent =
+                `${missedCalls} calls × ${closeRatePct}% rate × ${fmtUSD(avgJob)} avg = ${fmtUSD(lostRevenueWeek)}/wk`;
+        }
+    }
+
+    [missedCallsEl, closeRateEl, avgJobEl].forEach(el => {
+        el.addEventListener('input', calculate);
+    });
+
+    calculate();
+})();

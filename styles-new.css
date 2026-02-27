@@ -889,3 +889,66 @@ body {
         text-align: left;
     }
 }
+
+/* =================================
+   Lost Leads Calculator (SOLYNX Refactor)
+   ================================= */
+#llc-wrap {
+    margin: 40px 0;
+}
+
+.llc-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#llc-wrap label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-text-main);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.llc-results {
+    margin-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 25px;
+}
+
+.llc-val {
+    font-family: 'Outfit', sans-serif;
+}
+
+.llc-hero .check-list {
+    margin: 30px 0;
+}
+
+.llc-hero .check-list li {
+    list-style: none;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+}
+
+.llc-hero .check-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent-cyan, #00f0ff);
+    font-weight: bold;
+}
+
+@media (max-width: 992px) {
+    #llc-wrap {
+        text-align: center;
+    }
+
+    .llc-hero .check-list {
+        display: inline-block;
+        text-align: left;
+    }
+}
