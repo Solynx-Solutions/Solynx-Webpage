@@ -103,7 +103,7 @@
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
             };
             if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
             n.queue = []; t = b.createElement(e); t.async = !0;
@@ -114,6 +114,11 @@
         fbq('init', '2068019090683264');
         fbq('track', 'PageView');
     </script>
+
+    <!-- GHL EXTERNAL TRACKING -->
+    <script src="https://link.solynx.solutions/js/external-tracking.js"
+        data-tracking-id="tk_a988b484869f45a09604f417b5778c51">
+        </script>
 </head>
 
 <body>
