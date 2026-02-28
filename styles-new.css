@@ -992,3 +992,194 @@ body {
         text-align: left;
     }
 }
+
+/* =================================
+   Book Consultation Section
+   ================================= */
+
+.book-consultation-section {
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ambient radial glow — matches hero aesthetic */
+.bc-bg-glow {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 80% 60% at 50% 20%, rgba(0, 240, 255, 0.06) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(255, 144, 0, 0.04) 0%, transparent 60%);
+}
+
+.book-consultation-section>.container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Section header */
+.bc-header {
+    margin-bottom: 56px;
+}
+
+.bc-eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-accent-cyan);
+    margin-bottom: 14px;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.bc-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--color-text-main);
+}
+
+.bc-sub {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ---- Calendar card wrapper ---- */
+.bc-calendar-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.bc-calendar-inner {
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.88) 0%, rgba(5, 10, 20, 0.95) 100%);
+    border: 1px solid rgba(0, 240, 255, 0.15);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow:
+        0 0 0 1px rgba(0, 240, 255, 0.05),
+        0 30px 80px rgba(0, 0, 0, 0.6),
+        0 0 60px rgba(0, 240, 255, 0.04);
+    transition: box-shadow 0.4s ease;
+}
+
+.bc-calendar-inner:hover {
+    box-shadow:
+        0 0 0 1px rgba(0, 240, 255, 0.12),
+        0 30px 80px rgba(0, 0, 0, 0.65),
+        0 0 80px rgba(0, 240, 255, 0.07);
+}
+
+/* Decorative browser-chrome bar */
+.bc-top-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.bc-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.bc-dot-red {
+    background: #ff5f57;
+}
+
+.bc-dot-yellow {
+    background: #febc2e;
+}
+
+.bc-dot-green {
+    background: #28c840;
+}
+
+.bc-top-label {
+    margin-left: 10px;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    letter-spacing: 1px;
+    opacity: 0.6;
+    font-family: 'Inter', monospace;
+}
+
+/* Embed zone */
+.bc-embed-zone {
+    padding: 10px 0 0;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.bc-embed-zone iframe {
+    flex: 1;
+    min-height: 600px;
+    border: none;
+    display: block;
+}
+
+/* Trust badges */
+.bc-trust-row {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 36px;
+    padding: 0 20px;
+}
+
+.bc-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.3px;
+    opacity: 0.85;
+    transition: opacity 0.25s;
+}
+
+.bc-trust-item:hover {
+    opacity: 1;
+    color: var(--color-text-main);
+}
+
+.bc-trust-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .bc-title {
+        font-size: 2.2rem;
+    }
+
+    .bc-trust-row {
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .bc-calendar-inner {
+        border-radius: 14px;
+    }
+
+    .bc-embed-zone {
+        min-height: 500px;
+    }
+
+    .bc-embed-zone iframe {
+        min-height: 500px;
+    }
+}
