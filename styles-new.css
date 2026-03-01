@@ -1185,31 +1185,63 @@ body {
 }
 
 /* =================================
-   Calendar Reveal Animation
+   Booking Section — Collapse / Expand
    ================================= */
 
-/* Hidden state — calendar is invisible and shifted down by default */
-.calendar-hidden {
+/*
+ * .booking-collapsed — applied to #book-consultation on page load.
+ * Collapses the entire section to zero vertical space: max-height, padding,
+ * and opacity all zero so no blank gap is visible in the layout.
+ */
+.booking-collapsed {
+    max-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    overflow: hidden !important;
     opacity: 0;
-    transform: translateY(28px);
     pointer-events: none;
-    visibility: hidden;
-    /* visibility ensures it takes no space in paint order while hidden */
-    transition: none;
-    /* no transition on hide; animation handles reveal */
+    transition:
+        max-height 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.35s ease,
+        padding-top 0.4s ease,
+        padding-bottom 0.4s ease;
 }
 
-/* Visible state — triggered by JS when the CTA is clicked */
-.calendar-visible {
-    visibility: visible;
+/*
+ * .booking-expanded — swapped in by JS when the CTA is clicked.
+ * Uses a large safe max-height (3000px) so the transition always clears.
+ * Padding is restored by the existing .book-consultation-section rule.
+ */
+.booking-expanded {
+    max-height: 3000px !important;
+    overflow: hidden !important;
+    opacity: 1;
     pointer-events: auto;
-    animation: calendarReveal 350ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    transition:
+        max-height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.4s ease 0.08s,
+        padding-top 0.45s ease,
+        padding-bottom 0.45s ease;
 }
 
-@keyframes calendarReveal {
+/*
+ * Inner content staggered reveal — header slides up first (80ms),
+ * then the calendar wrapper follows (200ms) for a layered premium feel.
+ */
+.booking-expanded .bc-header {
+    animation: bookingReveal 380ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 80ms;
+}
+
+.booking-expanded .bc-calendar-wrapper {
+    animation: bookingReveal 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 200ms;
+}
+
+@keyframes bookingReveal {
     from {
         opacity: 0;
-        transform: translateY(28px);
+        transform: translateY(20px);
     }
 
     to {

@@ -86,26 +86,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ─── Book Consultation CTA — Reveal Calendar on Click ───────────────────
+    // ─── Book Consultation CTA — Expand Section on Click ────────────────────
     const consultationBtn = document.getElementById('consultation-btn');
-    const calendarWrapper = document.getElementById('bc-calendar-wrapper');
+    const bookingSection = document.getElementById('book-consultation');
 
-    if (consultationBtn && calendarWrapper) {
+    if (consultationBtn && bookingSection) {
         consultationBtn.addEventListener('click', function (e) {
             e.preventDefault();
 
-            // Smooth-scroll to the booking section
-            const bookingSection = document.getElementById('book-consultation');
-            if (bookingSection) {
-                bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            // Smooth-scroll to the section anchor
+            bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-            // Reveal the calendar only if still hidden (prevents re-animation)
-            if (calendarWrapper.classList.contains('calendar-hidden')) {
+            // Expand only if still collapsed — prevents re-triggering the animation
+            if (bookingSection.classList.contains('booking-collapsed')) {
+                // Small delay so the scroll starts before the section expands
                 setTimeout(function () {
-                    calendarWrapper.classList.remove('calendar-hidden');
-                    calendarWrapper.classList.add('calendar-visible');
-                }, 300);
+                    bookingSection.classList.remove('booking-collapsed');
+                    bookingSection.classList.add('booking-expanded');
+                }, 200);
             }
         });
     }
