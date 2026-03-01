@@ -94,6 +94,20 @@ document.addEventListener('DOMContentLoaded', () => {
         consultationBtn.addEventListener('click', function (e) {
             e.preventDefault();
 
+            // ── GHL Webhook — fires on every button click ──────────────────
+            // Replace the URL below with your actual GHL webhook endpoint.
+            fetch('https://your-ghl-webhook-url', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    event: 'consultation_button_clicked',
+                    source: 'solynx_homepage'
+                })
+            }).catch(function () {
+                // Silently swallow errors — webhook failure must never
+                // interrupt the scroll or calendar reveal for the user.
+            });
+
             // Smooth-scroll to the section anchor
             bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
