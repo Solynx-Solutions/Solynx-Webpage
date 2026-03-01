@@ -86,6 +86,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ─── Book Consultation CTA — Reveal Calendar on Click ───────────────────
+    const consultationBtn = document.getElementById('consultation-btn');
+    const calendarWrapper = document.getElementById('bc-calendar-wrapper');
+
+    if (consultationBtn && calendarWrapper) {
+        consultationBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // Smooth-scroll to the booking section
+            const bookingSection = document.getElementById('book-consultation');
+            if (bookingSection) {
+                bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            // Reveal the calendar only if still hidden (prevents re-animation)
+            if (calendarWrapper.classList.contains('calendar-hidden')) {
+                setTimeout(function () {
+                    calendarWrapper.classList.remove('calendar-hidden');
+                    calendarWrapper.classList.add('calendar-visible');
+                }, 300);
+            }
+        });
+    }
+
 });
 
 /* =================================
