@@ -54,8 +54,19 @@ padding:40px 20px;
 
 .logo{
 width:140px;
-margin-bottom:20px;
-filter:drop-shadow(0 0 12px #00e1ff55);
+animation:solynxGlow 2.8s ease-in-out infinite alternate;
+}
+
+@keyframes solynxGlow{
+0%{
+filter:drop-shadow(0 0 6px #00e1ff44)
+drop-shadow(0 0 12px #00e1ff44);
+}
+
+100%{
+filter:drop-shadow(0 0 16px #00e1ff)
+drop-shadow(0 0 34px #00e1ff);
+}
 }
 
 .title{
@@ -117,7 +128,11 @@ background:#283354;
 
 <img src="/assets/images/solynx-logo-v2.png" class="logo">
 
-<h1 class="title">Connect with SOLYNX</h1>
+<h1 class="title">Rafael Solano</h1>
+
+<p class="subtitle">
+Founder • SOLYNX LLC
+</p>
 
 <p class="subtitle">
 Strategic consulting and automation infrastructure designed to help businesses scale smarter.
@@ -127,6 +142,14 @@ Strategic consulting and automation infrastructure designed to help businesses s
 
 <a href="/connect/rafael-solynx.vcf" class="btn primary">
 Save Contact
+</a>
+
+<a href="tel:2094701307" class="btn secondary">
+Call Rafael
+</a>
+
+<a href="tel:8554085969" class="btn secondary">
+Call SOLYNX Office
 </a>
 
 <a href="https://solynx.solutions/#contact" class="btn primary">
