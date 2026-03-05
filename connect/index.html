@@ -18,8 +18,28 @@ content="Connect with SOLYNX — Strategic consulting, automation systems, and A
 body{
 background:#0b0f1a;
 color:white;
-font-family:system-ui;
+font-family:system-ui, -apple-system, sans-serif;
 margin:0;
+overflow-x:hidden;
+}
+
+/* animated background glow */
+
+body::before{
+content:"";
+position:fixed;
+top:-50%;
+left:-50%;
+width:200%;
+height:200%;
+background:radial-gradient(circle at center,#00e1ff22,transparent 60%);
+animation:glowMove 18s linear infinite;
+z-index:-1;
+}
+
+@keyframes glowMove{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
 }
 
 .connect-wrap{
@@ -33,52 +53,61 @@ padding:40px 20px;
 }
 
 .logo{
-max-width:220px;
-margin-bottom:30px;
+width:140px;
+margin-bottom:20px;
+filter:drop-shadow(0 0 12px #00e1ff55);
 }
 
 .title{
-font-size:2.4rem;
-margin-bottom:15px;
+font-size:2.2rem;
+margin-bottom:10px;
+letter-spacing:1px;
 }
 
 .subtitle{
-max-width:600px;
-opacity:.85;
-margin-bottom:35px;
+opacity:.8;
+max-width:500px;
+margin-bottom:40px;
 }
 
 .buttons{
 display:flex;
 flex-direction:column;
-gap:16px;
+gap:14px;
 width:100%;
 max-width:320px;
 }
 
 .btn{
-padding:14px 20px;
+display:block;
+padding:14px;
 border-radius:8px;
-font-weight:600;
 text-decoration:none;
-transition:.2s;
+font-weight:600;
+transition:.25s;
 }
 
 .primary{
-background:linear-gradient(90deg,#00eaff,#0077ff);
-color:white;
+background:#00e1ff;
+color:#001018;
 }
 
-.secondary{
-border:1px solid rgba(255,255,255,.3);
-color:white;
-}
-
-.btn:hover{
+.primary:hover{
+background:#39edff;
 transform:translateY(-2px);
 }
 
-</style>
+.secondary{
+background:#1c2336;
+color:white;
+border:1px solid #2e3b5e;
+}
+
+.secondary:hover{
+background:#283354;
+}
+
+</style> 
 
 </head>
 
@@ -100,8 +129,8 @@ Strategic consulting and automation infrastructure designed to help businesses s
 Book a Consultation
 </a>
 
-<a href="https://www.linkedin.com/company/solynx" class="btn secondary">
-Follow on LinkedIn
+<a href="https://www.linkedin.com/company/solynx-llc/" class="btn secondary" target="_blank">
+Follow SOLYNX on LinkedIn
 </a>
 
 <a href="mailto:info@solynx.solutions" class="btn secondary">
