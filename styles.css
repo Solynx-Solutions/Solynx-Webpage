@@ -1572,19 +1572,172 @@ img.footer-logo {
     font-weight: 600;
 }
 
-.brands-grid {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 30px;
-    opacity: 0.6;
+/* =================================
+   Trusted Brands — Premium Marquee
+   ================================= */
+
+.brands-section {
+    position: relative;
+    padding: 56px 0;
+    background: rgba(5, 10, 20, 0.85);
+    border-top: 1px solid rgba(34, 211, 238, 0.12);
+    border-bottom: 1px solid rgba(34, 211, 238, 0.12);
+    overflow: hidden;
 }
 
-.brand-item {
+/* Subtle ambient glow behind the row */
+.brands-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 70% 100% at 50% 50%,
+            rgba(34, 211, 238, 0.04) 0%,
+            transparent 70%);
+    pointer-events: none;
+}
+
+.brands-section-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.brands-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    color: var(--color-text-muted);
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 32px;
+    opacity: 0.65;
+}
+
+/* ── Marquee Wrapper ─────────────────────────────────────── */
+.brands-marquee-wrapper {
+    overflow: hidden;
+    width: 100%;
+    /* Edge fade masks */
+    -webkit-mask-image: linear-gradient(to right,
+            transparent 0%,
+            black 8%,
+            black 92%,
+            transparent 100%);
+    mask-image: linear-gradient(to right,
+            transparent 0%,
+            black 8%,
+            black 92%,
+            transparent 100%);
+}
+
+/* ── Scrolling Track ─────────────────────────────────────── */
+.brands-marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    width: max-content;
+    animation: brandsScroll 28s linear infinite;
+    will-change: transform;
+}
+
+/* Pause on hover so users can click */
+.brands-marquee-wrapper:hover .brands-marquee-track {
+    animation-play-state: paused;
+}
+
+@keyframes brandsScroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ── Individual Logo Item ─────────────────────────────────── */
+.brand-logo-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 14px 28px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    transition:
+        filter 0.35s ease,
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+    /* Grayscale by default */
+    filter: grayscale(1) brightness(0.65);
+}
+
+.brand-logo-item:hover {
+    filter: grayscale(0) brightness(1);
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.25), 0 0 40px rgba(34, 211, 238, 0.1);
+    border-color: rgba(34, 211, 238, 0.25);
+    background: rgba(34, 211, 238, 0.04);
+}
+
+/* ── Logo image variant ──────────────────────────────────── */
+.brand-logo-img {
+    height: 40px;
+    width: auto;
+    max-width: 160px;
+    object-fit: contain;
+    display: block;
+    /* Force white rendering so logos blend on dark bg */
+    filter: brightness(10);
+    transition: filter 0.35s ease;
+}
+
+.brand-logo-item:hover .brand-logo-img {
+    filter: brightness(1);
+    /* reveal real colors on hover */
+}
+
+/* ── Text / Wordmark variant ─────────────────────────────── */
+.brand-wordmark {
     font-family: 'Outfit', sans-serif;
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: var(--color-text-muted);
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+    transition: color 0.35s ease;
+}
+
+.brand-logo-item:hover .brand-wordmark {
+    color: var(--color-text-primary);
+}
+
+/* ── Mobile ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .brands-section {
+        padding: 40px 0;
+    }
+
+    .brands-marquee-track {
+        gap: 36px;
+        animation-duration: 20s;
+    }
+
+    .brand-logo-img {
+        height: 30px;
+    }
+
+    .brand-wordmark {
+        font-size: 1.1rem;
+    }
+
+    .brand-logo-item {
+        padding: 10px 18px;
+    }
 }
 
 /* =================================
