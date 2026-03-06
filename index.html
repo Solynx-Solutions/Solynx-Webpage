@@ -644,7 +644,7 @@
 
         let particles = [];
 
-        const particleCount = 60;
+        const particleCount = 120;
 
         class Particle {
 
@@ -672,7 +672,9 @@
 
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
-                ctx.fillStyle = "rgba(0,255,255,.8)";
+                ctx.shadowColor="cyan";
+                ctx.shadowBlur=10;
+                ctx.fillStyle="rgba(0,255,255,.9)";
                 ctx.fill();
 
             }

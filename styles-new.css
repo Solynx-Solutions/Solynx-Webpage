@@ -1373,6 +1373,70 @@ body {
 
 #solynx-network {
     width: 100%;
-    height: 420px;
+    height: 600px;
     display: block;
+}
+
+.solynx-ecosystem {
+    padding: 140px 0;
+    text-align: center;
+}
+
+.ecosystem-map {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    max-width: 900px;
+    margin: auto;
+    margin-top: 60px;
+}
+
+.eco-node {
+    background: #0b1324;
+    border: 1px solid rgba(0, 255, 255, .3);
+    padding: 18px 22px;
+    border-radius: 30px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: .35s;
+    position: relative;
+}
+
+.eco-node:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 18px rgba(0, 255, 255, .5);
+}
+
+.eco-node::after {
+    content: attr(data-info);
+    position: absolute;
+    bottom: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #081022;
+    color: #9cb3db;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    opacity: 0;
+    white-space: nowrap;
+    transition: .3s;
+}
+
+.eco-node:hover::after {
+    opacity: 1;
+}
+
+.highlight {
+    background: #0c1830;
+    border: 1px solid rgba(255, 170, 0, .7);
+    box-shadow: 0 0 18px rgba(255, 170, 0, .4);
+}
+
+.hero h1 {
+    text-shadow:
+        0 0 6px rgba(0, 255, 255, .6),
+        0 0 18px rgba(0, 255, 255, .4),
+        0 0 32px rgba(0, 255, 255, .2);
 }
