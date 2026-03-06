@@ -1249,3 +1249,130 @@ body {
         transform: translateY(0);
     }
 }
+
+.solynx-network {
+    padding: 120px 0;
+    text-align: center;
+    position: relative;
+}
+
+.network-title {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.network-sub {
+    color: #8ea2c7;
+    margin-bottom: 60px;
+}
+
+.network-map {
+    position: relative;
+    max-width: 900px;
+    margin: auto;
+    height: 200px;
+}
+
+.node {
+    position: absolute;
+    padding: 12px 22px;
+    border-radius: 30px;
+    background: #0d1426;
+    border: 1px solid rgba(0, 255, 255, .4);
+    color: white;
+    font-size: 14px;
+    box-shadow: 0 0 12px rgba(0, 255, 255, .3);
+}
+
+/* Node Positions */
+
+.business {
+    left: 0;
+    top: 90px;
+}
+
+.ai {
+    left: 180px;
+    top: 60px;
+}
+
+.crm {
+    left: 360px;
+    top: 90px;
+}
+
+.automation {
+    left: 540px;
+    top: 60px;
+}
+
+.revenue {
+    left: 720px;
+    top: 90px;
+}
+
+.network-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    stroke: rgba(0, 255, 255, .5);
+    stroke-width: 2;
+    fill: none;
+    animation: pulseLine 3s infinite;
+}
+
+@keyframes pulseLine {
+    0% {
+        opacity: .4
+    }
+
+    50% {
+        opacity: 1
+    }
+
+    100% {
+        opacity: .4
+    }
+}
+
+@media (max-width: 992px) {
+    .network-map {
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        justify-items: center;
+    }
+
+    .node {
+        position: static;
+    }
+
+    .network-lines {
+        display: none;
+    }
+}
+
+.solynx-neural {
+    padding: 140px 0;
+    text-align: center;
+    position: relative;
+}
+
+.neural-title {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.neural-sub {
+    color: #90a5cc;
+    margin-bottom: 50px;
+}
+
+#solynx-network {
+    width: 100%;
+    height: 420px;
+    display: block;
+}
