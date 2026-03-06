@@ -3,9 +3,9 @@ VERSION:3.0
 FN:Rafael Solano
 ORG:SOLYNX LLC
 TITLE:Founder/CEO
-TEL;TYPE=WORK,VOICE:+18554085969
 TEL;TYPE=CELL:2094701307
+TEL;TYPE=WORK,VOICE:+18554085969
 EMAIL:rafael@solynx.solutions
 URL:https://solynx.solutions
-PHOTO;VALUE=URI:https://solynx.solutions/assets/images/solynx-logo-v2.png
+PHOTO;VALUE=URI:https://solynx.solutions/assets/images/solynx-logo.png
 END:VCARD
