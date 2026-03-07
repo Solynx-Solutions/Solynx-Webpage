@@ -232,8 +232,8 @@ a:hover {
     /* Fallback */
 }
 
-.solynx-orange {
-  color: #ff6a00 !important;
+.hero-text .solynx-orange {
+  color: #ff6a00;
   font-weight: 800;
 }
 
@@ -1773,4 +1773,18 @@ img.footer-logo {
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
+}
+
+/* HERO TEXT LOCK — prevents global overrides */
+
+.hero-text h1{
+    background:none;
+    color:#ffffff;
+    -webkit-text-fill-color:#ffffff;
+}
+
+.hero-text h1 .solynx-orange{
+    color:#ff6a00;
+    -webkit-text-fill-color:#ff6a00;
+    font-weight:800;
 }
