@@ -232,9 +232,10 @@ a:hover {
     /* Fallback */
 }
 
-.hero-text .solynx-orange {
-  color: #ff6a00;
-  font-weight: 800;
+.hero-text h1 .solynx-orange {
+    color: #ff6a00;
+    -webkit-text-fill-color: #ff6a00;
+    font-weight: 800;
 }
 
 /* =================================
@@ -486,11 +487,11 @@ a:hover {
     animation: fadeInUp 1s ease-out 0.4s backwards;
 }
 
-hero-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 40px;
-  align-items: center;
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: center;
 }
 
 @keyframes fadeInUp {
@@ -1776,7 +1777,7 @@ img.footer-logo {
     animation: pulseGlow 3s ease-in-out infinite;
 }
 
-.hero-bg{
+.hero-bg {
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -1784,14 +1785,14 @@ img.footer-logo {
 
 /* HERO TEXT LOCK — prevents global overrides */
 
-.hero-text h1{
-    background:none;
-    color:#ffffff;
-    -webkit-text-fill-color:#ffffff;
+.hero-text h1 {
+    background: none;
+    color: #ffffff;
+    -webkit-text-fill-color: #ffffff;
 }
 
-.hero-text h1 .solynx-orange{
-    color:#ff6a00;
-    -webkit-text-fill-color:#ff6a00;
-    font-weight:800;
+.hero-text h1 .solynx-orange {
+    color: #ff6a00;
+    -webkit-text-fill-color: #ff6a00;
+    font-weight: 800;
 }
