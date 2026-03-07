@@ -1786,13 +1786,13 @@ img.footer-logo {
 /* HERO TEXT LOCK — prevents global overrides */
 
 .hero-text h1 {
-    background: none;
-    color: #ffffff;
-    -webkit-text-fill-color: #ffffff;
+    background: none !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 
 .hero-text h1 .solynx-orange {
-    color: #ff6a00;
-    -webkit-text-fill-color: #ff6a00;
+    color: #ff6a00 !important;
+    -webkit-text-fill-color: #ff6a00 !important;
     font-weight: 800;
 }
