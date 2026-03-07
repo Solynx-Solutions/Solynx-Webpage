@@ -232,6 +232,14 @@ a:hover {
     /* Fallback */
 }
 
+@keyframes solynxGlow {
+  0%,100% { text-shadow: 0 0 6px rgba(0,255,255,.5), 0 0 12px rgba(255,140,0,.4); }
+  50% { text-shadow: 0 0 14px rgba(0,255,255,.9), 0 0 22px rgba(255,140,0,.8); }
+}
+
+.solynx-pulse {
+  animation: solynxGlow 4s ease-in-out infinite;
+}
 /* =================================
    Navigation
    ================================= */
@@ -1762,4 +1770,10 @@ img.footer-logo {
 
 .pulse {
     animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.hero-bg{
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
