@@ -486,6 +486,13 @@ a:hover {
     animation: fadeInUp 1s ease-out 0.4s backwards;
 }
 
+hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
