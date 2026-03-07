@@ -233,7 +233,7 @@ a:hover {
 }
 
 .solynx-orange {
-  color: #ff6a00;
+  color: #ff6a00 !important;
   font-weight: 800;
 }
 
