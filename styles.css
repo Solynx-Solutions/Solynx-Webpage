@@ -591,10 +591,10 @@ a:hover {
 }
 
 /* Hero Form Card (Dark Future) */
-.hero-form-wrapper {
-    position: relative;
+.hero-form-wrapper{
+  max-width:520px;
+  justify-self:end;
 }
-
 .hero-form-card {
     background: var(--gradient-dark-card);
     border: 1px solid rgba(255, 255, 255, 0.1);
