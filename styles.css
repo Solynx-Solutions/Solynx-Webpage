@@ -232,6 +232,10 @@ a:hover {
     /* Fallback */
 }
 
+.solynx-orange {
+  color: #ff6a00;
+  font-weight: 800;
+}
 
 /* =================================
    Navigation
