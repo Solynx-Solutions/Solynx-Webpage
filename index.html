@@ -122,6 +122,7 @@
             </a>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="https://solynx.com/#platform" class="nav-link">PLATFORM</a></li>
+                <li><a href="#pricing" class="nav-link">PRICING</a></li>
                 <li><a href="https://solynx.com/#consulting" class="nav-link">CONSULTING</a></li>
                 <li><a href="https://solynx.com/#about" class="nav-link">ABOUT</a></li>
                 <li><a href="https://link.solynx.solutions/widget/form/XK9biK6AROXKJdkCzyMw"
@@ -264,13 +265,25 @@
                 <p class="section-sub">Three levels of automation, CRM infrastructure, and strategic consulting.</p>
             </div>
 
+            <!-- BILLING TOGGLE -->
+            <div class="billing-toggle" id="billingToggle">
+                <span class="toggle-label toggle-monthly active" id="labelMonthly">Monthly</span>
+                <button class="toggle-switch" id="toggleSwitch" aria-pressed="false" aria-label="Switch billing period">
+                    <span class="toggle-knob"></span>
+                </button>
+                <span class="toggle-label toggle-annual" id="labelAnnual">Annual <em class="save-badge">Save 2
+                        Months</em></span>
+            </div>
+
             <div class="pricing-grid">
 
                 <!-- CARD 1: SCOUT -->
                 <div class="pricing-card">
                     <div class="pricing-card-top">
                         <h3 class="pricing-plan-name">Scout</h3>
-                        <div class="pricing-price">$297<span class="pricing-period"> / month</span></div>
+                        <div class="price-monthly">$297<span class="pricing-period"> / month</span></div>
+                        <div class="price-annual" style="display:none;">$2,970<span class="pricing-period"> /
+                                year</span></div>
                         <p class="pricing-desc">Perfect for small businesses ready to automate lead capture, CRM
                             management, and customer communication.</p>
                     </div>
@@ -282,9 +295,9 @@
                         <li>Basic Funnels</li>
                     </ul>
                     <div class="pricing-card-bottom">
-                        <a href="https://link.solynx.solutions/widget/form/XK9biK6AROXKJdkCzyMw"
-                            class="btn btn-outline pricing-btn">Start With Scout</a>
-                        <p class="pricing-note">Consultation required after subscription.</p>
+                        <a href="/api/checkout?plan=scout&period=monthly" class="btn btn-outline pricing-btn"
+                            id="scoutBtn">Start With Scout</a>
+                        <p class="pricing-note">Scout onboarding consultation occurs shortly after subscription.</p>
                     </div>
                 </div>
 
@@ -293,7 +306,9 @@
                     <div class="pricing-featured-badge">MOST POPULAR</div>
                     <div class="pricing-card-top">
                         <h3 class="pricing-plan-name">Prowler</h3>
-                        <div class="pricing-price">$497<span class="pricing-period"> / month</span></div>
+                        <div class="price-monthly">$497<span class="pricing-period"> / month</span></div>
+                        <div class="price-annual" style="display:none;">$4,970<span class="pricing-period"> /
+                                year</span></div>
                         <p class="pricing-desc">Designed for businesses scaling their marketing automation and revenue
                             systems.</p>
                     </div>
@@ -305,8 +320,8 @@
                         <li>Expanded Reporting</li>
                     </ul>
                     <div class="pricing-card-bottom">
-                        <a href="https://link.solynx.solutions/widget/form/XK9biK6AROXKJdkCzyMw"
-                            class="btn btn-gradient pricing-btn">Scale With Prowler</a>
+                        <a href="/api/checkout?plan=prowler&period=monthly" class="btn btn-gradient pricing-btn"
+                            id="prowlerBtn">Scale With Prowler</a>
                         <p class="pricing-note">Consultation required after subscription.</p>
                     </div>
                 </div>
@@ -315,9 +330,13 @@
                 <div class="pricing-card">
                     <div class="pricing-card-top">
                         <h3 class="pricing-plan-name">Apex</h3>
-                        <div class="pricing-price pricing-price-custom">Starting at <strong>$997</strong></div>
-                        <p class="pricing-desc">A fully customized Solynx system built around your business operations
-                            and growth goals.</p>
+                        <div class="price-monthly">$997<span class="pricing-period"> / month</span></div>
+                        <div class="price-annual" style="display:none;">$9,970<span class="pricing-period"> /
+                                year</span></div>
+                        <p class="pricing-desc">A premium SOLYNX solution for businesses that need customized
+                            automation, infrastructure, and strategic implementation.</p>
+                        <p class="custom-note">Each Apex system can be custom built with additional options tailored
+                            exclusively to the customer.</p>
                     </div>
                     <ul class="pricing-features">
                         <li>Custom Automation Architecture</li>
@@ -327,20 +346,21 @@
                         <li>Strategic Consulting</li>
                     </ul>
                     <div class="pricing-card-bottom">
-                        <a href="https://link.solynx.solutions/widget/form/XK9biK6AROXKJdkCzyMw"
-                            class="btn btn-outline pricing-btn">Book Apex Strategy Session</a>
+                        <a href="#book-consultation" class="btn btn-outline pricing-btn">Book Apex Strategy Session</a>
                         <p class="pricing-note">Consultation required after subscription.</p>
                     </div>
                 </div>
 
             </div><!-- /.pricing-grid -->
 
-            <p class="pricing-footer-note">
-                All Solynx plans include a strategic consultation to configure your automation system.
-            </p>
+            <div class="pricing-footer-notes">
+                <p>All SOLYNX plans require a consultation to align your system with your business goals.</p>
+            </div>
 
         </div>
     </section>
+
+
 
     <!-- Brands / Trust Ticker — Premium Marquee -->
     <section class="brands-section" id="trusted-brands">
@@ -734,5 +754,39 @@
 
     <script src="script.js"></script>
     <script>
+        // ── Pricing Billing Toggle ──────────────────────────────────
+        // No Stripe URLs in frontend — all links route through /api/checkout
+        (function () {
+            var btn = document.getElementById('toggleSwitch');
+            var labelMo = document.getElementById('labelMonthly');
+            var labelAn = document.getElementById('labelAnnual');
+            var scoutBtn = document.getElementById('scoutBtn');
+            var prowlerBtn = document.getElementById('prowlerBtn');
 
+            if (!btn) return;
+
+            var isAnnual = false;
+
+            btn.addEventListener('click', function () {
+                isAnnual = !isAnnual;
+                var period = isAnnual ? 'annual' : 'monthly';
+
+                btn.setAttribute('aria-pressed', isAnnual);
+                btn.classList.toggle('active', isAnnual);
+                labelMo.classList.toggle('active', !isAnnual);
+                labelAn.classList.toggle('active', isAnnual);
+
+                // Show/hide price displays
+                document.querySelectorAll('.price-monthly').forEach(function (el) {
+                    el.style.display = isAnnual ? 'none' : '';
+                });
+                document.querySelectorAll('.price-annual').forEach(function (el) {
+                    el.style.display = isAnnual ? '' : 'none';
+                });
+
+                // Update button routes — no Stripe URLs in frontend
+                scoutBtn.href = '/api/checkout?plan=scout&period=' + period;
+                prowlerBtn.href = '/api/checkout?plan=prowler&period=' + period;
+            });
+        })();
 </body >
