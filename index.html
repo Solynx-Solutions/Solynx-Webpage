@@ -299,8 +299,8 @@
                         <li>Basic Funnels</li>
                     </ul>
                     <div class="pricing-card-bottom">
-                        <a href="/api/checkout?plan=scout&period=monthly" class="btn btn-outline pricing-btn"
-                            id="scoutBtn">Start With Scout</a>
+                        <a href="https://link.solynx.solutions/widget/form/XK9biK6AROXKJdkCzyMw"
+                            class="btn btn-outline pricing-btn" id="scoutBtn">Start With Scout</a>
                         <p class="pricing-note">Scout onboarding consultation occurs shortly after subscription.</p>
                     </div>
                 </div>
@@ -324,8 +324,8 @@
                         <li>Expanded Reporting</li>
                     </ul>
                     <div class="pricing-card-bottom">
-                        <a href="/api/checkout?plan=prowler&period=monthly" class="btn btn-gradient pricing-btn"
-                            id="prowlerBtn">Scale With Prowler</a>
+                        <a href="https://link.solynx.solutions/widget/form/XK9biK6AROXKJdkCzyMw"
+                            class="btn btn-gradient pricing-btn" id="prowlerBtn">Scale With Prowler</a>
                         <p class="pricing-note">Consultation required after subscription.</p>
                     </div>
                 </div>
@@ -763,14 +763,11 @@
 
     <script src="script.js"></script>
     <script>
-        // ── Pricing Billing Toggle ──────────────────────────────────
-        // No Stripe URLs in frontend — all links route through /api/checkout
+        // ── Pricing Billing Toggle ───────────────────────────
         (function () {
             var btn = document.getElementById('toggleSwitch');
             var labelMo = document.getElementById('labelMonthly');
             var labelAn = document.getElementById('labelAnnual');
-            var scoutBtn = document.getElementById('scoutBtn');
-            var prowlerBtn = document.getElementById('prowlerBtn');
 
             if (!btn) return;
 
@@ -778,7 +775,6 @@
 
             btn.addEventListener('click', function () {
                 isAnnual = !isAnnual;
-                var period = isAnnual ? 'annual' : 'monthly';
 
                 btn.setAttribute('aria-pressed', isAnnual);
                 btn.classList.toggle('active', isAnnual);
@@ -792,10 +788,7 @@
                 document.querySelectorAll('.price-annual').forEach(function (el) {
                     el.style.display = isAnnual ? '' : 'none';
                 });
-
-                // Update button routes — no Stripe URLs in frontend
-                scoutBtn.href = '/api/checkout?plan=scout&period=' + period;
-                prowlerBtn.href = '/api/checkout?plan=prowler&period=' + period;
+                // CTA buttons link to GHL form — no href swap needed
             });
         })();
     </script>
