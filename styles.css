@@ -1821,8 +1821,9 @@ img.footer-logo {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 28px;
-    align-items: start;
-    margin-top: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
 }
 
 /* ── Base card ──────────────────────────────── */
@@ -1976,12 +1977,20 @@ img.footer-logo {
 }
 
 /* ── Responsive ───────────────────────────────── */
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
     .pricing-grid {
         grid-template-columns: 1fr;
         max-width: 480px;
-        margin-left: auto;
-        margin-right: auto;
+    }
+
+    .pricing-card {
+        width: 100%;
     }
 
     .pricing-card-featured {
@@ -1992,6 +2001,25 @@ img.footer-logo {
         transform: translateY(-6px);
     }
 }
+
+/* ── Apex custom label styles ─────────────────── */
+.pricing-custom-label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+}
+
+.pricing-starting {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--color-text-primary);
+    font-family: var(--font-heading);
+}
+
 
 /* ── Billing Toggle ─────────────────────────────── */
 .billing-toggle {
