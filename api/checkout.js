@@ -1,9 +1,11 @@
-export default function handler(req, res) {
+// api/checkout.js — Vercel Serverless Function (CommonJS)
+// Stripe links are stored in Vercel Environment Variables — never in frontend code.
 
-  const plan = req.query.plan;
-  const period = req.query.period;
+module.exports = function handler(req, res) {
+  var plan = req.query.plan;
+  var period = req.query.period;
 
-  let redirectURL = null;
+  var redirectURL = null;
 
   if (plan === "scout" && period === "monthly") {
     redirectURL = process.env.STRIPE_SCOUT_MONTHLY;
@@ -22,13 +24,10 @@ export default function handler(req, res) {
   }
 
   if (!redirectURL) {
-    return res.status(400).send("Invalid plan or period.");
+    res.status(400).send("Invalid plan or period.");
+    return;
   }
 
-  res.writeHead(302, {
-    Location: redirectURL
-  });
-
+  res.writeHead(302, { Location: redirectURL });
   res.end();
-
-}
+};
