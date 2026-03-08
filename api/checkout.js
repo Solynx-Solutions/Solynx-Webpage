@@ -1,26 +1,30 @@
 // api/checkout.js — Vercel Serverless Function
-// Stripe links are stored in Vercel Environment Variables, never in frontend code.
-// Set these in the Vercel dashboard under: Project → Settings → Environment Variables
+// Stripe links stored in Vercel Environment Variables only — never in frontend code.
 
-module.exports = function handler(req, res) {
-  var plan   = (req.query.plan   || '').toLowerCase();
-  var period = (req.query.period || '').toLowerCase();
+export default function handler(req, res) {
+  const { plan, period } = req.query;
 
-  var links = {
-    scout_monthly:   process.env.STRIPE_SCOUT_MONTHLY,
-    scout_annual:    process.env.STRIPE_SCOUT_ANNUAL,
-    prowler_monthly: process.env.STRIPE_PROWLER_MONTHLY,
-    prowler_annual:  process.env.STRIPE_PROWLER_ANNUAL,
-  };
+  let url = null;
 
-  var key = plan + '_' + period;
-  var url = links[key];
-
-  if (!url) {
-    res.status(400).send('Invalid plan or period.');
-    return;
+  if (plan === "scout" && period === "monthly") {
+    url = process.env.STRIPE_SCOUT_MONTHLY;
   }
 
-  // Redirect the user to the Stripe checkout page
+  if (plan === "scout" && period === "annual") {
+    url = process.env.STRIPE_SCOUT_ANNUAL;
+  }
+
+  if (plan === "prowler" && period === "monthly") {
+    url = process.env.STRIPE_PROWLER_MONTHLY;
+  }
+
+  if (plan === "prowler" && period === "annual") {
+    url = process.env.STRIPE_PROWLER_ANNUAL;
+  }
+
+  if (!url) {
+    return res.status(400).send("Invalid plan or period.");
+  }
+
   res.redirect(302, url);
-};
+}
