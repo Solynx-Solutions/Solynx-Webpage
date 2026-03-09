@@ -2261,3 +2261,45 @@ img.footer-logo {
     }
 
 }
+
+/* ── Strategic Consulting — Mobile Fix ──────────── */
+@media (max-width: 768px) {
+
+    .split-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 32px;
+    }
+
+    .split-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 20px !important;
+    }
+
+    .split-content .section-title {
+        font-size: 2rem;
+    }
+
+    .split-content p,
+    .split-content .section-sub {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .check-list {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    .check-list li {
+        font-size: 0.95rem;
+        margin-bottom: 10px;
+    }
+
+    /* Hide decorative abstract visual on mobile */
+    .split-visual {
+        display: none;
+    }
+
+}
