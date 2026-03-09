@@ -2400,3 +2400,80 @@ img.footer-logo {
     text-decoration: none;
     display: inline-block;
 }
+
+/* ── About SOLYNX Section ─────────────────────────── */
+.about-section {
+    padding: 120px 20px;
+    background: #0a0a0a;
+    color: white;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.about-title {
+    font-size: 48px;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #ff6a00, #ff9a3c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.about-lead {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.about-highlight {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #ff8c3a;
+}
+
+.about-right h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.about-pillars {
+    margin-top: 25px;
+    display: grid;
+    gap: 20px;
+}
+
+.pillar {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.pillar h4 {
+    margin-bottom: 8px;
+    color: #ff8c3a;
+}
+
+.about-closing {
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+@media (max-width: 900px) {
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .about-title {
+        font-size: 36px;
+    }
+}
