@@ -2640,3 +2640,20 @@ img.footer-logo {
         font-size: 36px;
     }
 }
+
+/* ── Client Wordmark (text-based brand logo) ─────── */
+.client-wordmark {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: white;
+    opacity: 0.8;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.client-wordmark:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
