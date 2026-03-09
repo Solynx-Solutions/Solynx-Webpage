@@ -2477,3 +2477,78 @@ img.footer-logo {
         font-size: 36px;
     }
 }
+
+/* ── SOLYNX Platform Section ─────────────────────── */
+.platform-section {
+    padding: 120px 20px;
+    background: #050505;
+    color: white;
+}
+
+.platform-container {
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+
+.platform-title {
+    font-size: 48px;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #ff6a00, #ff9a3c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.platform-lead {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.platform-description {
+    max-width: 700px;
+    margin: auto;
+    margin-bottom: 60px;
+    color: #cccccc;
+}
+
+.platform-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.platform-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 30px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: left;
+    transition: transform 0.2s ease;
+}
+
+.platform-card:hover {
+    transform: translateY(-4px);
+}
+
+.platform-card h3 {
+    color: #ff8c3a;
+    margin-bottom: 10px;
+}
+
+.platform-closing {
+    margin-top: 60px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+@media (max-width: 900px) {
+    .platform-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .platform-title {
+        font-size: 36px;
+    }
+}
