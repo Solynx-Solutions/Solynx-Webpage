@@ -2303,3 +2303,100 @@ img.footer-logo {
     }
 
 }
+
+/* ── Scout DIY Button ─────────────────────────────── */
+.btn-scout-diy {
+    display: inline-block;
+    padding: 12px 28px;
+    border: 1.5px solid rgba(0, 240, 255, 0.45);
+    border-radius: 8px;
+    color: var(--color-accent-cyan, #00f0ff);
+    background: transparent;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.25s, box-shadow 0.25s, color 0.25s;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.08);
+}
+
+.btn-scout-diy:hover {
+    border-color: rgba(0, 240, 255, 0.8);
+    box-shadow: 0 0 18px rgba(0, 240, 255, 0.2);
+    color: #fff;
+}
+
+/* ── Apex Accent Button ───────────────────────────── */
+.btn-apex-accent {
+    display: inline-block;
+    padding: 12px 28px;
+    border: 2px solid var(--color-accent, #f97316);
+    border-radius: 8px;
+    color: var(--color-accent, #f97316);
+    background: transparent;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.25s, color 0.25s, box-shadow 0.25s;
+    box-shadow: 0 0 12px rgba(249, 115, 22, 0.15);
+}
+
+.btn-apex-accent:hover {
+    background: var(--color-accent, #f97316);
+    color: #fff;
+    box-shadow: 0 0 24px rgba(249, 115, 22, 0.3);
+}
+
+/* ── Scout Card — DIY Cosmetic Styles ─────────────── */
+.pricing-identity {
+    font-size: 0.88rem;
+    color: var(--color-text-muted, #94a3b8);
+    margin-bottom: 4px;
+    line-height: 1.55;
+}
+
+.pricing-tagline {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent-cyan, #00f0ff);
+    margin-bottom: 14px;
+    opacity: 0.75;
+}
+
+.pricing-best-for {
+    font-size: 0.82rem;
+    color: var(--color-text-muted, #94a3b8);
+    margin-top: 8px;
+}
+
+.pricing-not-for {
+    font-size: 0.78rem;
+    color: var(--color-text-muted, #94a3b8);
+    border-left: 2px solid rgba(255, 255, 255, 0.12);
+    padding-left: 12px;
+    margin: 12px 0 16px;
+    line-height: 1.55;
+    opacity: 0.7;
+}
+
+.feat-yes::before {
+    content: "✔ ";
+    color: #22c55e;
+}
+
+.feat-no {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
+.feat-no::before {
+    content: "✖ ";
+    color: #f87171;
+    text-decoration: none;
+    display: inline-block;
+}
