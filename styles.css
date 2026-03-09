@@ -2171,3 +2171,61 @@ img.footer-logo {
     }
 
 }
+
+/* ── Mobile Layout Fixes ─────────────────────────── */
+@media (max-width: 768px) {
+
+    /* Prevent horizontal overflow */
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Feature cards stack vertically */
+    .features-grid,
+    .platform-grid,
+    .cards-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .feature-card,
+    .platform-card {
+        width: 100%;
+    }
+
+    /* Partner logos wrap correctly */
+    .partners-logos,
+    .brands-logos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 18px;
+    }
+
+    .partners-logos img,
+    .brands-logos img {
+        max-width: 120px;
+        height: auto;
+    }
+
+    /* Strategic consulting section full width */
+    .consulting-section,
+    .strategy-section,
+    .text-section {
+        padding-left: 20px;
+        padding-right: 20px;
+        max-width: 100%;
+    }
+
+    /* Any remaining multi-column grids collapse */
+    .grid,
+    .row,
+    .cards,
+    .columns {
+        grid-template-columns: 1fr !important;
+    }
+
+}
