@@ -2552,3 +2552,91 @@ img.footer-logo {
         font-size: 36px;
     }
 }
+
+/* ── SOLYNX Consulting Section ───────────────────── */
+.consulting-section {
+    padding: 120px 20px;
+    background: #0a0a0a;
+    color: white;
+}
+
+.consulting-container {
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+
+.consulting-title {
+    font-size: 48px;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #ff6a00, #ff9a3c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.consulting-lead {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.consulting-description {
+    max-width: 700px;
+    margin: auto;
+    margin-bottom: 60px;
+    color: #cccccc;
+}
+
+.consulting-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.consulting-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 30px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: left;
+}
+
+.consulting-card h3 {
+    color: #ff8c3a;
+    margin-bottom: 10px;
+}
+
+.consulting-cta {
+    padding: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+}
+
+.consulting-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 28px;
+    background: #ff6a00;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.consulting-button:hover {
+    background: #ff8c3a;
+    box-shadow: 0 0 20px rgba(255, 106, 0, 0.3);
+}
+
+@media (max-width: 900px) {
+    .consulting-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .consulting-title {
+        font-size: 36px;
+    }
+}
