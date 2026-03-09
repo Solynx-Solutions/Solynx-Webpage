@@ -2229,3 +2229,35 @@ img.footer-logo {
     }
 
 }
+
+/* ----------------------------- */
+/* SOLYNX MOBILE RESPONSIVE FIXES */
+/* ----------------------------- */
+@media (max-width: 768px) {
+
+    /* Prevent horizontal scroll (html + body) */
+    html,
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Collapse feature grids with !important */
+    .features-grid,
+    .platform-grid,
+    .cards-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Ensure .card uses full width */
+    .card {
+        width: 100%;
+    }
+
+    /* Collapse any remaining grids including .rows */
+    .grid,
+    .columns,
+    .rows {
+        grid-template-columns: 1fr !important;
+    }
+
+}
