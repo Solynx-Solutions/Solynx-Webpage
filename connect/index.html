@@ -336,37 +336,33 @@
 
         /* ── Team Section ──────────────────────────────────── */
         .team-section {
-            margin-top: 40px;
+            margin-top: 50px;
             text-align: center;
-            width: 100%;
-            max-width: 320px;
         }
 
         .team-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
         }
 
         .team-card {
-            padding: 13px 10px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, .05);
-            border: 1px solid rgba(255, 255, 255, .08);
+            padding: 18px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             text-decoration: none;
             color: white;
             font-weight: 600;
-            font-size: 13px;
-            transition: .25s;
-            text-align: center;
+            transition: all .25s ease;
+            display: block;
         }
 
         .team-card:hover {
             transform: translateY(-3px);
             border-color: #ff7a18;
-            box-shadow: 0 0 12px rgba(255, 122, 24, .4);
-            color: white;
+            box-shadow: 0 0 14px rgba(255, 122, 24, .45);
         }
     </style>
 
@@ -417,19 +413,17 @@
                 rel="noopener noreferrer"><span class="icon">🔗</span><span>LinkedIn</span></a>
         </div>
 
-        <div class="team-section">
-            <h2
-                style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin:0 0 4px;">
-                Meet the SOLYNX Team</h2>
+        <section class="team-section">
+            <h2>Meet the SOLYNX Team</h2>
             <div class="team-grid">
-                <a class="team-card" href="https://solynx.solutions/connect/rafael">Rafael Solano</a>
-                <a class="team-card" href="https://solynx.solutions/connect/chris">Christopher Weigart</a>
-                <a class="team-card" href="https://solynx.solutions/connect/james">James Matelski</a>
-                <a class="team-card" href="https://solynx.solutions/connect/gretchen">Gretchen Codus</a>
-                <a class="team-card" href="https://solynx.solutions/connect/zeus">Zeus Fae</a>
-                <a class="team-card" href="https://solynx.solutions/connect/emiliano">Emiliano Magdaleno</a>
+                <a href="/connect/rafael" class="team-card">Rafael Solano</a>
+                <a href="/connect/chris" class="team-card">Chris Weigart</a>
+                <a href="/connect/james" class="team-card">James Matelski</a>
+                <a href="/connect/gretchen" class="team-card">Gretchen Codus</a>
+                <a href="/connect/zeus" class="team-card">Zeus Fae</a>
+                <a href="/connect/emiliano" class="team-card">Emiliano Magdaleno</a>
             </div>
-        </div>
+        </section>
 
     </div>
 
