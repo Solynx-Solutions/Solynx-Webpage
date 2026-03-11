@@ -338,30 +338,35 @@
         .team-section {
             margin-top: 40px;
             text-align: center;
+            width: 100%;
+            max-width: 320px;
         }
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 12px;
-            margin-top: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 16px;
         }
 
         .team-card {
-            padding: 14px;
+            padding: 13px 10px;
             border-radius: 10px;
             background: rgba(255, 255, 255, .05);
             border: 1px solid rgba(255, 255, 255, .08);
             text-decoration: none;
             color: white;
             font-weight: 600;
+            font-size: 13px;
             transition: .25s;
+            text-align: center;
         }
 
         .team-card:hover {
             transform: translateY(-3px);
             border-color: #ff7a18;
             box-shadow: 0 0 12px rgba(255, 122, 24, .4);
+            color: white;
         }
     </style>
 
@@ -413,32 +418,16 @@
         </div>
 
         <div class="team-section">
-            <h2>Meet the SOLYNX Team</h2>
+            <h2
+                style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin:0 0 4px;">
+                Meet the SOLYNX Team</h2>
             <div class="team-grid">
-                <a class="team-card" href="https://solynx.solutions/connect/rafael">
-                    <span class="t-avatar">R</span>
-                    <span>Rafael Solano</span>
-                </a>
-                <a class="team-card" href="https://solynx.solutions/connect/chris">
-                    <span class="t-avatar">C</span>
-                    <span>Christopher Weigart</span>
-                </a>
-                <a class="team-card" href="https://solynx.solutions/connect/james">
-                    <span class="t-avatar">J</span>
-                    <span>James Matelski</span>
-                </a>
-                <a class="team-card" href="https://solynx.solutions/connect/gretchen">
-                    <span class="t-avatar">G</span>
-                    <span>Gretchen Codus</span>
-                </a>
-                <a class="team-card" href="https://solynx.solutions/connect/zeus">
-                    <span class="t-avatar">Z</span>
-                    <span>Zeus Fae</span>
-                </a>
-                <a class="team-card" href="https://solynx.solutions/connect/emiliano">
-                    <span class="t-avatar">E</span>
-                    <span>Emiliano Magdaleno</span>
-                </a>
+                <a class="team-card" href="https://solynx.solutions/connect/rafael">Rafael Solano</a>
+                <a class="team-card" href="https://solynx.solutions/connect/chris">Christopher Weigart</a>
+                <a class="team-card" href="https://solynx.solutions/connect/james">James Matelski</a>
+                <a class="team-card" href="https://solynx.solutions/connect/gretchen">Gretchen Codus</a>
+                <a class="team-card" href="https://solynx.solutions/connect/zeus">Zeus Fae</a>
+                <a class="team-card" href="https://solynx.solutions/connect/emiliano">Emiliano Magdaleno</a>
             </div>
         </div>
 
