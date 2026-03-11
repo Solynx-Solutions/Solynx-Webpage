@@ -1,0 +1,72 @@
+[33mfea9f36[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Replace TaxDoc image logo with THE TAX DOC text wordmark in brand ticker
+[33m9cbc745[m Add SOLYNX Consulting section with 3-card grid and Apex CTA; update navbar Consulting link
+[33m661a9a9[m Add SOLYNX Platform section with 4 cards; update navbar Platform link to #platform
+[33m876f5d8[m Add full About SOLYNX section with Lynx Mindset pillars; update navbar About link
+[33ma81f533[m Reposition Scout as DIY tier: new copy, feat list, not-for note, CTA; add btn-scout-diy & btn-apex-accent styles
+[33mfeaed6c[m Fix Strategic Consulting section mobile layout: stack columns, full-width text, hide decorative visual
+[33m736ed3e[m Fix TaxDoc logo filename in brand marquee (tax-doc -> taxdoc)
+[33m783bacc[m Append supplemental mobile responsive fixes to styles.css
+[33ma372731[m Fix mobile responsiveness for feature cards, logos, and consulting section
+[33mc59bb49[m Switch pricing CTAs to GHL form; clean up toggle JS
+[33m300f8bf[m Convert to pure static deployment: remove /api dir, simplify vercel.json
+[33md3ec082[m Remove vercel config to allow static deployment
+[33m6fbb04d[m Remove API directory to allow static deployment
+[33m73a1f4b[m Hero mobile stability fix
+[33me4a40c1[m Remove API functions causing Vercel build error
+[33me40cd46[m Add mobile hero layout fixes for 768px breakpoint
+[33m6253e89[m Fix mobile hero layout
+[33m5b6d351[m Fix api/checkout.js: revert to CommonJS, add vercel.json with Node runtime config
+[33m8c746c1[m Fix checkout redirect: use writeHead(302) instead of res.redirect
+[33mc63cc7c[m Refactor api/checkout.js to ESM with explicit plan/period if-blocks
+[33m58b7790[m Add hero-form-card wrapper div to restore card box styling
+[33m870a288[m Set safe padding on pricing cards (32px 28px)
+[33m5b45e2e[m Update Apex card to consulting engagement; add responsive pricing grid breakpoints
+[33mc36262f[m Fix billing toggle: add missing closing script tag
+[33m8eb5902[m Add Solynx pricing section with monthly/annual toggle
+[33mefb4a98[m Add Solynx pricing section (Scout, Prowler, Apex) and structure for plan breakdown
+[33m634d547[m update
+[33ma3afdcb[m Reset hero section clean structure
+[33m679ea80[m Fix hero grid structure
+[33ma75e7c1[m Constrain hero form column
+[33m7d2a19e[m Fix stylesheet load order
+[33me38026a[m Fix hero grid structure
+[33m010b912[m Restore hero side-by-side layout
+[33m3766125[m Fix hero headline colors
+[33m704b7bc[m update plain text
+[33mb3d96d1[m Restore hero headline
+[33m767845d[m Restore hero grid layout
+[33me400e3d[m Lock hero headline styling
+[33m0aa79e9[m Fix hero line breaks
+[33mfce16de[m update
+[33mdebd572[m Fix SOLYNX IT hero color override
+[33m6fcb636[m Add solid orange SOLYNX hero text
+[33m5bf18d1[m Remove incorrect hero subtitle
+[33m00e5b22[m Revert SOLYNX IT glow animation to original orange style
+[33m4c1af4a[m Apply hero background parallax effect
+[33mff0e352[m Remove SOLYNX particle network animation
+[33m6c916c5[m Add interactive SOLYNX ecosystem nodes and hero glow upgrade
+[33mf8e3bea[m Add SOLYNX ecosystem animation and trusted brand section
+[33mea37e0f[m Add SOLYNX trusted brands section
+[33me8174a3[m Add SOLYNX trusted brands scrolling logo section
+[33mf4d13f0[m Add QR contact sharing, CRM tracking, and wallet card feature to Solynx connect page
+[33m9bac3eb[m Add Solynx logo to contact vCard
+[33m4f41178[m Add Solynx logo to vCard contact preview
+[33md848ea2[m Upgrade connect page to SOLYNX digital business card
+[33m87b8d28[m Update QR card with correct numbers and contact install
+[33m2f2004f[m Fix Open Graph image URL
+[33m6342524[m Move favicon to root
+[33m10ef435[m Fix favicon path
+[33mef73551[m Fix favicon location
+[33m6158142[m Add Solynx favicon
+[33mba661fd[m Add OG preview image
+[33m2f53371[m Move OG preview image to assets/images
+[33m06eb91f[m Move preview image to assets/images
+[33m6c322d1[m Add OG preview image
+[33m2370c4c[m Add Solynx OG preview image
+[33mff2e740[m Add social preview metadata
+[33m73cc277[m Add social preview metadata
+[33m3a3e7b1[m Fix LinkedIn company link
+[33m191064d[m Fix LinkedIn company link
+[33md700dce[m Add vCard contact file
+[33meae3e31[m update
+[33m836ab33[m Add connect page for business card QR

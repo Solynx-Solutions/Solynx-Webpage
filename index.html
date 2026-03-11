@@ -195,6 +195,498 @@
         </div>
 
     </section>
+
+    <!-- Lost Leads Calculator Section -->
+    <section id="llc-audit" class="section glass-section">
+        <div class="hero-bg-glow"></div>
+        <div class="container">
+            <div id="llc-wrap" class="hero-grid">
+                <!-- LEFT CONTENT: STRATEGIC OVERVIEW -->
+                <div class="llc-hero fade-in-up">
+                    <div class="section-eyebrow">LEAD LEAKAGE AUDIT</div>
+                    <h2 class="section-title">Quantify the Cost of <span class="gradient-text-orange">Silence.</span>
+                    </h2>
+                    <p class="section-sub" style="margin-bottom: 30px;">
+                        Inefficient lead handling isn't just a nuisance—it's a tactical failure. Every missed call is a
+                        lead gifted to your competitor. Calculate your weekly revenue leakage and deploy the
+                        infrastructure to stop it.
+                    </p>
+
+                    <ul class="check-list">
+                        <li class="fade-in-up delay-1"><strong>Deployment Strategy:</strong> 24/7 Response
+                            Infrastructure for immediate capture.</li>
+                        <li class="fade-in-up delay-1"><strong>Competitive Advantage:</strong> Stop competitors from
+                            winning leads by default.</li>
+                        <li class="fade-in-up delay-2"><strong>Scalable Systems:</strong> Route captured details
+                            directly to your team.</li>
+                        <li class="fade-in-up delay-2"><strong>High ROI:</strong> Fix the leak for less than the cost of
+                            one missed job.</li>
+                    </ul>
+
+                    <div style="margin-top: 40px;" class="fade-in-up delay-3">
+                        <h3 style="font-size: 1.4rem; margin-bottom: 12px; font-family: 'Outfit';">The SOLYNX Protocol
+                        </h3>
+                        <p style="color: var(--color-text-muted); max-width: 500px;">
+                            We don't just "answer phones." We implement systems that scale your response capacity,
+                            ensuring no prospect is left behind.
+                        </p>
+                        <div style="margin-top: 24px;">
+                            <a href="https://link.solynx.solutions/widget/form/XK9biK6AROXKJdkCzyMw"
+                                class="btn btn-primary">Book Strategic Audit</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT CONTENT: CALCULATOR CARD -->
+                <div class="hero-form-wrapper fade-in-up delay-3" id="llc-calculator">
+                    <div class="hero-form-card">
+                        <h3 style="margin-bottom: 8px;">Revenue Leakage Calculator</h3>
+                        <p class="form-sub">Enter your weekly metrics. Results update in real-time.</p>
+
+                        <div class="llc-inputs">
+                            <div class="form-group">
+                                <label for="llc-missedCalls">Missed Calls Per Week</label>
+                                <input id="llc-missedCalls" class="form-input" type="number" min="0" step="1"
+                                    value="10">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="llc-closeRate">Estimated Close Rate (%)</label>
+                                <input id="llc-closeRate" class="form-input" type="number" min="0" max="100" step="1"
+                                    value="30">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="llc-avgJob">Average Job Value ($)</label>
+                                <input id="llc-avgJob" class="form-input" type="number" min="0" step="1" value="600">
+                            </div>
+                        </div>
+
+                        <div class="llc-results" aria-live="polite">
+                            <div class="feature-card"
+                                style="padding: 24px; margin-bottom: 16px; border-color: rgba(255,144,0,0.2);">
+                                <div
+                                    style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-muted); letter-spacing: 1px; margin-bottom: 4px;">
+                                    Weekly Revenue Lost</div>
+                                <div class="llc-val gradient-text-orange" id="llc-lostWeek"
+                                    style="font-size: 2.2rem; font-weight: 800; line-height: 1;">$0</div>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                                <div class="feature-card" style="padding: 16px;">
+                                    <div
+                                        style="font-size: 0.7rem; text-transform: uppercase; color: var(--color-text-muted);">
+                                        Monthly Leak</div>
+                                    <div class="llc-val" id="llc-lostMonth"
+                                        style="font-size: 1.2rem; font-weight: 700; color: var(--color-text-main);">$0
+                                    </div>
+                                </div>
+                                <div class="feature-card" style="padding: 16px;">
+                                    <div
+                                        style="font-size: 0.7rem; text-transform: uppercase; color: var(--color-text-muted);">
+                                        Annual Leakage</div>
+                                    <div class="llc-val" id="llc-lostYear"
+                                        style="font-size: 1.2rem; font-weight: 700; color: var(--color-text-main);">$0
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="llc-mathLine"
+                                style="font-size: 0.7rem; color: var(--color-text-muted); margin: 16px 0; font-family: 'Inter'; text-align: center; opacity: 0.6;">
+                            </div>
+
+                            <div class="text-center" style="margin-top: 8px;">
+                                <a href="https://link.solynx.solutions/widget/form/XK9biK6AROXKJdkCzyMw"
+                                    class="btn btn-block btn-gradient">STOP THE LEAK NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =============================================
+         PLATFORM SECTION
+         ============================================= -->
+    <section id="platform" class="section glass-section" style="
+        position: relative;
+        background: rgba(5,10,20,0.98);
+        overflow: hidden;
+    ">
+        <!-- Tron-style grid overlay -->
+        <div aria-hidden="true" style="
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(0,240,255,0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,240,255,0.035) 1px, transparent 1px);
+            background-size: 56px 56px;
+            pointer-events: none; z-index: 0;
+        "></div>
+        <!-- Cyan ambient glow -->
+        <div aria-hidden="true" style="
+            position: absolute; bottom: -60px; left: 50%; transform: translateX(-50%);
+            width: 800px; height: 260px;
+            background: radial-gradient(ellipse, rgba(0,240,255,0.05) 0%, transparent 70%);
+            pointer-events: none; z-index: 0;
+        "></div>
+
+        <div class="container" style="position: relative; z-index: 1;">
+
+            <!-- Section header -->
+            <div class="section-header text-center" style="margin-bottom: 60px;">
+                <p class="section-eyebrow">THE SOLYNX PLATFORM</p>
+                <h2 class="section-title">The <span class="gradient-text-cyan">SOLYNX</span> Platform</h2>
+                <p class="section-sub" style="max-width: 660px; margin: 16px auto 0;">
+                    Automation infrastructure designed to capture leads, connect systems, and scale businesses.
+                </p>
+            </div>
+
+            <!-- 4-column feature grid -->
+            <div style="
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 24px;
+            ">
+
+                <!-- 1: Automation Systems -->
+                <div class="feature-card"
+                    style="padding: 36px 28px; border-color: rgba(0,240,255,0.1); transition: border-color 0.3s ease, box-shadow 0.3s ease;">
+                    <div class="card-glow"></div>
+                    <div class="icon-box cyan" style="margin-bottom: 20px;">⚡</div>
+                    <h3
+                        style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: var(--color-text-primary);">
+                        Automation Systems</h3>
+                    <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; margin: 0;">
+                        Lead capture forms, workflows, and automated follow-ups that work 24/7 so you never miss a
+                        prospect.
+                    </p>
+                </div>
+
+                <!-- 2: Smart CRM -->
+                <div class="feature-card"
+                    style="padding: 36px 28px; border-color: rgba(0,240,255,0.1); transition: border-color 0.3s ease, box-shadow 0.3s ease;">
+                    <div class="card-glow"></div>
+                    <div class="icon-box orange" style="margin-bottom: 20px;">📊</div>
+                    <h3
+                        style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: var(--color-text-primary);">
+                        Smart CRM</h3>
+                    <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; margin: 0;">
+                        Every lead organized, tracked, and nurtured through a clear visual pipeline from first touch to
+                        close.
+                    </p>
+                </div>
+
+                <!-- 3: Unified Communications -->
+                <div class="feature-card"
+                    style="padding: 36px 28px; border-color: rgba(0,240,255,0.1); transition: border-color 0.3s ease, box-shadow 0.3s ease;">
+                    <div class="card-glow"></div>
+                    <div class="icon-box cyan" style="margin-bottom: 20px;">📨</div>
+                    <h3
+                        style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: var(--color-text-primary);">
+                        Unified Communications</h3>
+                    <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; margin: 0;">
+                        Calls, texts, email, and chat managed in one place — complete visibility, zero missed messages.
+                    </p>
+                </div>
+
+                <!-- 4: AI Infrastructure -->
+                <div class="feature-card"
+                    style="padding: 36px 28px; border-color: rgba(0,240,255,0.1); transition: border-color 0.3s ease, box-shadow 0.3s ease;">
+                    <div class="card-glow"></div>
+                    <div class="icon-box orange" style="margin-bottom: 20px;">🤖</div>
+                    <h3
+                        style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: var(--color-text-primary);">
+                        AI Infrastructure</h3>
+                    <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; margin: 0;">
+                        AI responses, automation logic, and smart workflows that learn and adapt to your business
+                        processes.
+                    </p>
+                </div>
+
+            </div><!-- /.platform-grid -->
+
+        </div>
+    </section>
+
+    <style>
+        /* Platform grid responsive — scoped override, no global refactor */
+        @media (max-width: 1024px) {
+            #platform .container>div[style*="repeat(4"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            #platform .container>div[style*="repeat(4"] {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
+
+    <!-- =============================================
+         HOW IT WORKS SECTION
+         ============================================= -->
+    <section id="how-it-works" class="section" style="
+        position: relative;
+        background: rgba(5,10,20,0.97);
+        overflow: hidden;
+    ">
+        <!-- Subtle radial orange glow from center -->
+        <div aria-hidden="true" style="
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 900px; height: 400px;
+            background: radial-gradient(ellipse, rgba(255,144,0,0.06) 0%, transparent 65%);
+            pointer-events: none; z-index: 0;
+        "></div>
+
+        <div class="container" style="position: relative; z-index: 1;">
+
+            <!-- Section header -->
+            <div class="section-header text-center" style="margin-bottom: 72px;">
+                <p class="section-eyebrow">THE HUNT FRAMEWORK</p>
+                <h2 class="section-title">How <span class="gradient-text-orange">SOLYNX</span> Works</h2>
+                <p class="section-sub" style="max-width: 540px; margin: 16px auto 0;">
+                    Three steps. One system. Zero leads left behind.
+                </p>
+            </div>
+
+            <!-- Steps row -->
+            <div class="hiw-steps">
+
+                <!-- STEP 1: TRACK -->
+                <div class="hiw-step">
+                    <div class="hiw-icon-wrap">
+                        <div class="hiw-step-number">01</div>
+                        <div class="hiw-icon">🎯</div>
+                    </div>
+                    <div class="hiw-connector" aria-hidden="true"></div>
+                    <h3 class="hiw-title">Track</h3>
+                    <p class="hiw-desc">Identify exactly where leads are being lost — missed calls, unanswered forms,
+                        slow responses.</p>
+                </div>
+
+                <!-- Connector line -->
+                <div class="hiw-line" aria-hidden="true"></div>
+
+                <!-- STEP 2: LINK -->
+                <div class="hiw-step">
+                    <div class="hiw-icon-wrap">
+                        <div class="hiw-step-number">02</div>
+                        <div class="hiw-icon">🔗</div>
+                    </div>
+                    <h3 class="hiw-title">Link</h3>
+                    <p class="hiw-desc">Connect your website, forms, phone system, and messaging channels into one
+                        unified flow.</p>
+                </div>
+
+                <!-- Connector line -->
+                <div class="hiw-line" aria-hidden="true"></div>
+
+                <!-- STEP 3: SCALE -->
+                <div class="hiw-step">
+                    <div class="hiw-icon-wrap">
+                        <div class="hiw-step-number">03</div>
+                        <div class="hiw-icon">🚀</div>
+                    </div>
+                    <h3 class="hiw-title">Scale</h3>
+                    <p class="hiw-desc">Automated workflows capture, respond, and nurture every lead instantly — around
+                        the clock.</p>
+                </div>
+
+            </div><!-- /.hiw-steps -->
+
+        </div>
+    </section>
+
+    <style>
+        /* ── How It Works layout ─────────────────────── */
+        .hiw-steps {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 0;
+        }
+
+        .hiw-step {
+            flex: 1;
+            max-width: 280px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hiw-icon-wrap {
+            position: relative;
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(5, 10, 20, 0.95));
+            border: 1px solid rgba(255, 144, 0, 0.35);
+            box-shadow: 0 0 24px rgba(255, 144, 0, 0.12), 0 0 1px rgba(255, 144, 0, 0.4) inset;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .hiw-step:hover .hiw-icon-wrap {
+            border-color: rgba(255, 144, 0, 0.7);
+            box-shadow: 0 0 40px rgba(255, 144, 0, 0.22), 0 0 0 1px rgba(255, 144, 0, 0.3);
+        }
+
+        .hiw-step-number {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--color-accent-orange, #ff9000);
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 0.02em;
+        }
+
+        .hiw-icon {
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .hiw-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--color-text-primary, #fff);
+            margin: 0 0 12px;
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .hiw-desc {
+            font-size: 0.9rem;
+            color: var(--color-text-muted, rgba(255, 255, 255, 0.5));
+            line-height: 1.65;
+            margin: 0;
+            max-width: 220px;
+        }
+
+        /* Glowing connector line between steps */
+        .hiw-line {
+            flex: 0 0 80px;
+            height: 2px;
+            margin-top: 43px;
+            /* aligns with center of the 88px icon circle */
+            background: linear-gradient(90deg,
+                    rgba(255, 144, 0, 0.15) 0%,
+                    rgba(255, 144, 0, 0.55) 50%,
+                    rgba(255, 144, 0, 0.15) 100%);
+            box-shadow: 0 0 8px rgba(255, 144, 0, 0.25);
+            position: relative;
+        }
+
+        /* Animated pulse along the line */
+        .hiw-line::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -10%;
+            transform: translateY(-50%);
+            width: 30%;
+            height: 4px;
+            border-radius: 2px;
+            background: rgba(255, 144, 0, 0.8);
+            box-shadow: 0 0 12px rgba(255, 144, 0, 0.6);
+            animation: hiwPulse 2.4s ease-in-out infinite;
+        }
+
+        .hiw-line:last-of-type::after {
+            animation-delay: 1.2s;
+        }
+
+        @keyframes hiwPulse {
+            0% {
+                left: -10%;
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                left: 80%;
+                opacity: 0;
+            }
+        }
+
+        /* Mobile: stack vertically */
+        @media (max-width: 768px) {
+            .hiw-steps {
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+            }
+
+            .hiw-line {
+                width: 2px;
+                height: 48px;
+                flex: 0 0 48px;
+                margin-top: 0;
+                margin-bottom: 0;
+                background: linear-gradient(180deg,
+                        rgba(255, 144, 0, 0.15) 0%,
+                        rgba(255, 144, 0, 0.55) 50%,
+                        rgba(255, 144, 0, 0.15) 100%);
+            }
+
+            .hiw-line::after {
+                top: -10%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 4px;
+                height: 30%;
+                animation: hiwPulseV 2.4s ease-in-out infinite;
+            }
+
+            @keyframes hiwPulseV {
+                0% {
+                    top: -10%;
+                    opacity: 0;
+                }
+
+                20% {
+                    opacity: 1;
+                }
+
+                80% {
+                    opacity: 1;
+                }
+
+                100% {
+                    top: 80%;
+                    opacity: 0;
+                }
+            }
+
+            .hiw-step {
+                max-width: 340px;
+            }
+        }
+    </style>
+
     <!-- =============================================
          SCHEDULE YOUR CONSULTATION SECTION
          ============================================= -->
@@ -389,65 +881,282 @@
         </div>
     </section>
 
+    <!-- =============================================
+         CONSULTING NETWORK SECTION
+         ============================================= -->
+    <section id="consulting" class="section" style="
+        position: relative;
+        background: rgba(5,10,20,0.98);
+        overflow: hidden;
+    ">
+        <!-- Tron grid overlay -->
+        <div aria-hidden="true" style="
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(0,240,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,240,255,0.03) 1px, transparent 1px);
+            background-size: 52px 52px;
+            pointer-events: none; z-index: 0;
+        "></div>
+        <!-- Orange radial glow -->
+        <div aria-hidden="true" style="
+            position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
+            width: 900px; height: 320px;
+            background: radial-gradient(ellipse, rgba(255,144,0,0.06) 0%, transparent 65%);
+            pointer-events: none; z-index: 0;
+        "></div>
 
+        <div class="container" style="position: relative; z-index: 1;">
+
+            <!-- Section header -->
+            <div class="section-header text-center" style="margin-bottom: 60px;">
+                <p class="section-eyebrow">SOLYNX CONSULTING NETWORK</p>
+                <h2 class="section-title">Access the Right Expertise — <span class="gradient-text-orange">When You Need
+                        It</span></h2>
+                <p class="section-sub" style="max-width: 680px; margin: 16px auto 0;">
+                    SOLYNX connects businesses with experienced specialists across AI systems, automation architecture,
+                    CRM strategy, and operational growth.
+                </p>
+            </div>
+
+            <!-- 6-card expertise grid -->
+            <div class="consulting-grid">
+
+                <!-- 1: AI Systems -->
+                <div class="feature-card consulting-card">
+                    <div class="card-glow"></div>
+                    <div class="icon-box orange" style="margin-bottom: 18px;">🤖</div>
+                    <h3 class="consulting-card-title">AI Systems</h3>
+                    <p class="consulting-card-desc">Intelligent automation, AI-driven workflows, and smart response
+                        systems built to operate without constant oversight.</p>
+                </div>
+
+                <!-- 2: Automation Architecture -->
+                <div class="feature-card consulting-card">
+                    <div class="card-glow"></div>
+                    <div class="icon-box cyan" style="margin-bottom: 18px;">⚙️</div>
+                    <h3 class="consulting-card-title">Automation Architecture</h3>
+                    <p class="consulting-card-desc">Custom-designed automation pipelines that connect your tools,
+                        trigger actions, and eliminate manual bottlenecks.</p>
+                </div>
+
+                <!-- 3: CRM & Lead Systems -->
+                <div class="feature-card consulting-card">
+                    <div class="card-glow"></div>
+                    <div class="icon-box orange" style="margin-bottom: 18px;">📊</div>
+                    <h3 class="consulting-card-title">CRM &amp; Lead Systems</h3>
+                    <p class="consulting-card-desc">Structured pipelines, lead scoring, and follow-up sequences that
+                        keep every prospect moving toward a decision.</p>
+                </div>
+
+                <!-- 4: Business Workflow Design -->
+                <div class="feature-card consulting-card">
+                    <div class="card-glow"></div>
+                    <div class="icon-box cyan" style="margin-bottom: 18px;">🗺️</div>
+                    <h3 class="consulting-card-title">Business Workflow Design</h3>
+                    <p class="consulting-card-desc">End-to-end operational mapping that removes friction, defines
+                        ownership, and scales your processes with your team.</p>
+                </div>
+
+                <!-- 5: Marketing Automation -->
+                <div class="feature-card consulting-card">
+                    <div class="card-glow"></div>
+                    <div class="icon-box orange" style="margin-bottom: 18px;">📣</div>
+                    <h3 class="consulting-card-title">Marketing Automation</h3>
+                    <p class="consulting-card-desc">Campaigns, sequences, and nurture flows that run independently —
+                        converting attention into revenue on autopilot.</p>
+                </div>
+
+                <!-- 6: Growth Strategy -->
+                <div class="feature-card consulting-card">
+                    <div class="card-glow"></div>
+                    <div class="icon-box cyan" style="margin-bottom: 18px;">🎯</div>
+                    <h3 class="consulting-card-title">Growth Strategy</h3>
+                    <p class="consulting-card-desc">Market positioning, revenue architecture, and scalable growth
+                        planning aligned to your specific business model.</p>
+                </div>
+
+            </div><!-- /.consulting-grid -->
+
+            <!-- CTA block -->
+            <div style="text-align: center; margin-top: 64px;">
+                <p class="section-eyebrow" style="margin-bottom: 16px;">READY TO BUILD SMARTER?</p>
+                <h3
+                    style="font-size: 1.6rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-bottom: 12px; color: var(--color-text-primary);">
+                    Book a Strategic Consultation
+                </h3>
+                <p class="section-sub" style="max-width: 500px; margin: 0 auto 32px; font-size: 0.95rem;">
+                    No templates. No guesswork. A focused session built around your actual business goals.
+                </p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://link.solynx.solutions/widget/form/XK9biK6AROXKJdkCzyMw" class="btn btn-gradient"
+                        style="padding: 15px 36px; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.04em;">
+                        Schedule Strategy Session
+                    </a>
+                    <a href="#platform" class="btn btn-apex-accent"
+                        style="padding: 15px 36px; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.04em;">
+                        Explore the SOLYNX Platform
+                    </a>
+                </div>
+                <p
+                    style="margin-top: 20px; font-size: 0.78rem; color: var(--color-text-muted, rgba(255,255,255,0.35));">
+                    No obligation. First session focused on your system, not a sales pitch.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <style>
+        /* Consulting Network grid */
+        .consulting-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .consulting-card {
+            padding: 32px 26px;
+            border-color: rgba(0, 240, 255, 0.08);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .consulting-card:hover {
+            border-color: rgba(255, 144, 0, 0.4);
+            box-shadow: 0 0 28px rgba(255, 144, 0, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .consulting-card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            color: var(--color-text-primary, #fff);
+            margin: 0 0 10px;
+            letter-spacing: 0.02em;
+        }
+
+        .consulting-card-desc {
+            font-size: 0.875rem;
+            color: var(--color-text-muted, rgba(255, 255, 255, 0.5));
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        @media (max-width: 960px) {
+            .consulting-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 580px) {
+            .consulting-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+
+
+
+
+    <style>
+        .ticker-dot {
+            display: inline-flex;
+            align-items: center;
+            color: rgba(255, 144, 0, 0.45);
+            font-size: 1.4rem;
+            line-height: 1;
+            padding: 0 4px;
+            pointer-events: none;
+            flex-shrink: 0;
+        }
+    </style>
 
     <!-- Brands / Trust Ticker — Premium Marquee -->
     <section class="brands-section" id="trusted-brands">
         <div class="brands-section-inner">
-            <p class="brands-eyebrow">HELPING BRANDS BIG AND SMALL</p>
+            <p class="brands-eyebrow"
+                style="font-size:1.05rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.85); margin-bottom:20px;">
+                Businesses Growing with SOLYNX
+            </p>
 
             <!-- Marquee Track -->
             <div class="brands-marquee-wrapper" aria-label="Trusted clients">
                 <div class="brands-marquee-track">
 
                     <!-- ── SET A ──────────────────────────────────────── -->
-                    <a href="https://thetaxdoc.net" class="brand-logo-item" target="_blank" rel="noopener noreferrer"
-                        aria-label="The Tax Doc">
-                        <img src="assets/images/taxdoc-logo.png" alt="The Tax Doc" class="brand-logo-img">
+                    <a href="https://concretepaverrestorations.com/" class="brand-logo-item brand-logo-text"
+                        target="_blank" rel="noopener noreferrer" aria-label="Concrete Paver Restorations">
+                        <span class="brand-wordmark">Concrete Paver Restorations</span>
                     </a>
-                    <a href="https://www.avinc.com" class="brand-logo-item brand-logo-text" target="_blank"
-                        rel="noopener noreferrer" aria-label="AeroVironment">
-                        <span class="brand-wordmark">AeroVironment</span>
+                    <span class="ticker-dot" aria-hidden="true">·</span>
+                    <a href="https://enhancelandscapeinc.com/" class="brand-logo-item brand-logo-text" target="_blank"
+                        rel="noopener noreferrer" aria-label="Enhance Landscape Inc.">
+                        <span class="brand-wordmark">Enhance Landscape Inc.</span>
                     </a>
-                    <a href="https://www.amazon.com" class="brand-logo-item brand-logo-text" target="_blank"
-                        rel="noopener noreferrer" aria-label="Amazon">
-                        <span class="brand-wordmark">Amazon</span>
+                    <span class="ticker-dot" aria-hidden="true">·</span>
+                    <a href="https://thetaxdoc.net" class="brand-logo-item brand-logo-text" target="_blank"
+                        rel="noopener noreferrer" aria-label="The TAX DOC">
+                        <span class="brand-wordmark">The TAX DOC</span>
                     </a>
-                    <a href="https://www.beatsbydre.com" class="brand-logo-item brand-logo-text" target="_blank"
-                        rel="noopener noreferrer" aria-label="Beats by Dre">
-                        <span class="brand-wordmark">Beats</span>
+                    <span class="ticker-dot" aria-hidden="true">·</span>
+                    <a href="https://masterscapes.pro/" class="brand-logo-item brand-logo-text" target="_blank"
+                        rel="noopener noreferrer" aria-label="Master Scapes">
+                        <span class="brand-wordmark">Master Scapes</span>
                     </a>
-                    <a href="https://biossance.com" class="brand-logo-item brand-logo-text" target="_blank"
-                        rel="noopener noreferrer" aria-label="Biossance">
-                        <span class="brand-wordmark">Biossance</span>
+                    <span class="ticker-dot" aria-hidden="true">·</span>
+                    <a href="https://www.pooltablepros.com/" class="brand-logo-item brand-logo-text" target="_blank"
+                        rel="noopener noreferrer" aria-label="Pool Table Pros">
+                        <span class="brand-wordmark">Pool Table Pros</span>
                     </a>
+                    <span class="ticker-dot" aria-hidden="true">·</span>
+                    <a href="https://www.elkhorn.info/" class="brand-logo-item brand-logo-text" target="_blank"
+                        rel="noopener noreferrer" aria-label="Elkhorn Golf, Grill &amp; Events">
+                        <span class="brand-wordmark">Elkhorn Golf, Grill &amp; Events</span>
+                    </a>
+                    <span class="ticker-dot" aria-hidden="true">·</span>
 
                     <!-- ── SET B — exact duplicate for seamless loop ──── -->
-                    <a href="https://thetaxdoc.net" class="brand-logo-item" target="_blank" rel="noopener noreferrer"
-                        aria-label="The Tax Doc">
-                        <img src="assets/images/taxdoc-logo.png" alt="The Tax Doc" class="brand-logo-img">
+                    <a href="https://concretepaverrestorations.com/" class="brand-logo-item brand-logo-text"
+                        target="_blank" rel="noopener noreferrer" aria-label="Concrete Paver Restorations">
+                        <span class="brand-wordmark">Concrete Paver Restorations</span>
                     </a>
-                    <a href="https://www.avinc.com" class="brand-logo-item brand-logo-text" target="_blank"
-                        rel="noopener noreferrer" aria-label="AeroVironment">
-                        <span class="brand-wordmark">AeroVironment</span>
+                    <span class="ticker-dot" aria-hidden="true">·</span>
+                    <a href="https://enhancelandscapeinc.com/" class="brand-logo-item brand-logo-text" target="_blank"
+                        rel="noopener noreferrer" aria-label="Enhance Landscape Inc.">
+                        <span class="brand-wordmark">Enhance Landscape Inc.</span>
                     </a>
-                    <a href="https://www.amazon.com" class="brand-logo-item brand-logo-text" target="_blank"
-                        rel="noopener noreferrer" aria-label="Amazon">
-                        <span class="brand-wordmark">Amazon</span>
+                    <span class="ticker-dot" aria-hidden="true">·</span>
+                    <a href="https://thetaxdoc.net" class="brand-logo-item brand-logo-text" target="_blank"
+                        rel="noopener noreferrer" aria-label="The TAX DOC">
+                        <span class="brand-wordmark">The TAX DOC</span>
                     </a>
-                    <a href="https://www.beatsbydre.com" class="brand-logo-item brand-logo-text" target="_blank"
-                        rel="noopener noreferrer" aria-label="Beats by Dre">
-                        <span class="brand-wordmark">Beats</span>
+                    <span class="ticker-dot" aria-hidden="true">·</span>
+                    <a href="https://masterscapes.pro/" class="brand-logo-item brand-logo-text" target="_blank"
+                        rel="noopener noreferrer" aria-label="Master Scapes">
+                        <span class="brand-wordmark">Master Scapes</span>
                     </a>
-                    <a href="https://biossance.com" class="brand-logo-item brand-logo-text" target="_blank"
-                        rel="noopener noreferrer" aria-label="Biossance">
-                        <span class="brand-wordmark">Biossance</span>
+                    <span class="ticker-dot" aria-hidden="true">·</span>
+                    <a href="https://www.pooltablepros.com/" class="brand-logo-item brand-logo-text" target="_blank"
+                        rel="noopener noreferrer" aria-label="Pool Table Pros">
+                        <span class="brand-wordmark">Pool Table Pros</span>
                     </a>
+                    <span class="ticker-dot" aria-hidden="true">·</span>
+                    <a href="https://www.elkhorn.info/" class="brand-logo-item brand-logo-text" target="_blank"
+                        rel="noopener noreferrer" aria-label="Elkhorn Golf, Grill &amp; Events">
+                        <span class="brand-wordmark">Elkhorn Golf, Grill &amp; Events</span>
+                    </a>
+                    <span class="ticker-dot" aria-hidden="true">·</span>
 
                 </div>
             </div>
         </div>
+        </div>
     </section>
+
+
+
 
     <!-- Platform Features Grid (Replacing "Services") -->
     <section id="platform" class="section dark-section">
@@ -586,6 +1295,9 @@
                     We don't just install tools. <br>
                     <strong>We design ecosystems.</strong>
                 </p>
+                <p>SOLYNX was founded in California by Rafael Solano to help businesses connect their systems,
+                    automate operations, and scale with clarity.</p>
+                <p>Built locally. Designed for businesses everywhere.</p>
             </div>
 
             <div class="about-right">
@@ -615,115 +1327,9 @@
         </div>
     </section>
 
-    <!-- Lost Leads Calculator Section -->
-    <section id="llc-audit" class="section glass-section">
-        <div class="hero-bg-glow"></div>
-        <div class="container">
-            <div id="llc-wrap" class="hero-grid">
-                <!-- LEFT CONTENT: STRATEGIC OVERVIEW -->
-                <div class="llc-hero fade-in-up">
-                    <div class="section-eyebrow">LEAD LEAKAGE AUDIT</div>
-                    <h2 class="section-title">Quantify the Cost of <span class="gradient-text-orange">Silence.</span>
-                    </h2>
-                    <p class="section-sub" style="margin-bottom: 30px;">
-                        Inefficient lead handling isn't just a nuisance—it's a tactical failure. Every missed call is a
-                        lead gifted to your competitor. Calculate your weekly revenue leakage and deploy the
-                        infrastructure to stop it.
-                    </p>
 
-                    <ul class="check-list">
-                        <li class="fade-in-up delay-1"><strong>Deployment Strategy:</strong> 24/7 Response
-                            Infrastructure for immediate capture.</li>
-                        <li class="fade-in-up delay-1"><strong>Competitive Advantage:</strong> Stop competitors from
-                            winning leads by default.</li>
-                        <li class="fade-in-up delay-2"><strong>Scalable Systems:</strong> Route captured details
-                            directly to your team.</li>
-                        <li class="fade-in-up delay-2"><strong>High ROI:</strong> Fix the leak for less than the cost of
-                            one missed job.</li>
-                    </ul>
 
-                    <div style="margin-top: 40px;" class="fade-in-up delay-3">
-                        <h3 style="font-size: 1.4rem; margin-bottom: 12px; font-family: 'Outfit';">The SOLYNX Protocol
-                        </h3>
-                        <p style="color: var(--color-text-muted); max-width: 500px;">
-                            We don't just "answer phones." We implement systems that scale your response capacity,
-                            ensuring no prospect is left behind.
-                        </p>
-                        <div style="margin-top: 24px;">
-                            <a href="https://link.solynx.solutions/widget/form/XK9biK6AROXKJdkCzyMw"
-                                class="btn btn-primary">Book Strategic Audit</a>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- RIGHT CONTENT: CALCULATOR CARD -->
-                <div class="hero-form-wrapper fade-in-up delay-3" id="llc-calculator">
-                    <div class="hero-form-card">
-                        <h3 style="margin-bottom: 8px;">Revenue Leakage Calculator</h3>
-                        <p class="form-sub">Enter your weekly metrics. Results update in real-time.</p>
-
-                        <div class="llc-inputs">
-                            <div class="form-group">
-                                <label for="llc-missedCalls">Missed Calls Per Week</label>
-                                <input id="llc-missedCalls" class="form-input" type="number" min="0" step="1"
-                                    value="10">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="llc-closeRate">Estimated Close Rate (%)</label>
-                                <input id="llc-closeRate" class="form-input" type="number" min="0" max="100" step="1"
-                                    value="30">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="llc-avgJob">Average Job Value ($)</label>
-                                <input id="llc-avgJob" class="form-input" type="number" min="0" step="1" value="600">
-                            </div>
-                        </div>
-
-                        <div class="llc-results" aria-live="polite">
-                            <div class="feature-card"
-                                style="padding: 24px; margin-bottom: 16px; border-color: rgba(255,144,0,0.2);">
-                                <div
-                                    style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-muted); letter-spacing: 1px; margin-bottom: 4px;">
-                                    Weekly Revenue Lost</div>
-                                <div class="llc-val gradient-text-orange" id="llc-lostWeek"
-                                    style="font-size: 2.2rem; font-weight: 800; line-height: 1;">$0</div>
-                            </div>
-
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-                                <div class="feature-card" style="padding: 16px;">
-                                    <div
-                                        style="font-size: 0.7rem; text-transform: uppercase; color: var(--color-text-muted);">
-                                        Monthly Leak</div>
-                                    <div class="llc-val" id="llc-lostMonth"
-                                        style="font-size: 1.2rem; font-weight: 700; color: var(--color-text-main);">$0
-                                    </div>
-                                </div>
-                                <div class="feature-card" style="padding: 16px;">
-                                    <div
-                                        style="font-size: 0.7rem; text-transform: uppercase; color: var(--color-text-muted);">
-                                        Annual Leakage</div>
-                                    <div class="llc-val" id="llc-lostYear"
-                                        style="font-size: 1.2rem; font-weight: 700; color: var(--color-text-main);">$0
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="llc-mathLine"
-                                style="font-size: 0.7rem; color: var(--color-text-muted); margin: 16px 0; font-family: 'Inter'; text-align: center; opacity: 0.6;">
-                            </div>
-
-                            <div class="text-center" style="margin-top: 8px;">
-                                <a href="https://link.solynx.solutions/widget/form/XK9biK6AROXKJdkCzyMw"
-                                    class="btn btn-block btn-gradient">STOP THE LEAK NOW</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer class="footer">
