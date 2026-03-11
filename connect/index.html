@@ -333,6 +333,66 @@
         .icon {
             font-size: 18px;
         }
+
+        /* ── Team Section ──────────────────────────────────── */
+        .team-section {
+            margin-top: 40px;
+            width: 100%;
+            max-width: 320px;
+            text-align: center;
+        }
+
+        .team-section h2 {
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+            margin: 0 0 16px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .team-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 10px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(6px);
+            transition: all .22s ease;
+            gap: 6px;
+        }
+
+        .team-card:hover {
+            background: rgba(255, 122, 24, 0.08);
+            border-color: #ff7a18;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 0 10px rgba(255, 122, 24, .3);
+        }
+
+        .team-card .t-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00e1ff33, #ff7a1833);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            flex-shrink: 0;
+        }
     </style>
 
 </head>
@@ -380,6 +440,36 @@
                     class="icon">✉️</span><span>Email</span></a>
             <a class="contact-btn linkedin-btn" href="https://www.linkedin.com/company/solynx-llc/" target="_blank"
                 rel="noopener noreferrer"><span class="icon">🔗</span><span>LinkedIn</span></a>
+        </div>
+
+        <div class="team-section">
+            <h2>Meet the SOLYNX Team</h2>
+            <div class="team-grid">
+                <a class="team-card" href="https://solynx.solutions/connect/rafael">
+                    <span class="t-avatar">R</span>
+                    <span>Rafael Solano</span>
+                </a>
+                <a class="team-card" href="https://solynx.solutions/connect/chris">
+                    <span class="t-avatar">C</span>
+                    <span>Christopher Weigart</span>
+                </a>
+                <a class="team-card" href="https://solynx.solutions/connect/james">
+                    <span class="t-avatar">J</span>
+                    <span>James Matelski</span>
+                </a>
+                <a class="team-card" href="https://solynx.solutions/connect/gretchen">
+                    <span class="t-avatar">G</span>
+                    <span>Gretchen Codus</span>
+                </a>
+                <a class="team-card" href="https://solynx.solutions/connect/zeus">
+                    <span class="t-avatar">Z</span>
+                    <span>Zeus Fae</span>
+                </a>
+                <a class="team-card" href="https://solynx.solutions/connect/emiliano">
+                    <span class="t-avatar">E</span>
+                    <span>Emiliano Magdaleno</span>
+                </a>
+            </div>
         </div>
 
     </div>
