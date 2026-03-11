@@ -340,6 +340,12 @@
             text-align: center;
         }
 
+        .team-section>h2 {
+            font-size: 1rem;
+            letter-spacing: .05em;
+            margin-bottom: 20px;
+        }
+
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -348,7 +354,7 @@
         }
 
         .team-card {
-            padding: 18px;
+            padding: 20px 16px;
             border-radius: 12px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -363,6 +369,30 @@
             transform: translateY(-3px);
             border-color: #ff7a18;
             box-shadow: 0 0 14px rgba(255, 122, 24, .45);
+        }
+
+        .team-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            background: linear-gradient(135deg, #ff7a18, #ffb347);
+            box-shadow: 0 0 14px rgba(255, 122, 24, .45);
+        }
+
+        .team-card h3 {
+            margin: 6px 0;
+            font-size: 16px;
+            color: white;
+        }
+
+        .team-card p {
+            font-size: 13px;
+            opacity: .85;
+            margin: 0;
+            font-weight: 400;
+            line-height: 1.45;
+            color: rgba(255, 255, 255, .85);
         }
     </style>
 
@@ -416,12 +446,43 @@
         <section class="team-section">
             <h2>Meet the SOLYNX Team</h2>
             <div class="team-grid">
-                <a href="/connect/rafael" class="team-card">Rafael Solano</a>
-                <a href="/connect/chris" class="team-card">Chris Weigart</a>
-                <a href="/connect/james" class="team-card">James Matelski</a>
-                <a href="/connect/gretchen" class="team-card">Gretchen Codus</a>
-                <a href="/connect/zeus" class="team-card">Zeus Fae</a>
-                <a href="/connect/emiliano" class="team-card">Emiliano Magdaleno</a>
+
+                <a href="/connect/rafael" class="team-card">
+                    <div class="team-avatar"></div>
+                    <h3>Rafael Solano</h3>
+                    <p>Founder — Systems Strategy &amp; Automation</p>
+                </a>
+
+                <a href="/connect/chris" class="team-card">
+                    <div class="team-avatar"></div>
+                    <h3>Chris Weigart</h3>
+                    <p>Business Optimization Consultant</p>
+                </a>
+
+                <a href="/connect/james" class="team-card">
+                    <div class="team-avatar"></div>
+                    <h3>James Matelski</h3>
+                    <p>Account Management &amp; Operations</p>
+                </a>
+
+                <a href="/connect/gretchen" class="team-card">
+                    <div class="team-avatar"></div>
+                    <h3>Gretchen Codus</h3>
+                    <p>Brand Strategy &amp; Marketing</p>
+                </a>
+
+                <a href="/connect/zeus" class="team-card">
+                    <div class="team-avatar"></div>
+                    <h3>Zeus Fae</h3>
+                    <p>Business Optimization Consultant<br>Digital Media Content Creator</p>
+                </a>
+
+                <a href="/connect/emiliano" class="team-card">
+                    <div class="team-avatar"></div>
+                    <h3>Emiliano Magdaleno</h3>
+                    <p>Business Optimization Consultant</p>
+                </a>
+
             </div>
         </section>
 
