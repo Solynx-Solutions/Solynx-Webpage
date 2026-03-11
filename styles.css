@@ -1819,9 +1819,9 @@ img.footer-logo {
 
 .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-    max-width: 1200px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    max-width: 1500px;
     margin: 0 auto;
     padding: 40px 20px;
 }
@@ -1977,6 +1977,13 @@ img.footer-logo {
 }
 
 /* ── Responsive ───────────────────────────────── */
+@media (max-width: 1400px) {
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 900px;
+    }
+}
+
 @media (max-width: 1100px) {
     .pricing-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -2656,4 +2663,74 @@ img.footer-logo {
 .client-wordmark:hover {
     opacity: 1;
     transform: translateY(-2px);
+}
+
+/* ── SOLYNX Container System ─────────────────────── */
+.solynx-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 50px;
+    border-radius: 18px;
+    background: rgba(10, 15, 25, 0.55);
+    border: 1px solid rgba(0, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.08);
+}
+
+.section-wrap {
+    padding: 120px 20px;
+    background: transparent !important;
+}
+
+/* ── Remove solid section backgrounds → let animated BG show ── */
+.platform-section,
+.consulting-section,
+.about-section {
+    background: transparent !important;
+}
+
+/* ── Platform cards — cyan border style ──────────── */
+.platform-card {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(0, 255, 255, 0.15) !important;
+    border-radius: 14px;
+    padding: 30px;
+    transition: all 0.2s ease;
+}
+
+.platform-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 0 18px rgba(0, 255, 255, 0.2) !important;
+}
+
+/* ── Consulting cards — cyan border style ────────── */
+.consulting-card {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(0, 255, 255, 0.15) !important;
+    border-radius: 14px;
+    padding: 30px;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+
+.consulting-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 18px rgba(0, 255, 255, 0.2);
+}
+
+/* ── About pillars — cyan border style ───────────── */
+.pillar {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(0, 255, 255, 0.15) !important;
+}
+
+/* ── Mobile: container padding reduction ─────────── */
+@media (max-width: 768px) {
+    .solynx-container {
+        padding: 28px 20px;
+    }
+
+    .section-wrap {
+        padding: 80px 14px;
+    }
 }
