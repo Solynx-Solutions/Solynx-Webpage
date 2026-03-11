@@ -1,0 +1,9 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Emiliano Magdaleno
+N:Magdaleno;Emiliano;;;
+ORG:SOLYNX LLC
+TEL;TYPE=CELL,VOICE:+13235617666
+EMAIL;TYPE=WORK:emiliano@solynx.solutions
+URL:https://solynx.solutions
+END:VCARD

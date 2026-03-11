@@ -1,0 +1,9 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:James Matelski
+N:Matelski;James;;;
+ORG:SOLYNX LLC
+TEL;TYPE=CELL,VOICE:+12094872477
+EMAIL;TYPE=WORK:james@solynx.solutions
+URL:https://solynx.solutions
+END:VCARD
