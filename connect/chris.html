@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Connect with Christopher Weigart | SOLYNX</title>
+
+    <meta name="description"
+        content="Connect with Christopher Weigart — Business Optimization Consultant at SOLYNX. Strategic consulting, automation systems, and AI infrastructure designed to help businesses scale.">
+
+    <link rel="stylesheet" href="../styles-new.css">
+
+    <style>
+        body {
+            background: #0b0f1a;
+            color: white;
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* animated background glow */
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, #00e1ff22, transparent 60%);
+            animation: glowMove 18s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes glowMove {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .connect-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .logo {
+            width: 140px;
+            animation: solynxGlow 2.8s ease-in-out infinite alternate;
+        }
+
+        @keyframes solynxGlow {
+            0% {
+                filter: drop-shadow(0 0 6px #00e1ff44) drop-shadow(0 0 12px #00e1ff44);
+            }
+
+            100% {
+                filter: drop-shadow(0 0 16px #00e1ff) drop-shadow(0 0 34px #00e1ff);
+            }
+        }
+
+        .title {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            opacity: .8;
+            max-width: 500px;
+            margin-bottom: 40px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .btn {
+            display: block;
+            padding: 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: .25s;
+        }
+
+        .primary {
+            background: #00e1ff;
+            color: #001018;
+        }
+
+        .primary:hover {
+            background: #39edff;
+            transform: translateY(-2px);
+        }
+
+        .secondary {
+            background: #1c2336;
+            color: white;
+            border: 1px solid #2e3b5e;
+        }
+
+        .secondary:hover {
+            background: #283354;
+        }
+
+        /* ── QR Modal ─────────────────────────────────────── */
+
+        #qr-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .72);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #qr-overlay.open {
+            display: flex;
+        }
+
+        #qr-card {
+            background: linear-gradient(145deg, #0e1624, #1a2540);
+            border: 1px solid #00e1ff33;
+            border-radius: 18px;
+            padding: 36px 32px 28px;
+            text-align: center;
+            box-shadow: 0 0 40px #00e1ff22, 0 0 80px #00e1ff11;
+            max-width: 300px;
+            width: 90%;
+            animation: qrFadeIn .25s ease;
+        }
+
+        @keyframes qrFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(.92);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        #qr-card h2 {
+            font-size: 1.1rem;
+            margin: 0 0 20px;
+            letter-spacing: .5px;
+            color: #00e1ff;
+            text-shadow: 0 0 10px #00e1ff88;
+        }
+
+        #qr-card img {
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        #qr-card p {
+            font-size: .8rem;
+            opacity: .65;
+            margin: 14px 0 22px;
+        }
+
+        #qr-close {
+            background: transparent;
+            border: 1px solid #2e3b5e;
+            color: white;
+            padding: 9px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: .85rem;
+            font-weight: 600;
+            transition: .2s;
+        }
+
+        #qr-close:hover {
+            background: #1c2336;
+            border-color: #00e1ff55;
+        }
+
+        /* ── Wallet Modal ──────────────────────────────────── */
+
+        #wallet-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .76);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #wallet-overlay.open {
+            display: flex;
+        }
+
+        #wallet-card {
+            background: linear-gradient(145deg, #0e1624, #1a2540);
+            border: 1px solid #00e1ff33;
+            border-radius: 20px;
+            padding: 32px 28px 26px;
+            text-align: center;
+            box-shadow: 0 0 50px #00e1ff1a, 0 0 100px #00e1ff0d;
+            max-width: 320px;
+            width: 90%;
+            animation: qrFadeIn .25s ease;
+        }
+
+        #wallet-card h2 {
+            font-size: 1.1rem;
+            margin: 0 0 6px;
+            letter-spacing: .5px;
+            color: #00e1ff;
+            text-shadow: 0 0 10px #00e1ff88;
+        }
+
+        #wallet-card .wallet-sub {
+            font-size: .78rem;
+            opacity: .55;
+            margin: 0 0 24px;
+        }
+
+        .wallet-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #111827;
+            border: 1px solid #2e3b5e;
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            transition: .2s;
+            font-size: .9rem;
+            font-weight: 600;
+        }
+
+        .wallet-option:hover {
+            background: #1c2745;
+            border-color: #00e1ff44;
+        }
+
+        .wallet-option .w-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .wallet-option .w-label small {
+            display: block;
+            font-size: .72rem;
+            font-weight: 400;
+            opacity: .55;
+            margin-top: 1px;
+        }
+
+        #wallet-close {
+            background: transparent;
+            border: 1px solid #2e3b5e;
+            color: white;
+            padding: 9px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: .82rem;
+            font-weight: 600;
+            transition: .2s;
+            margin-top: 6px;
+        }
+
+        #wallet-close:hover {
+            background: #1c2336;
+            border-color: #00e1ff55;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="connect-wrap">
+
+        <img src="/assets/images/solynx-logo-v2.png" class="logo">
+
+        <h1 class="title">Christopher Weigart</h1>
+
+        <p class="subtitle">
+            Business Optimization Consultant • SOLYNX LLC
+        </p>
+
+        <p class="subtitle">
+            Strategic consulting and automation infrastructure designed to help businesses scale smarter.
+        </p>
+
+        <div class="buttons">
+
+            <a href="/connect/chris.vcf" class="btn primary">
+                Save Contact
+            </a>
+
+            <button onclick="showQR()" class="btn primary" style="cursor:pointer;border:none;">
+                Share Contact
+            </button>
+
+            <button onclick="addToWallet()" class="btn secondary" style="cursor:pointer;">
+                Add to Wallet
+            </button>
+
+            <a href="tel:9258720711" class="btn secondary">
+                Call Christopher
+            </a>
+
+            <a href="https://linkedin.com/in/christopher-weigart-6437034a" class="btn secondary" target="_blank">
+                Connect on LinkedIn
+            </a>
+
+            <a href="https://solynx.solutions/#contact" class="btn primary">
+                Book a Consultation
+            </a>
+
+            <a href="mailto:chris@solynx.solutions" class="btn secondary">
+                Email Christopher
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- QR Modal -->
+    <div id="qr-overlay" onclick="closeQR()">
+        <div id="qr-card" onclick="event.stopPropagation()">
+            <h2>Scan to Save Contact</h2>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://solynx.solutions/connect/chris.vcf"
+                alt="QR code to save Christopher Weigart contact" width="220" height="220">
+            <p>Scan to instantly add Christopher Weigart</p>
+            <button id="qr-close" onclick="closeQR()">Close</button>
+        </div>
+    </div>
+
+    <!-- Wallet Modal -->
+    <div id="wallet-overlay" onclick="closeWallet()">
+        <div id="wallet-card" onclick="event.stopPropagation()">
+            <h2>Add to Wallet</h2>
+            <p class="wallet-sub">Save Christopher Weigart's contact to your device</p>
+
+            <a id="wallet-apple" href="/connect/chris.vcf" class="wallet-option">
+                <span class="w-icon">🍎</span>
+                <span class="w-label">Apple Contacts
+                    <small>Opens native iOS Save Contact</small>
+                </span>
+            </a>
+
+            <a id="wallet-android" href="/connect/chris.vcf" class="wallet-option">
+                <span class="w-icon">🤖</span>
+                <span class="w-label">Google Contacts
+                    <small>Opens native Android import</small>
+                </span>
+            </a>
+
+            <a id="wallet-vcf" href="/connect/chris.vcf" download="Christopher-Weigart-SOLYNX.vcf"
+                class="wallet-option">
+                <span class="w-icon">📇</span>
+                <span class="w-label">Download VCF
+                    <small>Universal contact card file</small>
+                </span>
+            </a>
+
+            <button id="wallet-close" onclick="closeWallet()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function showQR() {
+            document.getElementById('qr-overlay').classList.add('open');
+            console.log('SOLYNX QR contact viewed');
+            fetch('https://services.leadconnectorhq.com/hooks/dqx7xejokriuUHqNrGvU/webhook-trigger/bac0de25-7a7c-433c-8312-f54d9abcc1f7', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    event: 'qr_contact_view',
+                    source: 'solynx_connect_page',
+                    name: 'Christopher Weigart'
+                })
+            }).catch(function () { });
+        }
+        function closeQR() {
+            document.getElementById('qr-overlay').classList.remove('open');
+        }
+        function addToWallet() {
+            var ua = navigator.userAgent || '';
+            var isIOS = /iPhone|iPad|iPod/i.test(ua);
+            var isAndroid = /Android/i.test(ua);
+            var overlay = document.getElementById('wallet-overlay');
+            var appleRow = document.getElementById('wallet-apple');
+            var androidRow = document.getElementById('wallet-android');
+
+            // Show only the relevant platform row on mobile; show all on desktop
+            if (isIOS) {
+                appleRow.style.display = 'flex';
+                androidRow.style.display = 'none';
+            } else if (isAndroid) {
+                appleRow.style.display = 'none';
+                androidRow.style.display = 'flex';
+            } else {
+                appleRow.style.display = 'none';
+                androidRow.style.display = 'none';
+            }
+
+            overlay.classList.add('open');
+        }
+        function closeWallet() {
+            document.getElementById('wallet-overlay').classList.remove('open');
+        }
+    </script>
+
+</body>
+
+</html>
