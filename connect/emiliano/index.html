@@ -282,6 +282,46 @@
             background: #1c2336;
             border-color: #00e1ff55;
         }
+
+        /* ── Contact Links ─────────────────────────────────── */
+        .contact-links {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+            justify-content: center;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 18px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            color: white;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            transition: all .25s ease;
+            flex: 1 1 calc(50% - 6px);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            border-color: #ff7a18;
+            box-shadow: 0 0 12px rgba(255, 122, 24, .45);
+        }
+
+        .icon {
+            font-size: 18px;
+        }
     </style>
 </head>
 
@@ -296,9 +336,14 @@
             <a href="/connect/emiliano.vcf" class="btn primary">Save Contact</a>
             <button onclick="showQR()" class="btn primary" style="cursor:pointer;border:none;">Share Contact</button>
             <button onclick="addToWallet()" class="btn secondary" style="cursor:pointer;">Add to Wallet</button>
-            <a href="tel:3235617666" class="btn secondary">Call Emiliano</a>
             <a href="https://solynx.solutions/#contact" class="btn primary">Book a Consultation</a>
-            <a href="mailto:emiliano@solynx.solutions" class="btn secondary">Email Emiliano</a>
+        </div>
+        <div class="contact-links">
+            <a class="contact-btn call-btn" href="tel:+13235617666"><span class="icon">📞</span><span>Call</span></a>
+            <a class="contact-btn text-btn" href="sms:+13235617666"><span class="icon">💬</span><span>Text</span></a>
+            <a class="contact-btn email-btn" href="mailto:emiliano@solynx.solutions"><span
+                    class="icon">✉️</span><span>Email</span></a>
+            <a class="contact-btn linkedin-btn" href="#"><span class="icon">🔗</span><span>LinkedIn</span></a>
         </div>
     </div>
 
