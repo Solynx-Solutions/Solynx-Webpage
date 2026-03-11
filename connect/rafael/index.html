@@ -2,17 +2,12 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Connect | SOLYNX</title>
-
+    <title>Connect with Rafael Solano | SOLYNX</title>
     <meta name="description"
-        content="Connect with SOLYNX — Strategic consulting, automation systems, and AI infrastructure designed to help businesses scale.">
-
-    <link rel="stylesheet" href="../styles-new.css">
-
+        content="Connect with Rafael Solano — Founder & CEO at SOLYNX. Business Infrastructure Architect | Systems Strategy & Automation | AI Development Engineering.">
+    <link rel="stylesheet" href="../../styles-new.css">
     <style>
         body {
             background: #0b0f1a;
@@ -21,8 +16,6 @@
             margin: 0;
             overflow-x: hidden;
         }
-
-        /* animated background glow */
 
         body::before {
             content: "";
@@ -80,7 +73,7 @@
         .subtitle {
             opacity: .8;
             max-width: 500px;
-            margin-bottom: 40px;
+            margin-bottom: 16px;
         }
 
         .buttons {
@@ -89,6 +82,7 @@
             gap: 14px;
             width: 100%;
             max-width: 320px;
+            margin-top: 24px;
         }
 
         .btn {
@@ -120,8 +114,7 @@
             background: #283354;
         }
 
-        /* ── QR Modal ─────────────────────────────────────── */
-
+        /* QR Modal */
         #qr-overlay {
             display: none;
             position: fixed;
@@ -198,8 +191,7 @@
             border-color: #00e1ff55;
         }
 
-        /* ── Wallet Modal ──────────────────────────────────── */
-
+        /* Wallet Modal */
         #wallet-overlay {
             display: none;
             position: fixed;
@@ -294,7 +286,7 @@
             border-color: #00e1ff55;
         }
 
-        /* ── Contact Links ─────────────────────────────────── */
+        /* Contact Links */
         .contact-links {
             display: flex;
             flex-direction: row;
@@ -333,109 +325,24 @@
         .icon {
             font-size: 18px;
         }
-
-        /* ── Team Section ──────────────────────────────────── */
-        .team-section {
-            margin-top: 50px;
-            text-align: center;
-        }
-
-        .team-section>h2 {
-            font-size: 1rem;
-            letter-spacing: .05em;
-            margin-bottom: 20px;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-            margin-top: 20px;
-        }
-
-        .team-card {
-            padding: 20px 16px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            text-decoration: none;
-            color: white;
-            font-weight: 600;
-            transition: all .25s ease;
-            display: block;
-        }
-
-        .team-card:hover {
-            transform: translateY(-3px);
-            border-color: #ff7a18;
-            box-shadow: 0 0 14px rgba(255, 122, 24, .45);
-        }
-
-        .team-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin: 0 auto 12px;
-            background: linear-gradient(135deg, #ff7a18, #ffb347);
-            box-shadow: 0 0 14px rgba(255, 122, 24, .45);
-        }
-
-        .team-card h3 {
-            margin: 6px 0;
-            font-size: 16px;
-            color: white;
-        }
-
-        .team-card p {
-            font-size: 13px;
-            opacity: .85;
-            margin: 0;
-            font-weight: 400;
-            line-height: 1.45;
-            color: rgba(255, 255, 255, .85);
-        }
     </style>
-
 </head>
 
 <body>
-
     <div class="connect-wrap">
-
-        <img src="/assets/images/solynx-logo-v2.png" class="logo">
-
+        <img src="../../assets/images/solynx-logo-v2.png" class="logo">
         <h1 class="title">Rafael Solano</h1>
-
-        <p class="subtitle">
-            Founder • SOLYNX LLC
-        </p>
-
-        <p class="subtitle">
-            Business Infrastructure Architect | Systems Strategy &amp; Automation | AI Development Engineering
-        </p>
-
-        <p class="subtitle">
-            I architect the frameworks, workflows, and AI systems that turn ambitious businesses into scalable machines.
-        </p>
+        <p class="subtitle">Founder &amp; CEO • SOLYNX LLC</p>
+        <p class="subtitle">Business Infrastructure Architect | Systems Strategy &amp; Automation | AI Development
+            Engineering</p>
+        <p class="subtitle">I architect the frameworks, workflows, and AI systems that turn ambitious businesses into
+            scalable machines.</p>
 
         <div class="buttons">
-
-            <a href="/connect/rafael-solynx.vcf" class="btn primary">
-                Save Contact
-            </a>
-
-            <button onclick="showQR()" class="btn primary" style="cursor:pointer;border:none;">
-                Share Contact
-            </button>
-
-            <button onclick="addToWallet()" class="btn secondary" style="cursor:pointer;">
-                Add to Wallet
-            </button>
-
-            <a href="https://solynx.solutions/#contact" class="btn primary">
-                Book a Consultation
-            </a>
-
+            <a href="/connect/rafael-solynx.vcf" class="btn primary">Save Contact</a>
+            <button onclick="showQR()" class="btn primary" style="cursor:pointer;border:none;">Share Contact</button>
+            <button onclick="addToWallet()" class="btn secondary" style="cursor:pointer;">Add to Wallet</button>
+            <a href="https://solynx.solutions/#contact" class="btn primary">Book a Consultation</a>
         </div>
 
         <div class="contact-links">
@@ -446,50 +353,6 @@
             <a class="contact-btn linkedin-btn" href="https://www.linkedin.com/company/solynx-llc/" target="_blank"
                 rel="noopener noreferrer"><span class="icon">🔗</span><span>LinkedIn</span></a>
         </div>
-
-        <section class="team-section">
-            <h2>Meet the SOLYNX Team</h2>
-            <div class="team-grid">
-
-                <a href="/connect/rafael" class="team-card">
-                    <div class="team-avatar"></div>
-                    <h3>Rafael Solano</h3>
-                    <p>Founder — Business Infrastructure Architect</p>
-                </a>
-
-                <a href="/connect/chris" class="team-card">
-                    <div class="team-avatar"></div>
-                    <h3>Chris Weigart</h3>
-                    <p>Business Optimization Consultant</p>
-                </a>
-
-                <a href="/connect/james" class="team-card">
-                    <div class="team-avatar"></div>
-                    <h3>James Matelski</h3>
-                    <p>Account Management &amp; Operations</p>
-                </a>
-
-                <a href="/connect/gretchen" class="team-card">
-                    <div class="team-avatar"></div>
-                    <h3>Gretchen Codus</h3>
-                    <p>Brand Strategy &amp; Marketing</p>
-                </a>
-
-                <a href="/connect/zeus" class="team-card">
-                    <div class="team-avatar"></div>
-                    <h3>Zeus Fae</h3>
-                    <p>Business Optimization Consultant<br>Digital Media Content Creator</p>
-                </a>
-
-                <a href="/connect/emiliano" class="team-card">
-                    <div class="team-avatar"></div>
-                    <h3>Emiliano Magdaleno</h3>
-                    <p>Business Optimization Consultant</p>
-                </a>
-
-            </div>
-        </section>
-
     </div>
 
     <!-- QR Modal -->
@@ -508,50 +371,26 @@
         <div id="wallet-card" onclick="event.stopPropagation()">
             <h2>Add to Wallet</h2>
             <p class="wallet-sub">Save Rafael Solano's contact to your device</p>
-
             <a id="wallet-apple" href="/connect/rafael-solynx.vcf" class="wallet-option">
                 <span class="w-icon">🍎</span>
-                <span class="w-label">Apple Contacts
-                    <small>Opens native iOS Save Contact</small>
-                </span>
+                <span class="w-label">Apple Contacts<small>Opens native iOS Save Contact</small></span>
             </a>
-
             <a id="wallet-android" href="/connect/rafael-solynx.vcf" class="wallet-option">
                 <span class="w-icon">🤖</span>
-                <span class="w-label">Google Contacts
-                    <small>Opens native Android import</small>
-                </span>
+                <span class="w-label">Google Contacts<small>Opens native Android import</small></span>
             </a>
-
             <a id="wallet-vcf" href="/connect/rafael-solynx.vcf" download="Rafael-Solano-SOLYNX.vcf"
                 class="wallet-option">
                 <span class="w-icon">📇</span>
-                <span class="w-label">Download VCF
-                    <small>Universal contact card file</small>
-                </span>
+                <span class="w-label">Download VCF<small>Universal contact card file</small></span>
             </a>
-
             <button id="wallet-close" onclick="closeWallet()">Close</button>
         </div>
     </div>
 
     <script>
-        function showQR() {
-            document.getElementById('qr-overlay').classList.add('open');
-            console.log('SOLYNX QR contact viewed');
-            fetch('https://services.leadconnectorhq.com/hooks/dqx7xejokriuUHqNrGvU/webhook-trigger/bac0de25-7a7c-433c-8312-f54d9abcc1f7', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    event: 'qr_contact_view',
-                    source: 'solynx_connect_page',
-                    name: 'Rafael Solano'
-                })
-            }).catch(function () { });
-        }
-        function closeQR() {
-            document.getElementById('qr-overlay').classList.remove('open');
-        }
+        function showQR() { document.getElementById('qr-overlay').classList.add('open'); }
+        function closeQR() { document.getElementById('qr-overlay').classList.remove('open'); }
         function addToWallet() {
             var ua = navigator.userAgent || '';
             var isIOS = /iPhone|iPad|iPod/i.test(ua);
@@ -559,26 +398,13 @@
             var overlay = document.getElementById('wallet-overlay');
             var appleRow = document.getElementById('wallet-apple');
             var androidRow = document.getElementById('wallet-android');
-
-            // Show only the relevant platform row on mobile; show all on desktop
-            if (isIOS) {
-                appleRow.style.display = 'flex';
-                androidRow.style.display = 'none';
-            } else if (isAndroid) {
-                appleRow.style.display = 'none';
-                androidRow.style.display = 'flex';
-            } else {
-                appleRow.style.display = 'none';
-                androidRow.style.display = 'none';
-            }
-
+            if (isIOS) { appleRow.style.display = 'flex'; androidRow.style.display = 'none'; }
+            else if (isAndroid) { appleRow.style.display = 'none'; androidRow.style.display = 'flex'; }
+            else { appleRow.style.display = 'none'; androidRow.style.display = 'none'; }
             overlay.classList.add('open');
         }
-        function closeWallet() {
-            document.getElementById('wallet-overlay').classList.remove('open');
-        }
+        function closeWallet() { document.getElementById('wallet-overlay').classList.remove('open'); }
     </script>
-
 </body>
 
 </html>
