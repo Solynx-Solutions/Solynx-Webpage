@@ -939,7 +939,9 @@
                     </ul>
                     <div class="pricing-card-bottom">
                         <!-- GHL STRIPE / PAYMENT LINK — SCOUT plan ($297/mo or $2,970/yr) -->
-                        <a href="#scout-payment" class="btn btn-scout-diy pricing-btn" id="scoutBtn">Start Building</a>
+                        <a href="https://link.solynx.solutions/payment-link/69ace81984b2d73699624286"
+                            class="btn btn-scout-diy pricing-btn" id="scoutBtn" target="_blank"
+                            rel="noopener noreferrer">Start Building</a>
                         <p class="pricing-note">Self-guided access. No onboarding call included.</p>
                     </div>
                 </div>
@@ -963,8 +965,9 @@
                     </ul>
                     <div class="pricing-card-bottom">
                         <!-- GHL STRIPE / PAYMENT LINK — PROWLER plan ($497/mo or $4,970/yr) -->
-                        <a href="#prowler-payment" class="btn btn-apex-accent pricing-btn" id="prowlerBtn">Build With
-                            Guidance</a>
+                        <a href="https://link.solynx.solutions/payment-link/69ace83f84b2d7c3dc6242ca"
+                            class="btn btn-apex-accent pricing-btn" id="prowlerBtn" target="_blank"
+                            rel="noopener noreferrer">Build With Guidance</a>
                         <p class="pricing-note">Consultation required after subscription.</p>
                     </div>
                 </div>
@@ -989,8 +992,9 @@
                     </ul>
                     <div class="pricing-card-bottom">
                         <!-- GHL STRIPE / PAYMENT LINK — NEXUS plan ($747/mo or $7,470/yr) -->
-                        <a href="#nexus-payment" class="btn btn-gradient pricing-btn" id="nexusBtn">Activate
-                            Automation</a>
+                        <a href="https://link.solynx.solutions/payment-link/69af345e1e6121ee0f7c290a"
+                            class="btn btn-gradient pricing-btn" id="nexusBtn" target="_blank"
+                            rel="noopener noreferrer">Activate Automation</a>
                         <p class="pricing-note">Consultation required after subscription.</p>
                     </div>
                 </div>
@@ -1014,8 +1018,9 @@
                     </ul>
                     <div class="pricing-card-bottom">
                         <!-- GHL STRIPE / PAYMENT LINK — APEX plan ($997/mo or $9,970/yr) -->
-                        <a href="#apex-payment" class="btn btn-apex-accent pricing-btn" id="apexBtn">Claim Apex
-                            Access</a>
+                        <a href="https://link.solynx.solutions/payment-link/69af349c1934f9c7da5e7733"
+                            class="btn btn-apex-accent pricing-btn" id="apexBtn" target="_blank"
+                            rel="noopener noreferrer">Claim Apex Access</a>
                         <p class="pricing-note">Consultation required after subscription.</p>
                     </div>
                 </div>
@@ -1460,6 +1465,26 @@
 
             if (!btn) return;
 
+            // ── Payment link map ──────────────────────────────
+            var links = {
+                scout: {
+                    monthly: 'https://link.solynx.solutions/payment-link/69ace81984b2d73699624286',
+                    annual: 'https://link.solynx.solutions/payment-link/69af37371934f91d635e7da8'
+                },
+                prowler: {
+                    monthly: 'https://link.solynx.solutions/payment-link/69ace83f84b2d7c3dc6242ca',
+                    annual: 'https://link.solynx.solutions/payment-link/69af377d1e6121479e7c2fe7'
+                },
+                nexus: {
+                    monthly: 'https://link.solynx.solutions/payment-link/69af345e1e6121ee0f7c290a',
+                    annual: 'https://link.solynx.solutions/payment-link/69af37ab84b2d78313649152'
+                },
+                apex: {
+                    monthly: 'https://link.solynx.solutions/payment-link/69af349c1934f9c7da5e7733',
+                    annual: 'https://link.solynx.solutions/payment-link/69af37cf1934f9eec15e7f01'
+                }
+            };
+
             var isAnnual = false;
 
             btn.addEventListener('click', function () {
@@ -1477,7 +1502,13 @@
                 document.querySelectorAll('.price-annual').forEach(function (el) {
                     el.style.display = isAnnual ? '' : 'none';
                 });
-                // CTA buttons link to GHL form — no href swap needed
+
+                // Swap CTA button payment links
+                var period = isAnnual ? 'annual' : 'monthly';
+                document.getElementById('scoutBtn').href = links.scout[period];
+                document.getElementById('prowlerBtn').href = links.prowler[period];
+                document.getElementById('nexusBtn').href = links.nexus[period];
+                document.getElementById('apexBtn').href = links.apex[period];
             });
         })();
     </script>
