@@ -125,9 +125,12 @@
                 <li><a href="#pricing" class="nav-link">PRICING</a></li>
                 <li><a href="#consulting" class="nav-link">CONSULTING</a></li>
                 <li><a href="#about" class="nav-link">ABOUT</a></li>
-                <li><a href="https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc"
-                        class="btn btn-primary nav-cta" target="_blank" rel="noopener noreferrer">GET
-                        STARTED</a></li>
+                <li>
+                    <button id="openSolynxModal" class="btn btn-primary nav-cta js-open-modal"
+                        style="cursor:pointer;border:none;">
+                        GET STARTED
+                    </button>
+                </li>
             </ul>
             <button class="mobile-menu-toggle" id="mobileToggle" aria-label="Toggle mobile menu">
                 ☰
@@ -145,7 +148,7 @@
 
             <div class="hero-grid">
 
-                <!-- LEFT COLUMN -->
+                <!-- HERO TEXT — full width now that form is in modal -->
                 <div class="hero-text">
 
                     <h1>
@@ -165,40 +168,17 @@
                         Built for Linking, Agility, and Growth.
                     </p>
 
-                </div>
-
-                <!-- RIGHT COLUMN -->
-                <div class="hero-form-wrapper">
-
-                    <div class="hero-form-card">
-
-                        <h3>
-                            Request a Consultation — Receive Your Free Market Audit Report
-                        </h3>
-
-                        <p>
-                            A quick, focused conversation to understand your goals,
-                            review your current positioning, and deliver a tailored
-                            Market Audit Report you can act on immediately.
-                        </p>
-
-                        <!-- GHL FORM EMBED / LEAD CAPTURE -->
-                        <div style="margin-top: 16px; overflow: hidden; border-radius: 8px; min-height: 420px;">
-                            <iframe src="https://link.solynx.solutions/widget/form/XK9biK6AROXKJdkCzyMw"
-                                style="width:100%; border:none; overflow:hidden;" scrolling="no"
-                                id="XK9biK6AROXKJdkCzyMw_hero">
-                            </iframe>
-                            <script src="https://link.solynx.solutions/js/form_embed.js"
-                                type="text/javascript"></script>
-                        </div>
-
-                    </div>
+                    <!-- Trigger button for GET STARTED modal -->
+                    <button class="btn btn-gradient js-open-modal"
+                        style="margin-top: 28px; font-size: 1rem; padding: 14px 36px; letter-spacing: 0.05em;">
+                        GET STARTED
+                    </button>
 
                 </div>
 
-            </div>
+            </div><!-- /.hero-grid -->
 
-        </div>
+        </div><!-- /.container -->
 
     </section>
 
@@ -1512,4 +1492,52 @@
             });
         })();
     </script>
+    <!-- =============================================
+         SOLYNX MODAL — GET STARTED FORM POPUP
+         ============================================= -->
+    <div id="solynx-modal" class="solynx-modal" role="dialog" aria-modal="true" aria-label="Get Started Form">
+        <div class="solynx-modal-overlay"></div>
+        <div class="solynx-modal-content">
+            <button class="solynx-modal-close" aria-label="Close">&times;</button>
+            <h3 style="margin: 0 0 6px; font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700;">
+                Request a Consultation
+            </h3>
+            <p style="margin: 0 0 16px; font-size: 0.875rem; color: #555; line-height: 1.5;">
+                Receive your free Market Audit Report — a focused session built around your business goals.
+            </p>
+            <!-- GHL FORM EMBED / LEAD CAPTURE -->
+            <div style="overflow: hidden; border-radius: 8px;">
+                <iframe src="https://link.solynx.solutions/widget/form/XK9biK6AROXKJdkCzyMw"
+                    style="width:100%; border:none; overflow:hidden;" scrolling="no" id="XK9biK6AROXKJdkCzyMw_modal">
+                </iframe>
+                <script src="https://link.solynx.solutions/js/form_embed.js" type="text/javascript"></script>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ── SOLYNX Modal ────────────────────────────────
+        (function () {
+            var modal = document.getElementById('solynx-modal');
+            var overlay = modal.querySelector('.solynx-modal-overlay');
+            var closeBtn = modal.querySelector('.solynx-modal-close');
+
+            function openModal() { modal.classList.add('active'); }
+            function closeModal() { modal.classList.remove('active'); }
+
+            // All elements with .js-open-modal trigger the popup
+            document.querySelectorAll('.js-open-modal').forEach(function (el) {
+                el.addEventListener('click', openModal);
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+            overlay.addEventListener('click', closeModal);
+
+            // Close on Escape key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeModal();
+            });
+        })();
+    </script>
+
 </body>
