@@ -30,8 +30,8 @@
     --color-gradient-end: #1e293b;
 
     --color-text-primary: #f8fafc;
-    --color-text-secondary: #cbd5e1;
-    --color-text-muted: #64748b;
+    --color-text-secondary: #e2e8f0;
+    --color-text-muted: #94a3b8;
 
     --color-background: var(--color-bg-dark);
     --color-background-alt: #1e293b;
@@ -1096,10 +1096,10 @@ a:hover {
 
 /* Footer logo image in footer-voice column */
 img.footer-logo {
-    height: 240px;
+    height: 80px;
     width: auto;
     object-fit: contain;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
     display: block;
     filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.2));
 }
@@ -1326,6 +1326,9 @@ img.footer-logo {
 .footer-voice {
     flex: 2;
     min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .footer-logo-marketing {
@@ -2422,6 +2425,13 @@ img.footer-logo {
     grid-template-columns: 1fr 1fr;
     gap: 80px;
     align-items: center;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 60px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 144, 0, 0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
 .about-title {
@@ -2437,6 +2447,13 @@ img.footer-logo {
     font-size: 22px;
     font-weight: 600;
     margin-bottom: 15px;
+}
+
+.about-section p {
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    max-width: 600px;
 }
 
 .about-highlight {
@@ -2472,12 +2489,30 @@ img.footer-logo {
     margin-top: 30px;
     font-size: 18px;
     font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.about-signature {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 144, 0, 0.2);
+    display: inline-block;
+}
+
+.about-signature p {
+    font-size: 0.95rem !important;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--color-accent-orange) !important;
+    margin-bottom: 0 !important;
 }
 
 @media (max-width: 900px) {
     .about-container {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 60px;
+        padding: 40px 24px;
     }
 
     .about-title {
