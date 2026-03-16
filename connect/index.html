@@ -137,6 +137,21 @@
             display: flex;
         }
 
+        #universal-qr-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .72);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #universal-qr-overlay.open {
+            display: flex;
+        }
+
         #qr-card {
             background: linear-gradient(145deg, #0e1624, #1a2540);
             border: 1px solid #00e1ff33;
@@ -396,6 +411,9 @@
         }
     </style>
 
+    <!-- GHL EXTERNAL TRACKING -->
+    <script src="https://link.solynx.solutions/js/external-tracking.js"
+        data-tracking-id="tk_a988b484869f45a09604f417b5778c51"></script>
 </head>
 
 <body>
@@ -426,6 +444,10 @@
 
             <button onclick="showQR()" class="btn primary" style="cursor:pointer;border:none;">
                 Share Contact
+            </button>
+
+            <button onclick="showUniversalQR()" class="btn secondary" style="cursor:pointer;border:none;">
+                Share SOLYNX
             </button>
 
             <button onclick="addToWallet()" class="btn secondary" style="cursor:pointer;">
@@ -521,6 +543,16 @@
         </div>
     </div>
 
+    <!-- Universal SOLYNX QR Modal -->
+    <div id="universal-qr-overlay" onclick="closeUniversalQR()">
+        <div id="qr-card" onclick="event.stopPropagation()" style="max-width:300px;width:90%;">
+            <h2>Share SOLYNX</h2>
+            <img src="/assets/qr/solynx-connect-qr.png" alt="SOLYNX universal QR code — scan to visit solynx.solutions/connect" width="220" height="220">
+            <p>Scan to explore SOLYNX &amp; connect with our team</p>
+            <button id="universal-qr-close" onclick="closeUniversalQR()">Close</button>
+        </div>
+    </div>
+
     <!-- Wallet Modal -->
     <div id="wallet-overlay" onclick="closeWallet()">
         <div id="wallet-card" onclick="event.stopPropagation()">
@@ -554,6 +586,12 @@
     </div>
 
     <script>
+        function showUniversalQR() {
+            document.getElementById('universal-qr-overlay').classList.add('open');
+        }
+        function closeUniversalQR() {
+            document.getElementById('universal-qr-overlay').classList.remove('open');
+        }
         function showQR() {
             document.getElementById('qr-overlay').classList.add('open');
             console.log('SOLYNX QR contact viewed');
