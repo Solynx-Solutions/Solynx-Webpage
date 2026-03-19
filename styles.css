@@ -275,12 +275,22 @@ a:hover {
     height: auto;
 }
 
+.nav-logo {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0;
+    text-decoration: none;
+}
+
 .logo-image {
     height: 48px;
     width: auto;
     object-fit: contain;
     transition: transform var(--transition-base);
-    mix-blend-mode: lighten;
+    mix-blend-mode: screen;
 }
 
 .logo-image:hover {
@@ -1101,7 +1111,7 @@ img.footer-logo {
     object-fit: contain;
     margin-bottom: 0;
     display: block;
-    mix-blend-mode: lighten;
+    mix-blend-mode: screen;
 }
 
 .footer-logo {
