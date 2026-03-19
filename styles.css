@@ -276,11 +276,11 @@ a:hover {
 }
 
 .logo-image {
-    height: 200px;
+    height: 48px;
     width: auto;
     object-fit: contain;
     transition: transform var(--transition-base);
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+    mix-blend-mode: lighten;
 }
 
 .logo-image:hover {
@@ -1096,12 +1096,12 @@ a:hover {
 
 /* Footer logo image in footer-voice column */
 img.footer-logo {
-    height: 240px;
+    height: 120px;
     width: auto;
     object-fit: contain;
     margin-bottom: 0;
     display: block;
-    filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.2));
+    mix-blend-mode: lighten;
 }
 
 .footer-logo {
