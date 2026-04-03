@@ -1448,3 +1448,570 @@ pointer-events:none;
         0 0 18px rgba(0, 255, 255, .4),
         0 0 32px rgba(0, 255, 255, .2);
 }
+
+/* =========================================================
+   SOLYNX LLC — FULL RESPONSIVE HARDENING PASS
+   ========================================================= */
+
+/* ---------- GLOBAL SAFETY ---------- */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+iframe {
+  width: 100% !important;
+  max-width: 100% !important;
+  border: 0;
+}
+
+.container,
+.about-container,
+.hero-grid,
+.platform-grid-6,
+.consulting-grid,
+.pricing-grid,
+.hiw-steps,
+.footer-signature,
+.bc-calendar-wrapper,
+.bc-calendar-inner,
+.hero-form-wrapper,
+.hero-form-card,
+.feature-card,
+.pricing-card,
+.about-left,
+.about-right {
+  min-width: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* ---------- TYPE SCALING ---------- */
+h1 {
+  font-size: clamp(2.1rem, 6vw, 4.25rem);
+  line-height: 1.05;
+  word-break: break-word;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  line-height: 1.15;
+}
+
+h3 {
+  font-size: clamp(1.15rem, 3vw, 1.7rem);
+  line-height: 1.2;
+}
+
+p,
+li,
+a,
+button,
+input,
+label {
+  font-size: clamp(0.95rem, 2.15vw, 1rem);
+}
+
+/* ---------- BUTTONS ---------- */
+.btn,
+button.btn,
+a.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.2;
+  min-height: 48px;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+  width: 100%;
+}
+
+.nav-content {
+  gap: 16px;
+}
+
+.nav-logo img,
+.logo-image {
+  max-width: 180px;
+  height: auto;
+}
+
+.mobile-menu-toggle {
+  flex-shrink: 0;
+}
+
+/* ---------- HERO ---------- */
+.hero-section {
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 40px;
+  align-items: center;
+}
+
+.hero-text,
+.hero-form-wrapper,
+.hero-form-card {
+  min-width: 0;
+}
+
+.hero-text p,
+.hero-text h1,
+.hero-text h2 {
+  max-width: 100%;
+}
+
+.hero-form-card {
+  width: 100%;
+  max-width: 100%;
+}
+
+.hero-video-bg,
+.hero-video-overlay {
+  max-width: 100%;
+}
+
+/* ---------- TRUST / MARQUEE ---------- */
+.brands-section,
+.brands-section-inner,
+.brands-marquee-wrapper,
+.brands-marquee-track {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.brand-logo-item,
+.brand-wordmark {
+  white-space: nowrap;
+}
+
+/* ---------- CALCULATOR ---------- */
+#llc-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+  gap: 32px;
+  align-items: start;
+}
+
+#llc-calculator,
+.llc-results,
+.llc-inputs,
+.form-group {
+  min-width: 0;
+}
+
+.form-input,
+input,
+select,
+textarea {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* ---------- PLATFORM ---------- */
+.platform-grid-6 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.feature-card {
+  width: 100%;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+/* ---------- CONSULTING ---------- */
+.consulting-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* ---------- HOW IT WORKS ---------- */
+.hiw-steps {
+  width: 100%;
+}
+
+.hiw-step {
+  min-width: 0;
+}
+
+.hiw-desc {
+  max-width: 240px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------- PRICING ---------- */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.pricing-card {
+  min-width: 0;
+  width: 100%;
+}
+
+.pricing-card-top,
+.pricing-card-bottom,
+.pricing-features {
+  min-width: 0;
+}
+
+/* ---------- BOOKING / CONSULTATION ---------- */
+.bc-calendar-wrapper,
+.bc-calendar-inner,
+.bc-embed-zone {
+  width: 100%;
+  max-width: 100%;
+}
+
+.bc-trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.bc-trust-item {
+  min-width: 0;
+}
+
+/* ---------- ABOUT ---------- */
+.about-container {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.about-left,
+.about-right {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.about-left p,
+.about-right p,
+.about-right h3,
+.about-title {
+  overflow-wrap: break-word;
+}
+
+/* ---------- FOOTER ---------- */
+.footer,
+.footer-signature,
+.footer-voice,
+.footer-utility {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.footer-signature {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.footer-nav-group,
+.footer-social-group {
+  min-width: 0;
+}
+
+.social-icons-playful {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* =========================================================
+   1200px
+   ========================================================= */
+@media (max-width: 1200px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .platform-grid-6,
+  .consulting-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-grid {
+    gap: 32px;
+  }
+}
+
+/* =========================================================
+   1024px
+   ========================================================= */
+@media (max-width: 1024px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .hero-grid,
+  #llc-wrap {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .hero-text .btn,
+  .hero-form-card .btn {
+    width: 100%;
+  }
+
+  .platform-grid-6,
+  .consulting-grid,
+  .pricing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-container,
+  .footer-signature {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .about-left,
+  .about-right,
+  .footer-voice,
+  .footer-utility {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   768px
+   ========================================================= */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .nav-menu {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px 18px;
+    background: rgba(5, 10, 20, 0.98);
+  }
+
+  .nav-link {
+    display: block;
+    padding: 12px 0;
+  }
+
+  .nav-cta,
+  .nav-menu .btn {
+    width: 100%;
+  }
+
+  .hero-section {
+    padding-top: 120px;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    line-height: 1.08;
+  }
+
+  .hero-text h2 {
+    margin-top: 12px;
+  }
+
+  .hero-text p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-form-wrapper,
+  .hero-form-card {
+    width: 100%;
+  }
+
+  .platform-grid-6,
+  .consulting-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .pricing-card {
+    padding: 24px;
+  }
+
+  .brands-eyebrow {
+    font-size: 0.9rem !important;
+  }
+
+  .brand-wordmark {
+    font-size: 0.95rem;
+  }
+
+  .hiw-steps {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hiw-step {
+    max-width: 100%;
+    padding: 8px 0;
+  }
+
+  .hiw-desc {
+    max-width: 100%;
+  }
+
+  .hiw-line {
+    width: 2px;
+    height: 48px;
+    margin: 0;
+  }
+
+  .bc-trust-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-container {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .about-left,
+  .about-right {
+    width: 100%;
+  }
+
+  .footer-signature {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .footer-nav-group a {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .btn,
+  button.btn,
+  a.btn {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   480px
+   ========================================================= */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  h1 {
+    font-size: clamp(1.85rem, 9vw, 2.6rem);
+    line-height: 1.05;
+  }
+
+  h2 {
+    font-size: clamp(1.3rem, 6vw, 1.8rem);
+  }
+
+  h3 {
+    font-size: clamp(1.05rem, 5vw, 1.3rem);
+  }
+
+  p,
+  li,
+  a,
+  button,
+  input,
+  label {
+    font-size: 0.95rem;
+  }
+
+  .hero-text .btn,
+  .hero-form-card .btn,
+  .pricing-card .btn,
+  .bc-calendar-wrapper .btn {
+    width: 100%;
+  }
+
+  .hero-form-card,
+  .feature-card,
+  .pricing-card {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .pricing-card-top,
+  .pricing-card-bottom {
+    text-align: left;
+  }
+
+  .price-monthly,
+  .price-annual {
+    font-size: 1.8rem;
+  }
+
+  .brand-wordmark {
+    font-size: 0.9rem;
+  }
+
+  .ticker-dot {
+    font-size: 1rem;
+    padding: 0 3px;
+  }
+
+  .bc-top-label {
+    font-size: 0.75rem;
+  }
+
+  .footer-logo {
+    max-width: 180px;
+  }
+
+  .voice-text {
+    line-height: 1.15;
+  }
+}
