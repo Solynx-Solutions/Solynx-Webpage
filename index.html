@@ -1654,6 +1654,49 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- ── Marquee Pixel Loop ─────────────────────────────── -->
+    <script>
+        (function () {
+            var track = document.querySelector('.brands-marquee-track');
+            var group = document.querySelector('.brands-marquee-group');
+            if (!track || !group) return;
+
+            var position = 0;
+            var speed = 0.5; // px per frame — increase for faster scroll
+            var paused = false;
+            var groupWidth = 0;
+
+            function getGroupWidth() {
+                groupWidth = group.offsetWidth;
+            }
+
+            function animate() {
+                if (!paused) {
+                    position -= speed;
+                    if (Math.abs(position) >= groupWidth) {
+                        position = 0;
+                    }
+                    track.style.transform = 'translateX(' + position + 'px)';
+                }
+                requestAnimationFrame(animate);
+            }
+
+            // Pause on hover
+            var wrapper = document.querySelector('.brands-marquee-wrapper');
+            if (wrapper) {
+                wrapper.addEventListener('mouseenter', function () { paused = true; });
+                wrapper.addEventListener('mouseleave', function () { paused = false; });
+            }
+
+            // Recalculate on resize (font-size changes etc.)
+            window.addEventListener('resize', getGroupWidth);
+
+            // Start after layout is complete
+            getGroupWidth();
+            requestAnimationFrame(animate);
+        })();
+    </script>
     <script>
         // ── Pricing Billing Toggle ───────────────────────────
         (function () {

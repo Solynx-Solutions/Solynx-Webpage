@@ -1665,12 +1665,7 @@ img.footer-logo {
     margin: 0;
     padding: 0;
     will-change: transform;
-    animation: tickerScroll 15s linear infinite;
-}
-
-/* Pause on hover so users can click */
-.brands-marquee-wrapper:hover .brands-marquee-track {
-    animation-play-state: paused;
+    /* Animation driven by JS — no CSS keyframe */
 }
 
 /* ── Each group is exactly half the track ─────────────────── */
@@ -1681,16 +1676,6 @@ img.footer-logo {
     white-space: nowrap;
     margin: 0;
     padding: 0;
-}
-
-/* Animate exactly one group width = 50% of total track */
-@keyframes tickerScroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
 }
 
 /* ── Individual Logo Item ─────────────────────────────────── */
