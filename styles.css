@@ -1665,7 +1665,7 @@ img.footer-logo {
     margin: 0;
     padding: 0;
     will-change: transform;
-    /* Animation driven by JS — no CSS keyframe */
+    animation: tickerScroll 15s linear infinite;
 }
 
 /* ── Each group is exactly half the track ─────────────────── */
@@ -1676,6 +1676,11 @@ img.footer-logo {
     white-space: nowrap;
     margin: 0;
     padding: 0;
+}
+
+@keyframes tickerScroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 /* ── Individual Logo Item ─────────────────────────────────── */
