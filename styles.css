@@ -1700,6 +1700,7 @@ img.footer-logo {
     justify-content: center;
     flex-shrink: 0;
     padding: 14px 28px;
+    margin-right: 20px;
     border-radius: 12px;
     border: 1px solid transparent;
     text-decoration: none;
@@ -1710,6 +1711,10 @@ img.footer-logo {
         border-color 0.35s ease;
     /* Grayscale by default */
     filter: grayscale(1) brightness(0.65);
+}
+
+.brands-marquee-group .brand-logo-item:last-child {
+    margin-right: 0;
 }
 
 .brand-logo-item:hover {
