@@ -1645,7 +1645,7 @@ img.footer-logo {
 .brands-marquee-wrapper {
     overflow: hidden;
     width: 100%;
-    /* Edge fade masks */
+    position: relative;
     -webkit-mask-image: linear-gradient(to right,
             transparent 0%,
             black 8%,
@@ -1661,11 +1661,8 @@ img.footer-logo {
 /* ── Scrolling Track ─────────────────────────────────────── */
 .brands-marquee-track {
     display: flex;
-    align-items: center;
-    gap: 60px;
     width: max-content;
-    animation: brandsScroll 28s linear infinite;
-    will-change: transform;
+    animation: tickerScroll 15s linear infinite;
 }
 
 /* Pause on hover so users can click */
@@ -1673,14 +1670,17 @@ img.footer-logo {
     animation-play-state: paused;
 }
 
-@keyframes brandsScroll {
-    0% {
-        transform: translateX(0);
-    }
+/* ── Each group is exactly half the track ─────────────────── */
+.brands-marquee-group {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
 
-    100% {
-        transform: translateX(-50%);
-    }
+/* Animate exactly one group width = 50% of total track */
+@keyframes tickerScroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 /* ── Individual Logo Item ─────────────────────────────────── */
@@ -1749,8 +1749,7 @@ img.footer-logo {
     }
 
     .brands-marquee-track {
-        gap: 36px;
-        animation-duration: 20s;
+        animation-duration: 22s;
     }
 
     .brand-logo-img {
@@ -1763,6 +1762,10 @@ img.footer-logo {
 
     .brand-logo-item {
         padding: 10px 18px;
+    }
+
+    .ticker-dot {
+        padding: 0 14px;
     }
 }
 
