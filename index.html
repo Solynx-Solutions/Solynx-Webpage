@@ -1689,61 +1689,61 @@
 
     <!-- Brands Marquee — requestAnimationFrame engine -->
     <script>
-        (function () {
-            const track = document.getElementById('brandsTrack');
-            if (!track) return;
+    (function () {
+        const track = document.getElementById('brandsTrack');
+        if (!track) return;
 
-            const originalItems = Array.from(track.children).map(node => node.cloneNode(true));
-            const originalCount = originalItems.length;
+        const originalItems = Array.from(track.children).map(node => node.cloneNode(true));
+        const originalCount = originalItems.length;
 
-            function buildTrack() {
-                track.innerHTML = '';
+        function buildTrack() {
+            track.innerHTML = '';
+            originalItems.forEach(item => track.appendChild(item.cloneNode(true)));
+
+            const wrapper = track.parentElement;
+            let safety = 0;
+
+            while (track.scrollWidth < wrapper.offsetWidth * 2 && safety < 20) {
                 originalItems.forEach(item => track.appendChild(item.cloneNode(true)));
+                safety++;
+            }
+        }
 
-                const wrapper = track.parentElement;
-                let safety = 0;
+        function originalWidth() {
+            const first = track.children[0];
+            const last = track.children[originalCount - 1];
+            return last.offsetLeft + last.offsetWidth - first.offsetLeft;
+        }
 
-                while (track.scrollWidth < wrapper.offsetWidth * 2 && safety < 20) {
-                    originalItems.forEach(item => track.appendChild(item.cloneNode(true)));
-                    safety++;
-                }
+        buildTrack();
+
+        let offset = 0;
+        const speed = 0.8;
+        let baseWidth = originalWidth();
+
+        function animate() {
+            offset -= speed;
+
+            if (Math.abs(offset) >= baseWidth) {
+                offset = 0;
             }
 
-            buildTrack();
+            track.style.transform = 'translateX(' + offset + 'px)';
+            requestAnimationFrame(animate);
+        }
 
-            function originalWidth() {
-                const first = track.children[0];
-                const last = track.children[originalCount - 1];
-                return last.offsetLeft + last.offsetWidth - first.offsetLeft;
-            }
+        let resizeTimeout;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function () {
+                offset = 0;
+                buildTrack();
+                baseWidth = originalWidth();
+            }, 150);
+        });
 
-            let offset = 0;
-            const speed = 0.5;
-            let baseWidth = originalWidth();
-
-            function animate() {
-                offset -= speed;
-
-                if (Math.abs(offset) >= baseWidth) {
-                    offset = 0;
-                }
-
-                track.style.transform = 'translateX(' + offset + 'px)';
-                requestAnimationFrame(animate);
-            }
-
-            let resizeTimeout;
-            window.addEventListener('resize', function () {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(function () {
-                    offset = 0;
-                    buildTrack();
-                    baseWidth = originalWidth();
-                }, 150);
-            });
-
-            animate();
-        })();
+        animate();
+    })();
     </script>
 
     <script src="https://widgets.leadconnectorhq.com/loader.js"
