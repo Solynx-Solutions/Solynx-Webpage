@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -339,22 +339,7 @@
 
 
 
-    <style>
-        .ticker-dot {
-            display: inline-flex;
-            align-items: center;
-            color: rgba(255, 144, 0, 0.45);
-            font-size: 1.4rem;
-            line-height: 1;
-            padding: 0 20px;
-            margin: 0;
-            pointer-events: none;
-            flex-shrink: 0;
-            user-select: none;
-            white-space: nowrap;
-            vertical-align: middle;
-        }
-    </style>
+
 
     <!-- Brands / Trust Ticker — Premium Marquee -->
     <section class="brands-section" id="trusted-brands">
@@ -366,85 +351,28 @@
 
             <!-- Marquee Track -->
             <div class="brands-marquee-wrapper" aria-label="Trusted clients">
-                <div class="brands-marquee-track">
-
-                    <!-- ── GROUP A (primary) ──────────────────────────── -->
-                    <div class="brands-marquee-group">
-                        <a href="https://concretepaverrestorations.com/" class="brand-logo-item brand-logo-text"
-                            target="_blank" rel="noopener noreferrer" aria-label="Concrete Paver Restorations">
-                            <span class="brand-wordmark">Concrete Paver Restorations</span>
-                        </a>
-                        <a href="https://enhancelandscapeinc.com/" class="brand-logo-item brand-logo-text" target="_blank"
-                            rel="noopener noreferrer" aria-label="Enhance Landscape Inc.">
-                            <span class="brand-wordmark">Enhance Landscape Inc.</span>
-                        </a>
-                        <a href="https://thetaxdoc.net" class="brand-logo-item brand-logo-text" target="_blank"
-                            rel="noopener noreferrer" aria-label="The TAX DOC">
-                            <span class="brand-wordmark">The TAX DOC</span>
-                        </a>
-                        <a href="https://masterscapes.pro/" class="brand-logo-item brand-logo-text" target="_blank"
-                            rel="noopener noreferrer" aria-label="Master Scapes">
-                            <span class="brand-wordmark">Master Scapes</span>
-                        </a>
-                        <a href="https://www.pooltablepros.com/" class="brand-logo-item brand-logo-text" target="_blank"
-                            rel="noopener noreferrer" aria-label="Pool Table Pros">
-                            <span class="brand-wordmark">Pool Table Pros</span>
-                        </a>
-                        <a href="https://www.elkhorn.info/" class="brand-logo-item brand-logo-text" target="_blank"
-                            rel="noopener noreferrer" aria-label="Elkhorn Golf, Grill &amp; Events">
-                            <span class="brand-wordmark">Elkhorn Golf, Grill &amp; Events</span>
-                        </a>
-                        <a href="https://3zelectric.com" class="brand-logo-item brand-logo-text" target="_blank"
-                            rel="noopener noreferrer" aria-label="3Z Electric">
-                            <span class="brand-wordmark">3Z Electric</span>
-                        </a>
-                        <a href="https://mentalcapital.world" class="brand-logo-item brand-logo-text" target="_blank"
-                            rel="noopener noreferrer" aria-label="Mental Capital">
-                            <span class="brand-wordmark">Mental Capital</span>
-                        </a>
-                    </div>
-
-                    <!-- ── GROUP B — exact clone, aria-hidden (decorative repeat) ── -->
-                    <div class="brands-marquee-group" aria-hidden="true">
-                        <a href="https://concretepaverrestorations.com/" class="brand-logo-item brand-logo-text"
-                            target="_blank" rel="noopener noreferrer" tabindex="-1">
-                            <span class="brand-wordmark">Concrete Paver Restorations</span>
-                        </a>
-                        <a href="https://enhancelandscapeinc.com/" class="brand-logo-item brand-logo-text" target="_blank"
-                            rel="noopener noreferrer" tabindex="-1">
-                            <span class="brand-wordmark">Enhance Landscape Inc.</span>
-                        </a>
-                        <a href="https://thetaxdoc.net" class="brand-logo-item brand-logo-text" target="_blank"
-                            rel="noopener noreferrer" tabindex="-1">
-                            <span class="brand-wordmark">The TAX DOC</span>
-                        </a>
-                        <a href="https://masterscapes.pro/" class="brand-logo-item brand-logo-text" target="_blank"
-                            rel="noopener noreferrer" tabindex="-1">
-                            <span class="brand-wordmark">Master Scapes</span>
-                        </a>
-                        <a href="https://www.pooltablepros.com/" class="brand-logo-item brand-logo-text" target="_blank"
-                            rel="noopener noreferrer" tabindex="-1">
-                            <span class="brand-wordmark">Pool Table Pros</span>
-                        </a>
-                        <a href="https://www.elkhorn.info/" class="brand-logo-item brand-logo-text" target="_blank"
-                            rel="noopener noreferrer" tabindex="-1">
-                            <span class="brand-wordmark">Elkhorn Golf, Grill &amp; Events</span>
-                        </a>
-                        <a href="https://3zelectric.com" class="brand-logo-item brand-logo-text" target="_blank"
-                            rel="noopener noreferrer" tabindex="-1">
-                            <span class="brand-wordmark">3Z Electric</span>
-                        </a>
-                        <a href="https://mentalcapital.world" class="brand-logo-item brand-logo-text" target="_blank"
-                            rel="noopener noreferrer" tabindex="-1">
-                            <span class="brand-wordmark">Mental Capital</span>
-                        </a>
-                    </div>
-
+                <div class="brands-marquee-track" id="brandsTrack">
+                    <a href="https://concretepaverrestorations.com/" class="brand-logo-item" target="_blank"
+                        rel="noopener noreferrer">Concrete Paver Restorations</a>
+                    <a href="https://enhancelandscapeinc.com/" class="brand-logo-item" target="_blank"
+                        rel="noopener noreferrer">Enhance Landscape Inc.</a>
+                    <a href="https://thetaxdoc.net" class="brand-logo-item" target="_blank"
+                        rel="noopener noreferrer">The TAX DOC</a>
+                    <a href="https://masterscapes.pro/" class="brand-logo-item" target="_blank"
+                        rel="noopener noreferrer">Master Scapes</a>
+                    <a href="https://www.pooltablepros.com/" class="brand-logo-item" target="_blank"
+                        rel="noopener noreferrer">Pool Table Pros</a>
+                    <a href="https://www.elkhorn.info/" class="brand-logo-item" target="_blank"
+                        rel="noopener noreferrer">Elkhorn Golf, Grill &amp; Events</a>
+                    <a href="https://3zelectric.com" class="brand-logo-item" target="_blank"
+                        rel="noopener noreferrer">3Z Electric</a>
+                    <a href="https://mentalcapital.world" class="brand-logo-item" target="_blank"
+                        rel="noopener noreferrer">Mental Capital</a>
                 </div>
             </div>
         </div>
-        </div>
     </section>
+
 
     <!-- Lost Leads Calculator Section -->
     <section id="llc-audit" class="section glass-section">
@@ -1756,6 +1684,67 @@
             document.addEventListener('keydown', function (e) {
                 if (e.key === 'Escape') closeModal();
             });
+        })();
+    </script>
+
+    <!-- Brands Marquee — requestAnimationFrame engine -->
+    <script>
+        (function () {
+            const track = document.getElementById('brandsTrack');
+            if (!track) return;
+
+            const originalItems = Array.from(track.children).map(node => node.cloneNode(true));
+            const originalCount = originalItems.length;
+
+            function buildTrack() {
+                track.innerHTML = '';
+                originalItems.forEach(item => track.appendChild(item.cloneNode(true)));
+
+                const wrapper = track.parentElement;
+                let safety = 0;
+
+                while (track.scrollWidth < wrapper.offsetWidth * 2 && safety < 20) {
+                    originalItems.forEach(item => track.appendChild(item.cloneNode(true)));
+                    safety++;
+                }
+            }
+
+            buildTrack();
+
+            function originalWidth() {
+                let width = 0;
+                for (let i = 0; i < originalCount; i++) {
+                    width += track.children[i].offsetWidth;
+                }
+                return width;
+            }
+
+            let offset = 0;
+            const speed = 0.5;
+            let baseWidth = originalWidth();
+
+            function animate() {
+                offset -= speed;
+
+                if (Math.abs(offset) >= baseWidth) {
+                    offset = 0;
+                }
+
+                track.style.transform = 'translateX(' + offset + 'px)';
+                requestAnimationFrame(animate);
+            }
+
+            let resizeTimeout;
+            window.addEventListener('resize', function () {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(function () {
+                    offset = 0;
+                    buildTrack();
+                    baseWidth = originalWidth();
+                }, 150);
+            });
+
+            animate();
         })();
     </script>
 

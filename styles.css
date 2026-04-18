@@ -1646,41 +1646,36 @@ img.footer-logo {
     overflow: hidden;
     width: 100%;
     position: relative;
-    -webkit-mask-image: linear-gradient(to right,
-            transparent 0%,
-            black 8%,
-            black 92%,
-            transparent 100%);
-    mask-image: linear-gradient(to right,
-            transparent 0%,
-            black 8%,
-            black 92%,
-            transparent 100%);
 }
 
-/* ── Scrolling Track ─────────────────────────────────────── */
 .brands-marquee-track {
     display: flex;
     width: max-content;
-    margin: 0;
-    padding: 0;
-    will-change: transform;
-    animation: tickerScroll 15s linear infinite;
+    animation: scroll 20s linear infinite;
 }
 
-/* ── Each group is exactly half the track ─────────────────── */
 .brands-marquee-group {
     display: flex;
-    align-items: center;
     flex-shrink: 0;
-    white-space: nowrap;
-    margin: 0;
-    padding: 0;
 }
 
-@keyframes tickerScroll {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+.brand-wordmark {
+    display: inline-block;
+    padding: 0 40px;
+    white-space: nowrap;
+    font-weight: 600;
+    color: #ccc;
+}
+
+/* KEY PART */
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
 }
 
 /* ── Individual Logo Item ─────────────────────────────────── */
@@ -1690,7 +1685,7 @@ img.footer-logo {
     justify-content: center;
     flex-shrink: 0;
     padding: 14px 28px;
-    margin-right: 40px;
+    margin-right: 50px;
     border-radius: 12px;
     border: 1px solid transparent;
     text-decoration: none;
@@ -1703,9 +1698,7 @@ img.footer-logo {
     filter: grayscale(1) brightness(0.65);
 }
 
-.brands-marquee-group .brand-logo-item:last-child {
-    margin-right: 0;
-}
+
 
 .brand-logo-item:hover {
     filter: grayscale(0) brightness(1);
