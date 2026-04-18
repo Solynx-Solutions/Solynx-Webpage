@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -1712,11 +1712,9 @@
             buildTrack();
 
             function originalWidth() {
-                let width = 0;
-                for (let i = 0; i < originalCount; i++) {
-                    width += track.children[i].offsetWidth;
-                }
-                return width;
+                const first = track.children[0];
+                const last = track.children[originalCount - 1];
+                return last.offsetLeft + last.offsetWidth - first.offsetLeft;
             }
 
             let offset = 0;
