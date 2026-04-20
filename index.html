@@ -1341,9 +1341,10 @@
 
         .consulting-card:hover {
             border-color: rgba(255, 144, 0, 0.4);
-            box-shadow: 0 0 28px rgba(255, 144, 0, 0.1);
+            box-shadow: 0 0 28px rgba(255, 144, 0, 0.6);
             transform: translateY(-3px);
         }
+
 
         .consulting-card-title {
             font-size: 1.05rem;
@@ -1724,13 +1725,13 @@
         }
 
         var offset       = 0;
-        var targetSpeed  = 0.6;
-        var currentSpeed = 0.6;
+        var targetSpeed  = 1.1;
+        var currentSpeed = 1.1;
         var baseWidth    = getBaseWidth();
 
-        // Micro speed variation — feels human, not robotic
+        // Micro speed variation — feels natural
         setInterval(function () {
-            targetSpeed = 0.5 + Math.random() * 0.2;
+            targetSpeed = 1.0 + Math.random() * 0.3;
         }, 3000);
 
         function animate() {

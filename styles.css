@@ -1696,8 +1696,9 @@ img.footer-logo {
 }
 
 .brand-logo-item:hover {
-    color: #ffffff;
+    color: #ff6a00;
     transform: translateY(-2px);
+    text-shadow: 0 0 12px rgba(255, 106, 0, 0.6), 0 0 24px rgba(255, 106, 0, 0.3);
 }
 
 @keyframes marquee {
