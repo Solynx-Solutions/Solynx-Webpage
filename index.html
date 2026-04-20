@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -352,7 +352,7 @@
             <!-- Marquee Track -->
             <div class="brands-marquee-wrapper">
                 <div class="brands-marquee-track">
-                    <div class="brands-marquee-content">
+                    <div class="brands-marquee-content" id="brandsTrack">
                         <a href="https://concretepaverrestorations.com/" class="brand-logo-item" target="_blank"
                             rel="noopener noreferrer">Concrete Paver Restorations</a>
                         <a href="https://enhancelandscapeinc.com/" class="brand-logo-item" target="_blank"
@@ -1708,6 +1708,57 @@
     </script>
 
 
+
+    <!-- Brands Marquee — smooth rAF engine -->
+    <script>
+    (function () {
+        var track = document.getElementById('brandsTrack');
+        if (!track) return;
+
+        var originalCount = 8; // first half of the hardcoded duplicates
+
+        function getBaseWidth() {
+            var first = track.children[0];
+            var last  = track.children[originalCount - 1];
+            return last.offsetLeft + last.offsetWidth - first.offsetLeft;
+        }
+
+        var offset       = 0;
+        var targetSpeed  = 0.6;
+        var currentSpeed = 0.6;
+        var baseWidth    = getBaseWidth();
+
+        // Micro speed variation — feels human, not robotic
+        setInterval(function () {
+            targetSpeed = 0.5 + Math.random() * 0.2;
+        }, 3000);
+
+        function animate() {
+            // Smooth lerp acceleration / deceleration
+            currentSpeed += (targetSpeed - currentSpeed) * 0.05;
+
+            offset -= currentSpeed;
+
+            if (Math.abs(offset) >= baseWidth) {
+                offset = 0;
+            }
+
+            track.style.transform = 'translate3d(' + offset + 'px, 0, 0)';
+            requestAnimationFrame(animate);
+        }
+
+        var resizeTimeout;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function () {
+                offset    = 0;
+                baseWidth = getBaseWidth();
+            }, 150);
+        });
+
+        animate();
+    })();
+    </script>
 
     <script src="https://widgets.leadconnectorhq.com/loader.js"
         data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
