@@ -1647,6 +1647,11 @@ img.footer-logo {
     width: 100%;
 }
 
+.brands-marquee-wrapper::before,
+.brands-marquee-wrapper::after {
+    pointer-events: none;
+}
+
 .brands-marquee-track {
     display: flex;
     pointer-events: none;
