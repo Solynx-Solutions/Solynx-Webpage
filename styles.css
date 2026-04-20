@@ -1650,16 +1650,12 @@ img.footer-logo {
 .brands-marquee-wrapper::before,
 .brands-marquee-wrapper::after {
     pointer-events: none;
+    z-index: 1;
 }
 
 .brands-marquee-track {
     display: flex;
-    pointer-events: none;
-}
-
-.brand-logo-item {
     pointer-events: auto;
-    cursor: pointer;
 }
 
 .brands-marquee-content {
@@ -1668,10 +1664,21 @@ img.footer-logo {
     animation: marquee 18s linear infinite;
 }
 
-.brands-marquee-content span {
+.brand-logo-item {
+    pointer-events: auto;
+    position: relative;
+    z-index: 5;
     padding: 0 40px;
     font-weight: 600;
+    font-size: 0.95rem;
     color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.25s ease;
+}
+
+.brand-logo-item:hover {
+    color: red !important;
 }
 
 @keyframes marquee {
@@ -1689,7 +1696,7 @@ img.footer-logo {
         animation-duration: 24s;
     }
 
-    .brands-marquee-content span {
+    .brand-logo-item {
         font-size: 0.85rem;
         padding: 0 24px;
     }
