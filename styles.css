@@ -1643,14 +1643,30 @@ img.footer-logo {
 
 /* ── Marquee ─────────────────────────────────────────────── */
 .brands-marquee-wrapper {
+    position: relative;
     overflow: hidden;
     width: 100%;
 }
 
 .brands-marquee-wrapper::before,
 .brands-marquee-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 120px;
+    height: 100%;
+    z-index: 2;
     pointer-events: none;
-    z-index: 1;
+}
+
+.brands-marquee-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, #050b17, transparent);
+}
+
+.brands-marquee-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, #050b17, transparent);
 }
 
 .brands-marquee-track {
@@ -1660,18 +1676,20 @@ img.footer-logo {
 
 .brands-marquee-content {
     display: flex;
+    gap: 0;
     white-space: nowrap;
-    animation: marquee 18s linear infinite;
+    animation: marquee 26s linear infinite;
 }
 
 .brand-logo-item {
     pointer-events: auto;
     position: relative;
     z-index: 5;
-    padding: 0 40px;
+    padding: 0 35px;
     font-weight: 600;
     font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.65);
     text-decoration: none;
     cursor: pointer;
     transition: color 0.3s ease, transform 0.3s ease;
@@ -1695,12 +1713,17 @@ img.footer-logo {
     }
 
     .brands-marquee-content {
-        animation-duration: 24s;
+        animation-duration: 32s;
+    }
+
+    .brands-marquee-wrapper::before,
+    .brands-marquee-wrapper::after {
+        width: 60px;
     }
 
     .brand-logo-item {
         font-size: 0.85rem;
-        padding: 0 24px;
+        padding: 0 22px;
     }
 }
 
