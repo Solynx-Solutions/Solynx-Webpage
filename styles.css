@@ -1674,11 +1674,13 @@ img.footer-logo {
     color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     cursor: pointer;
-    transition: color 0.25s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .brand-logo-item:hover {
-    color: red !important;
+    color: #ffffff;
+    transform: translateY(-2px);
 }
 
 @keyframes marquee {
