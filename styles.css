@@ -1649,6 +1649,12 @@ img.footer-logo {
 
 .brands-marquee-track {
     display: flex;
+    pointer-events: none;
+}
+
+.brand-logo-item {
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 .brands-marquee-content {
