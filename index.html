@@ -350,24 +350,27 @@
             </p>
 
             <!-- Marquee Track -->
-            <div class="brands-marquee-wrapper" aria-label="Trusted clients">
-                <div class="brands-marquee-track" id="brandsTrack">
-                    <a href="https://concretepaverrestorations.com/" class="brand-logo-item" target="_blank"
-                        rel="noopener noreferrer">Concrete Paver Restorations</a>
-                    <a href="https://enhancelandscapeinc.com/" class="brand-logo-item" target="_blank"
-                        rel="noopener noreferrer">Enhance Landscape Inc.</a>
-                    <a href="https://thetaxdoc.net" class="brand-logo-item" target="_blank"
-                        rel="noopener noreferrer">The TAX DOC</a>
-                    <a href="https://masterscapes.pro/" class="brand-logo-item" target="_blank"
-                        rel="noopener noreferrer">Master Scapes</a>
-                    <a href="https://www.pooltablepros.com/" class="brand-logo-item" target="_blank"
-                        rel="noopener noreferrer">Pool Table Pros</a>
-                    <a href="https://www.elkhorn.info/" class="brand-logo-item" target="_blank"
-                        rel="noopener noreferrer">Elkhorn Golf, Grill &amp; Events</a>
-                    <a href="https://3zelectric.com" class="brand-logo-item" target="_blank"
-                        rel="noopener noreferrer">3Z Electric</a>
-                    <a href="https://mentalcapital.world" class="brand-logo-item" target="_blank"
-                        rel="noopener noreferrer">Mental Capital</a>
+            <div class="brands-marquee-wrapper">
+                <div class="brands-marquee-track">
+                    <div class="brands-marquee-content">
+                        <span>Concrete Paver Restorations</span>
+                        <span>Enhance Landscape Inc.</span>
+                        <span>The TAX DOC</span>
+                        <span>Master Scapes</span>
+                        <span>Pool Table Pros</span>
+                        <span>Elkhorn Golf, Grill &amp; Events</span>
+                        <span>3Z Electric</span>
+                        <span>Mental Capital</span>
+                        <!-- DUPLICATE -->
+                        <span>Concrete Paver Restorations</span>
+                        <span>Enhance Landscape Inc.</span>
+                        <span>The TAX DOC</span>
+                        <span>Master Scapes</span>
+                        <span>Pool Table Pros</span>
+                        <span>Elkhorn Golf, Grill &amp; Events</span>
+                        <span>3Z Electric</span>
+                        <span>Mental Capital</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1687,64 +1690,7 @@
         })();
     </script>
 
-    <!-- Brands Marquee — requestAnimationFrame engine -->
-    <script>
-    (function () {
-        const track = document.getElementById('brandsTrack');
-        if (!track) return;
 
-        const originalItems = Array.from(track.children).map(node => node.cloneNode(true));
-        const originalCount = originalItems.length;
-
-        function buildTrack() {
-            track.innerHTML = '';
-            originalItems.forEach(item => track.appendChild(item.cloneNode(true)));
-
-            const wrapper = track.parentElement;
-            let safety = 0;
-
-            while (track.scrollWidth < wrapper.offsetWidth * 2 && safety < 20) {
-                originalItems.forEach(item => track.appendChild(item.cloneNode(true)));
-                safety++;
-            }
-        }
-
-        function originalWidth() {
-            const first = track.children[0];
-            const last = track.children[originalCount - 1];
-            return last.offsetLeft + last.offsetWidth - first.offsetLeft;
-        }
-
-        buildTrack();
-
-        let offset = 0;
-        const speed = 0.8;
-        let baseWidth = originalWidth();
-
-        function animate() {
-            offset -= speed;
-
-            if (Math.abs(offset) >= baseWidth) {
-                offset = 0;
-            }
-
-            track.style.transform = 'translateX(' + offset + 'px)';
-            requestAnimationFrame(animate);
-        }
-
-        let resizeTimeout;
-        window.addEventListener('resize', function () {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(function () {
-                offset = 0;
-                buildTrack();
-                baseWidth = originalWidth();
-            }, 150);
-        });
-
-        animate();
-    })();
-    </script>
 
     <script src="https://widgets.leadconnectorhq.com/loader.js"
         data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"

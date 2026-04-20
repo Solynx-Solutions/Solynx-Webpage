@@ -1641,31 +1641,31 @@ img.footer-logo {
     opacity: 0.65;
 }
 
-/* ── Marquee Wrapper ─────────────────────────────────────── */
+/* ── Marquee ─────────────────────────────────────────────── */
 .brands-marquee-wrapper {
     overflow: hidden;
     width: 100%;
-    position: relative;
 }
 
 .brands-marquee-track {
     display: flex;
-    gap: 80px;
+}
+
+.brands-marquee-content {
+    display: flex;
     white-space: nowrap;
-    will-change: transform;
+    animation: marquee 18s linear infinite;
 }
 
-.brand-logo-item {
-    flex: 0 0 auto;
+.brands-marquee-content span {
+    padding: 0 40px;
     font-weight: 600;
-    font-size: 0.95rem;
     color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    transition: opacity 0.3s ease;
 }
 
-.brand-logo-item:hover {
-    opacity: 1;
+@keyframes marquee {
+    0%   { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
 }
 
 /* ── Mobile ──────────────────────────────────────────────── */
@@ -1674,8 +1674,13 @@ img.footer-logo {
         padding: 40px 0;
     }
 
-    .brand-logo-item {
+    .brands-marquee-content {
+        animation-duration: 24s;
+    }
+
+    .brands-marquee-content span {
         font-size: 0.85rem;
+        padding: 0 24px;
     }
 }
 
