@@ -1,5 +1,19 @@
 {
     "github": {
         "enabled": true
-    }
+    },
+    "rewrites": [
+        {
+            "source": "/live-experience",
+            "destination": "/live-experience/"
+        },
+        {
+            "source": "/live-experience/",
+            "destination": "/live-experience/index.html"
+        },
+        {
+            "source": "/api/:path*",
+            "destination": "/api/:path*"
+        }
+    ]
 }

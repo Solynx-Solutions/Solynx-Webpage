@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>SOLYNX Live Experience | Response System Simulation</title>
+	<meta
+		name="description"
+		content="Experience the SOLYNX response system across voice, SMS, email, chat, CRM, and automation. See how modern lead capture infrastructure responds, follows up, and routes opportunities."
+	/>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+	<main class="landing-page">
+		<!-- ============ HEADER ============ -->
+		<header class="site-header">
+			<div class="shell header-shell">
+				<a href="#top" class="header-brand">
+					<img src="assets/images/SLX-WRD.png" alt="SOLYNX" />
+				</a>
+				<nav class="header-nav" aria-label="Primary">
+					<a href="#enter-system">Enter The System</a>
+					<a href="#what-happens">What Happens Next</a>
+					<a href="#how">How It Works</a>
+					<a href="#what-this-shows">What This Shows</a>
+				</nav>
+				<a href="#enter-system" class="button header-cta">Start The Experience</a>
+			</div>
+		</header>
+
+		<!-- ============ HERO ============ -->
+		<section class="hero-section" id="top">
+			<div class="shell hero-shell">
+				<p class="hero-kicker">SOLYNX LIVE EXPERIENCE — RESPONSE SYSTEM ACTIVE</p>
+
+				<p class="brand-mark">
+					<img src="assets/images/solynx-logo-v2.png" alt="SOLYNX" />
+				</p>
+
+				<h1>Experience The SOLYNX Response System</h1>
+
+				<p class="hero-copy">
+					Enter your information and experience a live multi-channel lead capture sequence across voice, SMS, email, chat, and automation — exactly how it would operate inside your business.
+				</p>
+
+				<div class="hero-actions">
+					<a href="#enter-system" class="button button-primary" id="hero-cta-primary">Start The Experience</a>
+					<a href="#what-happens" class="button button-secondary" id="hero-cta-secondary">See What Happens Next</a>
+				</div>
+
+				<div class="hero-proof" aria-label="Response system channels">
+					<span>📞 Voice Response</span>
+					<span>💬 SMS Follow-Up</span>
+					<span>✉️ Email Sequence</span>
+					<span>🗂 CRM Capture</span>
+					<span>💡 Chat Engagement</span>
+					<span>⚙️ Automation Workflow</span>
+				</div>
+
+				<div class="hero-stack" aria-label="SOLYNX response system outcomes">
+					<div class="hero-stack-card">
+						<strong>Capture</strong>
+						<p>Every inbound lead enters the response system instantly with no manual touch required.</p>
+					</div>
+					<div class="hero-stack-card">
+						<strong>Follow Up</strong>
+						<p>Voice, SMS, and email sequences activate automatically so opportunities never go cold.</p>
+					</div>
+					<div class="hero-stack-card">
+						<strong>Route</strong>
+						<p>Leads are organized, tagged, and moved toward a booking path inside the CRM pipeline.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============ SYSTEM STATUS BANNER ============ -->
+		<div class="status-banner" aria-label="System status">
+			<div class="shell status-inner">
+				<span class="status-dot" aria-hidden="true"></span>
+				<span>SOLYNX RESPONSE SYSTEM ACTIVE</span>
+				<span class="status-sep" aria-hidden="true">|</span>
+				<span>Voice · SMS · Email · CRM · Chat · Automation</span>
+				<span class="status-sep" aria-hidden="true">|</span>
+				<span>Multi-Channel Lead Capture Ready</span>
+			</div>
+		</div>
+
+		<!-- ============ ENTER THE SYSTEM (FORM) ============ -->
+		<section id="enter-system" class="demo-section">
+			<div class="shell demo-grid">
+				<div class="demo-copy">
+					<p class="section-kicker">SOLYNX Live Experience</p>
+					<h2>Enter The System</h2>
+					<p>
+						Submit your information and SOLYNX will trigger a real response sequence so you can experience what your own leads should experience: fast response, clear follow-up, and connected communication across every channel.
+					</p>
+
+					<div class="demo-proof" aria-label="What is activated">
+						<span>Voice response sequence</span>
+						<span>SMS follow-up automation</span>
+						<span>Email workflow started</span>
+						<span>CRM pipeline updated</span>
+						<span>Chat layer activated</span>
+					</div>
+
+					<div class="lynx-badge">
+						<img src="assets/images/BG LOGO face.png" alt="SOLYNX Response System" />
+						<span>Response System Active</span>
+					</div>
+
+					<p class="demo-micro">Submit your details below to trigger the full SOLYNX response sequence.</p>
+
+					<form class="demo-form" id="demo-form">
+						<label class="sr-only" for="full-name">Full Name</label>
+						<input id="full-name" name="name" type="text" placeholder="Full Name" required />
+
+						<label class="sr-only" for="email">Email Address</label>
+						<input id="email" name="email" type="email" placeholder="Email Address" required />
+
+						<label class="sr-only" for="phone">Phone Number</label>
+						<input id="phone" name="phone" type="tel" placeholder="Phone Number" required />
+
+						<label class="sr-only" for="business">Company Name</label>
+						<input id="business" name="business" type="text" placeholder="Company Name" />
+
+						<label class="sr-only" for="industry">Industry</label>
+						<select id="industry" name="industry">
+							<option value="" selected disabled>Select Industry</option>
+							<option>Home Services</option>
+							<option>Hospitality</option>
+							<option>Retail</option>
+							<option>Coaching</option>
+							<option>Healthcare</option>
+							<option>Professional Services</option>
+							<option>Real Estate</option>
+							<option>Other</option>
+						</select>
+
+						<label class="sr-only" for="automate-first">What do you want to automate first?</label>
+						<select id="automate-first" name="automate_first">
+							<option value="" selected disabled>What do you want to automate first? (Optional)</option>
+							<option>Lead follow-up &amp; SMS</option>
+							<option>Missed call response</option>
+							<option>Appointment booking</option>
+							<option>Email sequences</option>
+							<option>CRM pipeline &amp; routing</option>
+							<option>Not sure yet</option>
+						</select>
+
+						<button type="submit" class="button button-gradient" id="form-submit-btn">Start My SOLYNX Experience</button>
+
+						<p class="demo-note">You may receive a call, SMS, and email as part of this live simulation. Standard messaging rates may apply.</p>
+
+						<p class="form-consent">
+							By submitting, you agree to receive the SOLYNX live experience through phone, SMS, and email. This is a demonstration of lead capture and follow-up automation.
+						</p>
+
+						<p class="form-status" id="form-status" aria-live="polite"></p>
+					</form>
+				</div>
+
+				<!-- System flow visual -->
+				<div class="demo-visual">
+					<div class="demo-glow" aria-hidden="true"></div>
+					<div class="preview-card">
+						<div class="preview-screen">
+							<div class="preview-header">
+								<p class="preview-label">SOLYNX RESPONSE PROTOCOL</p>
+								<h3>Response System Infrastructure</h3>
+							</div>
+
+							<div class="flow-chart" aria-label="SOLYNX system flow">
+								<div class="flow-step flow-active">
+									<span class="flow-icon">📋</span>
+									<span class="flow-label">FORM SUBMITTED</span>
+								</div>
+								<div class="flow-arrow" aria-hidden="true">↓</div>
+								<div class="flow-step">
+									<span class="flow-icon">🗂</span>
+									<span class="flow-label">CRM CONTACT CREATED</span>
+								</div>
+								<div class="flow-arrow" aria-hidden="true">↓</div>
+								<div class="flow-step">
+									<span class="flow-icon">📞</span>
+									<span class="flow-label">VOICE RESPONSE TRIGGERED</span>
+								</div>
+								<div class="flow-arrow" aria-hidden="true">↓</div>
+								<div class="flow-step">
+									<span class="flow-icon">💬</span>
+									<span class="flow-label">SMS FOLLOW-UP SENT</span>
+								</div>
+								<div class="flow-arrow" aria-hidden="true">↓</div>
+								<div class="flow-step">
+									<span class="flow-icon">✉️</span>
+									<span class="flow-label">EMAIL WORKFLOW STARTED</span>
+								</div>
+								<div class="flow-arrow" aria-hidden="true">↓</div>
+								<div class="flow-step">
+									<span class="flow-icon">💡</span>
+									<span class="flow-label">CHAT WIDGET AVAILABLE</span>
+								</div>
+								<div class="flow-arrow" aria-hidden="true">↓</div>
+								<div class="flow-step flow-final">
+									<span class="flow-icon">📅</span>
+									<span class="flow-label">BOOKING PATH ACTIVATED</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="stats-grid">
+						<div class="stat-card">
+							<p class="stat-value">24/7</p>
+							<p class="stat-label">System Active</p>
+						</div>
+						<div class="stat-card">
+							<p class="stat-value">6+</p>
+							<p class="stat-label">Channels Connected</p>
+						</div>
+						<div class="stat-card">
+							<p class="stat-value">∞</p>
+							<p class="stat-label">Lead Capacity</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============ WHAT HAPPENS NEXT ============ -->
+		<section id="what-happens" class="what-happens-section">
+			<div class="shell section-shell center-copy">
+				<p class="section-kicker">Response System Active</p>
+				<h2>What Happens Next</h2>
+				<p class="section-intro">After you submit, here is the exact sequence that activates inside the SOLYNX response system.</p>
+
+				<ol class="steps-sequence" aria-label="Response sequence steps">
+					<li class="sequence-step">
+						<div class="step-number" aria-hidden="true">01</div>
+						<div class="step-body">
+							<h3>Contact Captured</h3>
+							<p>Your information enters the SOLYNX response system and a contact record is created instantly.</p>
+						</div>
+					</li>
+					<li class="sequence-step">
+						<div class="step-number" aria-hidden="true">02</div>
+						<div class="step-body">
+							<h3>Voice Activated</h3>
+							<p>A phone response sequence can trigger to simulate instant lead handling — showing how your business could respond before any competitor does.</p>
+						</div>
+					</li>
+					<li class="sequence-step">
+						<div class="step-number" aria-hidden="true">03</div>
+						<div class="step-body">
+							<h3>SMS Follow-Up Sent</h3>
+							<p>You receive a message showing how fast automated follow-up can happen — no manual sending, no delay.</p>
+						</div>
+					</li>
+					<li class="sequence-step">
+						<div class="step-number" aria-hidden="true">04</div>
+						<div class="step-body">
+							<h3>Email Sequence Started</h3>
+							<p>A branded email explains the system and continues the conversation on a consistent, automated schedule.</p>
+						</div>
+					</li>
+					<li class="sequence-step">
+						<div class="step-number" aria-hidden="true">05</div>
+						<div class="step-body">
+							<h3>CRM Pipeline Updated</h3>
+							<p>Your lead record is organized, tagged, and routed inside the system so nothing falls through the cracks.</p>
+						</div>
+					</li>
+					<li class="sequence-step">
+						<div class="step-number" aria-hidden="true">06</div>
+						<div class="step-body">
+							<h3>Chat + Follow-Up Layer Active</h3>
+							<p>The chat widget and automation layer continue supporting the experience — so the conversation stays open across every channel.</p>
+						</div>
+					</li>
+				</ol>
+			</div>
+		</section>
+
+		<!-- ============ TRUST / STACK BANNER ============ -->
+		<section class="trust-section">
+			<div class="shell trust-shell center-copy">
+				<h3>Response Infrastructure Built On Enterprise-Grade Stack</h3>
+				<div class="trust-grid" aria-label="Technology stack references">
+					<div class="trust-badge">AWS</div>
+					<div class="trust-badge">Google</div>
+					<div class="trust-badge">Microsoft</div>
+					<div class="trust-badge">AT&T</div>
+					<div class="trust-badge">Twilio</div>
+					<div class="trust-badge">SendGrid</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============ PLATFORM / WHAT CUSTOMERS SHOULD EXPERIENCE ============ -->
+		<section id="platform" class="platform-section">
+			<div class="shell section-shell">
+				<div class="platform-heading center-copy">
+					<p class="section-kicker">Response Infrastructure</p>
+					<h2>This Is What Your Customers Should Experience</h2>
+					<p>
+						Most businesses lose opportunities because their response process depends on manual callbacks, scattered tools, and inconsistent follow-up. SOLYNX connects the response layer so leads are captured, contacted, organized, and moved toward action with less friction.
+					</p>
+				</div>
+
+				<div class="platform-grid">
+					<article class="platform-card">
+						<div class="platform-icon" aria-hidden="true">⚡</div>
+						<h3>Faster Response</h3>
+						<p>The system activates the moment a lead enters — no waiting, no manual callbacks, no missed windows.</p>
+					</article>
+					<article class="platform-card">
+						<div class="platform-icon" aria-hidden="true">🔄</div>
+						<h3>Cleaner Follow-Up</h3>
+						<p>SMS, email, and reminders run automatically so follow-up is consistent without relying on memory or manual effort.</p>
+					</article>
+					<article class="platform-card">
+						<div class="platform-icon" aria-hidden="true">🔗</div>
+						<h3>Connected Communication</h3>
+						<p>Voice, SMS, email, and chat routed through one response infrastructure — no scattered inboxes or missed touchpoints.</p>
+					</article>
+					<article class="platform-card">
+						<div class="platform-icon" aria-hidden="true">🗂</div>
+						<h3>CRM Visibility</h3>
+						<p>Every lead is tracked, tagged, and organized inside a pipeline your team can see and act on.</p>
+					</article>
+					<article class="platform-card">
+						<div class="platform-icon" aria-hidden="true">📅</div>
+						<h3>Better Booking Flow</h3>
+						<p>Leads are guided toward booked outcomes through automation — reducing friction from first contact to confirmed appointment.</p>
+					</article>
+					<article class="platform-card">
+						<div class="platform-icon" aria-hidden="true">🧹</div>
+						<h3>Less Manual Admin</h3>
+						<p>Repetitive operational tasks run inside the system so your team can focus on service, relationships, and growth.</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============ HOW IT WORKS — OBSERVE LINK STRIKE SCALE ============ -->
+		<section id="how" class="how-section">
+			<div class="shell section-shell center-copy">
+				<p class="section-kicker">Customer Journey Automation</p>
+				<h2>How It Works</h2>
+				<div class="steps-grid">
+					<article class="info-card">
+						<div class="info-card-icon" aria-hidden="true">🔍</div>
+						<h3>Observe</h3>
+						<p>Identify missed calls, slow follow-up, disconnected tools, and the points where leads stall before they convert.</p>
+					</article>
+					<article class="info-card">
+						<div class="info-card-icon" aria-hidden="true">🔗</div>
+						<h3>Link</h3>
+						<p>Connect phone, SMS, email, chat, CRM, booking, and automation into one response infrastructure that works as a system.</p>
+					</article>
+					<article class="info-card">
+						<div class="info-card-icon" aria-hidden="true">⚡</div>
+						<h3>Strike</h3>
+						<p>Deploy automation that responds, follows up, routes, and supports the lead journey before the opportunity goes cold.</p>
+					</article>
+					<article class="info-card">
+						<div class="info-card-icon" aria-hidden="true">📈</div>
+						<h3>Scale</h3>
+						<p>Turn the response system into a repeatable operating layer that grows with the business without adding manual overhead.</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============ WHAT THIS SHOWS YOU (BENEFITS) ============ -->
+		<section id="what-this-shows" class="benefits-section">
+			<div class="shell section-shell center-copy">
+				<p class="section-kicker">Operational Response System</p>
+				<h2>What This Shows You</h2>
+				<div class="benefits-grid">
+					<article class="info-card">
+						<div class="info-card-icon" aria-hidden="true">⏱</div>
+						<h3>Your Leads Should Not Wait</h3>
+						<p>When someone reaches out, the system responds quickly and keeps the conversation moving — reducing missed opportunities.</p>
+					</article>
+					<article class="info-card">
+						<div class="info-card-icon" aria-hidden="true">🔔</div>
+						<h3>Follow-Up Should Not Depend On Memory</h3>
+						<p>SMS, email, and reminders can run automatically so fewer opportunities slip away between contacts.</p>
+					</article>
+					<article class="info-card">
+						<div class="info-card-icon" aria-hidden="true">👁</div>
+						<h3>Your Team Should Have Visibility</h3>
+						<p>Every lead should be tracked, tagged, and organized inside a pipeline so nothing is invisible or unaccounted for.</p>
+					</article>
+					<article class="info-card">
+						<div class="info-card-icon" aria-hidden="true">⚙️</div>
+						<h3>Automation Should Support Operations</h3>
+						<p>SOLYNX reduces repetitive admin work so teams can focus on service, sales, and customer relationships that need a human touch.</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============ FINAL CTA ============ -->
+		<section class="cta-section">
+			<div class="shell cta-shell center-copy">
+				<p class="section-kicker">Now Imagine This Running Inside Your Business</p>
+				<h2>Stop Leaving Leads Without A Response.</h2>
+				<p>
+					You just experienced the front end of a SOLYNX response system. Now let's map where your business is losing leads and what automation could recover those opportunities.
+				</p>
+				<a href="https://link.solynx.solutions" class="button button-primary cta-button" id="final-cta-audit" target="_blank" rel="noopener noreferrer">Book My Growth Audit</a>
+			</div>
+		</section>
+
+		<!-- ============ FOOTER ============ -->
+		<footer class="site-footer center-copy">
+			<div class="shell footer-shell">
+				<nav class="footer-nav" aria-label="Footer">
+					<a href="#top">Top</a>
+					<a href="#enter-system">Enter The System</a>
+					<a href="#what-happens">What Happens Next</a>
+					<a href="#how">How It Works</a>
+					<a href="#what-this-shows">What This Shows</a>
+				</nav>
+				<p class="footer-credit">Built by <span>SOLYNX</span></p>
+				<p class="footer-tagline">Response infrastructure that captures, follows up, and routes. Multi-channel. Automated. Connected.</p>
+			</div>
+		</footer>
+	</main>
+
+<script>
+const demoForm = document.getElementById("demo-form");
+const formStatus = document.getElementById("form-status");
+
+if (demoForm && formStatus) {
+  demoForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const submitButton = form.querySelector('button[type="submit"]');
+    const formData = new FormData(form);
+
+    formStatus.textContent = "Activating your SOLYNX response sequence…";
+    formStatus.dataset.state = "pending";
+
+    if (submitButton) submitButton.disabled = true;
+
+    try {
+      const response = await fetch("/api/live-experience", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          business: formData.get("business"),
+          industry: formData.get("industry"),
+          automate_first: formData.get("automate_first")
+        })
+      });
+
+      if (!response.ok) throw new Error("Request failed");
+
+      formStatus.textContent = "✅ Response sequence activated — check your phone, SMS, and email.";
+      formStatus.dataset.state = "success";
+      form.reset();
+
+    } catch (error) {
+      console.error(error);
+      formStatus.textContent = "Something went wrong. Please try again.";
+      formStatus.dataset.state = "error";
+    } finally {
+      if (submitButton) submitButton.disabled = false;
+    }
+  });
+
+  // Animate flow chart steps on success
+  demoForm.addEventListener("submit", () => {
+    const flowSteps = document.querySelectorAll(".flow-step");
+    flowSteps.forEach((step, i) => {
+      setTimeout(() => {
+        step.classList.add("flow-active");
+      }, i * 600);
+    });
+  });
+}
+</script>
+</body>
+</html>
