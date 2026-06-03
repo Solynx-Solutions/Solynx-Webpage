@@ -12,6 +12,15 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
 	<link rel="stylesheet" href="styles.css" />
+	<!-- GHL EXTERNAL TRACKING -->
+	<script src="https://link.solynx.solutions/js/external-tracking.js"
+		data-tracking-id="tk_a988b484869f45a09604f417b5778c51"></script>
+	<script>
+		// SOLYNX Live Experience — pre-configure GHL widget before it initialises
+		window.LeadConnector = window.LeadConnector || {};
+		window.LeadConnector.autoOpen = false;
+		window.LeadConnector.autoGreeting = false;
+	</script>
 </head>
 <body>
 	<main class="landing-page">
@@ -19,7 +28,7 @@
 		<header class="site-header">
 			<div class="shell header-shell">
 				<a href="#top" class="header-brand">
-					<img src="assets/images/SLX-WRD.png" alt="SOLYNX" />
+					<img src="/assets/images/SLX-WRD.png" alt="SOLYNX" />
 				</a>
 				<nav class="header-nav" aria-label="Primary">
 					<a href="#enter-system">Enter The System</a>
@@ -492,5 +501,28 @@ if (demoForm && formStatus) {
   });
 }
 </script>
+	<!-- GHL CHAT WIDGET -->
+	<script
+		src="https://widgets.leadconnectorhq.com/loader.js"
+		data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+		data-widget-id="69b725f66660242869549e80">
+	</script>
+	<script>
+		// SOLYNX Live Experience — suppress GHL chat widget auto-open
+		// Widget stays minimized; opens only on visitor click.
+		(function () {
+			function forceClose() {
+				if (window.LeadConnector) {
+					if (typeof window.LeadConnector.closeWidget === 'function') window.LeadConnector.closeWidget();
+					if (typeof window.LeadConnector.close === 'function') window.LeadConnector.close();
+				}
+				if (window.LC_API && typeof window.LC_API.close_chat === 'function') window.LC_API.close_chat();
+				document.querySelectorAll('iframe[src*="leadconnectorhq"]').forEach(function (f) {
+					try { f.contentWindow.postMessage(JSON.stringify({ action: 'close' }), '*'); } catch (e) {}
+				});
+			}
+			[600, 1200, 2500, 4000, 5500].forEach(function (ms) { setTimeout(forceClose, ms); });
+		})();
+	</script>
 </body>
 </html>
