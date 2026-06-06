@@ -928,3 +928,20 @@
         font-size: 2.2rem;
     }
 }
+
+/* ── Home Nav Link ─────────────────────────────────────── */
+.nav-home-link {
+    color: var(--color-accent-orange, #ff9000) !important;
+    font-weight: 700;
+    border: 1px solid rgba(255, 144, 0, 0.3);
+    border-radius: 50px;
+    padding: 4px 14px !important;
+    background: rgba(255, 144, 0, 0.06);
+    transition: background 180ms ease, border-color 180ms ease;
+}
+
+.nav-home-link:hover {
+    background: rgba(255, 144, 0, 0.15) !important;
+    border-color: rgba(255, 144, 0, 0.6) !important;
+    color: #fff !important;
+}
