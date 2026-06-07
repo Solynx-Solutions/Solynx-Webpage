@@ -15,7 +15,7 @@
 <script src="https://link.solynx.solutions/js/external-tracking.js" data-tracking-id="tk_a988b484869f45a09604f417b5778c51"></script>
 </head>
 <body>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PV9442HN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PV9442HN" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager (noscript)"></iframe></noscript>
 <div class="faint-sticky-bg"></div>
     <nav class="navbar" id="navbar">
         <div class="container nav-content">
@@ -23,13 +23,13 @@
                 <img src="assets/images/SLX-WRD.png" alt="Solynx LLC" class="logo-image pulse">
             </a>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="https://www.solynx.solutions/" class="nav-link nav-home-link">HOME</a></li>
-                <li><a href="#platform" class="nav-link">PLATFORM</a></li>
-                <li><a href="#how-it-works" class="nav-link">HOW IT WORKS</a></li>
-                <li><a href="#pricing" class="nav-link">PRICING</a></li>
-                <li><a href="#consulting" class="nav-link">AUTOMATION SYSTEMS</a></li>
-                <li><a href="#about" class="nav-link">ABOUT</a></li>
-                <li><a href="/local-growth-system.html" class="nav-link">LOCAL GROWTH</a></li>
+                <li><a href="https://www.solynx.solutions/" class="nav-link">HOME</a></li>
+                <li><a href="https://www.solynx.solutions/#platform" class="nav-link">PLATFORM</a></li>
+                <li><a href="https://www.solynx.solutions/#how-it-works" class="nav-link">HOW IT WORKS</a></li>
+                <li><a href="https://www.solynx.solutions/#pricing" class="nav-link">PRICING</a></li>
+                <li><a href="https://www.solynx.solutions/#consulting" class="nav-link">AUTOMATION SYSTEMS</a></li>
+                <li><a href="https://www.solynx.solutions/#about" class="nav-link">ABOUT</a></li>
+                <li><a href="/local-growth-system.html" class="nav-link" aria-current="page" style="color:#ff9000;">LOCAL GROWTH</a></li>
                 <li><a href="/live-experience/" class="nav-link">LIVE EXPERIENCE</a></li>
                 <li>
                     <a href="https://link.solynx.solutions/widget/bookings/solynx-consultation"
@@ -762,6 +762,33 @@ window.addEventListener('scroll', function() {
   if (nb) nb.classList.toggle('scrolled', window.scrollY > 50);
 });
 </script>
+<!-- Chat widget push-up: prevents bubble from covering hero CTA card on mobile -->
+<style>
+@media (max-width: 768px) {
+  /* Push GHL chat launcher above the thumb-reach zone on mobile */
+  [id^="lc_chat_widget"],
+  .widget-container,
+  div[data-widget-id] {
+    bottom: 72px !important;
+  }
+}
+</style>
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69b725f66660242869549e80"></script>
+<script>
+// Suppress GHL chat widget auto-open on Local Growth page
+(function () {
+  function forceClose() {
+    if (window.LeadConnector) {
+      if (typeof window.LeadConnector.closeWidget === 'function') window.LeadConnector.closeWidget();
+      if (typeof window.LeadConnector.close === 'function') window.LeadConnector.close();
+    }
+    if (window.LC_API && typeof window.LC_API.close_chat === 'function') window.LC_API.close_chat();
+    document.querySelectorAll('iframe[src*="leadconnectorhq"]').forEach(function (f) {
+      try { f.contentWindow.postMessage(JSON.stringify({ action: 'close' }), '*'); } catch (e) {}
+    });
+  }
+  [600, 1200, 2500, 4000, 5500].forEach(function (ms) { setTimeout(forceClose, ms); });
+})();
+</script>
 </body>
 </html>
