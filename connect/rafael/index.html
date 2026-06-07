@@ -329,12 +329,6 @@
     <!-- GHL EXTERNAL TRACKING -->
     <script src="https://link.solynx.solutions/js/external-tracking.js"
         data-tracking-id="tk_a988b484869f45a09604f417b5778c51"></script>
-    <script>
-        // SOLYNX Connect - pre-configure GHL widget before it initialises
-        window.LeadConnector = window.LeadConnector || {};
-        window.LeadConnector.autoOpen = false;
-        window.LeadConnector.autoGreeting = false;
-    </script>
 </head>
 
 <body>
@@ -417,28 +411,6 @@
             overlay.classList.add('open');
         }
         function closeWallet() { document.getElementById('wallet-overlay').classList.remove('open'); }
-    </script>
-    <script 
-      src="https://widgets.leadconnectorhq.com/loader.js"  
-      data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" 
-     data-widget-id="69b725f66660242869549e80"   > 
-     </script>
-    <script>
-        // SOLYNX Connect - suppress GHL chat widget auto-open
-        // Launcher stays minimized; widget opens only on visitor click.
-        (function () {
-            function forceClose() {
-                if (window.LeadConnector) {
-                    if (typeof window.LeadConnector.closeWidget === 'function') window.LeadConnector.closeWidget();
-                    if (typeof window.LeadConnector.close      === 'function') window.LeadConnector.close();
-                }
-                if (window.LC_API && typeof window.LC_API.close_chat === 'function') window.LC_API.close_chat();
-                document.querySelectorAll('iframe[src*="leadconnectorhq"]').forEach(function (f) {
-                    try { f.contentWindow.postMessage(JSON.stringify({ action: 'close' }), '*'); } catch (e) {}
-                });
-            }
-            [600, 1200, 2500, 4000, 5500].forEach(function (ms) { setTimeout(forceClose, ms); });
-        })();
     </script>
 </body>
 
