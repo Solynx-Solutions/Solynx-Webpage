@@ -10,6 +10,20 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="local-growth-system.css">
 <link rel="icon" type="image/png" href="/favicon.png">
+<style>
+/* ── Local Growth page: compact nav so all items fit at desktop widths ── */
+.navbar { padding: 0 24px; }
+.nav-logo { margin-right: 16px; }
+.logo-image { height: 72px; }
+.nav-menu { gap: 14px; }
+.nav-link { font-size: 0.75rem; letter-spacing: 0.5px; }
+.nav-cta { padding: 8px 14px; font-size: 0.75rem; }
+@media (max-width: 1200px) {
+    .navbar { padding: 0 16px; }
+    .nav-menu { gap: 8px; }
+    .nav-link { font-size: 0.68rem; }
+}
+</style>
 <!-- GTM -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PV9442HN');</script>
 <script src="https://link.solynx.solutions/js/external-tracking.js" data-tracking-id="tk_a988b484869f45a09604f417b5778c51"></script>
@@ -19,20 +33,20 @@
 <div class="faint-sticky-bg"></div>
     <nav class="navbar" id="navbar">
         <div class="container nav-content">
-            <a href="https://www.solynx.solutions/" class="nav-logo">
-                <img src="assets/images/SLX-WRD.png" alt="Solynx LLC" class="logo-image pulse">
+        <a href="/index.html" class="nav-logo">
+          <img src="/assets/images/SLX-WRD.png" alt="Solynx LLC" class="logo-image pulse">
             </a>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="https://www.solynx.solutions/" class="nav-link">HOME</a></li>
-                <li><a href="https://www.solynx.solutions/#platform" class="nav-link">PLATFORM</a></li>
-                <li><a href="https://www.solynx.solutions/#how-it-works" class="nav-link">HOW IT WORKS</a></li>
-                <li><a href="https://www.solynx.solutions/#pricing" class="nav-link">PRICING</a></li>
-                <li><a href="https://www.solynx.solutions/#consulting" class="nav-link">AUTOMATION SYSTEMS</a></li>
-                <li><a href="https://www.solynx.solutions/#about" class="nav-link">ABOUT</a></li>
+          <li><a href="/index.html" class="nav-link">HOME</a></li>
+          <li><a href="/#platform" class="nav-link">PLATFORM</a></li>
+          <li><a href="/#how-it-works" class="nav-link">HOW IT WORKS</a></li>
+          <li><a href="/#pricing" class="nav-link">PRICING</a></li>
+          <li><a href="/#automation-systems" class="nav-link">AUTOMATION SYSTEMS</a></li>
+          <li><a href="/#about" class="nav-link">ABOUT</a></li>
                 <li><a href="/local-growth-system.html" class="nav-link" aria-current="page" style="color:#ff9000;">LOCAL GROWTH</a></li>
                 <li><a href="/live-experience/" class="nav-link">LIVE EXPERIENCE</a></li>
                 <li>
-                    <a href="https://link.solynx.solutions/widget/bookings/solynx-consultation"
+            <a href="https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc"
                         class="btn btn-primary nav-cta"
                         target="_blank" rel="noopener noreferrer"
                         style="cursor:pointer;border:none;display:inline-flex;align-items:center;">

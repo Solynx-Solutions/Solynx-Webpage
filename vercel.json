@@ -4,12 +4,80 @@
     },
     "rewrites": [
         {
+            "source": "/",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/index.html",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/local-growth-system.html",
+            "destination": "/local-growth-system.html"
+        },
+        {
             "source": "/live-experience",
             "destination": "/live-experience/"
         },
         {
             "source": "/live-experience/",
             "destination": "/live-experience/index.html"
+        },
+        {
+            "source": "/connect",
+            "destination": "/connect/"
+        },
+        {
+            "source": "/connect/",
+            "destination": "/connect/index.html"
+        },
+        {
+            "source": "/connect/chris",
+            "destination": "/connect/chris/"
+        },
+        {
+            "source": "/connect/chris/",
+            "destination": "/connect/chris/index.html"
+        },
+        {
+            "source": "/connect/emiliano",
+            "destination": "/connect/emiliano/"
+        },
+        {
+            "source": "/connect/emiliano/",
+            "destination": "/connect/emiliano/index.html"
+        },
+        {
+            "source": "/connect/gretchen",
+            "destination": "/connect/gretchen/"
+        },
+        {
+            "source": "/connect/gretchen/",
+            "destination": "/connect/gretchen/index.html"
+        },
+        {
+            "source": "/connect/james",
+            "destination": "/connect/james/"
+        },
+        {
+            "source": "/connect/james/",
+            "destination": "/connect/james/index.html"
+        },
+        {
+            "source": "/connect/rafael",
+            "destination": "/connect/rafael/"
+        },
+        {
+            "source": "/connect/rafael/",
+            "destination": "/connect/rafael/index.html"
+        },
+        {
+            "source": "/connect/zeus",
+            "destination": "/connect/zeus/"
+        },
+        {
+            "source": "/connect/zeus/",
+            "destination": "/connect/zeus/index.html"
         },
         {
             "source": "/api/:path*",

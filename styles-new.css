@@ -740,7 +740,7 @@ ul {
     /* Start faint */
     transition: opacity 0.3s ease;
     background-color: #050a14;
-    background-image: url('assets/images/tech_circuit_bg.png');
+    background-image: url('/assets/images/SLX-WRD.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -2014,4 +2014,4 @@ textarea {
   .voice-text {
     line-height: 1.15;
   }
-}
+}

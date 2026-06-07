@@ -28,52 +28,38 @@
 	<main class="landing-page">
 		<!-- ============ HEADER / NAV ============ -->
 		<header class="site-header">
-			<div class="shell header-shell" style="padding: 0;">
-				<!-- Full SOLYNX navbar (mirrors main site) -->
-				<nav class="navbar" id="navbar" style="position:relative;">
-					<div class="header-inner" style="display:flex;align-items:center;justify-content:space-between;max-width:1280px;margin:0 auto;padding:0 24px;width:100%;box-sizing:border-box;">
-						<a href="https://www.solynx.solutions/" class="header-brand" style="flex-shrink:0;">
-							<img src="../assets/images/SLX-WRD.png" alt="SOLYNX" style="height:36px;width:auto;" />
-						</a>
-						<ul id="liveExpNavMenu" style="display:flex;flex-wrap:wrap;gap:4px 18px;list-style:none;margin:0;padding:0;align-items:center;" class="live-exp-nav-menu">
-							<li><a href="https://www.solynx.solutions/" class="header-nav-link">HOME</a></li>
-							<li><a href="https://www.solynx.solutions/#platform" class="header-nav-link">PLATFORM</a></li>
-							<li><a href="https://www.solynx.solutions/#how-it-works" class="header-nav-link">HOW IT WORKS</a></li>
-							<li><a href="https://www.solynx.solutions/#pricing" class="header-nav-link">PRICING</a></li>
-							<li><a href="https://www.solynx.solutions/#consulting" class="header-nav-link">AUTOMATION SYSTEMS</a></li>
-							<li><a href="https://www.solynx.solutions/#about" class="header-nav-link">ABOUT</a></li>
-							<li><a href="/local-growth-system.html" class="header-nav-link">LOCAL GROWTH</a></li>
-							<li><a href="/live-experience/" class="header-nav-link" aria-current="page" style="color:#ff9000;">LIVE EXPERIENCE</a></li>
-							<li><a href="#enter-system" class="button header-cta" id="nav-start-exp-btn">GET STARTED</a></li>
-						</ul>
-						<button id="liveExpMobileToggle" aria-label="Toggle mobile menu" style="display:none;background:none;border:none;color:white;font-size:1.5rem;cursor:pointer;padding:8px;">&#9776;</button>
-					</div>
+			<div class="shell header-shell">
+				<a href="/index.html" class="header-brand">
+					<img src="/assets/images/SLX-WRD.png" alt="SOLYNX" />
+				</a>
+				<nav class="header-nav" id="liveExpNavMenu" aria-label="Primary">
+					<a href="/index.html">HOME</a>
+					<a href="/#platform">PLATFORM</a>
+					<a href="/#how-it-works">HOW IT WORKS</a>
+					<a href="/#pricing">PRICING</a>
+					<a href="/#automation-systems">AUTOMATION SYSTEMS</a>
+					<a href="/#about">ABOUT</a>
+					<a href="/local-growth-system.html">LOCAL GROWTH</a>
+					<a href="/live-experience/" aria-current="page" style="color:var(--orange);">LIVE EXPERIENCE</a>
 				</nav>
-				<style>
-					.header-nav-link {
-						color: rgba(255,255,255,0.75);
-						text-decoration: none;
-						font-size: 0.78rem;
-						font-weight: 600;
-						letter-spacing: 0.06em;
-						text-transform: uppercase;
-						transition: color 0.2s;
-					}
-					.header-nav-link:hover { color: #ff9000; }
-					@media (max-width: 900px) {
-						.live-exp-nav-menu { display: none !important; }
-						.live-exp-nav-menu.open { display: flex !important; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(11,15,26,0.98); padding: 16px 24px; z-index: 999; gap: 12px; }
-						#liveExpMobileToggle { display: block !important; }
-					}
-				</style>
-				<script>
-					(function() {
-						var toggle = document.getElementById('liveExpMobileToggle');
-						var menu = document.getElementById('liveExpNavMenu');
-						if (toggle && menu) toggle.addEventListener('click', function() { menu.classList.toggle('open'); });
-					})();
-				</script>
+				<a href="https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc" class="button header-cta" target="_blank" rel="noopener noreferrer">GET STARTED</a>
+				<button id="liveExpMobileToggle" aria-label="Toggle mobile menu" style="display:none;background:none;border:none;color:white;font-size:1.5rem;cursor:pointer;padding:8px;">&#9776;</button>
 			</div>
+			<style>
+				@media (max-width: 900px) {
+					#liveExpNavMenu { display: none; }
+					#liveExpNavMenu.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(6,8,15,0.98); padding: 16px 24px; z-index: 999; gap: 12px; backdrop-filter: blur(14px); }
+					#liveExpMobileToggle { display: block !important; }
+					.header-cta { display: none; }
+				}
+			</style>
+			<script>
+				(function() {
+					var toggle = document.getElementById('liveExpMobileToggle');
+					var menu = document.getElementById('liveExpNavMenu');
+					if (toggle && menu) toggle.addEventListener('click', function() { menu.classList.toggle('open'); });
+				})();
+			</script>
 		</header>
 
 		<!-- ============ HERO ============ -->
