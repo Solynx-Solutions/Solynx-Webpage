@@ -1413,3 +1413,325 @@ button:focus-visible {
 		padding: 0.4rem 0.75rem;
 	}
 }
+
+/* ======================================================
+   MOBILE STICKY HOME BAR
+====================================================== */
+.mobile-home-bar {
+	position: sticky;
+	top: 0;
+	z-index: 30;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.55rem 1rem;
+	background: rgba(6, 8, 15, 0.96);
+	border-bottom: 1px solid rgba(255, 106, 0, 0.25);
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+}
+
+.mobile-home-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	font-size: 0.85rem;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	color: var(--orange-soft);
+	text-decoration: none;
+	transition: color 180ms ease;
+}
+
+.mobile-home-btn:hover {
+	color: #ffffff;
+}
+
+.mobile-hamburger {
+	background: none;
+	border: none;
+	color: rgba(255, 255, 255, 0.82);
+	font-size: 1.4rem;
+	cursor: pointer;
+	padding: 4px 8px;
+	line-height: 1;
+}
+
+/* ======================================================
+   MEET ALEX & LEXY -- SECTION HEADER
+====================================================== */
+.meet-agents-section {
+	padding: 5rem 0 4rem;
+}
+
+.meet-agents-header {
+	max-width: 52rem;
+	margin: 0 auto 3.5rem;
+}
+
+.meet-agents-subtitle {
+	margin-top: 1rem;
+	font-size: 1.075rem;
+	color: rgba(255, 255, 255, 0.86);
+	line-height: 1.6;
+}
+
+.meet-agents-support {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.4rem 0.75rem;
+	margin-top: 1rem;
+	font-size: 0.92rem;
+	color: rgba(255, 255, 255, 0.6);
+	line-height: 1.6;
+}
+
+.meet-agents-sep {
+	opacity: 0.35;
+}
+
+/* ======================================================
+   EXPERIENCE CARDS GRID
+====================================================== */
+.experience-cards-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1.5rem;
+	align-items: stretch;
+}
+
+/* Two-card variant: Alex + Lexy only */
+.experience-cards-two {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	max-width: 780px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.experience-card {
+	display: flex;
+	flex-direction: column;
+	padding: 1.85rem 1.65rem;
+	border-radius: 1.5rem;
+	border: 1px solid rgba(255, 255, 255, 0.09);
+	background: linear-gradient(180deg, rgba(15, 23, 42, 0.85) 0%, rgba(5, 10, 20, 0.95) 100%);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	box-shadow: 0 28px 80px rgba(0, 0, 0, 0.38);
+	transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.experience-card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5), 0 0 28px rgba(255, 106, 0, 0.09);
+	border-color: rgba(255, 106, 0, 0.25);
+}
+
+.exp-card-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.32rem 0.75rem;
+	border-radius: 999px;
+	margin-bottom: 0.85rem;
+	font-size: 0.7rem;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+.exp-badge-chat {
+	background: rgba(255, 106, 0, 0.1);
+	border: 1px solid rgba(255, 106, 0, 0.3);
+	color: var(--orange-soft);
+}
+
+.exp-badge-voice {
+	background: rgba(255, 106, 0, 0.12);
+	border: 1px solid rgba(255, 106, 0, 0.35);
+	color: var(--orange-soft);
+}
+
+.exp-card-dot {
+	display: inline-block;
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: var(--orange);
+	box-shadow: 0 0 6px var(--orange);
+	flex-shrink: 0;
+}
+
+.exp-dot-pulse {
+	animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.exp-card-title {
+	font-family: "Sora", sans-serif;
+	font-size: 1.75rem;
+	font-weight: 800;
+	letter-spacing: -0.02em;
+	color: #ffffff;
+	margin: 0 0 0.1rem;
+	line-height: 1.1;
+}
+
+.exp-card-subtitle {
+	font-size: 0.88rem;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--orange-soft);
+	margin: 0.2rem 0 0.5rem;
+}
+
+.exp-card-desc {
+	font-size: 0.97rem;
+	color: rgba(255, 255, 255, 0.72);
+	margin: 0;
+	line-height: 1.55;
+}
+
+.exp-card-features {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 1.25rem;
+	display: grid;
+	gap: 0.55rem;
+	flex: 1;
+}
+
+.exp-card-features li {
+	display: flex;
+	align-items: center;
+	gap: 0.65rem;
+	font-size: 0.93rem;
+	color: rgba(255, 255, 255, 0.8);
+}
+
+.exp-check {
+	flex-shrink: 0;
+	width: 1.3rem;
+	height: 1.3rem;
+	border-radius: 50%;
+	background: rgba(255, 106, 0, 0.15);
+	border: 1px solid rgba(255, 106, 0, 0.4);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.7rem;
+	font-weight: 800;
+	color: var(--orange-soft);
+}
+
+.exp-card-phone {
+	font-family: "Sora", sans-serif;
+	font-size: 1.05rem;
+	font-weight: 700;
+	color: rgba(255, 255, 255, 0.6);
+	letter-spacing: 0.04em;
+	margin: 0 0 1rem;
+}
+
+.exp-card-actions {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	margin-top: auto;
+}
+
+.exp-card-btn {
+	width: 100%;
+	justify-content: center;
+	font-size: 0.95rem;
+	min-height: 3.25rem;
+	padding: 0.85rem 1.25rem;
+	border-radius: 1rem;
+}
+
+/* ======================================================
+   RESPONSIVE -- EXPERIENCE CARDS
+====================================================== */
+@media (max-width: 960px) {
+	.experience-cards-grid,
+	.experience-cards-two {
+		grid-template-columns: 1fr;
+		max-width: 480px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+@media (max-width: 640px) {
+	.meet-agents-section {
+		padding: 4rem 0 5rem;
+	}
+
+	.meet-agents-support {
+		flex-direction: column;
+		align-items: center;
+		gap: 0.25rem;
+	}
+
+	.meet-agents-sep {
+		display: none;
+	}
+
+	.exp-card-actions {
+		gap: 0.6rem;
+	}
+
+	.experience-cards-grid,
+	.experience-cards-two {
+		max-width: 100%;
+	}
+}
+
+/* ======================================================
+   MOBILE — CHAT WIDGET OVERLAP PREVENTION
+   Keeps the floating chat icon from covering form CTAs
+====================================================== */
+@media (max-width: 768px) {
+
+	/* Give the page enough bottom breathing room so
+	   the chat bubble never sits on top of buttons */
+	body {
+		padding-bottom: 80px;
+	}
+
+	/* Push the launcher icon itself down so it clears
+	   the bottom of the viewport comfortably */
+	#LeadConnector__widget,
+	[data-widget-id],
+	.lc-launcher-wrapper,
+	.lc-chat-widget-launcher,
+	.lc-launcher {
+		bottom: 12px !important;
+		right: 12px !important;
+	}
+
+	/* Hide the auto-greeting / welcome bubble entirely on mobile.
+	   These selectors cover all known GHL widget greeting variants. */
+	.lc-chat-bubble-message,
+	.lc-greeting,
+	.lc-greeting-wrapper,
+	.lc-greeting-bubble,
+	.lc-greeting-container,
+	.lc-welcome-message,
+	.lc-welcome-bubble,
+	[class*="greeting"],
+	[class*="welcome-bubble"],
+	[class*="chat-bubble-message"] {
+		display: none !important;
+		opacity: 0 !important;
+		pointer-events: none !important;
+	}
+
+	/* Ensure the chat launcher itself stays tappable
+	   and is never covered by our padding */
+	.lc-launcher,
+	.lc-chat-widget-launcher {
+		z-index: 9999 !important;
+	}
+}
