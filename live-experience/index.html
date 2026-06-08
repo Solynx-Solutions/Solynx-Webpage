@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<!-- build: 2026-06-08 -->
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -22,52 +21,14 @@
 		window.LeadConnector = window.LeadConnector || {};
 		window.LeadConnector.autoOpen = false;
 		window.LeadConnector.autoGreeting = false;
-
-		// Belt-and-suspenders: if the widget renders a greeting bubble
-		// anyway (common on mobile), remove it as soon as it appears.
-		if (window.matchMedia('(max-width: 768px)').matches) {
-			var _greetingSelectors = [
-				'.lc-chat-bubble-message',
-				'.lc-greeting',
-				'.lc-greeting-wrapper',
-				'.lc-greeting-bubble',
-				'.lc-greeting-container',
-				'.lc-welcome-message',
-				'.lc-welcome-bubble'
-			].join(',');
-
-			var _suppressGreeting = function () {
-				document.querySelectorAll(_greetingSelectors).forEach(function (el) {
-					el.style.setProperty('display', 'none', 'important');
-					el.style.setProperty('opacity', '0', 'important');
-					el.style.setProperty('pointer-events', 'none', 'important');
-				});
-			};
-
-			// Run once on load, then watch for dynamic injection
-			document.addEventListener('DOMContentLoaded', _suppressGreeting);
-			var _obs = new MutationObserver(_suppressGreeting);
-			document.addEventListener('DOMContentLoaded', function () {
-				_obs.observe(document.body, { childList: true, subtree: true });
-			});
-		}
 	</script>
 </head>
 
 <body>
 	<main class="landing-page">
 		<!-- ============ HEADER / NAV ============ -->
-		<!-- ============ MOBILE STICKY HOME BAR (≤900px) ============ -->
-		<div class="mobile-home-bar" id="mobileHomeBar">
-			<a href="https://www.solynx.solutions" class="mobile-home-btn" id="mobile-home-btn">
-				&#8592; Back to Home
-			</a>
-			<button id="liveExpMobileToggle2" aria-label="Toggle mobile menu" class="mobile-hamburger">&#9776;</button>
-		</div>
 		<header class="site-header">
 			<div class="shell header-shell">
-				<!-- Desktop Back to Home -->
-				<a href="https://www.solynx.solutions" class="header-home-btn" id="desktop-home-btn">&#8592; Back to Home</a>
 				<a href="/index.html" class="header-brand">
 					<img src="/assets/images/SLX-WRD.png" alt="SOLYNX" />
 				</a>
@@ -90,20 +51,13 @@
 					#liveExpNavMenu.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(6,8,15,0.98); padding: 16px 24px; z-index: 999; gap: 12px; backdrop-filter: blur(14px); }
 					#liveExpMobileToggle { display: block !important; }
 					.header-cta { display: none; }
-					.desktop-home-btn, #desktop-home-btn { display: none !important; }
-				}
-				@media (min-width: 901px) {
-					.mobile-home-bar { display: none !important; }
 				}
 			</style>
 			<script>
 				(function() {
 					var toggle = document.getElementById('liveExpMobileToggle');
-					var toggle2 = document.getElementById('liveExpMobileToggle2');
 					var menu = document.getElementById('liveExpNavMenu');
-					function openMenu() { if (menu) menu.classList.toggle('open'); }
-					if (toggle && menu) toggle.addEventListener('click', openMenu);
-					if (toggle2 && menu) toggle2.addEventListener('click', openMenu);
+					if (toggle && menu) toggle.addEventListener('click', function() { menu.classList.toggle('open'); });
 				})();
 			</script>
 		</header>
@@ -168,9 +122,7 @@
 		</div>
 
 		<!-- ============ ENTER THE SYSTEM (FORM) ============ -->
-		<section id="enter-system" class="demo-section" aria-labelledby="enter-system-heading">
-			<!-- Deep-link anchor for cross-page CTAs -->
-			<div id="start-live-experience" style="position:relative;top:-80px;"></div>
+		<section id="enter-system" class="demo-section">
 			<div class="shell demo-grid">
 				<div class="demo-copy">
 					<p class="section-kicker">SOLYNX AI Ecosystem — LYNX Chat</p>
@@ -220,29 +172,16 @@
 
 						<label class="sr-only" for="industry">Industry</label>
 						<select id="industry" name="industry">
-						<option value="" selected disabled>Select Industry</option>
-						<option value="Landscape / Hardscape">Landscape / Hardscape</option>
-						<option value="HVAC">HVAC</option>
-						<option value="Plumbing">Plumbing</option>
-						<option value="Electrical">Electrical</option>
-						<option value="Roofing">Roofing</option>
-						<option value="General Contractor">General Contractor</option>
-						<option value="Cleaning Service">Cleaning Service</option>
-						<option value="Pest Control">Pest Control</option>
-						<option value="Chiropractor">Chiropractor</option>
-						<option value="Dental Practice">Dental Practice</option>
-						<option value="Medical Practice">Medical Practice</option>
-						<option value="Restaurant">Restaurant</option>
-						<option value="Bar &amp; Grill">Bar &amp; Grill</option>
-						<option value="Cafe">Cafe</option>
-						<option value="Real Estate">Real Estate</option>
-						<option value="Property Management">Property Management</option>
-						<option value="Insurance Agency">Insurance Agency</option>
-						<option value="Law Firm">Law Firm</option>
-						<option value="Marketing Agency">Marketing Agency</option>
-						<option value="Consulting">Consulting</option>
-						<option value="Other">Other</option>
-					</select>
+							<option value="" selected disabled>Select Industry</option>
+							<option>Home Services</option>
+							<option>Hospitality</option>
+							<option>Retail</option>
+							<option>Coaching</option>
+							<option>Healthcare</option>
+							<option>Professional Services</option>
+							<option>Real Estate</option>
+							<option>Other</option>
+						</select>
 
 						<label class="sr-only" for="automate-first">What do you want to automate first?</label>
 						<select id="automate-first" name="automate_first">
@@ -337,84 +276,61 @@
 			</div>
 		</section>
 
-		<!-- ============ MEET ALEX & LEXY — SOLYNX AI EXPERIENCE LAYER ============ -->
-		<section id="ai-voice" class="ai-voice-section meet-agents-section">
-			<div class="shell">
-				<div class="meet-agents-header center-copy">
-					<p class="section-kicker">SOLYNX AI Experience Layer</p>
-					<h2>Meet Alex &amp; Lexy</h2>
-					<p class="meet-agents-subtitle">
-						Call our AI receptionists and experience how SOLYNX answers calls, qualifies leads, and helps route opportunities automatically.
+		<!-- ============ SOLYNX AI VOICE SECTION ============ -->
+		<section id="ai-voice" class="ai-voice-section">
+			<div class="shell ai-voice-shell">
+				<div class="ai-voice-content">
+					<p class="section-kicker">SOLYNX AI Ecosystem</p>
+					<h2>Try SOLYNX AI Voice</h2>
+					<p class="ai-voice-subtitle">
+						Experience how an AI voice assistant can answer calls, qualify leads, answer questions,
+						and help book appointments automatically.
 					</p>
-					<p class="meet-agents-support">
-						<span>Alex handles English conversations.</span>
-						<span class="meet-agents-sep" aria-hidden="true">·</span>
-						<span>Lexy handles Spanish conversations.</span>
-						<span class="meet-agents-sep" aria-hidden="true">·</span>
-						<span>Both operate 24/7 and demonstrate how AI voice systems help businesses capture more opportunities.</span>
-					</p>
+
+					<ul class="ai-voice-bullets" aria-label="AI Voice features">
+						<li><span class="ai-voice-check" aria-hidden="true">✓</span> Answers calls instantly</li>
+						<li><span class="ai-voice-check" aria-hidden="true">✓</span> Qualifies new leads</li>
+						<li><span class="ai-voice-check" aria-hidden="true">✓</span> Handles FAQs</li>
+						<li><span class="ai-voice-check" aria-hidden="true">✓</span> Schedules appointments</li>
+						<li><span class="ai-voice-check" aria-hidden="true">✓</span> Works 24/7</li>
+						<li><span class="ai-voice-check" aria-hidden="true">✓</span> Never misses an opportunity</li>
+					</ul>
+
+					<div class="ai-voice-actions">
+						<a href="#ai-voice" class="button button-primary" id="ai-voice-call-btn">📞 Try AI Voice</a>
+						<a href="https://link.solynx.solutions/widget/bookings/solynx-consultation" class="button button-secondary" id="ai-voice-demo-btn" target="_blank" rel="noopener noreferrer">Book A Demo</a>
+					</div>
 				</div>
 
-				<!-- Two branded voice experience cards -->
-				<div class="experience-cards-grid experience-cards-two">
-
-					<!-- CARD 2: Alex — English AI Receptionist -->
-					<article class="experience-card" id="exp-card-alex">
-						<div class="exp-card-header">
-							<div class="exp-card-badge exp-badge-voice">
-								<span class="exp-card-dot exp-dot-pulse"></span>
-								<span>SOLYNX AI Receptionist</span>
+				<div class="ai-voice-visual" aria-hidden="true">
+					<div class="ai-voice-card">
+						<div class="ai-voice-card-header">
+							<span class="ai-voice-dot"></span>
+							<span class="ai-voice-card-label">SOLYNX AI VOICE — LIVE</span>
+						</div>
+						<div class="ai-voice-waveform" aria-hidden="true">
+							<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+						</div>
+						<div class="ai-voice-transcript">
+							<div class="ai-voice-line ai-line">
+								<span class="ai-voice-speaker">AI</span>
+								<p>Hi! Thanks for calling. I'm LYNX, your SOLYNX AI assistant. How can I help you today?</p>
 							</div>
-							<h3 class="exp-card-title">Alex</h3>
-							<p class="exp-card-subtitle">English AI Receptionist</p>
-							<p class="exp-card-desc">Call and speak with Alex.</p>
-						</div>
-						<ul class="exp-card-features" aria-label="Alex features">
-							<li><span class="exp-check" aria-hidden="true">✓</span> Answers instantly</li>
-							<li><span class="exp-check" aria-hidden="true">✓</span> Qualifies leads</li>
-							<li><span class="exp-check" aria-hidden="true">✓</span> Handles FAQs</li>
-							<li><span class="exp-check" aria-hidden="true">✓</span> Books appointments</li>
-						</ul>
-						<p class="exp-card-phone" aria-label="Alex phone number">(855) 408-5969</p>
-						<div class="exp-card-actions">
-							<a href="tel:+18554085969" class="button button-primary exp-card-btn" id="call-alex-btn">
-								📞 Call Alex
-							</a>
-							<a href="https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc" class="button button-secondary exp-card-btn" id="book-demo-alex-btn" target="_blank" rel="noopener noreferrer">
-								Book Demo
-							</a>
-						</div>
-					</article>
-
-					<!-- CARD 3: Lexy — Spanish AI Receptionist -->
-					<article class="experience-card" id="exp-card-lexy">
-						<div class="exp-card-header">
-							<div class="exp-card-badge exp-badge-voice exp-badge-lexy">
-								<span class="exp-card-dot exp-dot-pulse"></span>
-								<span>SOLYNX AI Receptionist</span>
+							<div class="ai-voice-line caller-line">
+								<span class="ai-voice-speaker caller">YOU</span>
+								<p>I'd like to get a quote and maybe schedule an appointment.</p>
 							</div>
-							<h3 class="exp-card-title">Lexy</h3>
-							<p class="exp-card-subtitle">Spanish AI Receptionist</p>
-							<p class="exp-card-desc">Habla con Lexy en español.</p>
+							<div class="ai-voice-line ai-line">
+								<span class="ai-voice-speaker">AI</span>
+								<p>Absolutely! I can help with that right now. Let me pull up our availability...</p>
+							</div>
 						</div>
-						<ul class="exp-card-features" aria-label="Lexy features">
-							<li><span class="exp-check" aria-hidden="true">✓</span> Responde llamadas</li>
-							<li><span class="exp-check" aria-hidden="true">✓</span> Califica prospectos</li>
-							<li><span class="exp-check" aria-hidden="true">✓</span> Agenda citas</li>
-							<li><span class="exp-check" aria-hidden="true">✓</span> Disponible 24/7</li>
-						</ul>
-						<p class="exp-card-phone" aria-label="Lexy phone number">(831) 777-6198</p>
-						<div class="exp-card-actions">
-							<a href="tel:+18317776198" class="button button-primary exp-card-btn" id="call-lexy-btn">
-								📞 Call Lexy
-							</a>
-							<a href="https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc" class="button button-secondary exp-card-btn" id="book-demo-lexy-btn" target="_blank" rel="noopener noreferrer">
-								Book Demo
-							</a>
+						<div class="ai-voice-status">
+							<span class="status-dot" aria-hidden="true"></span>
+							<span>Available 24/7 — Never misses a call</span>
 						</div>
-					</article>
-
-				</div><!-- /.experience-cards-grid -->
+					</div>
+				</div>
 			</div>
 		</section>
 
@@ -625,7 +541,7 @@
 					You just experienced the front end of a SOLYNX response system. Now let's map where your business is
 					losing leads and what automation could recover those opportunities.
 				</p>
-				<a href="https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc" class="button button-primary cta-button" id="final-cta-audit"
+				<a href="https://link.solynx.solutions/widget/bookings/solynx-consultation" class="button button-primary cta-button" id="final-cta-audit"
 					target="_blank" rel="noopener noreferrer">Book My Growth Audit</a>
 			</div>
 		</section>
@@ -636,11 +552,9 @@
 				<nav class="footer-nav" aria-label="Footer">
 					<a href="#top">Top</a>
 					<a href="#enter-system">Enter The System</a>
-					<a href="#ai-voice">Meet Alex &amp; Lexy</a>
 					<a href="#what-happens">What Happens Next</a>
 					<a href="#how">How It Works</a>
 					<a href="#what-this-shows">What This Shows</a>
-					<a href="https://www.solynx.solutions">← Back to Home</a>
 				</nav>
 				<p class="footer-credit">Built by <span>SOLYNX</span></p>
 				<p class="footer-tagline">Response infrastructure that captures, follows up, and routes. Multi-channel.
@@ -714,11 +628,21 @@
 		data-widget-id="69b725f66660242869549e80">
 		</script>
 	<script>
-		window.LeadConnector = window.LeadConnector || {};
-		window.LeadConnector.autoOpen = false;
-		window.LeadConnector.autoGreeting = false;
-		// Chat widget opens only when the user taps the floating chat icon.
+		// SOLYNX Live Experience — suppress GHL chat widget auto-open
+		// Widget stays minimized; opens only on visitor click.
+		(function () {
+			function forceClose() {
+				if (window.LeadConnector) {
+					if (typeof window.LeadConnector.closeWidget === 'function') window.LeadConnector.closeWidget();
+					if (typeof window.LeadConnector.close === 'function') window.LeadConnector.close();
+				}
+				if (window.LC_API && typeof window.LC_API.close_chat === 'function') window.LC_API.close_chat();
+				document.querySelectorAll('iframe[src*="leadconnectorhq"]').forEach(function (f) {
+					try { f.contentWindow.postMessage(JSON.stringify({ action: 'close' }), '*'); } catch (e) { }
+				});
+			}
+			[600, 1200, 2500, 4000, 5500].forEach(function (ms) { setTimeout(forceClose, ms); });
+		})();
 	</script>
 </body>
 
-</html>
