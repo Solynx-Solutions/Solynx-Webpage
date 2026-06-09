@@ -1993,11 +1993,9 @@ button:focus-visible {
 	opacity: 0.9;
 }
 
-/* Active state — both agents */
+/* Active state — both agents: dimmed but still clickable to toggle off */
 .agent-talk-btn--active {
-	opacity: 0.85;
-	cursor: default;
-	pointer-events: none;
+	opacity: 0.72;
 }
 
 /* Responsive: stack on tablet */

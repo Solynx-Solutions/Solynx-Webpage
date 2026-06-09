@@ -664,6 +664,7 @@
 					<a href="#what-happens">What Happens Next</a>
 					<a href="#how">How It Works</a>
 					<a href="#what-this-shows">What This Shows</a>
+					<a href="#ai-voice">Meet Alex &amp; Lexy</a>
 				</nav>
 				<p class="footer-credit">Built by <span>SOLYNX</span></p>
 				<p class="footer-tagline">Response infrastructure that captures, follows up, and routes. Multi-channel.
@@ -737,16 +738,22 @@
 		data-widget-id="69b725f66660242869549e80">
 		</script>
 	<script>
-		// SOLYNX Live Experience — suppress GHL chat widget auto-open
-		// Widget stays minimized; opens only on visitor click.
+		// SOLYNX Live Experience — suppress GHL floating chat widget auto-open
+		// Scoped to the floating chat widget only (widget ID 69b725f66660242869549e80).
+		// Voice widget iframes (Alex/Lexy) are intentionally excluded.
 		(function () {
+			var CHAT_WIDGET_ID = '69b725f66660242869549e80';
+
 			function forceClose() {
 				if (window.LeadConnector) {
 					if (typeof window.LeadConnector.closeWidget === 'function') window.LeadConnector.closeWidget();
 					if (typeof window.LeadConnector.close === 'function') window.LeadConnector.close();
 				}
 				if (window.LC_API && typeof window.LC_API.close_chat === 'function') window.LC_API.close_chat();
+				// Only target the floating chat widget iframe — not the Alex/Lexy voice widget iframes
 				document.querySelectorAll('iframe[src*="leadconnectorhq"]').forEach(function (f) {
+					// Skip iframes inside voice widget embed containers
+					if (f.closest('#alex-voice-widget, #lexy-voice-widget')) return;
 					try { f.contentWindow.postMessage(JSON.stringify({ action: 'close' }), '*'); } catch (e) { }
 				});
 			}
