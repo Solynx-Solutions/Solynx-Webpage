@@ -2022,4 +2022,82 @@ button:focus-visible {
 		width: 100%;
 		text-align: center;
 	}
+
+	.agent-talk-btn {
+		width: 100%;
+		text-align: center;
+	}
+}
+
+/* ======================================================
+   VOICE WIDGET EMBED — browser voice containers
+====================================================== */
+
+/* Ghost/tertiary button for Book Demo */
+.button-ghost {
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	background: transparent;
+	color: rgba(255, 255, 255, 0.72);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	transition: border-color 180ms ease, color 180ms ease, background 180ms ease;
+}
+
+.button-ghost:hover {
+	border-color: rgba(255, 255, 255, 0.4);
+	color: #ffffff;
+	background: rgba(255, 255, 255, 0.06);
+}
+
+/* Talk button — primary orange but slightly differentiated */
+.agent-talk-btn {
+	flex: 1 1 100%;
+	font-size: 0.95rem;
+	background: linear-gradient(90deg, var(--orange), var(--orange-soft));
+	color: #05050c;
+	border-color: transparent;
+	box-shadow: 0 10px 28px rgba(255, 106, 0, 0.22);
+}
+
+.agent-talk-btn:hover {
+	opacity: 0.9;
+	transform: translateY(-2px);
+}
+
+/* Voice widget embed container */
+.voice-widget-embed {
+	margin-top: 1.25rem;
+	border-radius: 1.1rem;
+	border: 1px solid rgba(255, 106, 0, 0.2);
+	background: rgba(255, 106, 0, 0.04);
+	padding: 1.25rem;
+	min-height: 80px;
+	width: 100%;
+	overflow: hidden;
+	transition: opacity 250ms ease;
+}
+
+.voice-widget-embed[hidden] {
+	display: none;
+}
+
+/* Ensure any iframe inside the widget is responsive */
+.voice-widget-embed iframe {
+	width: 100% !important;
+	max-width: 100%;
+	border: none;
+	border-radius: 0.75rem;
+}
+
+/* Lexy widget border accent */
+#lexy-voice-widget {
+	border-color: rgba(150, 100, 255, 0.2);
+	background: rgba(120, 80, 255, 0.04);
+}
+
+/* Mobile: ensure all three buttons stack cleanly */
+@media (max-width: 700px) {
+	.agent-talk-btn {
+		width: 100%;
+	}
 }

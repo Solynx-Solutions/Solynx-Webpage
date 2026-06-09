@@ -505,8 +505,10 @@
 					<p class="section-kicker">SOLYNX AI VOICE</p>
 					<h2>Meet Alex &amp; Lexy</h2>
 					<p class="meet-agents-intro">
-						Call our AI receptionists and experience how SOLYNX answers calls, qualifies leads, and helps
-						route opportunities automatically.
+						Talk to our AI receptionists directly in your browser, or place a real phone call to experience how SOLYNX answers, qualifies, and routes opportunities automatically.
+					</p>
+					<p class="agent-call-note" style="margin-top:0.5rem;">
+						Browser voice requires microphone permission. Phone call buttons work best on mobile devices.
 					</p>
 				</div>
 
@@ -526,17 +528,31 @@
 						<div class="agent-waveform" aria-hidden="true">
 							<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
 						</div>
-						<p class="agent-copy">Call and speak with Alex.</p>
+						<p class="agent-copy">Talk to Alex directly in your browser or dial in by phone.</p>
 						<p class="agent-phone">📞 (855) 408-5969</p>
 						<div class="agent-actions">
-							<a href="tel:+18554085969" class="button button-primary agent-call-btn" id="call-alex-btn"
-								aria-label="Call Alex, English AI receptionist">Call Alex</a>
+							<a href="#alex-voice-widget"
+							   class="button button-primary agent-talk-btn"
+							   id="talk-alex-btn"
+							   aria-label="Talk to Alex, English AI receptionist in your browser"
+							   onclick="toggleVoiceWidget('alex-voice-widget', this); return false;">Talk To Alex Live</a>
+							<a href="tel:+18554085969"
+							   class="button button-secondary agent-call-btn"
+							   id="call-alex-btn"
+							   aria-label="Call Alex, English AI receptionist">Call Alex</a>
 							<a href="https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc"
-								class="button button-secondary agent-book-btn" id="book-demo-alex-btn" target="_blank"
-								rel="noopener noreferrer">Book Demo</a>
+							   class="button button-ghost agent-book-btn"
+							   id="book-demo-alex-btn"
+							   target="_blank" rel="noopener noreferrer">Book Demo</a>
 						</div>
-						<p class="agent-call-note">Best experienced on mobile. Desktop calling requires a configured
-							phone app.</p>
+
+						<!-- Alex browser voice widget -->
+						<div id="alex-voice-widget" class="voice-widget-embed" hidden>
+							<!-- GHL Alex Voice AI embedded widget -->
+							<script src="https://beta.leadconnectorhq.com/loader.js"
+								data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js"
+								data-widget-id="6a279282e53da97e716cf9fc"></script>
+						</div>
 					</article>
 
 					<!-- LEXY -->
@@ -554,21 +570,52 @@
 						<div class="agent-waveform" aria-hidden="true">
 							<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
 						</div>
-						<p class="agent-copy">Habla con Lexy en español.</p>
+						<p class="agent-copy">Habla con Lexy en español directamente en tu navegador o llama por teléfono.</p>
 						<p class="agent-phone">📞 (831) 777-6198</p>
 						<div class="agent-actions">
-							<a href="tel:+18317776198" class="button button-primary agent-call-btn" id="call-lexy-btn"
-								aria-label="Call Lexy, Spanish AI receptionist">Call Lexy</a>
+							<a href="#lexy-voice-widget"
+							   class="button button-primary agent-talk-btn"
+							   id="talk-lexy-btn"
+							   aria-label="Habla con Lexy, receptionist AI en español, en tu navegador"
+							   onclick="toggleVoiceWidget('lexy-voice-widget', this); return false;">Habla Con Lexy</a>
+							<a href="tel:+18317776198"
+							   class="button button-secondary agent-call-btn"
+							   id="call-lexy-btn"
+							   aria-label="Call Lexy, Spanish AI receptionist">Call Lexy</a>
 							<a href="https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc"
-								class="button button-secondary agent-book-btn" id="book-demo-lexy-btn" target="_blank"
-								rel="noopener noreferrer">Book Demo</a>
+							   class="button button-ghost agent-book-btn"
+							   id="book-demo-lexy-btn"
+							   target="_blank" rel="noopener noreferrer">Book Demo</a>
 						</div>
-						<p class="agent-call-note">Best experienced on mobile. Desktop calling requires a configured
-							phone app.</p>
+
+						<!-- Lexy browser voice widget -->
+						<div id="lexy-voice-widget" class="voice-widget-embed" hidden>
+							<!-- GHL Lexy Voice AI embedded widget -->
+							<script src="https://beta.leadconnectorhq.com/loader.js"
+								data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js"
+								data-widget-id="6a27a8e7cce0c0ecc8e3ead7"></script>
+						</div>
 					</article>
 				</div>
 			</div>
 		</section>
+
+		<script>
+			// Toggle voice widget visibility and scroll into view
+			function toggleVoiceWidget(widgetId, triggerBtn) {
+				var widget = document.getElementById(widgetId);
+				if (!widget) return;
+				var isHidden = widget.hasAttribute('hidden');
+				if (isHidden) {
+					widget.removeAttribute('hidden');
+					triggerBtn.textContent = triggerBtn.textContent.indexOf('Alex') !== -1 ? 'Close Alex' : 'Cerrar Lexy';
+					setTimeout(function () { widget.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 80);
+				} else {
+					widget.setAttribute('hidden', '');
+					triggerBtn.textContent = triggerBtn.textContent.indexOf('Close') !== -1 ? 'Talk To Alex Live' : 'Habla Con Lexy';
+				}
+			}
+		</script>
 
 		<!-- ============ FINAL CTA ============ -->
 		<section class="cta-section">
