@@ -1965,6 +1965,14 @@ button:focus-visible {
 	font-size: 0.95rem;
 }
 
+.agent-call-note {
+	font-size: 0.78rem;
+	line-height: 1.5;
+	color: rgba(255, 255, 255, 0.42);
+	margin: 0;
+	font-style: italic;
+}
+
 /* Lexy card accent overrides */
 #agent-card-lexy {
 	border-color: rgba(120, 80, 255, 0.12);

@@ -42,22 +42,45 @@
 					<a href="/local-growth-system.html">LOCAL GROWTH</a>
 					<a href="/live-experience/" aria-current="page" style="color:var(--orange);">LIVE EXPERIENCE</a>
 				</nav>
-				<a href="https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc" class="button header-cta" target="_blank" rel="noopener noreferrer">GET STARTED</a>
-				<button id="liveExpMobileToggle" aria-label="Toggle mobile menu" style="display:none;background:none;border:none;color:white;font-size:1.5rem;cursor:pointer;padding:8px;">&#9776;</button>
+				<a href="https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc" class="button header-cta"
+					target="_blank" rel="noopener noreferrer">GET STARTED</a>
+				<button id="liveExpMobileToggle" aria-label="Toggle mobile menu"
+					style="display:none;background:none;border:none;color:white;font-size:1.5rem;cursor:pointer;padding:8px;">&#9776;</button>
 			</div>
 			<style>
 				@media (max-width: 900px) {
-					#liveExpNavMenu { display: none; }
-					#liveExpNavMenu.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(6,8,15,0.98); padding: 16px 24px; z-index: 999; gap: 12px; backdrop-filter: blur(14px); }
-					#liveExpMobileToggle { display: block !important; }
-					.header-cta { display: none; }
+					#liveExpNavMenu {
+						display: none;
+					}
+
+					#liveExpNavMenu.open {
+						display: flex;
+						flex-direction: column;
+						position: absolute;
+						top: 100%;
+						left: 0;
+						right: 0;
+						background: rgba(6, 8, 15, 0.98);
+						padding: 16px 24px;
+						z-index: 999;
+						gap: 12px;
+						backdrop-filter: blur(14px);
+					}
+
+					#liveExpMobileToggle {
+						display: block !important;
+					}
+
+					.header-cta {
+						display: none;
+					}
 				}
 			</style>
 			<script>
-				(function() {
+				(function () {
 					var toggle = document.getElementById('liveExpMobileToggle');
 					var menu = document.getElementById('liveExpNavMenu');
-					if (toggle && menu) toggle.addEventListener('click', function() { menu.classList.toggle('open'); });
+					if (toggle && menu) toggle.addEventListener('click', function () { menu.classList.toggle('open'); });
 				})();
 			</script>
 		</header>
@@ -74,7 +97,8 @@
 				<h1>Experience The SOLYNX Response System</h1>
 
 				<p class="hero-copy">
-					Submit your information and watch SOLYNX instantly respond through automation, CRM workflows, AI chat, voice systems, and follow-up sequences.
+					Submit your information and watch SOLYNX instantly respond through automation, CRM workflows, AI
+					chat, voice systems, and follow-up sequences.
 				</p>
 
 				<div class="hero-actions">
@@ -272,67 +296,6 @@
 							<p class="stat-label">Lead Capacity</p>
 						</div>
 					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- ============ MEET ALEX & LEXY — AI VOICE SECTION ============ -->
-		<section id="ai-voice" class="meet-agents-section">
-			<div class="shell meet-agents-shell">
-				<div class="meet-agents-header center-copy">
-					<p class="section-kicker">SOLYNX AI VOICE</p>
-					<h2>Meet Alex &amp; Lexy</h2>
-					<p class="meet-agents-intro">
-						Call our AI receptionists and experience how SOLYNX answers calls, qualifies leads, and helps route opportunities automatically.
-					</p>
-				</div>
-
-				<div class="agent-cards-grid">
-					<!-- ALEX -->
-					<article class="agent-card" id="agent-card-alex">
-						<div class="agent-card-top">
-							<div class="agent-avatar agent-avatar-alex" aria-hidden="true">
-								<span class="agent-initials">A</span>
-								<span class="agent-avatar-dot"></span>
-							</div>
-							<div class="agent-meta">
-								<h3 class="agent-name">Alex</h3>
-								<p class="agent-subtitle">English AI Receptionist</p>
-							</div>
-						</div>
-						<div class="agent-waveform" aria-hidden="true">
-							<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-						</div>
-						<p class="agent-copy">Call and speak with Alex.</p>
-						<p class="agent-phone">📞 (855) 408-5969</p>
-						<div class="agent-actions">
-							<a href="tel:+18554085969" class="button button-primary agent-call-btn" id="call-alex-btn">Call Alex</a>
-							<a href="https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc" class="button button-secondary agent-book-btn" id="book-demo-alex-btn" target="_blank" rel="noopener noreferrer">Book Demo</a>
-						</div>
-					</article>
-
-					<!-- LEXY -->
-					<article class="agent-card" id="agent-card-lexy">
-						<div class="agent-card-top">
-							<div class="agent-avatar agent-avatar-lexy" aria-hidden="true">
-								<span class="agent-initials">L</span>
-								<span class="agent-avatar-dot"></span>
-							</div>
-							<div class="agent-meta">
-								<h3 class="agent-name">Lexy</h3>
-								<p class="agent-subtitle">Spanish AI Receptionist</p>
-							</div>
-						</div>
-						<div class="agent-waveform" aria-hidden="true">
-							<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-						</div>
-						<p class="agent-copy">Habla con Lexy en español.</p>
-						<p class="agent-phone">📞 (831) 777-6198</p>
-						<div class="agent-actions">
-							<a href="tel:+18317776198" class="button button-primary agent-call-btn" id="call-lexy-btn">Call Lexy</a>
-							<a href="https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc" class="button button-secondary agent-book-btn" id="book-demo-lexy-btn" target="_blank" rel="noopener noreferrer">Book Demo</a>
-						</div>
-					</article>
 				</div>
 			</div>
 		</section>
@@ -535,6 +498,78 @@
 			</div>
 		</section>
 
+		<!-- ============ MEET ALEX & LEXY — AI VOICE (OPTIONAL DEMO) ============ -->
+		<section id="ai-voice" class="meet-agents-section">
+			<div class="shell meet-agents-shell">
+				<div class="meet-agents-header center-copy">
+					<p class="section-kicker">SOLYNX AI VOICE</p>
+					<h2>Meet Alex &amp; Lexy</h2>
+					<p class="meet-agents-intro">
+						Call our AI receptionists and experience how SOLYNX answers calls, qualifies leads, and helps
+						route opportunities automatically.
+					</p>
+				</div>
+
+				<div class="agent-cards-grid">
+					<!-- ALEX -->
+					<article class="agent-card" id="agent-card-alex">
+						<div class="agent-card-top">
+							<div class="agent-avatar agent-avatar-alex" aria-hidden="true">
+								<span class="agent-initials">A</span>
+								<span class="agent-avatar-dot"></span>
+							</div>
+							<div class="agent-meta">
+								<h3 class="agent-name">Alex</h3>
+								<p class="agent-subtitle">English AI Receptionist</p>
+							</div>
+						</div>
+						<div class="agent-waveform" aria-hidden="true">
+							<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+						</div>
+						<p class="agent-copy">Call and speak with Alex.</p>
+						<p class="agent-phone">📞 (855) 408-5969</p>
+						<div class="agent-actions">
+							<a href="tel:+18554085969" class="button button-primary agent-call-btn" id="call-alex-btn"
+								aria-label="Call Alex, English AI receptionist">Call Alex</a>
+							<a href="https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc"
+								class="button button-secondary agent-book-btn" id="book-demo-alex-btn" target="_blank"
+								rel="noopener noreferrer">Book Demo</a>
+						</div>
+						<p class="agent-call-note">Best experienced on mobile. Desktop calling requires a configured
+							phone app.</p>
+					</article>
+
+					<!-- LEXY -->
+					<article class="agent-card" id="agent-card-lexy">
+						<div class="agent-card-top">
+							<div class="agent-avatar agent-avatar-lexy" aria-hidden="true">
+								<span class="agent-initials">L</span>
+								<span class="agent-avatar-dot"></span>
+							</div>
+							<div class="agent-meta">
+								<h3 class="agent-name">Lexy</h3>
+								<p class="agent-subtitle">Spanish AI Receptionist</p>
+							</div>
+						</div>
+						<div class="agent-waveform" aria-hidden="true">
+							<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+						</div>
+						<p class="agent-copy">Habla con Lexy en español.</p>
+						<p class="agent-phone">📞 (831) 777-6198</p>
+						<div class="agent-actions">
+							<a href="tel:+18317776198" class="button button-primary agent-call-btn" id="call-lexy-btn"
+								aria-label="Call Lexy, Spanish AI receptionist">Call Lexy</a>
+							<a href="https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc"
+								class="button button-secondary agent-book-btn" id="book-demo-lexy-btn" target="_blank"
+								rel="noopener noreferrer">Book Demo</a>
+						</div>
+						<p class="agent-call-note">Best experienced on mobile. Desktop calling requires a configured
+							phone app.</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
 		<!-- ============ FINAL CTA ============ -->
 		<section class="cta-section">
 			<div class="shell cta-shell center-copy">
@@ -544,8 +579,9 @@
 					You just experienced the front end of a SOLYNX response system. Now let's map where your business is
 					losing leads and what automation could recover those opportunities.
 				</p>
-				<a href="https://link.solynx.solutions/widget/bookings/solynx-consultation" class="button button-primary cta-button" id="final-cta-audit"
-					target="_blank" rel="noopener noreferrer">Book My Growth Audit</a>
+				<a href="https://link.solynx.solutions/widget/bookings/solynx-consultation"
+					class="button button-primary cta-button" id="final-cta-audit" target="_blank"
+					rel="noopener noreferrer">Book My Growth Audit</a>
 			</div>
 		</section>
 
@@ -648,4 +684,3 @@
 		})();
 	</script>
 </body>
-
