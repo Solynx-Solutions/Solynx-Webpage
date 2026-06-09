@@ -13,6 +13,7 @@
 		href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
 		rel="stylesheet" />
 	<link rel="stylesheet" href="styles.css" />
+	<link rel="stylesheet" href="../css/mobile-nav.css" />
 	<!-- GHL EXTERNAL TRACKING -->
 	<script src="https://link.solynx.solutions/js/external-tracking.js"
 		data-tracking-id="tk_a988b484869f45a09604f417b5778c51"></script>
@@ -44,46 +45,41 @@
 				</nav>
 				<a href="https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc" class="button header-cta"
 					target="_blank" rel="noopener noreferrer">GET STARTED</a>
-				<button id="liveExpMobileToggle" aria-label="Toggle mobile menu"
-					style="display:none;background:none;border:none;color:white;font-size:1.5rem;cursor:pointer;padding:8px;">&#9776;</button>
+				<!-- Shared hamburger button — controlled by ../js/mobile-nav.js -->
+				<button id="mobileToggle" class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false">&#9776;</button>
 			</div>
-			<style>
-				@media (max-width: 900px) {
-					#liveExpNavMenu {
-						display: none;
-					}
-
-					#liveExpNavMenu.open {
-						display: flex;
-						flex-direction: column;
-						position: absolute;
-						top: 100%;
-						left: 0;
-						right: 0;
-						background: rgba(6, 8, 15, 0.98);
-						padding: 16px 24px;
-						z-index: 999;
-						gap: 12px;
-						backdrop-filter: blur(14px);
-					}
-
-					#liveExpMobileToggle {
-						display: block !important;
-					}
-
-					.header-cta {
-						display: none;
-					}
-				}
-			</style>
-			<script>
-				(function () {
-					var toggle = document.getElementById('liveExpMobileToggle');
-					var menu = document.getElementById('liveExpNavMenu');
-					if (toggle && menu) toggle.addEventListener('click', function () { menu.classList.toggle('open'); });
-				})();
-			</script>
 		</header>
+
+		<!-- ============ SOLYNX MOBILE NAV OVERLAY ============ -->
+		<div id="solynx-mobile-nav" role="dialog" aria-modal="true" aria-label="SOLYNX Navigation">
+			<div class="snav-header">
+				<a href="/index.html" class="snav-logo" aria-label="SOLYNX Home">
+					<img src="/assets/images/SLX-WRD.png" alt="SOLYNX">
+				</a>
+				<button id="snavClose" class="snav-close" aria-label="Close navigation menu">✕</button>
+			</div>
+			<div class="snav-title-block">
+				<p class="snav-title">SOLYNX Navigation</p>
+				<p class="snav-subtitle">Choose where you want to go next.</p>
+			</div>
+			<div class="snav-divider"></div>
+			<ul class="snav-links">
+				<li><a href="/index.html" class="snav-back">&#8592; Back to Home</a></li>
+				<li><a href="/index.html" class="snav-link">Home</a></li>
+				<li><a href="/#platform" class="snav-link">Platform</a></li>
+				<li><a href="/#how-it-works" class="snav-link">How It Works</a></li>
+				<li><a href="/#pricing" class="snav-link">Pricing</a></li>
+				<li><a href="/#automation-systems" class="snav-link">Automation Systems</a></li>
+				<li><a href="/#about" class="snav-link">About</a></li>
+				<li><a href="/local-growth-system.html" class="snav-link">Local Growth</a></li>
+				<li><a href="/live-experience/" class="snav-link snav-link--live" aria-current="page">Live Experience</a></li>
+				<li class="snav-cta-wrapper">
+					<a href="https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc"
+					   class="snav-cta"
+					   target="_blank" rel="noopener noreferrer">Book Growth Audit</a>
+				</li>
+			</ul>
+		</div>
 
 		<!-- ============ HERO ============ -->
 		<section class="hero-section" id="top">
@@ -732,6 +728,7 @@
 			});
 		}
 	</script>
+	<script src="../js/mobile-nav.js"></script>
 	<!-- GHL CHAT WIDGET -->
 	<script src="https://widgets.leadconnectorhq.com/loader.js"
 		data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"

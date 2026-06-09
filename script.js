@@ -6,11 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (mobileToggle && navMenu) {
         mobileToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+            const isOpen = navMenu.classList.toggle('active');
             mobileToggle.classList.toggle('active');
+            document.body.classList.toggle('menu-open', isOpen);
 
             // Change icon based on state
-            if (navMenu.classList.contains('active')) {
+            if (isOpen) {
                 mobileToggle.textContent = '✕'; // Close icon
                 mobileToggle.setAttribute('aria-expanded', 'true');
             } else {
@@ -19,23 +20,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Close menu when a link is clicked
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                mobileToggle.classList.remove('active');
-                mobileToggle.textContent = '☰';
-                mobileToggle.setAttribute('aria-expanded', 'false');
-            });
+        // Helper to close the menu cleanly
+        function closeMenu() {
+            navMenu.classList.remove('active');
+            mobileToggle.classList.remove('active');
+            mobileToggle.textContent = '☰';
+            mobileToggle.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('menu-open');
+        }
+
+        // Close menu when any nav link or CTA button is clicked
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
         });
 
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target) && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-                mobileToggle.classList.remove('active');
-                mobileToggle.textContent = '☰';
-                mobileToggle.setAttribute('aria-expanded', 'false');
+                closeMenu();
             }
         });
     }

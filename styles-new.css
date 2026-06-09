@@ -624,41 +624,17 @@ ul {
         justify-content: center;
     }
 
-    .navbar .nav-menu {
-        display: none;
-    }
-
-    /* Mobile Menu Implementation */
+    /* Mobile nav: deferred to styles.css full-viewport overlay */
+    /* .navbar .nav-menu controlled by styles.css @media (max-width: 768px) */
     .mobile-menu-toggle {
-        display: block;
-        z-index: 1001;
-    }
-
-    .navbar .nav-menu {
         display: flex;
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 70%;
-        height: 100vh;
-        max-width: 300px;
-        background: rgba(5, 10, 20, 0.95);
-        backdrop-filter: blur(15px);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: right 0.4s ease-in-out;
-        z-index: 999;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+        z-index: 10001;
     }
 
-    .navbar .nav-menu.active {
-        right: 0;
-    }
-
-    .nav-link {
-        font-size: 1.2rem;
-        margin: 15px 0;
+    /* Ensure nav-menu items are centered in the overlay */
+    .navbar .nav-menu .nav-link {
+        font-size: 1.15rem;
+        margin: 0;
     }
 }
 

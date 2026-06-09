@@ -1,0 +1,261 @@
+/* =================================================================
+   SOLYNX — Shared Mobile Navigation Overlay
+   Applies on ALL pages at max-width: 900px.
+   Desktop nav (ul.nav-menu) is unaffected.
+   ================================================================= */
+
+/* ── Hamburger button ─────────────────────────────────────────── */
+.mobile-menu-toggle {
+    display: none; /* hidden by default on desktop */
+}
+
+@media (max-width: 900px) {
+    .mobile-menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 46px;
+        height: 46px;
+        font-size: 1.5rem;
+        line-height: 1;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 10px;
+        color: #ffffff;
+        cursor: pointer;
+        z-index: 10001;
+        position: relative;
+        flex-shrink: 0;
+        transition: background 180ms ease, border-color 180ms ease;
+    }
+
+    .mobile-menu-toggle:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.22);
+    }
+
+    /* Hide desktop nav-menu on mobile */
+    .nav-menu {
+        display: none !important;
+    }
+}
+
+/* ── Full-screen overlay ──────────────────────────────────────── */
+#solynx-mobile-nav {
+    display: none; /* JS will manage visibility via .is-open */
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh; /* dynamic viewport height — avoids iOS browser-bar overlap */
+    background: rgba(5, 10, 20, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 10000;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    /* Slide-down entrance */
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.28s ease;
+    /* Prevent horizontal scroll */
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+#solynx-mobile-nav.is-open {
+    display: flex;
+    flex-direction: column;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* ── Header row (close button + branding) ─────────────────────── */
+.snav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px 0;
+    flex-shrink: 0;
+}
+
+.snav-logo {
+    display: block;
+}
+
+.snav-logo img {
+    height: 36px;
+    width: auto;
+    object-fit: contain;
+}
+
+.snav-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    font-size: 1.4rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 180ms ease, border-color 180ms ease;
+    flex-shrink: 0;
+}
+
+.snav-close:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ── Title and helper text ────────────────────────────────────── */
+.snav-title-block {
+    padding: 14px 22px 0;
+    flex-shrink: 0;
+}
+
+.snav-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.03em;
+    margin: 0 0 3px;
+    line-height: 1.2;
+}
+
+.snav-subtitle {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+    line-height: 1.35;
+}
+
+/* ── Teal divider ─────────────────────────────────────────────── */
+.snav-divider {
+    height: 1px;
+    background: #009CB4;
+    opacity: 0.3;
+    margin: 12px 22px 0;
+    flex-shrink: 0;
+}
+
+/* ── Link list ────────────────────────────────────────────────── */
+.snav-links {
+    list-style: none;
+    margin: 0;
+    padding: 6px 22px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
+}
+
+.snav-links li {
+    width: 100%;
+}
+
+/* Back to Home — subtle top accent link */
+.snav-links .snav-back {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 11px 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #009CB4;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 156, 180, 0.18);
+    transition: color 160ms ease;
+}
+
+.snav-links .snav-back:hover {
+    color: #4dd6e8;
+}
+
+/* Regular nav links */
+.snav-links .snav-link {
+    display: block;
+    padding: 11px 0;
+    font-size: 1.05rem;        /* ~18–19px */
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.82);
+    text-decoration: none;
+    line-height: 1.25;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: color 150ms ease, padding-left 150ms ease;
+}
+
+.snav-links .snav-link:hover {
+    color: #ffffff;
+    padding-left: 6px;
+}
+
+/* Active / current page — teal */
+.snav-links .snav-link[aria-current="page"] {
+    color: #009CB4;
+}
+
+/* Live Experience — teal accent */
+.snav-links .snav-link--live {
+    color: #009CB4;
+}
+
+.snav-links .snav-link--live:hover {
+    color: #4dd6e8;
+}
+
+/* ── CTA — Book Growth Audit ──────────────────────────────────── */
+.snav-cta-wrapper {
+    padding: 14px 0 4px;
+    border-bottom: none;
+}
+
+.snav-cta {
+    display: block;
+    width: 100%;
+    padding: 16px 24px;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: linear-gradient(90deg, #F37021, #ff5500);
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 10px 28px rgba(243, 112, 33, 0.35);
+    transition: opacity 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+
+.snav-cta:hover {
+    opacity: 0.92;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px rgba(243, 112, 33, 0.45);
+    color: #ffffff;
+}
+
+/* ── Lock body scroll when open ───────────────────────────────── */
+body.snav-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+/* ── Only show overlay on mobile ──────────────────────────────── */
+@media (min-width: 901px) {
+    #solynx-mobile-nav {
+        display: none !important;
+    }
+
+    .mobile-menu-toggle {
+        display: none !important;
+    }
+}

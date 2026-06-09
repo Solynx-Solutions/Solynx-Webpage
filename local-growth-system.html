@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="styles-new.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="local-growth-system.css">
+  <link rel="stylesheet" href="css/mobile-nav.css">
   <link rel="icon" type="image/png" href="/favicon.png">
   <style>
     /* ── Local Growth page: compact nav so all items fit at desktop widths ── */
@@ -92,6 +93,37 @@
       </button>
     </div>
   </nav>
+
+  <!-- ============ SOLYNX MOBILE NAV OVERLAY ============ -->
+  <div id="solynx-mobile-nav" role="dialog" aria-modal="true" aria-label="SOLYNX Navigation">
+      <div class="snav-header">
+          <a href="/index.html" class="snav-logo" aria-label="SOLYNX Home">
+              <img src="/assets/images/SLX-WRD.png" alt="SOLYNX">
+          </a>
+          <button id="snavClose" class="snav-close" aria-label="Close navigation menu">✕</button>
+      </div>
+      <div class="snav-title-block">
+          <p class="snav-title">SOLYNX Navigation</p>
+          <p class="snav-subtitle">Choose where you want to go next.</p>
+      </div>
+      <div class="snav-divider"></div>
+      <ul class="snav-links">
+          <li><a href="/index.html" class="snav-back">&#8592; Back to Home</a></li>
+          <li><a href="/index.html" class="snav-link">Home</a></li>
+          <li><a href="/#platform" class="snav-link">Platform</a></li>
+          <li><a href="/#how-it-works" class="snav-link">How It Works</a></li>
+          <li><a href="/#pricing" class="snav-link">Pricing</a></li>
+          <li><a href="/#automation-systems" class="snav-link">Automation Systems</a></li>
+          <li><a href="/#about" class="snav-link">About</a></li>
+          <li><a href="/local-growth-system.html" class="snav-link" aria-current="page">Local Growth</a></li>
+          <li><a href="/live-experience/" class="snav-link snav-link--live">Live Experience</a></li>
+          <li class="snav-cta-wrapper">
+              <a href="https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc"
+                 class="snav-cta"
+                 target="_blank" rel="noopener noreferrer">Book Growth Audit</a>
+          </li>
+      </ul>
+  </div>
 
   <!-- ═══════════════════════════════════════════
      HERO
@@ -915,6 +947,7 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="js/mobile-nav.js"></script>
   <script>
     // FAQ accordion
     document.querySelectorAll('.local-growth-faq-q').forEach(function (btn) {
@@ -925,12 +958,7 @@
         if (!isOpen) { item.classList.add('open'); this.setAttribute('aria-expanded', 'true'); }
       });
     });
-    // Mobile nav toggle (reuse script.js pattern)
-    var mobileToggle = document.getElementById('mobileToggle');
-    var navMenu = document.getElementById('navMenu');
-    if (mobileToggle && navMenu) {
-      mobileToggle.addEventListener('click', function () { navMenu.classList.toggle('active'); });
-    }
+    // Mobile nav toggle (handled by js/mobile-nav.js)
     // Navbar scroll effect
     window.addEventListener('scroll', function () {
       var nb = document.getElementById('navbar');

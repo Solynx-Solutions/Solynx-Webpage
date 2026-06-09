@@ -1187,24 +1187,95 @@ img.footer-logo {
    ================================= */
 
 @media (max-width: 768px) {
+    /* ── Mobile nav toggle button ── */
     .mobile-menu-toggle {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        color: var(--color-text-primary);
+        cursor: pointer;
+        z-index: 10001;
+        position: relative;
+        flex-shrink: 0;
     }
 
+    /* ── Full-viewport mobile menu overlay ── */
     .nav-menu {
         position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 70px);
-        background: var(--color-background-alt);
+        inset: 0;                          /* top/right/bottom/left: 0 */
+        width: 100vw;
+        height: 100vh;
+        background: rgba(5, 10, 20, 0.98);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
         flex-direction: column;
-        padding: var(--spacing-2xl);
-        transition: left var(--transition-base);
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        padding: 80px 24px 40px;
+        z-index: 10000;
+        /* Hidden state — slide up out of view */
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                    opacity 0.3s ease;
+        list-style: none;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
+    /* ── Open state ── */
     .nav-menu.active {
-        left: 0;
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* ── Nav links inside mobile menu ── */
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-menu .nav-link {
+        display: block;
+        width: 100%;
+        padding: 16px 0;
+        font-size: 1.15rem;
+        letter-spacing: 0.08em;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        color: var(--color-text-primary);
+    }
+
+    .nav-menu .nav-link:hover {
+        color: var(--color-accent-orange);
+    }
+
+    /* ── GET STARTED CTA inside mobile menu ── */
+    .nav-menu li:last-child {
+        margin-top: 24px;
+        border-bottom: none;
+    }
+
+    .nav-menu .nav-cta,
+    .nav-menu .btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 16px 24px;
+        font-size: 1rem;
+        border-radius: 50px;
+    }
+
+    /* ── Lock scroll when menu is open ── */
+    body.menu-open {
+        overflow: hidden;
     }
 
     .hero-title {

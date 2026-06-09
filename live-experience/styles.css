@@ -2145,3 +2145,26 @@ button:focus-visible {
 		width: 100%;
 	}
 }
+
+/* ── Live Experience — Mobile header adjustments ─────────────── */
+@media (max-width: 900px) {
+	/* Hide the desktop inline nav and GET STARTED CTA */
+	.header-nav {
+		display: none !important;
+	}
+
+	.header-cta {
+		display: none !important;
+	}
+
+	/* Ensure hamburger is visible and positioned */
+	#mobileToggle.mobile-menu-toggle {
+		display: flex !important;
+	}
+
+	/* Keep header-shell flex and space-between for logo + hamburger */
+	.header-shell {
+		justify-content: space-between !important;
+		flex-wrap: nowrap !important;
+	}
+}
