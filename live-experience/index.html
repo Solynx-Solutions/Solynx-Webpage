@@ -529,13 +529,20 @@
 							<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
 						</div>
 						<p class="agent-copy">Talk to Alex directly in your browser or dial in by phone.</p>
+						<p class="agent-tagline">Answers calls. Captures leads. Books appointments.</p>
 						<p class="agent-phone">📞 (855) 408-5969</p>
 						<div class="agent-actions">
 							<a href="#alex-voice-widget"
 							   class="button button-primary agent-talk-btn"
 							   id="talk-alex-btn"
+							   data-agent="alex"
+							   data-label-open="Alex Voice Active"
+							   data-label-close="Talk To Alex Live"
 							   aria-label="Talk to Alex, English AI receptionist in your browser"
 							   onclick="toggleVoiceWidget('alex-voice-widget', this); return false;">Talk To Alex Live</a>
+							<span class="voice-close-link" id="close-alex-link" hidden>
+								<a href="#" onclick="toggleVoiceWidget('alex-voice-widget', document.getElementById('talk-alex-btn')); return false;">Close Voice Demo</a>
+							</span>
 							<a href="tel:+18554085969"
 							   class="button button-secondary agent-call-btn"
 							   id="call-alex-btn"
@@ -570,14 +577,21 @@
 						<div class="agent-waveform" aria-hidden="true">
 							<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
 						</div>
-						<p class="agent-copy">Habla con Lexy en español directamente en tu navegador o llama por teléfono.</p>
+						<p class="agent-copy">Habla con Lexy directamente en tu navegador o llama por teléfono.</p>
+						<p class="agent-tagline">Contesta llamadas. Captura prospectos. Agenda citas.</p>
 						<p class="agent-phone">📞 (831) 777-6198</p>
 						<div class="agent-actions">
 							<a href="#lexy-voice-widget"
-							   class="button button-primary agent-talk-btn"
+							   class="button button-primary agent-talk-btn agent-talk-btn--lexy"
 							   id="talk-lexy-btn"
+							   data-agent="lexy"
+							   data-label-open="Lexy Voice Active"
+							   data-label-close="Habla Con Lexy"
 							   aria-label="Habla con Lexy, receptionist AI en español, en tu navegador"
 							   onclick="toggleVoiceWidget('lexy-voice-widget', this); return false;">Habla Con Lexy</a>
+							<span class="voice-close-link" id="close-lexy-link" hidden>
+								<a href="#" onclick="toggleVoiceWidget('lexy-voice-widget', document.getElementById('talk-lexy-btn')); return false;">Close Voice Demo</a>
+							</span>
 							<a href="tel:+18317776198"
 							   class="button button-secondary agent-call-btn"
 							   id="call-lexy-btn"
@@ -601,18 +615,27 @@
 		</section>
 
 		<script>
-			// Toggle voice widget visibility and scroll into view
 			function toggleVoiceWidget(widgetId, triggerBtn) {
 				var widget = document.getElementById(widgetId);
 				if (!widget) return;
+
+				var agent = triggerBtn.dataset.agent; // 'alex' or 'lexy'
+				var closeLink = document.getElementById('close-' + agent + '-link');
 				var isHidden = widget.hasAttribute('hidden');
+
 				if (isHidden) {
 					widget.removeAttribute('hidden');
-					triggerBtn.textContent = triggerBtn.textContent.indexOf('Alex') !== -1 ? 'Close Alex' : 'Cerrar Lexy';
-					setTimeout(function () { widget.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 80);
+					triggerBtn.textContent = triggerBtn.dataset.labelOpen;
+					triggerBtn.classList.add('agent-talk-btn--active');
+					if (closeLink) closeLink.removeAttribute('hidden');
+					setTimeout(function () {
+						widget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+					}, 120);
 				} else {
 					widget.setAttribute('hidden', '');
-					triggerBtn.textContent = triggerBtn.textContent.indexOf('Close') !== -1 ? 'Talk To Alex Live' : 'Habla Con Lexy';
+					triggerBtn.textContent = triggerBtn.dataset.labelClose;
+					triggerBtn.classList.remove('agent-talk-btn--active');
+					if (closeLink) closeLink.setAttribute('hidden', '');
 				}
 			}
 		</script>

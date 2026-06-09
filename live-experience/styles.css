@@ -1833,9 +1833,9 @@ button:focus-visible {
 }
 
 .agent-avatar-lexy {
-	background: linear-gradient(135deg, rgba(120, 80, 255, 0.3), rgba(180, 120, 255, 0.15));
-	border: 2px solid rgba(150, 100, 255, 0.45);
-	box-shadow: 0 0 20px rgba(120, 80, 255, 0.18);
+	background: linear-gradient(135deg, rgba(0, 156, 180, 0.3), rgba(0, 200, 220, 0.15));
+	border: 2px solid rgba(0, 156, 180, 0.5);
+	box-shadow: 0 0 20px rgba(0, 156, 180, 0.2);
 }
 
 .agent-initials {
@@ -1861,8 +1861,8 @@ button:focus-visible {
 }
 
 .agent-avatar-lexy .agent-avatar-dot {
-	background: #a78bfa;
-	box-shadow: 0 0 6px rgba(167, 139, 250, 0.6);
+	background: #009CB4;
+	box-shadow: 0 0 6px rgba(0, 156, 180, 0.65);
 }
 
 .agent-avatar-alex .agent-avatar-dot {
@@ -1893,7 +1893,7 @@ button:focus-visible {
 }
 
 .agent-avatar-lexy ~ .agent-meta .agent-subtitle {
-	color: #c4b5fd;
+	color: #4dd6e8;
 }
 
 /* Animated waveform bar */
@@ -1917,7 +1917,7 @@ button:focus-visible {
 }
 
 .agent-card:nth-child(2) .agent-waveform span {
-	background: linear-gradient(180deg, #c4b5fd, #7c3aed);
+	background: linear-gradient(180deg, #4dd6e8, #009CB4);
 }
 
 .agent-waveform span:nth-child(1) { height: 30%; }
@@ -1975,23 +1975,29 @@ button:focus-visible {
 
 /* Lexy card accent overrides */
 #agent-card-lexy {
-	border-color: rgba(120, 80, 255, 0.12);
+	border-color: rgba(0, 156, 180, 0.15);
 }
 
 #agent-card-lexy:hover {
-	border-color: rgba(150, 100, 255, 0.35);
-	box-shadow: 0 40px 90px rgba(0, 0, 0, 0.5), 0 0 32px rgba(120, 80, 255, 0.12);
+	border-color: rgba(0, 156, 180, 0.4);
+	box-shadow: 0 40px 90px rgba(0, 0, 0, 0.5), 0 0 32px rgba(0, 156, 180, 0.14);
 }
 
-#agent-card-lexy .agent-call-btn {
-	background: linear-gradient(90deg, #7c3aed, #a78bfa);
-	color: #ffffff;
-	border-color: transparent;
-	box-shadow: 0 12px 30px rgba(124, 58, 237, 0.3);
+/* Lexy talk button — teal */
+.agent-talk-btn--lexy {
+	background: linear-gradient(90deg, #009CB4, #00b8d4) !important;
+	box-shadow: 0 10px 28px rgba(0, 156, 180, 0.28) !important;
 }
 
-#agent-card-lexy .agent-call-btn:hover {
+.agent-talk-btn--lexy:hover {
 	opacity: 0.9;
+}
+
+/* Active state — both agents */
+.agent-talk-btn--active {
+	opacity: 0.85;
+	cursor: default;
+	pointer-events: none;
 }
 
 /* Responsive: stack on tablet */
@@ -2064,17 +2070,13 @@ button:focus-visible {
 	transform: translateY(-2px);
 }
 
-/* Voice widget embed container */
+/* Voice widget embed — base shared styles */
 .voice-widget-embed {
-	margin-top: 1.25rem;
 	border-radius: 1.1rem;
-	border: 1px solid rgba(255, 106, 0, 0.2);
-	background: rgba(255, 106, 0, 0.04);
-	padding: 1.25rem;
-	min-height: 80px;
+	border: 1px solid rgba(255, 106, 0, 0.18);
+	background: rgba(255, 106, 0, 0.03);
+	padding: 1.1rem;
 	width: 100%;
-	overflow: hidden;
-	transition: opacity 250ms ease;
 }
 
 .voice-widget-embed[hidden] {
@@ -2089,10 +2091,54 @@ button:focus-visible {
 	border-radius: 0.75rem;
 }
 
-/* Lexy widget border accent */
+/* Lexy widget border accent — teal */
 #lexy-voice-widget {
-	border-color: rgba(150, 100, 255, 0.2);
-	background: rgba(120, 80, 255, 0.04);
+	border-color: rgba(0, 156, 180, 0.25);
+	background: rgba(0, 156, 180, 0.04);
+}
+
+/* Agent tagline — proof line under copy */
+.agent-tagline {
+	font-size: 0.8rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.38);
+	margin: -0.5rem 0 0;
+	line-height: 1.5;
+}
+
+/* Close voice demo small link */
+.voice-close-link {
+	display: block;
+	text-align: center;
+	margin-top: -0.25rem;
+}
+
+.voice-close-link a {
+	font-size: 0.78rem;
+	color: rgba(255, 255, 255, 0.45);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	transition: color 160ms ease;
+}
+
+.voice-close-link a:hover {
+	color: rgba(255, 255, 255, 0.75);
+}
+
+/* Voice widget embed — constrained and animated */
+.voice-widget-embed {
+	max-width: 360px;
+	max-height: 320px;
+	overflow: hidden;
+	margin: 1rem auto 0;
+	opacity: 0;
+	transition: opacity 300ms ease;
+}
+
+.voice-widget-embed:not([hidden]) {
+	opacity: 1;
 }
 
 /* Mobile: ensure all three buttons stack cleanly */
