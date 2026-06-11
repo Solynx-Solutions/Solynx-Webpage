@@ -2216,13 +2216,13 @@ img.footer-logo {
     text-transform: uppercase;
 }
 
-/* Book Consultation button — solid orange fill */
+/* Book Consultation button — premium dark gold gradient (enterprise, distinct from Nexus orange fill) */
 .btn-apex-enterprise {
     display: inline-block;
     padding: 14px 28px;
     border-radius: 8px;
-    background: var(--color-accent-orange, #ff9000);
-    border: 2px solid var(--color-accent-orange, #ff9000);
+    background: linear-gradient(135deg, #b85c00 0%, #e07800 55%, #ff9500 100%);
+    border: 2px solid rgba(255, 165, 50, 0.6);
     color: #fff;
     font-weight: 800;
     font-size: 0.9rem;
@@ -2230,14 +2230,20 @@ img.footer-logo {
     text-transform: uppercase;
     text-decoration: none;
     text-align: center;
-    transition: background 0.25s, box-shadow 0.25s, transform 0.2s;
-    box-shadow: 0 0 18px rgba(255, 144, 0, 0.25);
+    transition: background 0.25s, box-shadow 0.25s, border-color 0.25s, transform 0.2s;
+    box-shadow:
+        0 0 18px rgba(184, 92, 0, 0.35),
+        0 0 40px rgba(224, 120, 0, 0.15),
+        inset 0 1px 0 rgba(255, 220, 120, 0.2);
 }
 
 .btn-apex-enterprise:hover {
-    background: #e07d00;
-    border-color: #e07d00;
-    box-shadow: 0 0 30px rgba(255, 144, 0, 0.45);
+    background: linear-gradient(135deg, #c96800 0%, #f08500 55%, #ffaa20 100%);
+    border-color: rgba(255, 190, 80, 0.85);
+    box-shadow:
+        0 0 28px rgba(200, 100, 0, 0.5),
+        0 0 60px rgba(255, 144, 0, 0.2),
+        inset 0 1px 0 rgba(255, 230, 140, 0.25);
     transform: translateY(-2px);
 }
 
