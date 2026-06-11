@@ -2152,6 +2152,13 @@ img.footer-logo {
     font-family: var(--font-heading);
 }
 
+/* ── APEX enterprise "Custom" price display ────── */
+.apex-custom-price {
+    color: var(--color-accent-orange, #ff9000) !important;
+    font-style: italic;
+    letter-spacing: 0.02em;
+}
+
 /* ── Custom note (Apex) ────────────────────────── */
 .custom-note {
     font-size: 0.8rem;

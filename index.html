@@ -1407,16 +1407,13 @@
                     </div>
                 </div>
 
-                <!-- CARD 4: APEX -->
+                <!-- CARD 4: APEX — Enterprise / Consultation-Gated -->
                 <div class="pricing-card">
                     <div class="pricing-card-top">
                         <h3 class="pricing-plan-name">APEX</h3>
                         <p class="pricing-desc"><em>Command the ecosystem</em></p>
-                        <div class="price-monthly">$997<span class="pricing-period"> / month</span></div>
-                        <div class="price-annual" style="display:none;">$9,970<span class="pricing-period"> /
-                                year</span></div>
-                        <p class="pricing-desc">This is the top of the food chain. A fully orchestrated, self-running
-                            ecosystem where the owner commands, not chases.</p>
+                        <div class="price-monthly apex-custom-price">Custom</div>
+                        <p class="pricing-desc">Advanced automation systems for businesses that need deeper assessment, custom configuration, and higher-level implementation.</p>
                     </div>
                     <ul class="pricing-features">
                         <li>Everything in Nexus</li>
@@ -1425,11 +1422,11 @@
                         <li>AI Deployment Support Included</li>
                     </ul>
                     <div class="pricing-card-bottom">
-                        <!-- GHL STRIPE / PAYMENT LINK — APEX plan ($997/mo or $9,970/yr) -->
-                        <a href="https://link.solynx.solutions/payment-link/69af349c1934f9c7da5e7733"
+                        <!-- APEX — Enterprise consultation booking only. No payment link. -->
+                        <a href="https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc"
                             class="btn btn-apex-accent pricing-btn" id="apexBtn" target="_blank"
-                            rel="noopener noreferrer">Claim Apex Access</a>
-                        <p class="pricing-note">Consultation required after subscription.</p>
+                            rel="noopener noreferrer">Book Consultation</a>
+                        <p class="pricing-note">Pricing provided after business assessment.</p>
                     </div>
                 </div>
 
@@ -1964,8 +1961,9 @@
                     annual: 'https://link.solynx.solutions/payment-link/69af37ab84b2d78313649152'
                 },
                 apex: {
-                    monthly: 'https://link.solynx.solutions/payment-link/69af349c1934f9c7da5e7733',
-                    annual: 'https://link.solynx.solutions/payment-link/69af37cf1934f9eec15e7f01'
+                    // APEX is enterprise/consultation-gated — no payment link
+                    monthly: 'https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc',
+                    annual: 'https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc'
                 }
             };
 
@@ -1992,7 +1990,7 @@
                 document.getElementById('scoutBtn').href = links.scout[period];
                 document.getElementById('prowlerBtn').href = links.prowler[period];
                 document.getElementById('nexusBtn').href = links.nexus[period];
-                document.getElementById('apexBtn').href = links.apex[period];
+                // APEX is enterprise/consultation-gated — href stays fixed to booking calendar, never swapped
             });
         })();
     </script>
