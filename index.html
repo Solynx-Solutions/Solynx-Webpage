@@ -1951,46 +1951,63 @@
     <script src="js/mobile-nav.js"></script>
 
     <script>
-        // ── Pricing Billing Toggle ───────────────────────────
+        // ── Pricing Billing Toggle ─────────────────────────────────────────
+        // Defensive: null-checks every element before touching it.
+        // APEX has no .price-monthly / .price-annual and its button href is
+        // fixed in HTML — it is intentionally excluded from all swap logic.
         (function () {
-            var btn = document.getElementById('toggleSwitch');
+
+            // ── Element refs ───────────────────────────────────────────────
+            var btn     = document.getElementById('toggleSwitch');
             var labelMo = document.getElementById('labelMonthly');
             var labelAn = document.getElementById('labelAnnual');
 
-            if (!btn) return;
+            // Nothing to do if the toggle doesn't exist on this page
+            if (!btn || !labelMo || !labelAn) return;
 
-            // ── Payment link map ──────────────────────────────
+            // ── Payment link map (Scout / Prowler / Nexus only) ────────────
+            // APEX is enterprise/consultation-gated — no payment link, never swapped.
             var links = {
                 scout: {
                     monthly: 'https://link.solynx.solutions/payment-link/69e0107480425dc02fbc8805',
-                    annual: 'https://link.solynx.solutions/payment-link/69af37371934f91d635e7da8'
+                    annual:  'https://link.solynx.solutions/payment-link/69af37371934f91d635e7da8'
                 },
                 prowler: {
                     monthly: 'https://link.solynx.solutions/payment-link/69e01099557558e89e52032c',
-                    annual: 'https://link.solynx.solutions/payment-link/69e01099557558e89e52032c'
+                    // NOTE: Prowler has no separate annual payment link — intentionally
+                    // uses the same link as monthly until an annual SKU is created.
+                    annual:  'https://link.solynx.solutions/payment-link/69e01099557558e89e52032c'
                 },
                 nexus: {
                     monthly: 'https://link.solynx.solutions/payment-link/69af345e1e6121ee0f7c290a',
-                    annual: 'https://link.solynx.solutions/payment-link/69af37ab84b2d78313649152'
-                },
-                apex: {
-                    // APEX is enterprise/consultation-gated — no payment link
-                    monthly: 'https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc',
-                    annual: 'https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc'
+                    annual:  'https://link.solynx.solutions/payment-link/69af37ab84b2d78313649152'
                 }
+                // APEX omitted — href is hardcoded in HTML and must never be swapped
             };
 
+            // ── Safe href setter — skips silently if element is missing ────
+            function setHref(id, url) {
+                var el = document.getElementById(id);
+                if (el) { el.href = url; }
+            }
+
+            // ── State ──────────────────────────────────────────────────────
             var isAnnual = false;
 
+            // ── Handler ────────────────────────────────────────────────────
             btn.addEventListener('click', function () {
                 isAnnual = !isAnnual;
 
-                btn.setAttribute('aria-pressed', isAnnual);
+                // 1. ARIA + knob visual state
+                btn.setAttribute('aria-pressed', String(isAnnual));
                 btn.classList.toggle('active', isAnnual);
-                labelMo.classList.toggle('active', !isAnnual);
-                labelAn.classList.toggle('active', isAnnual);
 
-                // Show/hide price displays
+                // 2. Label active states
+                labelMo.classList.toggle('active', !isAnnual);
+                labelAn.classList.toggle('active',  isAnnual);
+
+                // 3. Show / hide price displays across all subscription cards
+                //    (APEX has neither element, so it is unaffected)
                 document.querySelectorAll('.price-monthly').forEach(function (el) {
                     el.style.display = isAnnual ? 'none' : '';
                 });
@@ -1998,13 +2015,14 @@
                     el.style.display = isAnnual ? '' : 'none';
                 });
 
-                // Swap CTA button payment links
+                // 4. Swap CTA payment links for subscription tiers only
                 var period = isAnnual ? 'annual' : 'monthly';
-                document.getElementById('scoutBtn').href = links.scout[period];
-                document.getElementById('prowlerBtn').href = links.prowler[period];
-                document.getElementById('nexusBtn').href = links.nexus[period];
-                // APEX is enterprise/consultation-gated — href stays fixed to booking calendar, never swapped
+                setHref('scoutBtn',   links.scout[period]);
+                setHref('prowlerBtn', links.prowler[period]);
+                setHref('nexusBtn',   links.nexus[period]);
+                // apexBtn is intentionally excluded — stays on booking calendar always
             });
+
         })();
     </script>
     <!-- =============================================
