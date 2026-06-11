@@ -670,68 +670,20 @@ ul {
     }
 }
 
-/* Sticky Background Pattern */
+/* faint-sticky-bg — DISABLED
+   Previously: fixed full-viewport SLX-WRD.png ghost layer (opacity:0.05, background-size:cover)
+   that visibly bled across the pricing section and all sections below the hero.
+   DOM element is commented out in index.html. CSS zeroed here as a safety net. */
 .faint-sticky-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+    display: none !important;
+    opacity: 0 !important;
     pointer-events: none;
-    opacity: 0.05;
-    /* Start faint */
-    transition: opacity 0.3s ease;
-    /* Circuit board style pattern */
-    background-color: transparent;
-    background-image:
-        linear-gradient(rgba(0, 240, 255, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 240, 255, 0.1) 1px, transparent 1px),
-        radial-gradient(circle at 10% 10%, rgba(255, 144, 0, 0.1) 1px, transparent 1px),
-        radial-gradient(circle at 90% 90%, rgba(255, 144, 0, 0.1) 1px, transparent 1px);
-    background-size: 40px 40px, 40px 40px, 100px 100px, 100px 100px;
 }
 
-/* Enhanced pattern with a glow overlay */
 .faint-sticky-bg::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.05), transparent 70%);
+    display: none !important;
 }
 
-/* Sticky Background Pattern - Image Based */
-.faint-sticky-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-    opacity: 0.05;
-    /* Start faint */
-    transition: opacity 0.3s ease;
-    background-color: #050a14;
-    background-image: url('/assets/images/SLX-WRD.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-/* Enhanced pattern with a glow overlay */
-.faint-sticky-bg::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.05), transparent 70%);
-}
 
 @media (max-width: 768px) {
     body {
