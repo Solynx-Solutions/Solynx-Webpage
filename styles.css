@@ -2973,3 +2973,70 @@ img.footer-logo {
         padding: 24px 16px 16px;
     }
 }
+
+/* ==========================================================
+   SOLYNX — Global Mobile Overflow Hardening
+   Appended patch — do not remove
+   ========================================================== */
+
+/* Guarantee no horizontal overflow at any viewport */
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Navbar must never create horizontal scroll */
+.navbar {
+    width: 100%;
+    max-width: 100%;
+    left: 0;
+    right: 0;
+}
+
+@media (max-width: 900px) {
+    /* Tighten nav-content padding so logo + hamburger both fit */
+    .nav-content {
+        padding: 6px 16px;
+        gap: 8px;
+    }
+
+    /* Logo: smaller on mobile so it never pushes hamburger off-screen */
+    .logo-image {
+        height: 36px;
+    }
+
+    /* Hamburger: always visible, never overflows */
+    .mobile-menu-toggle {
+        flex-shrink: 0;
+        position: relative;
+        right: auto;
+        transform: none;
+        margin: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-content {
+        padding: 4px 12px;
+    }
+
+    .logo-image {
+        height: 30px;
+    }
+}
+
+/* Hero grid: single column on mobile */
+@media (max-width: 900px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .hero-form-wrapper {
+        max-width: 100%;
+        width: 100%;
+        justify-self: stretch;
+    }
+}
