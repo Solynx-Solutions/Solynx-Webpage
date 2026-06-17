@@ -176,25 +176,28 @@
 
         .form-card {
             width: 100%;
-            max-width: 720px;
-            margin: 0 auto;
+            max-width: 680px;
+            margin: 24px auto 80px;
             background: #ffffff;
             border-radius: 24px;
-            overflow: hidden;
+            /* overflow must NOT be hidden — it clips the iframe */
+            overflow: visible;
             box-shadow:
                 0 24px 80px rgba(0, 0, 0, 0.4),
                 0 0 0 1px rgba(255, 255, 255, 0.06);
             box-sizing: border-box;
         }
 
-        /* The iframe — fully fluid, no fixed widths, no transforms */
+        /* The iframe — fully fluid, no fixed widths, no transforms, no overflow clip */
         .form-card iframe {
             display: block;
             width: 100%;
             max-width: 100%;
+            height: 1200px;
             min-height: 1100px;
             border: 0;
-            overflow: hidden;
+            border-radius: 24px;
+            overflow: visible;
         }
 
         /* ===========================
@@ -281,6 +284,7 @@
             }
 
             .form-card iframe {
+                height: 1300px;
                 min-height: 1250px;
             }
         }
@@ -328,9 +332,11 @@
     <section class="form-shell" aria-labelledby="intake-title">
         <div class="form-card" id="picture-intake-form-card">
             <iframe
-                id="picture-intake-iframe"
+                id="inline-OolHg5PzLL9lDctySggn"
                 src="https://link.solynx.solutions/widget/form/OolHg5PzLL9lDctySggn"
-                title="SOLYNX Picture Intake Form"
+                title="Picture Intake Form"
+                style="width:100%;height:1200px;border:none;border-radius:24px;"
+                scrolling="yes"
                 loading="eager"
                 allow="camera; microphone"
             ></iframe>
@@ -352,25 +358,8 @@
 
 </main>
 
-<!-- Auto-resize iframe based on GHL postMessage height updates -->
-<script>
-    (function () {
-        var iframe = document.getElementById('picture-intake-iframe');
-        if (!iframe) return;
-        window.addEventListener('message', function (e) {
-            if (!e.data) return;
-            try {
-                var data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
-                if (data && (data.type === 'lc-widget-height' || data.type === 'form-height') && data.height) {
-                    var h = parseInt(data.height, 10);
-                    if (!isNaN(h) && h > 200) {
-                        iframe.style.minHeight = (h + 32) + 'px';
-                    }
-                }
-            } catch (err) { /* ignore */ }
-        });
-    })();
-</script>
+<!-- GHL form_embed.js — auto-resizes the iframe to fit the full form -->
+<script src="https://link.solynx.solutions/js/form_embed.js"></script>
 
 </body>
 </html>
