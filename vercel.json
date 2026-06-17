@@ -80,6 +80,14 @@
             "destination": "/connect/zeus/index.html"
         },
         {
+            "source": "/picture-intake",
+            "destination": "/picture-intake/"
+        },
+        {
+            "source": "/picture-intake/",
+            "destination": "/picture-intake/index.html"
+        },
+        {
             "source": "/api/:path*",
             "destination": "/api/:path*"
         }

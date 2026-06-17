@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#ff6a00">
+    <meta name="description" content="SOLYNX Picture Intake Form — submit your information for event follow-up, photo delivery, and SOLYNX contact intake.">
+    <title>Picture Intake Form | SOLYNX</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.solynx.solutions/picture-intake/">
+
+    <!-- GHL External Tracking -->
+    <script src="https://link.solynx.solutions/js/external-tracking.js"
+        data-tracking-id="tk_a988b484869f45a09604f417b5778c51"></script>
+
+    <!-- Suppress GHL chat widget auto-open -->
+    <script>
+        window.LeadConnector = window.LeadConnector || {};
+        window.LeadConnector.autoOpen = false;
+        window.LeadConnector.autoGreeting = false;
+    </script>
+
+    <style>
+        /* ===========================
+           RESET & BASE
+        =========================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-primary:      #050a14;
+            --bg-secondary:    #0a1020;
+            --bg-card:         rgba(15, 23, 42, 0.85);
+            --orange:          #ff6a00;
+            --orange-glow:     rgba(255, 106, 0, 0.18);
+            --teal:            #00f0ff;
+            --teal-glow:       rgba(0, 240, 255, 0.08);
+            --text-primary:    #ffffff;
+            --text-muted:      rgba(255, 255, 255, 0.55);
+            --text-subtle:     rgba(255, 255, 255, 0.35);
+            --border:          rgba(255, 255, 255, 0.08);
+            --border-orange:   rgba(255, 106, 0, 0.25);
+            --radius:          12px;
+            --font-head:       'Outfit', sans-serif;
+            --font-body:       'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===========================
+           BACKGROUND DECORATION
+        =========================== */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 240, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.025) 1px, transparent 1px);
+            background-size: 52px 52px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 500px;
+            background: radial-gradient(ellipse, rgba(255, 106, 0, 0.07) 0%, transparent 65%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ===========================
+           LAYOUT WRAPPER
+        =========================== */
+        .page-wrapper {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .shell {
+            width: 100%;
+            max-width: 760px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        /* ===========================
+           HEADER
+        =========================== */
+        .site-header {
+            border-bottom: 1px solid var(--border);
+            background: rgba(5, 10, 20, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 62px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .header-logo img {
+            height: 28px;
+            width: auto;
+            display: block;
+        }
+
+        .header-back {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .header-back:hover {
+            color: var(--orange);
+        }
+
+        .header-back::before {
+            content: '←';
+            font-size: 0.9rem;
+        }
+
+        /* ===========================
+           MAIN CONTENT
+        =========================== */
+        .main-content {
+            flex: 1;
+            padding: 48px 0 60px;
+        }
+
+        /* ===========================
+           INTRO SECTION
+        =========================== */
+        .intro-section {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .intake-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 16px;
+            opacity: 0.9;
+        }
+
+        .intake-eyebrow::before,
+        .intake-eyebrow::after {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--orange);
+            opacity: 0.5;
+        }
+
+        .intake-headline {
+            font-family: var(--font-head);
+            font-size: clamp(1.9rem, 5vw, 2.6rem);
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+            margin-bottom: 14px;
+        }
+
+        .intake-subheadline {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            line-height: 1.65;
+            max-width: 520px;
+            margin: 0 auto 10px;
+        }
+
+        .intake-micro {
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            color: var(--text-subtle);
+            line-height: 1.6;
+        }
+
+        /* ===========================
+           DIVIDER
+        =========================== */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--border-orange) 50%, transparent 100%);
+            margin-bottom: 36px;
+        }
+
+        /* ===========================
+           FORM CARD & EMBED
+        =========================== */
+        .form-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            overflow: hidden;
+            box-shadow:
+                0 24px 60px rgba(0, 0, 0, 0.45),
+                0 0 0 1px rgba(255, 255, 255, 0.03),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .form-card-header {
+            padding: 20px 24px 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-card-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--orange);
+            box-shadow: 0 0 8px var(--orange-glow);
+            flex-shrink: 0;
+        }
+
+        .form-card-label {
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        /* The iframe embed wrapper */
+        .form-embed-wrapper {
+            width: 100%;
+            min-height: 520px;
+            position: relative;
+        }
+
+        /* GHL iframe embed — using their standard snippet approach */
+        .form-embed-wrapper iframe {
+            display: block;
+            width: 100%;
+            min-height: 520px;
+            border: none;
+            background: transparent;
+        }
+
+        /* Fallback / loading state */
+        .form-embed-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.4) 0%, transparent 30%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* ===========================
+           FOOTER
+        =========================== */
+        .site-footer {
+            border-top: 1px solid var(--border);
+            background: rgba(5, 10, 20, 0.8);
+            padding: 32px 20px;
+            text-align: center;
+        }
+
+        .footer-logo-text {
+            font-family: var(--font-head);
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .footer-logo-text span {
+            color: var(--orange);
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--teal);
+        }
+
+        .footer-sep {
+            color: var(--text-subtle);
+            font-size: 0.7rem;
+        }
+
+        .footer-tagline {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            color: var(--text-subtle);
+            letter-spacing: 0.04em;
+        }
+
+        .footer-tagline span {
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        /* ===========================
+           MOBILE RESPONSIVE
+        =========================== */
+        @media (max-width: 600px) {
+            .main-content {
+                padding: 28px 0 48px;
+            }
+
+            .intro-section {
+                margin-bottom: 24px;
+            }
+
+            .section-divider {
+                margin-bottom: 24px;
+            }
+
+            .form-card-header {
+                padding: 14px 16px 12px;
+            }
+
+            .form-embed-wrapper,
+            .form-embed-wrapper iframe {
+                min-height: 480px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .intake-headline {
+                font-size: 1.65rem;
+            }
+
+            .header-back {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+
+        <!-- ============ HEADER ============ -->
+        <header class="site-header" id="top">
+            <div class="header-inner">
+                <a href="https://www.solynx.solutions/" class="header-logo" aria-label="SOLYNX Home">
+                    <img src="/assets/images/SLX-WRD.png" alt="SOLYNX" />
+                </a>
+                <a href="https://www.solynx.solutions/" class="header-back" id="back-to-home-link">
+                    Back to Home
+                </a>
+            </div>
+        </header>
+
+        <!-- ============ MAIN ============ -->
+        <main class="main-content" id="main-content">
+            <div class="shell">
+
+                <!-- INTRO -->
+                <section class="intro-section" aria-labelledby="intake-title">
+                    <p class="intake-eyebrow">SOLYNX Contact Intake</p>
+                    <h1 class="intake-headline" id="intake-title">Picture Intake Form</h1>
+                    <p class="intake-subheadline">
+                        Submit your information below so SOLYNX can connect with you and send the appropriate follow-up.
+                    </p>
+                    <p class="intake-micro">
+                        This form is used for event follow-up, photo delivery, and SOLYNX contact intake.
+                    </p>
+                </section>
+
+                <div class="section-divider" aria-hidden="true"></div>
+
+                <!-- FORM CARD -->
+                <section aria-label="Picture Intake Form">
+                    <div class="form-card" id="picture-intake-form-card">
+                        <div class="form-card-header">
+                            <span class="form-card-dot" aria-hidden="true"></span>
+                            <span class="form-card-label">Secure Form — Powered by SOLYNX</span>
+                        </div>
+
+                        <!-- GHL / LeadConnector Form Embed -->
+                        <div class="form-embed-wrapper" id="picture-intake-embed">
+                            <iframe
+                                src="https://link.solynx.solutions/widget/form/OolHg5PzLL9lDctySggn"
+                                id="picture-intake-iframe"
+                                title="SOLYNX Picture Intake Form"
+                                style="width:100%;min-height:520px;border:none;background:transparent;"
+                                scrolling="no"
+                                loading="eager"
+                                allow="camera; microphone"
+                            ></iframe>
+                        </div>
+                    </div>
+                </section>
+
+            </div><!-- /.shell -->
+        </main>
+
+        <!-- ============ FOOTER ============ -->
+        <footer class="site-footer" id="site-footer">
+            <p class="footer-logo-text"><span>SOLYNX</span></p>
+            <div class="footer-links">
+                <a href="https://www.solynx.solutions/" id="footer-home-link">solynx.solutions</a>
+                <span class="footer-sep" aria-hidden="true">·</span>
+                <a href="mailto:info@solynx.solutions" id="footer-email-link">info@solynx.solutions</a>
+            </div>
+            <p class="footer-tagline">
+                Link it. Solve it. Scale it. <span>SOLYNX it.</span>
+            </p>
+        </footer>
+
+    </div><!-- /.page-wrapper -->
+
+    <!-- Auto-resize iframe to fit GHL form height -->
+    <script>
+        (function () {
+            var iframe = document.getElementById('picture-intake-iframe');
+            if (!iframe) return;
+
+            // Listen for postMessage height updates from GHL widget
+            window.addEventListener('message', function (e) {
+                if (!e.data) return;
+                try {
+                    var data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+                    // GHL sends { type: 'lc-widget-height', height: N }
+                    if (data && (data.type === 'lc-widget-height' || data.type === 'form-height') && data.height) {
+                        var h = parseInt(data.height, 10);
+                        if (!isNaN(h) && h > 100) {
+                            iframe.style.minHeight = (h + 24) + 'px';
+                        }
+                    }
+                } catch (err) { /* ignore parse errors */ }
+            });
+        })();
+    </script>
+
+</body>
+
+</html>
