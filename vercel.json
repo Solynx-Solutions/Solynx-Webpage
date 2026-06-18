@@ -88,6 +88,14 @@
             "destination": "/picture-intake/index.html"
         },
         {
+            "source": "/lions-all-star",
+            "destination": "/lions-all-star/"
+        },
+        {
+            "source": "/lions-all-star/",
+            "destination": "/lions-all-star/index.html"
+        },
+        {
             "source": "/api/:path*",
             "destination": "/api/:path*"
         }
