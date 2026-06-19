@@ -729,18 +729,18 @@
 		}
 	</script>
 	<script src="../js/mobile-nav.js"></script>
-	<!-- GHL CHAT WIDGET -->
+	<!-- GHL All-in-One Floating Chat Widget — live-experience only -->
 	<script
 		src="https://beta.leadconnectorhq.com/loader.js"
 		data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js"
-		data-widget-id="6a279282e53da97e716cf9fc">
+		data-widget-id="69b725f66660242869549e80">
 	</script>
 	<script>
-		// SOLYNX Live Experience — suppress GHL floating chat widget auto-open
-		// Scoped to the floating chat widget only (widget ID 6a279282e53da97e716cf9fc).
-		// Voice widget iframes (Alex/Lexy) are intentionally excluded.
+		// SOLYNX Live Experience — suppress GHL all-in-one floating chat widget auto-open
+		// Scoped to the all-in-one floating chat widget only (widget ID 69b725f66660242869549e80).
+		// Alex voice widget (#alex-voice-widget) and Lexy voice widget (#lexy-voice-widget) are intentionally excluded.
 		(function () {
-			var CHAT_WIDGET_ID = '6a279282e53da97e716cf9fc';
+			var CHAT_WIDGET_ID = '69b725f66660242869549e80';
 
 			function forceClose() {
 				if (window.LeadConnector) {
@@ -748,7 +748,7 @@
 					if (typeof window.LeadConnector.close === 'function') window.LeadConnector.close();
 				}
 				if (window.LC_API && typeof window.LC_API.close_chat === 'function') window.LC_API.close_chat();
-				// Only target the floating chat widget iframe — not the Alex/Lexy voice widget iframes
+				// Only target the all-in-one floating chat widget iframe — not the Alex/Lexy voice widget iframes
 				document.querySelectorAll('iframe[src*="leadconnectorhq"]').forEach(function (f) {
 					// Skip iframes inside voice widget embed containers
 					if (f.closest('#alex-voice-widget, #lexy-voice-widget')) return;
