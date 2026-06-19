@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation Booked | SOLYNX</title>
+    <meta name="description" content="Your SOLYNX consultation is confirmed. Check your email and calendar for meeting details.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../styles-new.css">
+
+    <!-- GHL EXTERNAL TRACKING -->
+    <script src="https://link.solynx.solutions/js/external-tracking.js"
+        data-tracking-id="tk_a988b484869f45a09604f417b5778c51"></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PV9442HN');</script>
+    <!-- End Google Tag Manager -->
+
+    <style>
+        /* ── Confirmation Page Layout ─────────────────────────── */
+        .confirmation-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 24px 80px;
+            background: var(--color-bg-dark, #07090f);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background glow */
+        .confirmation-page::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 144, 0, 0.07), transparent 65%);
+            filter: blur(60px);
+            pointer-events: none;
+        }
+
+        .confirmation-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 640px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Check icon */
+        .confirmation-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255, 144, 0, 0.15), rgba(255, 144, 0, 0.05));
+            border: 1px solid rgba(255, 144, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 28px;
+            box-shadow: 0 0 32px rgba(255, 144, 0, 0.15);
+            animation: conf-appear 0.5s ease both;
+        }
+
+        .confirmation-icon svg {
+            width: 34px;
+            height: 34px;
+            color: #ff9000;
+        }
+
+        @keyframes conf-appear {
+            from { opacity: 0; transform: scale(0.8); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+
+        /* Headline */
+        .confirmation-headline {
+            font-family: var(--font-heading, 'Outfit', sans-serif);
+            font-size: clamp(2rem, 5vw, 2.75rem);
+            font-weight: 800;
+            color: var(--color-text-primary, #fff);
+            line-height: 1.15;
+            margin: 0 0 16px;
+            animation: conf-fade-up 0.5s 0.1s ease both;
+        }
+
+        .confirmation-sub {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.65);
+            margin: 0 0 36px;
+            line-height: 1.6;
+            animation: conf-fade-up 0.5s 0.15s ease both;
+        }
+
+        @keyframes conf-fade-up {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Body card */
+        .confirmation-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 32px 36px;
+            text-align: left;
+            margin-bottom: 36px;
+            animation: conf-fade-up 0.5s 0.2s ease both;
+        }
+
+        .confirmation-body-text {
+            font-size: 0.97rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin: 0 0 28px;
+        }
+
+        .confirmation-next-title {
+            font-family: var(--font-heading, 'Outfit', sans-serif);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #ff9000;
+            margin: 0 0 16px;
+        }
+
+        .confirmation-steps {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 14px;
+        }
+
+        .confirmation-steps li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            font-size: 0.94rem;
+            color: rgba(255, 255, 255, 0.72);
+            line-height: 1.55;
+        }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255, 144, 0, 0.2), rgba(255, 144, 0, 0.05));
+            border: 1px solid rgba(255, 144, 0, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #ff9000;
+            margin-top: 1px;
+        }
+
+        /* CTA buttons */
+        .confirmation-ctas {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: conf-fade-up 0.5s 0.28s ease both;
+        }
+
+        .confirmation-ctas .btn {
+            padding: 14px 32px;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 540px) {
+            .confirmation-page {
+                padding: 100px 16px 64px;
+            }
+
+            .confirmation-card {
+                padding: 24px 20px;
+            }
+
+            .confirmation-ctas .btn {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PV9442HN"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Minimal nav -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-content">
+            <a href="/index.html" class="nav-logo">
+                <img src="../assets/images/SLX-WRD.png" alt="Solynx LLC Logo" class="logo-image pulse">
+            </a>
+        </div>
+    </nav>
+
+    <main class="confirmation-page">
+        <div class="confirmation-inner">
+
+            <!-- Check icon -->
+            <div class="confirmation-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+
+            <!-- Headline -->
+            <h1 class="confirmation-headline">
+                Your Consultation Is <span class="gradient-text-orange">Booked</span>
+            </h1>
+            <p class="confirmation-sub">
+                Thank you for scheduling a consultation with SOLYNX.
+            </p>
+
+            <!-- Body card -->
+            <div class="confirmation-card">
+                <p class="confirmation-body-text">
+                    We received your booking. Please check your email and calendar invite for the meeting details.
+                </p>
+
+                <p class="confirmation-next-title">What Happens Next</p>
+
+                <ol class="confirmation-steps">
+                    <li>
+                        <span class="step-num">1</span>
+                        <span>You will receive a confirmation email.</span>
+                    </li>
+                    <li>
+                        <span class="step-num">2</span>
+                        <span>The meeting will appear on your calendar.</span>
+                    </li>
+                    <li>
+                        <span class="step-num">3</span>
+                        <span>We will review your business, current lead flow, and automation opportunities during the consultation.</span>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- CTA buttons -->
+            <div class="confirmation-ctas">
+                <a href="/index.html" class="btn btn-gradient" id="conf-home-btn">
+                    Return to Home
+                </a>
+                <a href="/index.html#platform" class="btn btn-outline" id="conf-services-btn">
+                    Explore SOLYNX Services
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="../script.js"></script>
+    <script>
+        window.LeadConnector = window.LeadConnector || {};
+        window.LeadConnector.autoOpen = false;
+        window.LeadConnector.autoGreeting = false;
+    </script>
+    <script
+        src="https://beta.leadconnectorhq.com/loader.js"
+        data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js"
+        data-widget-id="6a279282e53da97e716cf9fc">
+    </script>
+</body>
+
+</html>

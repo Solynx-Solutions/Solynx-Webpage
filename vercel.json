@@ -96,6 +96,14 @@
             "destination": "/lions-all-star/index.html"
         },
         {
+            "source": "/confirmation",
+            "destination": "/confirmation/"
+        },
+        {
+            "source": "/confirmation/",
+            "destination": "/confirmation/index.html"
+        },
+        {
             "source": "/api/:path*",
             "destination": "/api/:path*"
         }
