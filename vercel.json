@@ -104,10 +104,6 @@
             "destination": "/confirmation/index.html"
         },
         {
-            "source": "/lost-lead-audit",
-            "destination": "/lost-lead-audit.html"
-        },
-        {
             "source": "/api/:path*",
             "destination": "/api/:path*"
         }
