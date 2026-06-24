@@ -114,7 +114,10 @@
             margin: 0 auto;
         }
 
-        .sc-nav-logo img { height: 26px; }
+        .sc-nav-logo img {
+            height: 32px;
+            filter: brightness(0) invert(1);
+        }
 
         .sc-nav-links {
             display: flex;
@@ -380,7 +383,11 @@
             text-align: center;
         }
 
-        .sc-footer img { height: 22px; margin: 0 auto 12px; }
+        .sc-footer img {
+            height: 60px;
+            margin: 0 auto 16px;
+            filter: drop-shadow(0 0 8px rgba(0,225,255,0.25));
+        }
 
         .sc-footer p {
             font-size: 0.8rem;
@@ -408,7 +415,7 @@
     <nav class="sc-nav" aria-label="Page navigation">
         <div class="sc-nav-inner">
             <a href="/" class="sc-nav-logo" aria-label="SOLYNX Home">
-                <img src="/assets/images/SLX-WRD.png" alt="SOLYNX LLC">
+                <img src="/assets/images/SLX-WRD.png" alt="SOLYNX LLC" width="auto" height="32">
             </a>
             <ul class="sc-nav-links">
                 <li><a href="/">Home</a></li>
@@ -566,7 +573,7 @@
 
     <!-- ══ FOOTER ════════════════════════════════════════════════ -->
     <footer class="sc-footer">
-        <img src="/assets/images/SLX-WRD.png" alt="SOLYNX LLC">
+        <img src="/assets/images/solynx-logo-v2.png" alt="SOLYNX LLC">
         <p>AI Automation Systems for Service Businesses</p>
         <p>Santa Cruz &amp; Monterey Bay | <a href="https://solynx.solutions">solynx.solutions</a></p>
         <div class="sc-footer-links">
