@@ -114,9 +114,19 @@
             margin: 0 auto;
         }
 
+        .sc-nav-logo {
+            display: inline-flex;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 5px 12px;
+            text-decoration: none;
+        }
+
         .sc-nav-logo img {
-            height: 32px;
-            filter: brightness(0) invert(1);
+            height: 28px;
+            width: auto;
+            display: block;
         }
 
         .sc-nav-links {
@@ -383,10 +393,18 @@
             text-align: center;
         }
 
-        .sc-footer img {
-            height: 60px;
+        .sc-footer-logo-wrap {
+            display: inline-block;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 10px 20px;
             margin: 0 auto 16px;
-            filter: drop-shadow(0 0 8px rgba(0,225,255,0.25));
+        }
+
+        .sc-footer-logo-wrap img {
+            height: 52px;
+            width: auto;
+            display: block;
         }
 
         .sc-footer p {
@@ -573,7 +591,9 @@
 
     <!-- ══ FOOTER ════════════════════════════════════════════════ -->
     <footer class="sc-footer">
-        <img src="/assets/images/solynx-logo-v2.png" alt="SOLYNX LLC">
+        <div class="sc-footer-logo-wrap">
+            <img src="/assets/images/solynx-logo-v2.png" alt="SOLYNX LLC">
+        </div>
         <p>AI Automation Systems for Service Businesses</p>
         <p>Santa Cruz &amp; Monterey Bay | <a href="https://solynx.solutions">solynx.solutions</a></p>
         <div class="sc-footer-links">
