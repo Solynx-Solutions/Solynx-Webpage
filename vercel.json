@@ -40,12 +40,12 @@
             "destination": "/connect/chris/index.html"
         },
         {
-            "source": "/connect/emiliano",
-            "destination": "/connect/emiliano/"
+            "source": "/connect/kevin",
+            "destination": "/connect/kevin/"
         },
         {
-            "source": "/connect/emiliano/",
-            "destination": "/connect/emiliano/index.html"
+            "source": "/connect/kevin/",
+            "destination": "/connect/kevin/index.html"
         },
         {
             "source": "/connect/gretchen",
