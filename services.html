@@ -864,7 +864,44 @@
             .services-section {
                 padding: 60px 0;
             }
+
+            /* ── COMPARISON TABLE MOBILE ── */
+            .comparison-wrap {
+                /* Pull full width on mobile so the scroll container spans edge-to-edge */
+                margin-left: -20px;
+                margin-right: -20px;
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
+                /* Scroll shadow cue on right */
+                background:
+                    linear-gradient(to right, var(--bg-card, rgba(255,255,255,0.04)) 30%, transparent) left / 40px 100% no-repeat,
+                    linear-gradient(to left, rgba(255,106,0,0.06) 0%, transparent 80%) right / 40px 100% no-repeat;
+                background-attachment: local, scroll;
+            }
+
+            .comparison-table {
+                min-width: 520px;
+                font-size: 0.82rem;
+            }
+
+            .comparison-table th {
+                padding: 12px 14px;
+                font-size: 0.7rem;
+            }
+
+            .comparison-table td {
+                padding: 14px 14px;
+                font-size: 0.82rem;
+                line-height: 1.5;
+            }
+
+            .comparison-table td:first-child {
+                font-size: 0.85rem;
+                white-space: nowrap;
+            }
         }
+
     </style>
 </head>
 
