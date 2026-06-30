@@ -793,7 +793,56 @@
             line-height: 1.65;
         }
 
-        /* ── RESPONSIVE ── */
+        /* ── COMPARISON STACKED CARDS (mobile only, hidden on desktop) ── */
+        .cmp-cards {
+            display: none;
+        }
+
+        .cmp-card {
+            background: var(--card-bg);
+            border: var(--card-border);
+            border-radius: 12px;
+            padding: 20px 18px;
+            backdrop-filter: blur(8px);
+        }
+
+        .cmp-card-name {
+            font-size: 1rem;
+            font-weight: 900;
+            letter-spacing: 0.06em;
+            color: #fff;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cmp-card-row {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            padding: 10px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .cmp-card-row:last-child {
+            border-bottom: none;
+        }
+
+        .cmp-card-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--orange);
+        }
+
+        .cmp-card-value {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.55;
+        }
+
         @media (max-width: 1400px) {
             .packages-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -865,40 +914,22 @@
                 padding: 60px 0;
             }
 
-            /* ── COMPARISON TABLE MOBILE ── */
-            .comparison-wrap {
-                /* Pull full width on mobile so the scroll container spans edge-to-edge */
-                margin-left: -20px;
-                margin-right: -20px;
-                border-radius: 0;
-                border-left: none;
-                border-right: none;
-                /* Scroll shadow cue on right */
-                background:
-                    linear-gradient(to right, var(--bg-card, rgba(255,255,255,0.04)) 30%, transparent) left / 40px 100% no-repeat,
-                    linear-gradient(to left, rgba(255,106,0,0.06) 0%, transparent 80%) right / 40px 100% no-repeat;
-                background-attachment: local, scroll;
-            }
-
+            /* ── COMPARISON TABLE MOBILE — stacked cards ── */
             .comparison-table {
-                min-width: 520px;
-                font-size: 0.82rem;
+                display: none; /* hide table, show cards instead */
             }
 
-            .comparison-table th {
-                padding: 12px 14px;
-                font-size: 0.7rem;
+            .comparison-wrap {
+                overflow: visible;
+                background: none;
+                border: none;
+                border-radius: 0;
             }
 
-            .comparison-table td {
-                padding: 14px 14px;
-                font-size: 0.82rem;
-                line-height: 1.5;
-            }
-
-            .comparison-table td:first-child {
-                font-size: 0.85rem;
-                white-space: nowrap;
+            .cmp-cards {
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
             }
         }
 
@@ -1060,7 +1091,77 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+
+                <!-- MOBILE STACKED CARDS — hidden on desktop, shown at ≤760px -->
+                <div class="cmp-cards">
+
+                    <div class="cmp-card">
+                        <div class="cmp-card-name">SCOUT <span class="tbl-badge tbl-badge--entry">DIY</span></div>
+                        <div class="cmp-card-row">
+                            <span class="cmp-card-label">Best For</span>
+                            <span class="cmp-card-value">Service businesses that want self-guided platform access to capture, follow up, and manage leads on their own.</span>
+                        </div>
+                        <div class="cmp-card-row">
+                            <span class="cmp-card-label">Main Goal</span>
+                            <span class="cmp-card-value">Self-guided access to the tools &mdash; no custom setup included.</span>
+                        </div>
+                        <div class="cmp-card-row">
+                            <span class="cmp-card-label">Level</span>
+                            <span class="cmp-card-value">DIY</span>
+                        </div>
+                    </div>
+
+                    <div class="cmp-card">
+                        <div class="cmp-card-name">PROWLER <span class="tbl-badge tbl-badge--core">CORE</span></div>
+                        <div class="cmp-card-row">
+                            <span class="cmp-card-label">Best For</span>
+                            <span class="cmp-card-value">Businesses that need CRM setup, missed call text-back, appointment booking, and automated follow-up.</span>
+                        </div>
+                        <div class="cmp-card-row">
+                            <span class="cmp-card-label">Main Goal</span>
+                            <span class="cmp-card-value">Respond faster and organize opportunities.</span>
+                        </div>
+                        <div class="cmp-card-row">
+                            <span class="cmp-card-label">Level</span>
+                            <span class="cmp-card-value">Core</span>
+                        </div>
+                    </div>
+
+                    <div class="cmp-card">
+                        <div class="cmp-card-name">NEXUS <span class="tbl-badge tbl-badge--advanced">ADVANCED</span></div>
+                        <div class="cmp-card-row">
+                            <span class="cmp-card-label">Best For</span>
+                            <span class="cmp-card-value">Businesses that need deeper automation, visibility, reporting, AI options, and growth support.</span>
+                        </div>
+                        <div class="cmp-card-row">
+                            <span class="cmp-card-label">Main Goal</span>
+                            <span class="cmp-card-value">Build a stronger operating system for growth.</span>
+                        </div>
+                        <div class="cmp-card-row">
+                            <span class="cmp-card-label">Level</span>
+                            <span class="cmp-card-value">Advanced</span>
+                        </div>
+                    </div>
+
+                    <div class="cmp-card">
+                        <div class="cmp-card-name">APEX <span class="tbl-badge tbl-badge--apex">CUSTOM</span></div>
+                        <div class="cmp-card-row">
+                            <span class="cmp-card-label">Best For</span>
+                            <span class="cmp-card-value">Businesses that need custom automation architecture, advanced AI agents, custom integrations, multi-location workflows, or enterprise-level planning.</span>
+                        </div>
+                        <div class="cmp-card-row">
+                            <span class="cmp-card-label">Main Goal</span>
+                            <span class="cmp-card-value">Design a custom system around the business, team, workflows, and growth goals.</span>
+                        </div>
+                        <div class="cmp-card-row">
+                            <span class="cmp-card-label">Level</span>
+                            <span class="cmp-card-value">Custom</span>
+                        </div>
+                    </div>
+
+                </div><!-- /.cmp-cards -->
+
+            </div><!-- /.comparison-wrap -->
 
         </div>
     </section>
