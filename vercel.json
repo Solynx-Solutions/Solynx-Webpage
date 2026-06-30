@@ -23,7 +23,6 @@
             "source": "/services.html",
             "destination": "/services.html"
         },
-
         {
             "source": "/live-experience",
             "destination": "/live-experience/"
@@ -111,6 +110,10 @@
         {
             "source": "/confirmation/",
             "destination": "/confirmation/index.html"
+        },
+        {
+            "source": "/privacy.html",
+            "destination": "/privacy.html"
         },
         {
             "source": "/api/:path*",
