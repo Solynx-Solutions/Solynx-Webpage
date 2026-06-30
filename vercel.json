@@ -16,6 +16,15 @@
             "destination": "/local-growth-system.html"
         },
         {
+            "source": "/services",
+            "destination": "/services.html"
+        },
+        {
+            "source": "/services.html",
+            "destination": "/services.html"
+        },
+
+        {
             "source": "/live-experience",
             "destination": "/live-experience/"
         },
