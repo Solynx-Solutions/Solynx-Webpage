@@ -2,13 +2,16 @@
     "github": {
         "enabled": true
     },
+    "redirects": [
+        {
+            "source": "/index.html",
+            "destination": "/",
+            "permanent": true
+        }
+    ],
     "rewrites": [
         {
             "source": "/",
-            "destination": "/index.html"
-        },
-        {
-            "source": "/index.html",
             "destination": "/index.html"
         },
         {
