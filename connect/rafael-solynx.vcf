@@ -1,11 +1,12 @@
 BEGIN:VCARD
 VERSION:3.0
+N:Solano;Rafael;;;
 FN:Rafael Solano
 ORG:SOLYNX LLC
 TITLE:Founder/CEO
-TEL;TYPE=CELL:2094701307
+TEL;TYPE=CELL,VOICE:+12094701307
 TEL;TYPE=WORK,VOICE:+18554085969
-EMAIL:rafael@solynx.solutions
-URL:https://solynx.solutions
+EMAIL;TYPE=INTERNET:rafael@solynx.solutions
+URL:https://solynx.solutions/connect/rafael
 PHOTO;VALUE=URI:https://solynx.solutions/assets/images/solynx-logo.png
 END:VCARD
