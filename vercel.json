@@ -61,7 +61,7 @@
         },
         {
             "source": "/connect/kevin/save",
-            "destination": "/connect/kevin/save/"
+            "destination": "/connect/kevin/save/index.html"
         },
         {
             "source": "/connect/kevin/save/",
@@ -69,7 +69,7 @@
         },
         {
             "source": "/connect/kevin",
-            "destination": "/connect/kevin/"
+            "destination": "/connect/kevin/index.html"
         },
         {
             "source": "/connect/kevin/",
