@@ -2,6 +2,15 @@
     "github": {
         "enabled": true
     },
+    "headers": [
+        {
+            "source": "/connect/:file*.vcf",
+            "headers": [
+                { "key": "Content-Type", "value": "text/vcard; charset=utf-8" },
+                { "key": "Content-Disposition", "value": "inline; filename=\"Kevin-Saenz-SOLYNX.vcf\"" }
+            ]
+        }
+    ],
     "redirects": [
         {
             "source": "/index.html",
@@ -49,6 +58,14 @@
         {
             "source": "/connect/chris/",
             "destination": "/connect/chris/index.html"
+        },
+        {
+            "source": "/connect/kevin/save",
+            "destination": "/connect/kevin/save/"
+        },
+        {
+            "source": "/connect/kevin/save/",
+            "destination": "/connect/kevin/save/index.html"
         },
         {
             "source": "/connect/kevin",
