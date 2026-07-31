@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Santa Cruz &amp; Monterey Bay Business Automation | SOLYNX LLC</title>
+    <title>Connected Business Systems for Santa Cruz &amp; Monterey Bay | SOLYNX LLC</title>
     <meta name="description"
-        content="SOLYNX LLC helps Santa Cruz and Monterey Bay service businesses capture more leads, respond faster, book more appointments, and reduce missed opportunities through CRM automation, follow-up systems, and AI-assisted communication.">
+        content="SOLYNX helps Santa Cruz and Monterey Bay service businesses build connected systems for lead capture, follow-up, and appointment booking — with transparent, human-supported automation and privacy-conscious tools.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://solynx.solutions/santa-cruz-monterey/">
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Santa Cruz &amp; Monterey Bay Business Automation | SOLYNX LLC">
+    <meta property="og:title" content="Connected Business Systems for Santa Cruz &amp; Monterey Bay | SOLYNX LLC">
     <meta property="og:description"
-        content="SOLYNX LLC helps Santa Cruz and Monterey Bay service businesses capture more leads, respond faster, and book more appointments through CRM automation and AI-assisted communication.">
+        content="SOLYNX helps Santa Cruz and Monterey Bay service businesses build connected lead capture, follow-up, and CRM systems — with transparent automation and human-supported implementation.">
     <meta property="og:url" content="https://solynx.solutions/santa-cruz-monterey/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="SOLYNX LLC">
@@ -25,21 +25,29 @@
 
     <style>
         /* ── Reset & Base ──────────────────────────────────────── */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        :root {
-            --bg-deep:   #060c18;
-            --bg-card:   rgba(12, 20, 40, 0.85);
-            --border:    rgba(255, 255, 255, 0.08);
-            --orange:    #ff6a00;
-            --orange-lt: #ff9000;
-            --cyan:      #00e1ff;
-            --text:      #e8edf5;
-            --muted:     rgba(232, 237, 245, 0.55);
-            --radius:    12px;
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        html { scroll-behavior: smooth; }
+        :root {
+            --bg-deep: #060c18;
+            --bg-card: rgba(12, 20, 40, 0.85);
+            --border: rgba(255, 255, 255, 0.08);
+            --orange: #ff6a00;
+            --orange-lt: #ff9000;
+            --cyan: #00e1ff;
+            --text: #e8edf5;
+            --muted: rgba(232, 237, 245, 0.55);
+            --radius: 12px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             background: var(--bg-deep);
@@ -50,10 +58,19 @@
             overflow-x: hidden;
         }
 
-        a { color: var(--cyan); text-decoration: none; }
-        a:hover { text-decoration: underline; }
+        a {
+            color: var(--cyan);
+            text-decoration: none;
+        }
 
-        img { max-width: 100%; display: block; }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
 
         /* ── Layout helpers ────────────────────────────────────── */
         .container {
@@ -67,7 +84,9 @@
             border-top: 1px solid var(--border);
         }
 
-        .section:first-of-type { border-top: none; }
+        .section:first-of-type {
+            border-top: none;
+        }
 
         .eyebrow {
             font-size: 0.72rem;
@@ -91,8 +110,14 @@
             margin-bottom: 36px;
         }
 
-        .text-center { text-align: center; }
-        .text-center .section-sub { margin-left: auto; margin-right: auto; }
+        .text-center {
+            text-align: center;
+        }
+
+        .text-center .section-sub {
+            margin-left: auto;
+            margin-right: auto;
+        }
 
         /* ── Nav ───────────────────────────────────────────────── */
         .sc-nav {
@@ -139,17 +164,31 @@
             font-weight: 600;
             letter-spacing: 0.07em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255, 255, 255, 0.6);
             transition: color 0.2s;
         }
 
-        .sc-nav-links a:hover { color: var(--cyan); text-decoration: none; }
+        .sc-nav-links a:hover {
+            color: var(--cyan);
+            text-decoration: none;
+        }
 
         @media (max-width: 600px) {
-            .sc-nav-links { gap: 10px; }
-            .sc-nav-links a { font-size: 0.68rem; }
-            .sc-nav-inner { padding: 10px 16px; }
-            .sc-nav-logo img { height: 30px; }
+            .sc-nav-links {
+                gap: 10px;
+            }
+
+            .sc-nav-links a {
+                font-size: 0.68rem;
+            }
+
+            .sc-nav-inner {
+                padding: 10px 16px;
+            }
+
+            .sc-nav-logo img {
+                height: 30px;
+            }
         }
 
         /* ── Buttons ───────────────────────────────────────────── */
@@ -164,21 +203,31 @@
             text-decoration: none;
             line-height: 1;
         }
-        .btn:hover { transform: translateY(-2px); text-decoration: none; }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
 
         .btn-primary {
             background: linear-gradient(135deg, var(--orange) 0%, var(--orange-lt) 100%);
             color: #fff;
             box-shadow: 0 4px 20px rgba(255, 106, 0, 0.35);
         }
-        .btn-primary:hover { box-shadow: 0 6px 28px rgba(255, 106, 0, 0.5); }
+
+        .btn-primary:hover {
+            box-shadow: 0 6px 28px rgba(255, 106, 0, 0.5);
+        }
 
         .btn-secondary {
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.14);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.14);
             color: var(--text);
         }
-        .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
 
         .btn-cta-row {
             display: flex;
@@ -201,7 +250,7 @@
             right: -200px;
             width: 700px;
             height: 700px;
-            background: radial-gradient(ellipse, rgba(0,225,255,0.05) 0%, transparent 65%);
+            background: radial-gradient(ellipse, rgba(0, 225, 255, 0.05) 0%, transparent 65%);
             pointer-events: none;
         }
 
@@ -209,8 +258,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(0,225,255,0.08);
-            border: 1px solid rgba(0,225,255,0.2);
+            background: rgba(0, 225, 255, 0.08);
+            border: 1px solid rgba(0, 225, 255, 0.2);
             border-radius: 20px;
             padding: 6px 14px;
             font-size: 0.75rem;
@@ -229,7 +278,9 @@
             max-width: 760px;
         }
 
-        .hero h1 span { color: var(--orange); }
+        .hero h1 span {
+            color: var(--orange);
+        }
 
         .hero-sub {
             font-size: 1.05rem;
@@ -246,7 +297,12 @@
             align-items: start;
         }
 
-        @media (max-width: 720px) { .market-grid { grid-template-columns: 1fr; gap: 32px; } }
+        @media (max-width: 720px) {
+            .market-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
 
         .service-area-list {
             display: flex;
@@ -256,8 +312,8 @@
         }
 
         .area-chip {
-            background: rgba(0,225,255,0.07);
-            border: 1px solid rgba(0,225,255,0.18);
+            background: rgba(0, 225, 255, 0.07);
+            border: 1px solid rgba(0, 225, 255, 0.18);
             border-radius: 20px;
             padding: 5px 14px;
             font-size: 0.82rem;
@@ -272,8 +328,17 @@
             gap: 20px;
         }
 
-        @media (max-width: 860px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 520px) { .services-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 860px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 520px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
         .service-card {
             background: var(--bg-card);
@@ -310,11 +375,11 @@
         /* ── Zeus Section ──────────────────────────────────────── */
         .zeus-card {
             background: var(--bg-card);
-            border: 1px solid rgba(0,225,255,0.14);
+            border: 1px solid rgba(0, 225, 255, 0.14);
             border-radius: 16px;
             padding: 40px;
             backdrop-filter: blur(10px);
-            box-shadow: 0 0 60px rgba(0,225,255,0.05);
+            box-shadow: 0 0 60px rgba(0, 225, 255, 0.05);
             max-width: 720px;
             margin: 0 auto;
         }
@@ -341,7 +406,7 @@
         }
 
         .zeus-contact-block {
-            background: rgba(255,255,255,0.04);
+            background: rgba(255, 255, 255, 0.04);
             border: 1px solid var(--border);
             border-radius: 10px;
             padding: 18px 20px;
@@ -349,12 +414,17 @@
             font-size: 0.9rem;
         }
 
-        .zeus-contact-block p { margin-bottom: 4px; }
-        .zeus-contact-block p:last-child { margin-bottom: 0; }
+        .zeus-contact-block p {
+            margin-bottom: 4px;
+        }
+
+        .zeus-contact-block p:last-child {
+            margin-bottom: 0;
+        }
 
         /* ── A2P / Consent Section ─────────────────────────────── */
         .consent-box {
-            background: rgba(255,255,255,0.03);
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 32px;
@@ -376,7 +446,9 @@
             margin-bottom: 14px;
         }
 
-        .consent-box p:last-child { margin-bottom: 0; }
+        .consent-box p:last-child {
+            margin-bottom: 0;
+        }
 
         .consent-links {
             display: flex;
@@ -416,8 +488,13 @@
             margin-top: 10px;
         }
 
-        .sc-footer-links a { color: var(--muted); }
-        .sc-footer-links a:hover { color: var(--cyan); }
+        .sc-footer-links a {
+            color: var(--muted);
+        }
+
+        .sc-footer-links a:hover {
+            color: var(--cyan);
+        }
     </style>
 </head>
 
@@ -556,7 +633,8 @@
                     <p><a href="mailto:zeus@solynx.solutions">zeus@solynx.solutions</a></p>
                     <p><a href="tel:+18312155969">831-215-5969</a></p>
                 </div>
-                <a href="/connect/zeus/" class="btn btn-primary" id="zeus-cta-book">Book a Quick Conversation with Zeus</a>
+                <a href="/connect/zeus/" class="btn btn-primary" id="zeus-cta-book">Book a Quick Conversation with
+                    Zeus</a>
             </div>
         </div>
     </section>
@@ -586,7 +664,7 @@
     <!-- ══ FOOTER ════════════════════════════════════════════════ -->
     <footer class="sc-footer">
         <img src="/assets/images/solynx-logo-v2.png" alt="SOLYNX LLC">
-        <p>AI Automation Systems for Service Businesses</p>
+        <p>Connected Business Systems for Service Businesses</p>
         <p>Santa Cruz &amp; Monterey Bay | <a href="https://solynx.solutions">solynx.solutions</a></p>
         <div class="sc-footer-links">
             <a href="/">Home</a>
@@ -607,4 +685,5 @@
         data-widget-id="6a3b2427105532eae162e7b0"></script>
 
 </body>
+
 </html>
