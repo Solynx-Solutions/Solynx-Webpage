@@ -7,7 +7,7 @@
             "source": "/connect/:file*.vcf",
             "headers": [
                 { "key": "Content-Type", "value": "text/vcard; charset=utf-8" },
-                { "key": "Content-Disposition", "value": "inline; filename=\"Kevin-Saenz-SOLYNX.vcf\"" }
+                { "key": "Content-Disposition", "value": "inline; filename=\"SOLYNX-Contact.vcf\"" }
             ]
         }
     ],
@@ -52,8 +52,16 @@
             "destination": "/connect/index.html"
         },
         {
+            "source": "/connect/chris/save",
+            "destination": "/connect/chris/save/index.html"
+        },
+        {
+            "source": "/connect/chris/save/",
+            "destination": "/connect/chris/save/index.html"
+        },
+        {
             "source": "/connect/chris",
-            "destination": "/connect/chris/"
+            "destination": "/connect/chris/index.html"
         },
         {
             "source": "/connect/chris/",
@@ -76,32 +84,64 @@
             "destination": "/connect/kevin/index.html"
         },
         {
+            "source": "/connect/gretchen/save",
+            "destination": "/connect/gretchen/save/index.html"
+        },
+        {
+            "source": "/connect/gretchen/save/",
+            "destination": "/connect/gretchen/save/index.html"
+        },
+        {
             "source": "/connect/gretchen",
-            "destination": "/connect/gretchen/"
+            "destination": "/connect/gretchen/index.html"
         },
         {
             "source": "/connect/gretchen/",
             "destination": "/connect/gretchen/index.html"
         },
         {
+            "source": "/connect/james/save",
+            "destination": "/connect/james/save/index.html"
+        },
+        {
+            "source": "/connect/james/save/",
+            "destination": "/connect/james/save/index.html"
+        },
+        {
             "source": "/connect/james",
-            "destination": "/connect/james/"
+            "destination": "/connect/james/index.html"
         },
         {
             "source": "/connect/james/",
             "destination": "/connect/james/index.html"
         },
         {
+            "source": "/connect/rafael/save",
+            "destination": "/connect/rafael/save/index.html"
+        },
+        {
+            "source": "/connect/rafael/save/",
+            "destination": "/connect/rafael/save/index.html"
+        },
+        {
             "source": "/connect/rafael",
-            "destination": "/connect/rafael/"
+            "destination": "/connect/rafael/index.html"
         },
         {
             "source": "/connect/rafael/",
             "destination": "/connect/rafael/index.html"
         },
         {
+            "source": "/connect/zeus/save",
+            "destination": "/connect/zeus/save/index.html"
+        },
+        {
+            "source": "/connect/zeus/save/",
+            "destination": "/connect/zeus/save/index.html"
+        },
+        {
             "source": "/connect/zeus",
-            "destination": "/connect/zeus/"
+            "destination": "/connect/zeus/index.html"
         },
         {
             "source": "/connect/zeus/",
