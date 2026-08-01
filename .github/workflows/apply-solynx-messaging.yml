@@ -1,0 +1,78 @@
+name: Apply SOLYNX Messaging
+
+on:
+  push:
+    branches:
+      - development
+    paths:
+      - .github/workflows/apply-solynx-messaging.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: solynx-messaging-development
+  cancel-in-progress: false
+
+jobs:
+  apply-messaging:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out development
+        uses: actions/checkout@v4
+        with:
+          ref: development
+          fetch-depth: 0
+
+      - name: Reconstruct approved implementation script
+        shell: bash
+        run: |
+          cat .solynx-msg/chunk1 .solynx-msg/chunk2 .solynx-msg/chunk3 .solynx-msg/chunk4 .solynx-msg/chunk5 .solynx-msg/chunk6 > /tmp/solynx-messaging.b64
+          python - <<'PY'
+          import base64
+          import gzip
+          from pathlib import Path
+
+          payload = Path('/tmp/solynx-messaging.b64').read_text(encoding='utf-8').strip()
+          script = gzip.decompress(base64.b64decode(payload)).decode('utf-8')
+          Path('/tmp/apply_solynx_messaging.py').write_text(script, encoding='utf-8')
+          PY
+          sed -i 's/"Human-supported",/"Support your team",/' /tmp/apply_solynx_messaging.py
+          sed -i '/"without manual intervention",/d' /tmp/apply_solynx_messaging.py
+          python -m py_compile /tmp/apply_solynx_messaging.py
+
+      - name: Implement messaging and run QA
+        run: python /tmp/apply_solynx_messaging.py
+
+      - name: Review generated changes
+        shell: bash
+        run: |
+          git status --short
+          git diff --check
+          git diff --stat
+
+      - name: Remove temporary automation files
+        shell: bash
+        run: |
+          rm -rf .solynx-msg
+          rm -f .github/workflows/apply-solynx-messaging.yml
+
+      - name: Commit approved website messaging
+        shell: bash
+        run: |
+          git config user.name "SOLYNX Agent 06"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git add services.html
+          git add local-growth-system.html
+          git add santa-cruz-monterey/index.html
+          git add tracy-central-valley/index.html
+          git add monterey/index.html
+          git add bay-area/index.html
+          git add sitemap.xml
+          git add solynx-messaging-implementation-report.json
+          git add -u -- .solynx-msg .github/workflows/apply-solynx-messaging.yml
+          git diff --cached --check
+          git diff --cached --stat
+          git commit -m "feat: reposition SOLYNX as a business systems company"
+          git push origin development
