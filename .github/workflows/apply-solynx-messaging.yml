@@ -76,3 +76,5 @@ jobs:
           git diff --cached --stat
           git commit -m "feat: reposition SOLYNX as a business systems company"
           git push origin development
+
+# Triggered after the workflow was registered on the development branch.
