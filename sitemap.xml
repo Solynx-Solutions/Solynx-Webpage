@@ -1,32 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www.solynx.solutions/</loc>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://www.solynx.solutions/services.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.solynx.solutions/local-growth-system.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.solynx.solutions/live-experience/</loc>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://solynx.solutions/tracy-central-valley/</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.solynx.solutions/privacy.html</loc>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.solynx.solutions/terms.html</loc>
-    <priority>0.3</priority>
-  </url>
+<url><loc>https://www.solynx.solutions/</loc><priority>1.0</priority></url>
+<url><loc>https://www.solynx.solutions/services.html</loc><priority>0.9</priority></url>
+<url><loc>https://www.solynx.solutions/local-growth-system.html</loc><priority>0.9</priority></url>
+<url><loc>https://www.solynx.solutions/live-experience/</loc><priority>0.9</priority></url>
+<url><loc>https://www.solynx.solutions/santa-cruz-monterey/</loc><priority>0.8</priority></url>
+<url><loc>https://www.solynx.solutions/monterey/</loc><priority>0.8</priority></url>
+<url><loc>https://www.solynx.solutions/bay-area/</loc><priority>0.8</priority></url>
+<url><loc>https://www.solynx.solutions/tracy-central-valley/</loc><priority>0.8</priority></url>
+<url><loc>https://www.solynx.solutions/privacy.html</loc><priority>0.3</priority></url>
+<url><loc>https://www.solynx.solutions/terms.html</loc><priority>0.3</priority></url>
 </urlset>
