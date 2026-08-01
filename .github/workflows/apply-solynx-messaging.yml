@@ -77,4 +77,4 @@ jobs:
           git commit -m "feat: reposition SOLYNX as a business systems company"
           git push origin development
 
-# Triggered after the workflow was registered on the development branch.
+# Trigger commit merged into development so GitHub registers the push event.
