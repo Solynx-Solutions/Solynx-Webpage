@@ -44,6 +44,30 @@
             "destination": "/live-experience/index.html"
         },
         {
+            "source": "/santa-cruz-monterey",
+            "destination": "/santa-cruz-monterey/index.html"
+        },
+        {
+            "source": "/santa-cruz-monterey/",
+            "destination": "/santa-cruz-monterey/index.html"
+        },
+        {
+            "source": "/tracy-central-valley",
+            "destination": "/tracy-central-valley/index.html"
+        },
+        {
+            "source": "/tracy-central-valley/",
+            "destination": "/tracy-central-valley/index.html"
+        },
+        {
+            "source": "/east-bay",
+            "destination": "/east-bay/index.html"
+        },
+        {
+            "source": "/east-bay/",
+            "destination": "/east-bay/index.html"
+        },
+        {
             "source": "/connect",
             "destination": "/connect/"
         },

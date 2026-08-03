@@ -18,7 +18,15 @@
   </url>
 
   <url>
-    <loc>https://solynx.solutions/tracy-central-valley/</loc>
+    <loc>https://www.solynx.solutions/santa-cruz-monterey/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solynx.solutions/tracy-central-valley/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.solynx.solutions/east-bay/</loc>
     <priority>0.8</priority>
   </url>
   <url>
