@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Systems &amp; Growth Infrastructure for the East Bay | SOLYNX LLC</title>
+    <meta name="description"
+        content="SOLYNX helps East Bay service businesses in Concord, Walnut Creek, Danville, Dublin, Pleasanton, Livermore, and surrounding cities build connected systems for lead capture, CRM, missed-call response, follow-up, scheduling, and reviews.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://solynx.solutions/east-bay/">
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Business Systems &amp; Growth Infrastructure for the East Bay | SOLYNX LLC">
+    <meta property="og:description"
+        content="SOLYNX helps East Bay service businesses stop missing calls, capture every lead, and follow up faster — with connected CRM, scheduling, review, and automation systems built for local operators in Concord, Walnut Creek, Dublin, Pleasanton, and beyond.">
+    <meta property="og:url" content="https://solynx.solutions/east-bay/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SOLYNX LLC">
+
+    <!-- GHL External Tracking -->
+    <script src="https://link.solynx.solutions/js/external-tracking.js"
+        data-tracking-id="tk_a988b484869f45a09604f417b5778c51"></script>
+
+    <!-- LocalBusiness / ProfessionalService JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "SOLYNX LLC",
+      "url": "https://solynx.solutions/east-bay/",
+      "areaServed": "East Bay communities including Concord, Walnut Creek, Pleasant Hill, Martinez, Danville, San Ramon, Dublin, Pleasanton, Livermore, Brentwood, Antioch, and Pittsburg",
+      "email": "rafael@solynx.solutions",
+      "telephone": "+18554085969",
+      "sameAs": "https://solynx.solutions"
+    }
+    </script>
+
+    <style>
+        /* == Reset & Base ================================================ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg-deep:   #060c18;
+            --bg-card:   rgba(12, 20, 40, 0.85);
+            --border:    rgba(255, 255, 255, 0.08);
+            --orange:    #ff6a00;
+            --orange-lt: #ff9000;
+            --cyan:      #00e1ff;
+            --text:      #e8edf5;
+            --muted:     rgba(232, 237, 245, 0.55);
+            --radius:    12px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg-deep);
+            color: var(--text);
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        a { color: var(--cyan); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        img { max-width: 100%; display: block; }
+
+        /* == Layout helpers ============================================== */
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+        .section { padding: 72px 0; border-top: 1px solid var(--border); }
+        .section:first-of-type { border-top: none; }
+
+        .eyebrow {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 14px;
+        }
+
+        .section-title {
+            font-size: clamp(1.55rem, 3vw, 2.2rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .section-sub { color: var(--muted); max-width: 640px; margin-bottom: 36px; }
+        .text-center { text-align: center; }
+        .text-center .section-sub { margin-left: auto; margin-right: auto; }
+
+        /* == Nav ========================================================= */
+        .sc-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(6, 12, 24, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .sc-nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 14px 24px;
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        .sc-nav-logo { display: inline-flex; align-items: center; text-decoration: none; }
+        .sc-nav-logo img { height: 38px; width: auto; display: block; mix-blend-mode: screen; }
+
+        .sc-nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+        .sc-nav-links a {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+            transition: color 0.2s;
+        }
+        .sc-nav-links a:hover { color: var(--cyan); text-decoration: none; }
+
+        @media (max-width: 600px) {
+            .sc-nav-links { gap: 10px; }
+            .sc-nav-links a { font-size: 0.68rem; }
+            .sc-nav-inner { padding: 10px 16px; }
+            .sc-nav-logo img { height: 30px; }
+        }
+
+        /* == Buttons ===================================================== */
+        .btn {
+            display: inline-block;
+            padding: 13px 28px;
+            border-radius: var(--radius);
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            line-height: 1;
+        }
+        .btn:hover { transform: translateY(-2px); text-decoration: none; }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-lt) 100%);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(255, 106, 0, 0.35);
+        }
+        .btn-primary:hover { box-shadow: 0 6px 28px rgba(255, 106, 0, 0.5); }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.14);
+            color: var(--text);
+        }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+        .btn-cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+
+        /* == Hero ======================================================== */
+        .hero { padding: 88px 0 72px; position: relative; overflow: hidden; }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px; right: -200px;
+            width: 700px; height: 700px;
+            background: radial-gradient(ellipse, rgba(0,225,255,0.05) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0,225,255,0.08);
+            border: 1px solid rgba(0,225,255,0.2);
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.75rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            max-width: 760px;
+        }
+        .hero h1 span { color: var(--orange); }
+
+        .hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 620px; line-height: 1.7; }
+
+        /* == Market section ============================================== */
+        .market-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+        @media (max-width: 720px) { .market-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+        .service-area-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+        .area-chip {
+            background: rgba(0,225,255,0.07);
+            border: 1px solid rgba(0,225,255,0.18);
+            border-radius: 20px;
+            padding: 5px 14px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--cyan);
+        }
+
+        /* == Business types grid ========================================= */
+        .biz-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        @media (max-width: 860px) { .biz-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 520px) { .biz-grid { grid-template-columns: 1fr; } }
+
+        /* == Services grid =============================================== */
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        @media (max-width: 860px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 520px) { .services-grid { grid-template-columns: 1fr; } }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            backdrop-filter: blur(8px);
+            transition: border-color 0.25s, transform 0.25s;
+        }
+        .service-card:hover { border-color: rgba(255, 106, 0, 0.35); transform: translateY(-3px); }
+        .service-icon { font-size: 1.5rem; margin-bottom: 12px; }
+        .service-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+        .service-card p { font-size: 0.875rem; color: var(--muted); margin: 0; }
+
+        /* == Rep card ==================================================== */
+        .zeus-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(0,225,255,0.14);
+            border-radius: 16px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 60px rgba(0,225,255,0.05);
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .zeus-name { font-size: 1.4rem; font-weight: 800; margin-bottom: 4px; }
+        .zeus-role {
+            font-size: 0.85rem;
+            color: var(--cyan);
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .zeus-bio { color: var(--muted); margin-bottom: 24px; line-height: 1.7; }
+        .zeus-contact-block {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin-bottom: 28px;
+            font-size: 0.9rem;
+        }
+        .zeus-contact-block p { margin-bottom: 4px; }
+        .zeus-contact-block p:last-child { margin-bottom: 0; }
+
+        /* == Consent box ================================================= */
+        .consent-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .consent-box h2 { font-size: 1.05rem; font-weight: 700; margin-bottom: 14px; color: var(--text); }
+        .consent-box p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
+        .consent-box p:last-child { margin-bottom: 0; }
+        .consent-links { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 16px; font-size: 0.875rem; }
+
+        /* == Footer ====================================================== */
+        .sc-footer { border-top: 1px solid var(--border); padding: 36px 24px; text-align: center; }
+        .sc-footer img { height: 56px; width: auto; margin: 0 auto 16px; display: block; mix-blend-mode: screen; }
+        .sc-footer p { font-size: 0.8rem; color: var(--muted); margin-bottom: 10px; }
+        .sc-footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 18px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+        .sc-footer-links a { color: var(--muted); }
+        .sc-footer-links a:hover { color: var(--cyan); }
+    </style>
+</head>
+
+<body>
+
+    <!-- == NAV =========================================================== -->
+    <nav class="sc-nav" aria-label="Page navigation">
+        <div class="sc-nav-inner">
+            <a href="/" class="sc-nav-logo" aria-label="SOLYNX Home">
+                <img src="/assets/images/SLX-WRD.png" alt="SOLYNX LLC" width="auto" height="32">
+            </a>
+            <ul class="sc-nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#llc-audit">Missed Leads</a></li>
+                <li><a href="/connect/rafael/">Contact Rafael</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- == HERO ========================================================== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <span>&#128205;</span> East Bay, California
+            </div>
+            <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 14px;">
+                BUSINESS SYSTEMS &amp; GROWTH INFRASTRUCTURE FOR EAST BAY SERVICE BUSINESSES
+            </p>
+            <h1>More Leads Captured. Faster Follow-Up. <span>A Stronger System Behind Your Business.</span></h1>
+            <p class="hero-sub">
+                East Bay service businesses move fast -- and so do the people looking for them. A missed call in
+                Concord, an unanswered form in Pleasanton, or a delayed reply in Dublin can mean a lost job before
+                your team even sees the message.
+            </p>
+            <p class="hero-sub" style="margin-top: 12px;">
+                SOLYNX helps East Bay businesses connect their website, calls, forms, CRM, follow-up, scheduling,
+                reviews, and tracking into one reliable system -- so your team can respond consistently, stay
+                organized, and move qualified leads forward without adding more manual work.
+            </p>
+            <div class="btn-cta-row">
+                <a href="/connect/rafael/" class="btn btn-primary" id="hero-cta-rafael">Review My Business Systems</a>
+                <a href="/#llc-audit" class="btn btn-secondary" id="hero-cta-calculator">Calculate Missed Lead Cost</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- == LOCAL TRUST SECTION =========================================== -->
+    <section class="section" id="local">
+        <div class="container">
+            <div class="market-grid">
+                <div>
+                    <p class="eyebrow">Local Operator Focus</p>
+                    <h2 class="section-title">Built for East Bay Service Businesses That Run on Response Time and Reputation</h2>
+                    <p class="section-sub" style="margin-bottom:16px;">
+                        From Concord to Livermore, Danville to Antioch, East Bay service businesses depend on
+                        consistent communication and reliable follow-through. Calls come in while the crew is on
+                        a job. Forms arrive after hours. Messages get buried. Appointments fall through the cracks.
+                    </p>
+                    <p class="section-sub" style="margin-bottom:0;">
+                        SOLYNX connects the infrastructure behind your customer experience -- lead capture, CRM,
+                        missed-call response, follow-up automation, scheduling, reviews, and tracking -- so every
+                        inquiry has a clear next step and nothing gets lost between the field and the front office.
+                    </p>
+                </div>
+                <div>
+                    <p class="eyebrow">Service Area</p>
+                    <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:16px;">Communities We Serve</h3>
+                    <div class="service-area-list">
+                        <span class="area-chip">Concord</span>
+                        <span class="area-chip">Walnut Creek</span>
+                        <span class="area-chip">Pleasant Hill</span>
+                        <span class="area-chip">Martinez</span>
+                        <span class="area-chip">Danville</span>
+                        <span class="area-chip">San Ramon</span>
+                        <span class="area-chip">Dublin</span>
+                        <span class="area-chip">Pleasanton</span>
+                        <span class="area-chip">Livermore</span>
+                        <span class="area-chip">Brentwood</span>
+                        <span class="area-chip">Antioch</span>
+                        <span class="area-chip">Pittsburg</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- == BUSINESS TYPES SECTION ======================================== -->
+    <section class="section" id="business-types">
+        <div class="container">
+            <div class="text-center">
+                <p class="eyebrow">Who We Serve</p>
+                <h2 class="section-title">Built for the Service Businesses That Keep the East Bay Running</h2>
+                <p class="section-sub">
+                    The East Bay is a dense, competitive market. Contractors, trades, professional services,
+                    health and wellness providers, and local operators succeed here by responding faster,
+                    following up consistently, and making it easy for customers to book the next step. SOLYNX
+                    builds the systems that make that possible.
+                </p>
+            </div>
+            <div class="biz-grid">
+                <div class="service-card">
+                    <div class="service-icon">&#128296;</div>
+                    <h3>Contractors &amp; Home Services</h3>
+                    <p>Lead capture, missed-call response, estimate requests, appointment reminders, and job follow-up across the Tri-Valley and Contra Costa.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#127973;</div>
+                    <h3>Health, Wellness &amp; Professional Offices</h3>
+                    <p>Inquiry routing, online booking, appointment reminders, review requests, and organized client follow-up.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#128717;</div>
+                    <h3>Local Retail &amp; Service Shops</h3>
+                    <p>Customer messages, appointment requests, promotions, and repeat customer communication in one connected system.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#128663;</div>
+                    <h3>Field &amp; Mobile Service Businesses</h3>
+                    <p>Calls, texts, referrals, scheduling, and follow-up visibility -- even when your team is on the road.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#127970;</div>
+                    <h3>Professional &amp; Financial Services</h3>
+                    <p>Lead qualification, consultation booking, follow-up sequences, and CRM organization for service-based offices.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#127914;</div>
+                    <h3>Event Venues &amp; Community Organizations</h3>
+                    <p>Event inquiries, online forms, QR codes, registrations, and communication workflows from one connected platform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- == SERVICES SECTION ============================================== -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="text-center">
+                <p class="eyebrow">What We Build</p>
+                <h2 class="section-title">What SOLYNX Connects</h2>
+                <p class="section-sub">
+                    Practical systems built around how East Bay service businesses actually operate.
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">&#127758;</div>
+                    <h3>Connected Websites</h3>
+                    <p>Websites that feed leads directly into your CRM -- not just a digital brochure, but an active part of your growth system.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#127919;</div>
+                    <h3>Lead Capture</h3>
+                    <p>Forms, calls, chats, referrals, and QR code inquiries organized into one trackable system so no lead disappears.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#128222;</div>
+                    <h3>Missed-Call Response</h3>
+                    <p>Automated response workflows that reach out immediately when a call goes unanswered -- before the prospect moves on.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#128193;</div>
+                    <h3>CRM &amp; Pipeline</h3>
+                    <p>Contacts, conversations, and opportunities structured so leads stay visible and move forward at every stage.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#128257;</div>
+                    <h3>Follow-Up &amp; Automation</h3>
+                    <p>Text, email, and reminder workflows designed to keep conversations moving without adding manual work to your day.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#128197;</div>
+                    <h3>Scheduling &amp; Booking</h3>
+                    <p>Clear booking paths and calendar integrations that help prospects take the next step faster -- on any device.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#11088;</div>
+                    <h3>Review Generation</h3>
+                    <p>Automated review request workflows that help East Bay businesses build reputation consistently without chasing customers manually.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#128202;</div>
+                    <h3>Tracking &amp; Visibility</h3>
+                    <p>Know where your leads come from, what happens to them, and which parts of your system are working -- without guessing.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#129302;</div>
+                    <h3>AI Voice &amp; Chat Support</h3>
+                    <p>Where useful, AI-assisted intake, FAQ handling, and routing -- deployed selectively to support your team, not replace the human side of your business.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- == RAFAEL SECTION ================================================ -->
+    <section class="section" id="rafael">
+        <div class="container">
+            <div class="text-center" style="margin-bottom:36px;">
+                <p class="eyebrow">Local SOLYNX Contact</p>
+                <h2 class="section-title">Your Local SOLYNX Contact</h2>
+            </div>
+            <div class="zeus-card">
+                <p class="zeus-name">Rafael Solano</p>
+                <p class="zeus-role">Founder &amp; CEO &mdash; SOLYNX LLC | East Bay</p>
+                <p class="zeus-bio">
+                    Rafael Solano is the Founder &amp; CEO of SOLYNX and the local point of contact for the East Bay market.
+                    He works directly with service business owners in Concord, Walnut Creek, Dublin, Pleasanton,
+                    Livermore, and across Contra Costa and Alameda counties to identify where leads are slipping
+                    through, what follow-up gaps exist, and what infrastructure changes will make the biggest
+                    difference to their bottom line.
+                </p>
+                <div class="zeus-contact-block">
+                    <p><strong>Rafael Solano</strong></p>
+                    <p>SOLYNX -- East Bay</p>
+                    <p><a href="mailto:rafael@solynx.solutions">rafael@solynx.solutions</a></p>
+                    <p><a href="tel:+18554085969">855-408-5969</a></p>
+                </div>
+                <a href="/connect/rafael/" class="btn btn-primary" id="rafael-cta-book">Book a Quick Conversation with Rafael</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- == A2P / SMS CONSENT SECTION ===================================== -->
+    <section class="section" id="consent" aria-label="Communication consent">
+        <div class="container">
+            <div class="consent-box">
+                <h2>Communication Consent</h2>
+                <p>
+                    By submitting your information through this page or starting a conversation with SOLYNX, you may
+                    receive follow-up communications related to your inquiry, including calls, emails, or text messages.
+                    Message frequency may vary. Message and data rates may apply. Reply <strong>STOP</strong> to
+                    unsubscribe from text messages or <strong>HELP</strong> for assistance.
+                </p>
+                <p>
+                    Your information is not shared, sold, or transferred to third parties for marketing purposes.
+                </p>
+                <div class="consent-links">
+                    <a href="/privacy.html">Privacy Policy</a>
+                    <a href="/terms.html">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- == FOOTER ======================================================== -->
+    <footer class="sc-footer">
+        <img src="/assets/images/solynx-logo-v2.png" alt="SOLYNX LLC">
+        <p>Business Systems &amp; Growth Infrastructure for Service Businesses</p>
+        <p>East Bay | <a href="https://solynx.solutions">solynx.solutions</a></p>
+        <div class="sc-footer-links">
+            <a href="/">Home</a>
+            <a href="/privacy.html">Privacy Policy</a>
+            <a href="/terms.html">Terms &amp; Conditions</a>
+            <a href="/connect/rafael/">Contact Rafael</a>
+        </div>
+    </footer>
+
+    <!-- == CHAT WIDGET (East Bay page only) ============================== -->
+    <!-- NOTE: Replace data-widget-id with the East Bay GHL chat widget ID when provisioned -->
+    <script>
+        window.LeadConnector = window.LeadConnector || {};
+        window.LeadConnector.autoOpen = false;
+        window.LeadConnector.autoGreeting = false;
+    </script>
+    <script src="https://widgets.leadconnectorhq.com/loader.js"
+        data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+        data-widget-id="REPLACE_WITH_EAST_BAY_WIDGET_ID"></script>
+
+</body>
+</html>
