@@ -21,11 +21,11 @@
     "rewrites": [
         {
             "source": "/digital-media-tech",
-            "destination": "https://solynx-studio-systems.rafasolynx.chatgpt.site/"
+            "destination": "/digital-media-tech/index.html"
         },
         {
             "source": "/digital-media-tech/:path*",
-            "destination": "https://solynx-studio-systems.rafasolynx.chatgpt.site/:path*"
+            "destination": "/digital-media-tech/:path*"
         },
         {
             "source": "/",
