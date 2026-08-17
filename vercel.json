@@ -24,8 +24,8 @@
             "destination": "/digital-media-tech/index.html"
         },
         {
-            "source": "/digital-media-tech/:path*",
-            "destination": "/digital-media-tech/:path*"
+            "source": "/digital-media-tech/",
+            "destination": "/digital-media-tech/index.html"
         },
         {
             "source": "/",
