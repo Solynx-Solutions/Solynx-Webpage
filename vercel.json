@@ -20,6 +20,14 @@
     ],
     "rewrites": [
         {
+            "source": "/digital-media-tech",
+            "destination": "https://solynx-studio-systems.rafasolynx.chatgpt.site/"
+        },
+        {
+            "source": "/digital-media-tech/:path*",
+            "destination": "https://solynx-studio-systems.rafasolynx.chatgpt.site/:path*"
+        },
+        {
             "source": "/",
             "destination": "/index.html"
         },
