@@ -904,3 +904,60 @@ body.solynx-page-live .meet-agents-section .voice-close-link {
     animation: none !important;
   }
 }
+
+/* Preserve the original animated homepage process instead of cardifying it. */
+body.solynx-page-home #how-it-works .hiw-steps {
+  display: flex !important;
+  grid-template-columns: none;
+  align-items: flex-start;
+  gap: 0;
+}
+
+body.solynx-page-home #how-it-works .hiw-step {
+  flex: 1;
+  max-width: 280px;
+  min-height: auto;
+  padding: 0;
+  border: 0 !important;
+  border-radius: 0;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.solynx-page-home #how-it-works .hiw-icon-wrap {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(5, 10, 20, 0.95)) !important;
+}
+
+body.solynx-page-home #how-it-works .hiw-step-number {
+  color: #ffffff !important;
+  background: #ff9000 !important;
+  box-shadow: none !important;
+}
+
+body.solynx-page-home #how-it-works .hiw-line {
+  display: block;
+}
+
+/* Keep the scrolling customer names legible on the original deep-blue band. */
+body.solynx-page-home .brands-section {
+  color: #f8fbff !important;
+  background-color: #07111f !important;
+  background-image:
+    radial-gradient(circle at 12% 0%, rgba(27, 199, 229, 0.12), transparent 34%),
+    linear-gradient(180deg, #07111f 0%, #0d1b2b 100%) !important;
+}
+
+body.solynx-page-home .brands-section .brands-eyebrow {
+  color: #ff9a4d !important;
+}
+
+@media (max-width: 768px) {
+  body.solynx-page-home #how-it-works .hiw-steps {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  body.solynx-page-home #how-it-works .hiw-step {
+    max-width: 340px;
+  }
+}
