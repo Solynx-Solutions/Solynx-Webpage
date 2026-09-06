@@ -911,6 +911,10 @@ body.solynx-page-home #how-it-works .hiw-steps {
   grid-template-columns: none;
   align-items: flex-start;
   gap: 0;
+  color: inherit !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 body.solynx-page-home #how-it-works .hiw-step {
