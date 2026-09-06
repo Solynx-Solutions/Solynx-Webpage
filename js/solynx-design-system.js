@@ -3,7 +3,7 @@
 
   const bookingUrl = "https://link.solynx.solutions/widget/booking/f3EuIbW7JTKWLbval3Wc";
   const contactUrl = "https://link.solynx.solutions/widget/form/XK9biK6AROXKJdkCzyMw";
-  const digitalMediaPreviewUrl = "https://solynx-studio-systems.rafasolynx.chatgpt.site/";
+  const digitalMediaUrl = "/digital-media-tech/";
 
   const path = window.location.pathname.replace(/\/+$/, "") || "/";
   const isPath = function (candidate) {
@@ -11,7 +11,7 @@
     return path === normalized;
   };
 
-  const digitalMediaItem = '<a class="slx-nav-link" href="' + digitalMediaPreviewUrl + '" target="_blank" rel="noopener noreferrer">Digital Media &amp; Tech <span class="slx-planned-badge">Preview</span></a>';
+  const digitalMediaItem = '<a class="slx-nav-link" data-route="digital-media" href="' + digitalMediaUrl + '">Digital Media &amp; Tech</a>';
 
   const header = document.createElement("header");
   header.className = "slx-site-header";
@@ -48,7 +48,7 @@
     '<div class="slx-footer-grid">',
     '<div class="slx-footer-brand"><img src="/assets/images/SLX-WRD.png" alt="SOLYNX LLC"><p>SOLYNX is a Business Systems &amp; Growth Infrastructure Company. We connect websites, calls, forms, CRM, follow-up, scheduling, reviews, tracking, automation, and AI support into one managed business system.</p></div>',
     '<div class="slx-footer-group"><h2>Explore</h2><a href="/">Home</a><a href="/services.html">Services</a><a href="/#about">About</a><a href="' + contactUrl + '">Contact</a></div>',
-    '<div class="slx-footer-group"><h2>Systems</h2><a href="/local-growth-system.html">Local Growth</a><a href="/live-experience/">Live Experience</a><a href="/#llc-audit">Lead Audit</a><a href="/#automation-systems">Automation Systems</a><a href="' + digitalMediaPreviewUrl + '" target="_blank" rel="noopener noreferrer">Digital Media &amp; Tech (preview)</a></div>',
+    '<div class="slx-footer-group"><h2>Systems</h2><a href="/local-growth-system.html">Local Growth</a><a href="/live-experience/">Live Experience</a><a href="/#llc-audit">Lead Audit</a><a href="/#automation-systems">Automation Systems</a><a href="' + digitalMediaUrl + '">Digital Media &amp; Tech</a></div>',
     '<div class="slx-footer-group"><h2>Markets &amp; Legal</h2><a href="/tracy-central-valley/">Tracy / Central Valley</a><a href="/santa-cruz-monterey/">Santa Cruz / Monterey</a><a href="/subscription-agreement.html">Subscription Agreement</a><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Use</a></div>',
     '</div>',
     '<div class="slx-footer-bottom"><span>&copy; 2026 SOLYNX LLC. Built with grit.</span><span>Business systems for service companies.</span></div>'
@@ -62,6 +62,7 @@
     ["services", isPath("/services.html")],
     ["local-growth", isPath("/local-growth-system.html")],
     ["live", isPath("/live-experience")],
+    ["digital-media", isPath("/digital-media-tech")],
     ["tracy", isPath("/tracy-central-valley")],
     ["santa-cruz", isPath("/santa-cruz-monterey")]
   ];

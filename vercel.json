@@ -40,6 +40,14 @@
             "destination": "/live-experience/"
         },
         {
+            "source": "/digital-media-tech",
+            "destination": "/digital-media-tech/"
+        },
+        {
+            "source": "/digital-media-tech/",
+            "destination": "/digital-media-tech/index.html"
+        },
+        {
             "source": "/live-experience/",
             "destination": "/live-experience/index.html"
         },
