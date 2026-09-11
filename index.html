@@ -13,6 +13,7 @@
     <title>Connected Business Systems for Service Businesses | SOLYNX</title>
     <link rel="stylesheet" href="styles-new.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/google-reviews-preview.css">
     <link rel="stylesheet" href="local-growth-system.css">
     <link rel="stylesheet" href="css/mobile-nav.css">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
@@ -539,6 +540,52 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <aside class="owner-signal" aria-label="Customer testimonial highlight">
+        <div class="container owner-signal-inner">
+            <span class="owner-signal-label"><i aria-hidden="true"></i> Owner Signal</span>
+            <p class="owner-signal-quote">“The team is responsive.” <span>— Dennis Hernandez, Master Scapes</span></p>
+            <span class="owner-signal-mark" aria-hidden="true">✦</span>
+        </div>
+    </aside>
+
+
+    <!-- Google Reviews / Social Proof -->
+    <section id="customer-reviews" class="reviews-section" aria-labelledby="reviews-title">
+        <div class="reviews-orb reviews-orb-cyan" aria-hidden="true"></div>
+        <div class="reviews-orb reviews-orb-orange" aria-hidden="true"></div>
+        <div class="container reviews-shell reviews-shell-refined">
+            <header class="reviews-heading">
+                <div>
+                    <div class="section-eyebrow">VERIFIED CLIENT FEEDBACK</div>
+                    <h2 id="reviews-title">
+                        <span class="reviews-title-line">Built on results.</span>
+                        <span class="reviews-title-line reviews-title-accent">Backed by owners.</span>
+                    </h2>
+                </div>
+                <a class="google-source" href="https://www.google.com/maps?cid=15147860888115817840" target="_blank" rel="noopener noreferrer">
+                    <span class="google-g" aria-hidden="true">G</span>
+                    <span>View on Google</span>
+                </a>
+            </header>
+
+            <article class="review-card review-editorial">
+                <div class="review-identity">
+                    <span class="review-focus">CLIENT SPOTLIGHT</span>
+                    <div class="review-person">
+                        <div class="review-avatar" aria-hidden="true">DH</div>
+                        <div>
+                            <cite>Dennis Hernandez</cite>
+                            <span>Master Scapes · SOLYNX client</span>
+                        </div>
+                    </div>
+                    <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
+                    <span class="verified-review">Verified Customer Review</span>
+                </div>
+                <blockquote>“Solynx has been a game-changer for us. Their innovative solutions have made our operations more efficient and secure. The team is responsive, and the platform is top-notch. Highly recommend them!”</blockquote>
+            </article>
         </div>
     </section>
 
@@ -2213,20 +2260,49 @@
         data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
         data-widget-id="69b725f66660242869549e80"></script>
     <script>
-        // Suppress GHL all-in-one floating chat widget auto-open on homepage
+        // Keep only the launcher visible until a visitor chooses to open chat.
         (function () {
-            function forceClose() {
-                if (window.LeadConnector) {
-                    if (typeof window.LeadConnector.closeWidget === 'function') window.LeadConnector.closeWidget();
-                    if (typeof window.LeadConnector.close === 'function') window.LeadConnector.close();
+            var chatRequested = false;
+
+            function suppressGreeting(root) {
+                if (chatRequested) {
+                    root.querySelectorAll('#lc_text-widget--box.active').forEach(function (box) {
+                        box.style.removeProperty('display');
+                    });
                 }
-                if (window.LC_API && typeof window.LC_API.close_chat === 'function') window.LC_API.close_chat();
-                document.querySelectorAll('iframe[src*="leadconnectorhq"]').forEach(function (f) {
-                    try { f.contentWindow.postMessage(JSON.stringify({ action: 'close' }), '*'); } catch (e) { }
+
+                root.querySelectorAll('.lc_text-widget--prompt').forEach(function (prompt) {
+                    if (chatRequested) {
+                        if (prompt.dataset.solynxSuppressed === 'true') {
+                            prompt.style.removeProperty('display');
+                            delete prompt.dataset.solynxSuppressed;
+                        }
+                    } else if (prompt.style.getPropertyValue('display') !== 'none') {
+                        prompt.style.setProperty('display', 'none', 'important');
+                        prompt.dataset.solynxSuppressed = 'true';
+                    }
+                });
+
+                root.querySelectorAll('#lc_text-widget--btn').forEach(function (launcher) {
+                    if (launcher.dataset.solynxClickBound === 'true') return;
+                    launcher.dataset.solynxClickBound = 'true';
+                    launcher.addEventListener('click', function () {
+                        chatRequested = true;
+                        document.documentElement.classList.add('solynx-chat-requested');
+                        window.setTimeout(function () { suppressGreeting(document); }, 0);
+                    }, { once: true });
+                });
+
+                root.querySelectorAll('*').forEach(function (element) {
+                    if (element.shadowRoot) suppressGreeting(element.shadowRoot);
                 });
             }
-            [600, 1200, 2500, 4000, 5500].forEach(function (ms) { setTimeout(forceClose, ms); });
+
+            suppressGreeting(document);
+            window.setInterval(function () { suppressGreeting(document); }, 500);
         })();
     </script>
+
+    <script src="/js/solynx-design-system.js"></script>
 
 </body>
