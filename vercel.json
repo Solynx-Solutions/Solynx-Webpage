@@ -84,6 +84,30 @@
             "destination": "/connect/index.html"
         },
         {
+            "source": "/connect/sean-evans",
+            "destination": "/connect/sean-evans/index.html"
+        },
+        {
+            "source": "/connect/sean-evans/",
+            "destination": "/connect/sean-evans/index.html"
+        },
+        {
+            "source": "/connect/amber-hagle",
+            "destination": "/connect/amber-hagle/index.html"
+        },
+        {
+            "source": "/connect/amber-hagle/",
+            "destination": "/connect/amber-hagle/index.html"
+        },
+        {
+            "source": "/connect/melanie-minan",
+            "destination": "/connect/melanie-minan/index.html"
+        },
+        {
+            "source": "/connect/melanie-minan/",
+            "destination": "/connect/melanie-minan/index.html"
+        },
+        {
             "source": "/connect/chris/save",
             "destination": "/connect/chris/save/index.html"
         },
