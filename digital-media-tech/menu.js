@@ -117,12 +117,13 @@
         if (oneTimeTotal) oneTimeTotal.textContent = money(totals.oneTime, false);
         if (monthlyTotal) monthlyTotal.textContent = money(totals.monthly, true);
         projectEmpty.hidden = count > 0;
-        scopeReset.disabled = count === 0;
-        scopeSubmit.disabled = !receiverReady || count === 0 || submitting;
-        if (scopeDownload) scopeDownload.disabled = true;
+        scopeReset.disabled = count === 0 || Boolean(submittedBrief);
+        scopeSubmit.disabled = !receiverReady || count === 0 || submitting || Boolean(submittedBrief);
+        if (scopeDownload) scopeDownload.disabled = !submittedBrief;
     }
 
     function switchMode(mode) {
+        if (submittedBrief) return;
         if (mode !== 'current' && mode !== 'regional') return;
         activeMode = mode;
         clearAll();
@@ -147,6 +148,7 @@
 
     optionButtons.forEach(function (button) {
         button.addEventListener('click', function () {
+            if (submittedBrief) return;
             var details = detailsFor(button);
             if (selected.has(details.id)) { clearButton(button); render(); return; }
             if (details.kind === 'package') {
@@ -164,10 +166,10 @@
     });
 
     rateTabs.forEach(function (tab) { tab.addEventListener('click', function () { switchMode(tab.getAttribute('data-rate-mode')); }); });
-    scopeReset.addEventListener('click', function () { clearAll(); render(); });
+    scopeReset.addEventListener('click', function () { if (submittedBrief) return; clearAll(); render(); });
     if (scopeLeadForm) scopeLeadForm.addEventListener('submit', async function (event) {
         event.preventDefault();
-        if (!receiverReady || submitting || !selected.size) return;
+        if (!receiverReady || submitting || submittedBrief || !selected.size) return;
         if (!scopeLeadForm.reportValidity()) return;
         var form = new FormData(scopeLeadForm);
         var payload = {
@@ -211,6 +213,10 @@
                 'Planning selections only. Final scope, rights, travel, usage, and price require written review.'
             ].join('\n');
             scopeLeadStatus.textContent = 'Your brief was saved. Download your submitted selection for your records; the team will review the scope.';
+            scopeSubmit.textContent = 'Brief received / COMPLETE';
+            optionButtons.forEach(function (button) { button.disabled = true; });
+            rateTabs.forEach(function (tab) { tab.disabled = true; });
+            scopeReset.disabled = true;
             if (scopeDownload) {
                 scopeDownload.disabled = false;
                 scopeDownload.textContent = 'Download submitted brief';
@@ -220,7 +226,7 @@
             scopeLeadStatus.textContent = error.message || 'We could not confirm the intake. Part of your brief may have been saved. Please do not resubmit; email digitalmedia@solynx.solutions for a status check.';
         } finally {
             submitting = false;
-            scopeSubmit.disabled = !receiverReady || !selected.size;
+            scopeSubmit.disabled = !receiverReady || !selected.size || Boolean(submittedBrief);
         }
     });
     if (scopeDownload) scopeDownload.addEventListener('click', function () {

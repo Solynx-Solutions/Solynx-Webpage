@@ -30,7 +30,18 @@ function configured() {
       process.env.SOLYNX_MEDIA_LOCATION_ID &&
       process.env.SOLYNX_MEDIA_TASK_OWNER_ID &&
       process.env.SOLYNX_MEDIA_WORKFLOW_ID &&
-      process.env.SOLYNX_MEDIA_ALLOWED_ORIGINS);
+      process.env.SOLYNX_MEDIA_ALLOWED_ORIGINS &&
+      process.env.SOLYNX_MEDIA_GUARD_REST_TOKEN &&
+      guardUrl());
+}
+
+function guardUrl() {
+  try {
+    const url = new URL(process.env.SOLYNX_MEDIA_GUARD_REST_URL || '');
+    // The guard credential is never sent to an arbitrary configured host.
+    return url.protocol === 'https:' && /^[a-z0-9-]+\.upstash\.io$/i.test(url.hostname) &&
+      url.pathname === '/' && !url.search && !url.hash ? url.origin : '';
+  } catch { return ''; }
 }
 
 function reply(res, status, data) {
@@ -61,6 +72,27 @@ async function crm(path, body, method = 'POST') {
   });
   if (!response.ok) throw new Error('CRM request failed: ' + response.status);
   return response.json();
+}
+
+async function reserveIntake(marker) {
+  // One durable, atomic SET NX across every serverless instance. No expiry:
+  // an uncertain partial write remains reserved until a human reconciles it.
+  const response = await fetch(guardUrl(), {
+    method: 'POST',
+    headers: {
+      Authorization: 'Bearer ' + process.env.SOLYNX_MEDIA_GUARD_REST_TOKEN,
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(['SET', 'solynx:media:intake:' + marker, 'reserved', 'NX']),
+    signal: AbortSignal.timeout(8000)
+  });
+  if (!response.ok) throw new Error('Intake guard request failed: ' + response.status);
+  const result = await response.json();
+  if (result && result.error) throw new Error('Intake guard rejected reservation');
+  if (result && result.result === 'OK') return true;
+  if (result && result.result === null) return false;
+  throw new Error('Intake guard did not confirm reservation');
 }
 
 module.exports = async function digitalMediaLead(req, res) {
@@ -106,8 +138,8 @@ module.exports = async function digitalMediaLead(req, res) {
     return sum;
   }, { oneTime: 0, monthly: 0 });
   const unknownPrice = items.some((id) => CATALOG[id][regional ? 3 : 1] === null);
-  // A matching CRM note is a fail-closed retry marker. It is not a distributed
-  // lock: public activation still requires an atomic/rate-controlled guard.
+  // The matching CRM note is a secondary audit marker; the durable reservation
+  // below is the concurrency guard, including for parallel serverless requests.
   const intakeKey = createHash('sha256').update(JSON.stringify({
     email, business, phone, description, location, timeline, mode, items: [...items].sort()
   })).digest('hex');
@@ -129,16 +161,17 @@ module.exports = async function digitalMediaLead(req, res) {
   ].join('\n');
 
   try {
+    if (!await reserveIntake(marker)) {
+      return reply(res, 409, { error: 'This brief may already be in review. Please contact digitalmedia@solynx.solutions before resubmitting.' });
+    }
     const saved = await crm('/contacts/upsert', {
       locationId: process.env.SOLYNX_MEDIA_LOCATION_ID,
       name: fullName,
-      email,
-      ...(phone ? { phone } : {}),
-      companyName: business,
-      source: 'SOLYNX Digital Media website inquiry'
+      email
     });
     const contact = saved && saved.contact;
-    if (!contact || !contact.id || contact.locationId !== process.env.SOLYNX_MEDIA_LOCATION_ID) {
+    if (!contact || !contact.id || contact.locationId !== process.env.SOLYNX_MEDIA_LOCATION_ID ||
+        clean(contact.email, 254).toLowerCase() !== email) {
       throw new Error('CRM did not confirm the expected contact save');
     }
     const contactPath = '/contacts/' + encodeURIComponent(contact.id);
