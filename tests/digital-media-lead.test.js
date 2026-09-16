@@ -41,6 +41,7 @@ function configure() {
 function guarded(crmFetch, guard = async () => ({ result: 'OK' })) {
   return async (url, options) => {
     if (new URL(url).hostname === 'test-guard.upstash.io') {
+      if (JSON.parse(options.body)[0] === 'EVAL') return { ok: true, json: async () => ({ result: 1 }) };
       assert.deepEqual(JSON.parse(options.body).slice(-1), ['NX']);
       return { ok: true, json: guard };
     }
@@ -306,4 +307,26 @@ test('guard URL is restricted to approved HTTPS Redis REST host shape', async ()
   const res = response();
   await handler(request('GET'), res);
   assert.deepEqual(res.body, { ready: false });
+});
+
+
+test('throttle rejection stops reservation and all CRM writes', async () => {
+  configure();
+  let calls = 0;
+  global.fetch = async (url, options) => {
+    calls += 1;
+    assert.equal(new URL(url).hostname, 'test-guard.upstash.io');
+    const command = JSON.parse(options.body);
+    assert.equal(command[0], 'EVAL');
+    assert.equal(command[2], 2);
+    assert.match(command[3], /^solynx:media:rate:email:[a-f0-9]{64}$/);
+    assert.equal(options.body.includes(sample.email), false);
+    return { ok: true, json: async () => ({ result: 0 }) };
+  };
+  const res = response();
+  await handler(request('POST'), res);
+  assert.equal(res.statusCode, 429);
+  assert.equal(res.headers['Retry-After'], '3600');
+  assert.equal(calls, 1);
+  assert.equal(res.body.saved, undefined);
 });

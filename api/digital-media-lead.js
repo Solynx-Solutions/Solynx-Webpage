@@ -74,6 +74,39 @@ async function crm(path, body, method = 'POST') {
   return response.json();
 }
 
+// Atomic hourly limits: five attempts per normalized email and sixty overall.
+// The overall budget also bounds randomized-address abuse; no client-supplied IP
+// is trusted. Redis stores only a digest of the email, not the address itself.
+const RATE_SCRIPT = `
+local a = tonumber(redis.call('GET', KEYS[1]) or '0')
+local b = tonumber(redis.call('GET', KEYS[2]) or '0')
+if a >= 5 or b >= 60 then return 0 end
+for i = 1, 2 do
+  local n = redis.call('INCR', KEYS[i])
+  if n == 1 then redis.call('EXPIRE', KEYS[i], 3600) end
+end
+return 1`;
+
+async function allowIntake(email) {
+  const digest = createHash('sha256').update(email).digest('hex');
+  const response = await fetch(guardUrl(), {
+    method: 'POST',
+    headers: {
+      Authorization: 'Bearer ' + process.env.SOLYNX_MEDIA_GUARD_REST_TOKEN,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(['EVAL', RATE_SCRIPT, 2,
+      'solynx:media:rate:email:' + digest, 'solynx:media:rate:global']),
+    signal: AbortSignal.timeout(8000)
+  });
+  if (!response.ok) throw new Error('Intake throttle unavailable');
+  const result = await response.json();
+  if (!result || result.error || ![0, 1].includes(result.result)) {
+    throw new Error('Intake throttle did not confirm admission');
+  }
+  return result.result === 1;
+}
+
 async function reserveIntake(marker) {
   // One durable, atomic SET NX across every serverless instance. No expiry:
   // an uncertain partial write remains reserved until a human reconciles it.
@@ -161,6 +194,10 @@ module.exports = async function digitalMediaLead(req, res) {
   ].join('\n');
 
   try {
+    if (!await allowIntake(email)) {
+      res.setHeader('Retry-After', '3600');
+      return reply(res, 429, { error: 'Too many inquiry attempts. Please try again later or contact digitalmedia@solynx.solutions.' });
+    }
     if (!await reserveIntake(marker)) {
       return reply(res, 409, { error: 'This brief may already be in review. Please contact digitalmedia@solynx.solutions before resubmitting.' });
     }
