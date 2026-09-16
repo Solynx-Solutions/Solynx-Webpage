@@ -1325,6 +1325,44 @@ img.footer-logo {
     }
 }
 
+/* Homepage primary navigation: retain every destination at desktop widths. */
+@media (min-width: 901px) {
+    .homeNavContent {
+        max-width: 1480px;
+        padding-inline: 20px;
+        gap: 14px;
+    }
+
+    .homeNavContent .nav-logo {
+        margin-right: 0;
+        flex: 0 0 auto;
+    }
+
+    .homeNavContent .logo-image {
+        width: 150px;
+        max-width: 150px;
+        height: auto;
+    }
+
+    .homeNavMenu {
+        min-width: 0;
+        gap: clamp(8px, 0.85vw, 14px);
+        flex: 1 1 auto;
+        justify-content: flex-end;
+    }
+
+    .homeNavMenu .nav-link {
+        font-size: clamp(0.62rem, 0.72vw, 0.74rem);
+        letter-spacing: 0.035em;
+    }
+
+    .homeNavMenu .nav-cta {
+        padding: 10px 15px;
+        font-size: 0.72rem;
+        white-space: nowrap;
+    }
+}
+
 /* =================================
    Scroll Animations
    ================================= */
@@ -3039,4 +3077,4 @@ body {
         width: 100%;
         justify-self: stretch;
     }
-}
+}
