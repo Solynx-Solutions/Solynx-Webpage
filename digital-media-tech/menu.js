@@ -205,7 +205,8 @@
                 scopeDownload.textContent = 'Download submitted brief';
             }
         } catch (error) {
-            scopeLeadStatus.textContent = error.message || 'We could not confirm the intake. Please email digitalmedia@solynx.solutions.';
+            receiverReady = false;
+            scopeLeadStatus.textContent = error.message || 'We could not confirm the intake. Part of your brief may have been saved. Please do not resubmit; email digitalmedia@solynx.solutions for a status check.';
         } finally {
             submitting = false;
             scopeSubmit.disabled = !receiverReady || !selected.size;

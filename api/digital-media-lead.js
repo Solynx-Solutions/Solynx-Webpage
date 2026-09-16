@@ -1,6 +1,7 @@
 /* SOLYNX Digital Media intake. Remains closed until its own scoped credentials,
  * workflow, owner, origin, and activation flag are supplied and verified. */
 const CRM_BASE = 'https://services.leadconnectorhq.com';
+const { createHash } = require('node:crypto');
 // Labels and planning amounts mirror the public menu; never treat them as a quote.
 // Each entry is [label, current one-time, current monthly, regional one-time, regional monthly].
 const CATALOG = {
@@ -46,16 +47,16 @@ function validEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) && value.length <= 254;
 }
 
-async function crm(path, body) {
+async function crm(path, body, method = 'POST') {
   const response = await fetch(CRM_BASE + path, {
-    method: 'POST',
+    method,
     headers: {
       Authorization: 'Bearer ' + process.env.SOLYNX_MEDIA_CRM_TOKEN,
       Version: 'v3',
       Accept: 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(body),
+    ...(method === 'POST' ? { body: JSON.stringify(body) } : {}),
     signal: AbortSignal.timeout(8000)
   });
   if (!response.ok) throw new Error('CRM request failed: ' + response.status);
@@ -105,9 +106,16 @@ module.exports = async function digitalMediaLead(req, res) {
     return sum;
   }, { oneTime: 0, monthly: 0 });
   const unknownPrice = items.some((id) => CATALOG[id][regional ? 3 : 1] === null);
+  // A matching CRM note is a fail-closed retry marker. It is not a distributed
+  // lock: public activation still requires an atomic/rate-controlled guard.
+  const intakeKey = createHash('sha256').update(JSON.stringify({
+    email, business, phone, description, location, timeline, mode, items: [...items].sort()
+  })).digest('hex');
+  const marker = 'SOLYNX-DM-INTAKE:' + intakeKey;
 
   const brief = [
     'SOLYNX Digital Media & Tech inquiry',
+    'Intake marker: ' + marker,
     'Rate set: ' + mode,
     'Selected services: ' + items.map((id) => CATALOG[id][0] + ' [' + id + ']').join('; '),
     'Planning one-time starting subtotal: $' + totals.oneTime.toLocaleString('en-US') + (unknownPrice ? ' plus unpriced scope' : ''),
@@ -134,11 +142,16 @@ module.exports = async function digitalMediaLead(req, res) {
       throw new Error('CRM did not confirm the expected contact save');
     }
     const contactPath = '/contacts/' + encodeURIComponent(contact.id);
+    const existing = await crm(contactPath + '/notes', undefined, 'GET');
+    if (!existing || !Array.isArray(existing.notes)) throw new Error('CRM did not confirm the note ledger');
+    if (existing.notes.some((entry) => typeof entry.body === 'string' && entry.body.includes(marker))) {
+      return reply(res, 409, { error: 'This brief may already be in review. Please contact digitalmedia@solynx.solutions before resubmitting.' });
+    }
     const note = await crm(contactPath + '/notes', { title: 'Digital Media project brief', body: brief });
     if (!note || !note.note || !note.note.id) throw new Error('CRM did not confirm the brief note');
     const task = await crm(contactPath + '/tasks', {
       title: 'Review Digital Media inquiry',
-      body: 'Review scope, rights, timing, and quote. Coordinate with Sean and Amber. Do not promise a booking before approval.',
+      body: 'Intake marker: ' + marker + '\nReview scope, rights, timing, and quote. Coordinate with Sean and Amber. Do not promise a booking before approval.',
       dueDate: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
       completed: false,
       assignedTo: process.env.SOLYNX_MEDIA_TASK_OWNER_ID
@@ -149,6 +162,6 @@ module.exports = async function digitalMediaLead(req, res) {
     return reply(res, 201, { saved: true });
   } catch (error) {
     console.error('Digital Media intake incomplete:', error.message);
-    return reply(res, 502, { error: 'We could not confirm every intake step. Please contact digitalmedia@solynx.solutions.' });
+    return reply(res, 502, { error: 'We could not confirm every intake step. Part of your brief may have been saved. Please do not resubmit; contact digitalmedia@solynx.solutions for a status check.' });
   }
 };
