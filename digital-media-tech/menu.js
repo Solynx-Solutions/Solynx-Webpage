@@ -9,7 +9,8 @@
     var projectEmpty = document.getElementById('projectEmpty');
     var scopeCount = document.getElementById('scopeCount');
     var navScopeCount = document.getElementById('navScopeCount');
-    var scopeQuote = document.getElementById('scopeQuote');
+    var scopeSubmit = document.getElementById('scopeSubmit');
+    var scopeDownload = document.getElementById('scopeDownload');
     var scopeReset = document.getElementById('scopeReset');
     var rateModeDescription = document.getElementById('rateModeDescription');
     var projectRateSet = document.getElementById('projectRateSet');
@@ -19,7 +20,7 @@
     var selected = new Map();
     var activeMode = 'current';
 
-    if (!optionButtons.length || !projectList || !scopeCount || !scopeQuote || !scopeReset) return;
+    if (!optionButtons.length || !projectList || !scopeCount || !scopeSubmit || !scopeReset) return;
 
     var modeLabels = { current: 'Current menu', regional: 'Regional proposal' };
     var modeDescriptions = {
@@ -65,18 +66,6 @@
         };
     }
 
-    function buildMailto(items, totals) {
-        var subject = encodeURIComponent('SOLYNX Media Scope Request');
-        var body = encodeURIComponent(
-            'Rate set: ' + modeLabels[activeMode] + '\n\n' +
-            items.map(function (item) { return '• ' + item.label + ' — ' + item.display; }).join('\n') +
-            '\n\nPlanning subtotal: ' + money(totals.oneTime, false) +
-            '\nRecurring monthly: ' + money(totals.monthly, true) +
-            '\n\nPlease confirm eligibility, scope, rights, deliverables, timing, and final quote.'
-        );
-        return 'mailto:rafael@solynx.solutions?subject=' + subject + '&body=' + body;
-    }
-
     function render() {
         var items = Array.from(selected.values());
         var totals = items.reduce(function (sum, item) {
@@ -111,9 +100,8 @@
         if (monthlyTotal) monthlyTotal.textContent = money(totals.monthly, true);
         projectEmpty.hidden = count > 0;
         scopeReset.disabled = count === 0;
-        scopeQuote.classList.toggle('isDisabled', count === 0);
-        scopeQuote.setAttribute('aria-disabled', count === 0 ? 'true' : 'false');
-        scopeQuote.href = count === 0 ? 'mailto:rafael@solynx.solutions?subject=SOLYNX%20Media%20Scope%20Request' : buildMailto(items, totals);
+        scopeSubmit.disabled = true;
+        if (scopeDownload) scopeDownload.disabled = true;
     }
 
     function switchMode(mode) {
@@ -159,8 +147,7 @@
 
     rateTabs.forEach(function (tab) { tab.addEventListener('click', function () { switchMode(tab.getAttribute('data-rate-mode')); }); });
     scopeReset.addEventListener('click', function () { clearAll(); render(); });
-    scopeQuote.addEventListener('click', function (event) {
-        if (!selected.size) { event.preventDefault(); optionButtons[0].focus(); }
-    });
+    var scopeLeadForm = document.getElementById('scopeLeadForm');
+    if (scopeLeadForm) scopeLeadForm.addEventListener('submit', function (event) { event.preventDefault(); });
     switchMode('current');
 })();

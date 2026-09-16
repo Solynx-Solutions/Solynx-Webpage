@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="icon" type="image/svg+xml" href="/digital-media-tech/assets/favicon.svg">
+<link rel="icon" type="image/png" href="/digital-media-tech/assets/solynx-lynx-logo.png">
 <link rel="stylesheet" href="/digital-media-tech/styles.css">
 </head>
 <body>
@@ -190,7 +190,7 @@
 <p>Proposed starting point. Shoot schedule, deliverable quantities, and editing allowance still need definition. Photography and drone require dedicated time and cannot be assumed simultaneous with two-operator video coverage.</p>
 </section>
 </div>
-<aside class="projectPanel" id="project-summary" aria-labelledby="project-title">
+<aside class="projectPanel" id="project-summary" aria-labelledby="project-title" tabindex="0">
 <span class="projectKicker">YOUR SELECTED SCOPE</span>
 <h3 id="project-title">Build something useful.</h3>
 <p class="projectEmpty" id="projectEmpty">Choose services from the menu. Your selection will appear here.</p>
@@ -201,7 +201,23 @@
 <div><span>One-time starting subtotal</span><strong id="oneTimeTotal">$0</strong></div>
 <div><span>Recurring monthly</span><strong id="monthlyTotal">$0/mo</strong></div>
 </div>
-<a class="scopeQuote isDisabled" id="scopeQuote" href="mailto:rafael@solynx.solutions?subject=SOLYNX%20Media%20Scope%20Request" aria-disabled="true">Request selected scope <b aria-hidden="true">↗</b></a>
+<div class="scopeLeadGate" id="scope-lead-gate">
+<span>PROJECT BRIEF / REVIEW FLOW</span>
+<h4>Save the scope with your details.</h4>
+<p>We’ll need a verified SOLYNX intake receiver before a saved brief can be submitted or downloaded. This preview does not collect your information.</p>
+<form id="scopeLeadForm" novalidate>
+<label>Full name <input name="fullName" autocomplete="name" required maxlength="120" placeholder="Your name"></label>
+<label>Email <input name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@business.com"></label>
+<label>Business <input name="business" autocomplete="organization" required maxlength="160" placeholder="Business name"></label>
+<label>Phone <small>(optional)</small><input name="phone" type="tel" autocomplete="tel" maxlength="40" placeholder="For a project conversation"></label>
+<label>Project description <textarea name="description" required maxlength="1200" rows="3" placeholder="What are we making, and why now?"></textarea></label>
+<div class="scopeLeadPair"><label>Location <input name="location" maxlength="160" placeholder="City / shoot location"></label><label>Timeline <input name="timeline" maxlength="160" placeholder="Ideal timing"></label></div>
+<p class="scopeLeadConsent">Your selected items and planning totals would accompany the inquiry. This is a request for a final scoped quote, not a purchase or consent to marketing messages.</p>
+<button id="scopeSubmit" type="submit" disabled>Submit brief / INTAKE NOT CONNECTED <span aria-hidden="true">↗</span></button>
+<button id="scopeDownload" type="button" disabled>Download accepted selection / LOCKED</button>
+<p class="scopeLeadStatus" id="scopeLeadStatus" role="status">DRAFT · Receiver not verified · No information is submitted or saved.</p>
+</form>
+</div>
 <button class="scopeReset" id="scopeReset" type="button" disabled>Clear selection</button>
 <p class="projectNote">Planning amounts only—not a quote or commercial approval. Taxes, travel, licensing, usage, and added scope are excluded unless written into the final agreement. No booking, payment, or production connection is created here.</p>
 </aside>
