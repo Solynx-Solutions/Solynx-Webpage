@@ -1,12 +1,27 @@
 /* SOLYNX Digital Media intake. Remains closed until its own scoped credentials,
  * workflow, owner, origin, and activation flag are supplied and verified. */
 const CRM_BASE = 'https://services.leadconnectorhq.com';
-const VALID_ITEMS = new Set([
-  'video-half', 'video-full', 'photography', 'drone', 'editing-half',
-  'editing-full', 'editing-10', 'editing-20', 'editing-40', 'consulting',
-  'regional-assessment', 'regional-social', 'customer-story',
-  'monthly-content', 'alpha'
-]);
+// Labels and planning amounts mirror the public menu; never treat them as a quote.
+// Each entry is [label, current one-time, current monthly, regional one-time, regional monthly].
+const CATALOG = {
+  'video-half': ['Two-camera half day', 1600, 0, 1800, 0],
+  'video-full': ['Two-camera full day', 2800, 0, 3000, 0],
+  photography: ['Photography session', 500, 0, 750, 0],
+  drone: ['Aerial capture session', 350, 0, 450, 0],
+  'editing-half': ['Half-day editing block', 500, 0, 500, 0],
+  'editing-full': ['Full-day editing block', 1000, 0, 1000, 0],
+  'editing-10': ['10 prepaid editing hours', 0, 1200, 0, 1200],
+  'editing-20': ['20 prepaid editing hours', 0, 2300, 0, 2300],
+  'editing-40': ['40 prepaid editing hours', 0, 4400, 0, 4400],
+  consulting: ['Creative consulting session', null, 0, 300, 0],
+  'regional-assessment': ['Footage assessment', null, null, 375, 0],
+  'regional-social': ['Social repurpose set', null, null, 750, 0],
+  'customer-story': ['Customer story project', null, null, 3050, 0],
+  'monthly-content': ['Monthly content session', null, null, 0, 4100],
+  alpha: ['Alpha complete-production concept', 8000, 0, 8000, 0]
+};
+const VALID_ITEMS = new Set(Object.keys(CATALOG));
+const REGIONAL_ONLY = new Set(['regional-assessment', 'regional-social', 'customer-story', 'monthly-content']);
 
 function configured() {
   return process.env.SOLYNX_MEDIA_INTAKE_ENABLED === 'true' &&
@@ -73,14 +88,30 @@ module.exports = async function digitalMediaLead(req, res) {
   if (!fullName || !validEmail(email) || !business || !description || !mode ||
       !items.length || items.length > VALID_ITEMS.size ||
       items.some((item) => typeof item !== 'string' || !VALID_ITEMS.has(item)) ||
-      new Set(items).size !== items.length) {
+      new Set(items).size !== items.length ||
+      (mode === 'Current menu' && items.some((item) => REGIONAL_ONLY.has(item))) ||
+      (items.some((item) => ['alpha', 'customer-story', 'monthly-content'].includes(item)) && items.length > 1) ||
+      [['video-half', 'video-full'], ['editing-half', 'editing-full'],
+        ['editing-10', 'editing-20', 'editing-40']].some((group) =>
+        group.filter((item) => items.includes(item)).length > 1)) {
     return reply(res, 400, { error: 'Complete the required fields and choose a valid scope.' });
   }
+
+  const regional = mode === 'Regional proposal';
+  const totals = items.reduce((sum, id) => {
+    const item = CATALOG[id];
+    sum.oneTime += item[regional ? 3 : 1] || 0;
+    sum.monthly += item[regional ? 4 : 2] || 0;
+    return sum;
+  }, { oneTime: 0, monthly: 0 });
+  const unknownPrice = items.some((id) => CATALOG[id][regional ? 3 : 1] === null);
 
   const brief = [
     'SOLYNX Digital Media & Tech inquiry',
     'Rate set: ' + mode,
-    'Selected menu IDs: ' + items.join(', '),
+    'Selected services: ' + items.map((id) => CATALOG[id][0] + ' [' + id + ']').join('; '),
+    'Planning one-time starting subtotal: $' + totals.oneTime.toLocaleString('en-US') + (unknownPrice ? ' plus unpriced scope' : ''),
+    'Planning recurring monthly: $' + totals.monthly.toLocaleString('en-US') + '/mo',
     'Business: ' + business,
     'Project: ' + description,
     'Location: ' + (location || 'Not provided'),

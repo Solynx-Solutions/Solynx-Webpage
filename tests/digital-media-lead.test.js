@@ -56,14 +56,22 @@ test('rejects wrong origin and invalid selection before CRM writes', async () =>
   const invalid = response();
   await handler(request('POST', { ...sample, items: ['unknown'] }), invalid);
   assert.equal(invalid.statusCode, 400);
+  const wrongRateSet = response();
+  await handler(request('POST', { ...sample, items: ['regional-social'] }), wrongRateSet);
+  assert.equal(wrongRateSet.statusCode, 400);
+  const mixedPackage = response();
+  await handler(request('POST', { ...sample, items: ['alpha', 'video-half'] }), mixedPackage);
+  assert.equal(mixedPackage.statusCode, 400);
   assert.equal(calls, 0);
 });
 
 test('confirms contact, brief, task, and workflow before unlocking the brief', async () => {
   configure();
   const paths = [];
-  global.fetch = async (url) => {
+  const payloads = [];
+  global.fetch = async (url, options) => {
     paths.push(new URL(url).pathname);
+    payloads.push(JSON.parse(options.body));
     const bodies = [
       { contact: { id: 'test-contact', locationId: 'test-location' } },
       { note: { id: 'test-note' } },
@@ -82,6 +90,28 @@ test('confirms contact, brief, task, and workflow before unlocking the brief', a
     '/contacts/test-contact/tasks',
     '/contacts/test-contact/workflow/test-workflow'
   ]);
+  assert.match(payloads[1].body, /Selected services: Two-camera half day \[video-half\]/);
+  assert.match(payloads[1].body, /Planning one-time starting subtotal: \$1,600/);
+  assert.match(payloads[1].body, /Planning recurring monthly: \$0\/mo/);
+});
+
+test('accepts current-menu consulting as unpriced planning scope', async () => {
+  configure();
+  const payloads = [];
+  global.fetch = async (_url, options) => {
+    payloads.push(JSON.parse(options.body));
+    const bodies = [
+      { contact: { id: 'test-contact', locationId: 'test-location' } },
+      { note: { id: 'test-note' } },
+      { task: { id: 'test-task' } },
+      { succeeded: true }
+    ];
+    return { ok: true, json: async () => bodies[payloads.length - 1] };
+  };
+  const result = response();
+  await handler(request('POST', { ...sample, items: ['consulting'] }), result);
+  assert.equal(result.statusCode, 201);
+  assert.match(payloads[1].body, /plus unpriced scope/);
 });
 
 test('does not report full success when downstream workflow is unconfirmed', async () => {
