@@ -11,6 +11,9 @@
     var navScopeCount = document.getElementById('navScopeCount');
     var scopeSubmit = document.getElementById('scopeSubmit');
     var scopeDownload = document.getElementById('scopeDownload');
+    var scopeLeadForm = document.getElementById('scopeLeadForm');
+    var scopeLeadStatus = document.getElementById('scopeLeadStatus');
+    var scopeLeadExplanation = document.getElementById('scopeLeadExplanation');
     var scopeReset = document.getElementById('scopeReset');
     var rateModeDescription = document.getElementById('rateModeDescription');
     var projectRateSet = document.getElementById('projectRateSet');
@@ -19,6 +22,9 @@
     var menuCatalog = document.getElementById('media-menu-catalog');
     var selected = new Map();
     var activeMode = 'current';
+    var receiverReady = false;
+    var submitting = false;
+    var submittedBrief = '';
 
     if (!optionButtons.length || !projectList || !scopeCount || !scopeSubmit || !scopeReset) return;
 
@@ -67,6 +73,7 @@
     }
 
     function render() {
+        submittedBrief = '';
         var items = Array.from(selected.values());
         var totals = items.reduce(function (sum, item) {
             sum.oneTime += item.oneTime;
@@ -100,7 +107,7 @@
         if (monthlyTotal) monthlyTotal.textContent = money(totals.monthly, true);
         projectEmpty.hidden = count > 0;
         scopeReset.disabled = count === 0;
-        scopeSubmit.disabled = true;
+        scopeSubmit.disabled = !receiverReady || count === 0 || submitting;
         if (scopeDownload) scopeDownload.disabled = true;
     }
 
@@ -147,7 +154,84 @@
 
     rateTabs.forEach(function (tab) { tab.addEventListener('click', function () { switchMode(tab.getAttribute('data-rate-mode')); }); });
     scopeReset.addEventListener('click', function () { clearAll(); render(); });
-    var scopeLeadForm = document.getElementById('scopeLeadForm');
-    if (scopeLeadForm) scopeLeadForm.addEventListener('submit', function (event) { event.preventDefault(); });
+    if (scopeLeadForm) scopeLeadForm.addEventListener('submit', async function (event) {
+        event.preventDefault();
+        if (!receiverReady || submitting || !selected.size) return;
+        if (!scopeLeadForm.reportValidity()) return;
+        var form = new FormData(scopeLeadForm);
+        var payload = {
+            fullName: form.get('fullName'),
+            email: form.get('email'),
+            business: form.get('business'),
+            phone: form.get('phone'),
+            description: form.get('description'),
+            location: form.get('location'),
+            timeline: form.get('timeline'),
+            website: form.get('website'),
+            mode: activeMode,
+            items: Array.from(selected.keys())
+        };
+        var selection = Array.from(selected.values());
+        submitting = true;
+        scopeSubmit.disabled = true;
+        scopeLeadStatus.textContent = 'Saving your project brief with SOLYNX…';
+        try {
+            var response = await fetch('/api/digital-media-lead', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            var result = await response.json();
+            if (!response.ok || result.saved !== true) throw new Error(result.error || 'Save not confirmed.');
+            submittedBrief = [
+                'SOLYNX Digital Media & Tech — submitted project brief',
+                'Rate set: ' + modeLabels[payload.mode],
+                'Selected services:',
+                ...selection.map(function (item) { return '- ' + item.label + ' (' + item.display + ')'; }),
+                '',
+                'Name: ' + payload.fullName,
+                'Email: ' + payload.email,
+                'Business: ' + payload.business,
+                'Phone: ' + (payload.phone || 'Not provided'),
+                'Project: ' + payload.description,
+                'Location: ' + (payload.location || 'Not provided'),
+                'Timeline: ' + (payload.timeline || 'Not provided'),
+                '',
+                'Planning selections only. Final scope, rights, travel, usage, and price require written review.'
+            ].join('\n');
+            scopeLeadStatus.textContent = 'Your brief was saved. Download your submitted selection for your records; the team will review the scope.';
+            if (scopeDownload) {
+                scopeDownload.disabled = false;
+                scopeDownload.textContent = 'Download submitted brief';
+            }
+        } catch (error) {
+            scopeLeadStatus.textContent = error.message || 'We could not confirm the intake. Please email digitalmedia@solynx.solutions.';
+        } finally {
+            submitting = false;
+            scopeSubmit.disabled = !receiverReady || !selected.size;
+        }
+    });
+    if (scopeDownload) scopeDownload.addEventListener('click', function () {
+        if (!submittedBrief) return;
+        var url = URL.createObjectURL(new Blob([submittedBrief], { type: 'text/plain;charset=utf-8' }));
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = 'solynx-digital-media-brief.txt';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+    });
     switchMode('current');
+    fetch('/api/digital-media-lead', { cache: 'no-store' })
+        .then(function (response) { return response.ok ? response.json() : { ready: false }; })
+        .then(function (status) {
+            if (status.ready !== true) return;
+            receiverReady = true;
+            scopeSubmit.textContent = 'Submit project brief ↗';
+            scopeLeadStatus.textContent = 'SOLYNX intake is connected. Your information is saved only after you submit and receive confirmation.';
+            if (scopeLeadExplanation) scopeLeadExplanation.textContent = 'Share the essentials. After SOLYNX confirms the brief is saved, you can download your submitted selection for your records.';
+            scopeSubmit.disabled = !selected.size;
+        })
+        .catch(function () { /* Fail closed when the receiver cannot be verified. */ });
 })();
