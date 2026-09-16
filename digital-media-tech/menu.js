@@ -1,6 +1,17 @@
 (function () {
     'use strict';
 
+    // Reveal the definition when it enters view; the text remains readable without JavaScript.
+    var definitionLine = document.querySelector('.typedLine');
+    if (definitionLine && 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var definitionObserver = new IntersectionObserver(function (entries) {
+            if (!entries[0].isIntersecting) return;
+            definitionLine.classList.add('isTyping');
+            definitionObserver.disconnect();
+        }, { threshold: 0.3 });
+        definitionObserver.observe(definitionLine);
+    }
+
     var optionButtons = Array.prototype.slice.call(document.querySelectorAll('.scopeOption[data-scope-id]'));
     var rateTabs = Array.prototype.slice.call(document.querySelectorAll('[data-rate-mode]'));
     var modeCopies = Array.prototype.slice.call(document.querySelectorAll('.modeCopy'));
