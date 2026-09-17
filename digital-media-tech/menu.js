@@ -18,15 +18,9 @@
     var scopeCount = document.getElementById('scopeCount');
     var navScopeCount = document.getElementById('navScopeCount');
     var scopeSubmit = document.getElementById('scopeSubmit');
-    var scopeDownload = document.getElementById('scopeDownload');
-    var scopeLeadForm = document.getElementById('scopeLeadForm');
     var scopeLeadStatus = document.getElementById('scopeLeadStatus');
-    var scopeLeadExplanation = document.getElementById('scopeLeadExplanation');
     var scopeReset = document.getElementById('scopeReset');
     var selected = new Map();
-    var receiverReady = false;
-    var submitting = false;
-    var submittedBrief = '';
 
     if (!optionButtons.length || !projectList || !scopeCount || !scopeSubmit || !scopeReset) return;
 
@@ -62,7 +56,6 @@
     }
 
     function render() {
-        submittedBrief = '';
         var items = Array.from(selected.values());
 
         projectList.innerHTML = '';
@@ -88,14 +81,12 @@
         scopeCount.textContent = String(count);
         if (navScopeCount) navScopeCount.textContent = String(count);
         projectEmpty.hidden = count > 0;
-        scopeReset.disabled = count === 0 || Boolean(submittedBrief);
-        scopeSubmit.disabled = !receiverReady || count === 0 || submitting || Boolean(submittedBrief);
-        if (scopeDownload) scopeDownload.disabled = !submittedBrief;
+        scopeReset.disabled = count === 0;
+        scopeSubmit.disabled = count === 0;
     }
 
     optionButtons.forEach(function (button) {
         button.addEventListener('click', function () {
-            if (submittedBrief) return;
             var details = detailsFor(button);
             if (selected.has(details.id)) { clearButton(button); render(); return; }
             if (details.kind === 'package') {
@@ -112,88 +103,20 @@
         });
     });
 
-    scopeReset.addEventListener('click', function () { if (submittedBrief) return; clearAll(); render(); });
-    if (scopeLeadForm) scopeLeadForm.addEventListener('submit', async function (event) {
-        event.preventDefault();
-        if (!receiverReady || submitting || submittedBrief || !selected.size) return;
-        if (!scopeLeadForm.reportValidity()) return;
-        var form = new FormData(scopeLeadForm);
-        var payload = {
-            fullName: form.get('fullName'),
-            email: form.get('email'),
-            business: form.get('business'),
-            phone: form.get('phone'),
-            description: form.get('description'),
-            location: form.get('location'),
-            timeline: form.get('timeline'),
-            website: form.get('website'),
-            mode: 'inquiry',
-            items: Array.from(selected.keys())
-        };
-        var selection = Array.from(selected.values());
-        submitting = true;
-        scopeSubmit.disabled = true;
-        scopeLeadStatus.textContent = 'Saving your project brief with SOLYNX…';
-        try {
-            var response = await fetch('/api/digital-media-lead', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-            var result = await response.json();
-            if (!response.ok || result.saved !== true) throw new Error(result.error || 'Save not confirmed.');
-            submittedBrief = [
-                'SOLYNX Digital Media & Tech — submitted project brief',
-                'Selected services:',
-                ...selection.map(function (item) { return '- ' + item.label; }),
-                '',
-                'Name: ' + payload.fullName,
-                'Email: ' + payload.email,
-                'Business: ' + payload.business,
-                'Phone: ' + (payload.phone || 'Not provided'),
-                'Project: ' + payload.description,
-                'Location: ' + (payload.location || 'Not provided'),
-                'Timeline: ' + (payload.timeline || 'Not provided'),
-                '',
-                'Planning selections only. Final scope, rights, travel, usage, and price require written review.'
-            ].join('\n');
-            scopeLeadStatus.textContent = 'Your brief was saved. Download your submitted selection for your records; the team will review the scope.';
-            scopeSubmit.textContent = 'Pricing request received';
-            optionButtons.forEach(function (button) { button.disabled = true; });
-            scopeReset.disabled = true;
-            if (scopeDownload) {
-                scopeDownload.disabled = false;
-                scopeDownload.textContent = 'Download submitted brief';
-            }
-        } catch (error) {
-            receiverReady = false;
-            scopeLeadStatus.textContent = error.message || 'We could not confirm the intake. Part of your brief may have been saved. Please do not resubmit; email digitalmedia@solynx.solutions for a status check.';
-        } finally {
-            submitting = false;
-            scopeSubmit.disabled = !receiverReady || !selected.size || Boolean(submittedBrief);
-        }
-    });
-    if (scopeDownload) scopeDownload.addEventListener('click', function () {
-        if (!submittedBrief) return;
-        var url = URL.createObjectURL(new Blob([submittedBrief], { type: 'text/plain;charset=utf-8' }));
-        var link = document.createElement('a');
-        link.href = url;
-        link.download = 'solynx-digital-media-brief.txt';
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+    scopeReset.addEventListener('click', function () { clearAll(); render(); });
+    var nativeFrame = document.getElementById('scopeNativeForm');
+    var nativeLink = document.getElementById('scopeNativeLink');
+    var nativeFallback = document.getElementById('scopeNativeFallback');
+    scopeSubmit.addEventListener('click', function () {
+        if (!selected.size) return;
+        var brief = 'Selected services:\n' + Array.from(selected.values()).map(function (item) { return '- ' + item.label; }).join('\n');
+        var url = 'https://link.solynx.solutions/widget/form/1NHtVDOSdhAUtCKRcvo8?project_brief=' + encodeURIComponent(brief);
+        nativeFrame.src = url;
+        nativeFrame.hidden = false;
+        nativeLink.href = url;
+        nativeFallback.hidden = false;
+        scopeLeadStatus.textContent = 'Your selections are included below. Complete and submit the form to send your inquiry. Opening it alone does not save or submit anything.';
+        scopeSubmit.textContent = 'Refresh form with current selection ↗';
     });
     render();
-    fetch('/api/digital-media-lead', { cache: 'no-store' })
-        .then(function (response) { return response.ok ? response.json() : { ready: false }; })
-        .then(function (status) {
-            if (status.ready !== true) return;
-            receiverReady = true;
-            scopeSubmit.textContent = 'Request project pricing ↗';
-            scopeLeadStatus.textContent = 'Send your project details to request pricing. Your inquiry is saved only after submission is confirmed.';
-            if (scopeLeadExplanation) scopeLeadExplanation.textContent = 'Share the essentials to request a personalized quote. After your inquiry is confirmed, you can download your selections. Pricing follows a review by our team.';
-            scopeSubmit.disabled = !selected.size;
-        })
-        .catch(function () { /* Fail closed when the receiver cannot be verified. */ });
 })();

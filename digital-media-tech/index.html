@@ -21,7 +21,7 @@
 <link rel="preload" as="image" href="/digital-media-tech/assets/solynx-lynx-logo.png"/>
 <link rel="preload" as="image" href="/digital-media-tech/assets/solynx-wordmark.png"/>
 <main>
-<div class="menuReviewBar"><span>DESIGN PREVIEW · PRICING BY INQUIRY</span><a href="#scope-lead-gate">Request pricing</a></div>
+<div class="menuReviewBar"><span>DIGITAL MEDIA · PRICING BY INQUIRY</span><a href="#scope-lead-gate">Request pricing</a></div>
 <header class="nav" aria-label="Primary navigation">
 <a class="brand brandWithLogo" href="#top" aria-label="SOLYNX LLC Digital Media and Tech department home">
 <img class="brandMascot" src="/digital-media-tech/assets/solynx-lynx-logo.png" alt="" aria-hidden="true"/>
@@ -206,19 +206,10 @@
 <span>LET’S BUILD YOUR PROJECT</span>
 <h4>Request your project pricing.</h4>
 <p id="scopeLeadExplanation">Share your details and selected services so Sean and Amber can review your project. Pricing is being finalized; this requests a personalized follow-up, not an instant price reveal.</p>
-<form id="scopeLeadForm" novalidate>
-<input name="website" type="text" tabindex="-1" autocomplete="off" hidden aria-hidden="true">
-<label>Full name <input name="fullName" autocomplete="name" required maxlength="120" placeholder="Your name"></label>
-<label>Email <input name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@business.com"></label>
-<label>Business <input name="business" autocomplete="organization" required maxlength="160" placeholder="Business name"></label>
-<label>Phone <small>(optional)</small><input name="phone" type="tel" autocomplete="tel" maxlength="40" placeholder="For a project conversation"></label>
-<label>Project description <textarea name="description" required maxlength="1200" rows="3" placeholder="What are we making, and why now?"></textarea></label>
-<div class="scopeLeadPair"><label>Location <input name="location" maxlength="160" placeholder="City / shoot location"></label><label>Timeline <input name="timeline" maxlength="160" placeholder="Ideal timing"></label></div>
-<p class="scopeLeadConsent">Your selected items and project details accompany the inquiry. This requests a scoped quote, not a purchase or consent to marketing messages. See the <a href="/privacy.html">SOLYNX privacy policy</a>.</p>
-<button id="scopeSubmit" type="submit" disabled>Request pricing / FORM NOT CONNECTED <span aria-hidden="true">↗</span></button>
-<button id="scopeDownload" type="button" disabled>Download brief after confirmation</button>
-<p class="scopeLeadStatus" id="scopeLeadStatus" role="status">Preview: online inquiries are not connected yet. Nothing is submitted or saved through this form.</p>
-</form>
+<button id="scopeSubmit" type="button" disabled>Continue to pricing inquiry <span aria-hidden="true">↗</span></button>
+<p class="scopeLeadStatus" id="scopeLeadStatus" role="status">Choose your services, then share your contact details in our secure SOLYNX inquiry form. Your selections travel with you.</p>
+<iframe id="scopeNativeForm" title="SOLYNX Digital Media project inquiry" hidden style="width:100%;height:960px;border:0;border-radius:12px;background:#fff" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+<p id="scopeNativeFallback" hidden><a id="scopeNativeLink" target="_blank" rel="noopener">Open the inquiry form in a new tab ↗</a></p>
 <p><a href="mailto:digitalmedia@solynx.solutions?subject=Digital%20Media%20Pricing%20Inquiry">Email the Digital Media team instead ↗</a></p>
 </div>
 <button class="scopeReset" id="scopeReset" type="button" disabled>Clear selection</button>
@@ -475,6 +466,6 @@
 </div>
 </footer>
 </main>
-<script src="/digital-media-tech/menu.js?v=20260917-inquiry-r1" defer></script>
+<script src="/digital-media-tech/menu.js?v=20260917-native-r2" defer></script>
 </body>
 </html>
