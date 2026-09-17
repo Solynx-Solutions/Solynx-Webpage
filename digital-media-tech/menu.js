@@ -13,9 +13,6 @@
     }
 
     var optionButtons = Array.prototype.slice.call(document.querySelectorAll('.scopeOption[data-scope-id]'));
-    var rateTabs = Array.prototype.slice.call(document.querySelectorAll('[data-rate-mode]'));
-    var modeCopies = Array.prototype.slice.call(document.querySelectorAll('.modeCopy'));
-    var modeOnlyElements = Array.prototype.slice.call(document.querySelectorAll('[data-mode-only]'));
     var projectList = document.getElementById('projectList');
     var projectEmpty = document.getElementById('projectEmpty');
     var scopeCount = document.getElementById('scopeCount');
@@ -26,28 +23,12 @@
     var scopeLeadStatus = document.getElementById('scopeLeadStatus');
     var scopeLeadExplanation = document.getElementById('scopeLeadExplanation');
     var scopeReset = document.getElementById('scopeReset');
-    var rateModeDescription = document.getElementById('rateModeDescription');
-    var projectRateSet = document.getElementById('projectRateSet');
-    var oneTimeTotal = document.getElementById('oneTimeTotal');
-    var monthlyTotal = document.getElementById('monthlyTotal');
-    var menuCatalog = document.getElementById('media-menu-catalog');
     var selected = new Map();
-    var activeMode = 'current';
     var receiverReady = false;
     var submitting = false;
     var submittedBrief = '';
 
     if (!optionButtons.length || !projectList || !scopeCount || !scopeSubmit || !scopeReset) return;
-
-    var modeLabels = { current: 'Current menu', regional: 'Regional proposal' };
-    var modeDescriptions = {
-        current: 'Amber’s supplied current menu, presented for review in the SOLYNX department format. Choose services to build a planning summary.',
-        regional: 'Proposed regional commercial rates and bounded starter packages, kept separate from the current menu for review.'
-    };
-
-    function money(value, monthly) {
-        return '$' + Number(value || 0).toLocaleString('en-US') + (monthly ? '/mo' : '');
-    }
 
     function buttonAction(button, selectedState) {
         var action = button.querySelector('em');
@@ -74,9 +55,6 @@
         return {
             id: button.getAttribute('data-scope-id'),
             label: button.getAttribute('data-scope-label'),
-            display: button.getAttribute('data-' + activeMode + '-display') || 'Pricing to be defined',
-            oneTime: Number(button.getAttribute('data-' + activeMode + '-onetime') || 0),
-            monthly: Number(button.getAttribute('data-' + activeMode + '-monthly') || 0),
             kind: button.getAttribute('data-selection-kind') || 'service',
             group: button.getAttribute('data-selection-group') || '',
             button: button
@@ -86,11 +64,7 @@
     function render() {
         submittedBrief = '';
         var items = Array.from(selected.values());
-        var totals = items.reduce(function (sum, item) {
-            sum.oneTime += item.oneTime;
-            sum.monthly += item.monthly;
-            return sum;
-        }, { oneTime: 0, monthly: 0 });
+
         projectList.innerHTML = '';
         items.forEach(function (item) {
             var row = document.createElement('li');
@@ -99,7 +73,7 @@
             var price = document.createElement('small');
             var remove = document.createElement('button');
             label.textContent = item.label;
-            price.textContent = item.display;
+            price.textContent = 'Pricing by inquiry';
             copy.appendChild(label);
             copy.appendChild(price);
             remove.type = 'button';
@@ -113,37 +87,10 @@
         var count = items.length;
         scopeCount.textContent = String(count);
         if (navScopeCount) navScopeCount.textContent = String(count);
-        if (projectRateSet) projectRateSet.textContent = modeLabels[activeMode];
-        if (oneTimeTotal) oneTimeTotal.textContent = money(totals.oneTime, false);
-        if (monthlyTotal) monthlyTotal.textContent = money(totals.monthly, true);
         projectEmpty.hidden = count > 0;
         scopeReset.disabled = count === 0 || Boolean(submittedBrief);
         scopeSubmit.disabled = !receiverReady || count === 0 || submitting || Boolean(submittedBrief);
         if (scopeDownload) scopeDownload.disabled = !submittedBrief;
-    }
-
-    function switchMode(mode) {
-        if (submittedBrief) return;
-        if (mode !== 'current' && mode !== 'regional') return;
-        activeMode = mode;
-        clearAll();
-        rateTabs.forEach(function (tab) {
-            var isActive = tab.getAttribute('data-rate-mode') === mode;
-            tab.classList.toggle('isActive', isActive);
-            tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
-        });
-        if (menuCatalog) menuCatalog.setAttribute('aria-labelledby', mode === 'current' ? 'currentRateTab' : 'regionalRateTab');
-        if (rateModeDescription) rateModeDescription.textContent = modeDescriptions[mode];
-        modeCopies.forEach(function (copy) { copy.textContent = copy.getAttribute('data-copy-' + mode) || copy.textContent; });
-        modeOnlyElements.forEach(function (element) { element.hidden = element.getAttribute('data-mode-only') !== mode; });
-        optionButtons.forEach(function (button) {
-            var available = !button.getAttribute('data-mode-only') || button.getAttribute('data-mode-only') === mode;
-            button.disabled = !available;
-            var price = button.querySelector('.scopePrice');
-            var display = button.getAttribute('data-' + mode + '-display');
-            if (price && display) price.textContent = display;
-        });
-        render();
     }
 
     optionButtons.forEach(function (button) {
@@ -165,7 +112,6 @@
         });
     });
 
-    rateTabs.forEach(function (tab) { tab.addEventListener('click', function () { switchMode(tab.getAttribute('data-rate-mode')); }); });
     scopeReset.addEventListener('click', function () { if (submittedBrief) return; clearAll(); render(); });
     if (scopeLeadForm) scopeLeadForm.addEventListener('submit', async function (event) {
         event.preventDefault();
@@ -181,7 +127,7 @@
             location: form.get('location'),
             timeline: form.get('timeline'),
             website: form.get('website'),
-            mode: activeMode,
+            mode: 'inquiry',
             items: Array.from(selected.keys())
         };
         var selection = Array.from(selected.values());
@@ -198,9 +144,8 @@
             if (!response.ok || result.saved !== true) throw new Error(result.error || 'Save not confirmed.');
             submittedBrief = [
                 'SOLYNX Digital Media & Tech — submitted project brief',
-                'Rate set: ' + modeLabels[payload.mode],
                 'Selected services:',
-                ...selection.map(function (item) { return '- ' + item.label + ' (' + item.display + ')'; }),
+                ...selection.map(function (item) { return '- ' + item.label; }),
                 '',
                 'Name: ' + payload.fullName,
                 'Email: ' + payload.email,
@@ -213,9 +158,8 @@
                 'Planning selections only. Final scope, rights, travel, usage, and price require written review.'
             ].join('\n');
             scopeLeadStatus.textContent = 'Your brief was saved. Download your submitted selection for your records; the team will review the scope.';
-            scopeSubmit.textContent = 'Brief received / COMPLETE';
+            scopeSubmit.textContent = 'Pricing request received';
             optionButtons.forEach(function (button) { button.disabled = true; });
-            rateTabs.forEach(function (tab) { tab.disabled = true; });
             scopeReset.disabled = true;
             if (scopeDownload) {
                 scopeDownload.disabled = false;
@@ -240,15 +184,15 @@
         link.remove();
         setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
     });
-    switchMode('current');
+    render();
     fetch('/api/digital-media-lead', { cache: 'no-store' })
         .then(function (response) { return response.ok ? response.json() : { ready: false }; })
         .then(function (status) {
             if (status.ready !== true) return;
             receiverReady = true;
-            scopeSubmit.textContent = 'Submit project brief ↗';
-            scopeLeadStatus.textContent = 'SOLYNX intake is connected. Your information is saved only after you submit and receive confirmation.';
-            if (scopeLeadExplanation) scopeLeadExplanation.textContent = 'Share the essentials. After SOLYNX confirms the brief is saved, you can download your submitted selection for your records.';
+            scopeSubmit.textContent = 'Request project pricing ↗';
+            scopeLeadStatus.textContent = 'Send your project details to request pricing. Your inquiry is saved only after submission is confirmed.';
+            if (scopeLeadExplanation) scopeLeadExplanation.textContent = 'Share the essentials to request a personalized quote. After your inquiry is confirmed, you can download your selections. Pricing follows a review by our team.';
             scopeSubmit.disabled = !selected.size;
         })
         .catch(function () { /* Fail closed when the receiver cannot be verified. */ });

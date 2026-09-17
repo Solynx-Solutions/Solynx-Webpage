@@ -9,7 +9,7 @@ const sample = {
   description: 'A short film inquiry.',
   location: 'Santa Cruz',
   timeline: 'Next month',
-  mode: 'current',
+  mode: 'inquiry',
   items: ['video-half']
 };
 
@@ -70,7 +70,7 @@ test('rejects wrong origin and invalid selection before CRM writes', async () =>
   await handler(request('POST', { ...sample, items: ['unknown'] }), invalid);
   assert.equal(invalid.statusCode, 400);
   const wrongRateSet = response();
-  await handler(request('POST', { ...sample, items: ['regional-social'] }), wrongRateSet);
+  await handler(request('POST', { ...sample, mode: 'current' }), wrongRateSet);
   assert.equal(wrongRateSet.statusCode, 400);
   const mixedPackage = response();
   await handler(request('POST', { ...sample, items: ['alpha', 'video-half'] }), mixedPackage);
@@ -109,12 +109,12 @@ test('confirms contact, brief, task, and workflow before unlocking the brief', a
     locationId: 'test-location', name: sample.fullName, email: sample.email
   });
   assert.match(payloads[2].body, /Selected services: Two-camera half day \[video-half\]/);
-  assert.match(payloads[2].body, /Planning one-time starting subtotal: \$1,600/);
-  assert.match(payloads[2].body, /Planning recurring monthly: \$0\/mo/);
+  assert.match(payloads[2].body, /personalized quote requested/);
+  assert.doesNotMatch(payloads[2].body, /\$|subtotal|Rate set/);
   assert.match(payloads[2].body, /Intake marker: SOLYNX-DM-INTAKE:[a-f0-9]{64}/);
 });
 
-test('accepts current-menu consulting as unpriced planning scope', async () => {
+test('accepts consulting as a pricing inquiry', async () => {
   configure();
   const payloads = [];
   global.fetch = guarded(async (_url, options) => {
@@ -131,7 +131,7 @@ test('accepts current-menu consulting as unpriced planning scope', async () => {
   const result = response();
   await handler(request('POST', { ...sample, items: ['consulting'] }), result);
   assert.equal(result.statusCode, 201);
-  assert.match(payloads[2].body, /plus unpriced scope/);
+  assert.match(payloads[2].body, /personalized quote requested/);
 });
 
 test('does not report full success when downstream workflow is unconfirmed', async () => {

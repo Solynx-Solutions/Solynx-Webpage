@@ -15,20 +15,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="/digital-media-tech/assets/solynx-lynx-logo.png">
-<link rel="stylesheet" href="/digital-media-tech/styles.css?v=20260916-motion">
+<link rel="stylesheet" href="/digital-media-tech/styles.css?v=20260917-inquiry-aperture-r3">
 </head>
 <body>
 <link rel="preload" as="image" href="/digital-media-tech/assets/solynx-lynx-logo.png"/>
 <link rel="preload" as="image" href="/digital-media-tech/assets/solynx-wordmark.png"/>
 <main>
-<div class="menuReviewBar">
-<span>SOLYNX MEDIA / DRAFT REVIEW</span>
-<div class="rateTabs" role="tablist" aria-label="Media menu rate set">
-<button class="rateTab isActive" id="currentRateTab" type="button" role="tab" aria-selected="true" aria-controls="media-menu-catalog" data-rate-mode="current">01 · Current menu</button>
-<button class="rateTab" id="regionalRateTab" type="button" role="tab" aria-selected="false" aria-controls="media-menu-catalog" data-rate-mode="regional">02 · Regional proposal</button>
-</div>
-<a href="#review-boundary">Review notes</a>
-</div>
+<div class="menuReviewBar"><span>DESIGN PREVIEW · PRICING BY INQUIRY</span><a href="#scope-lead-gate">Request pricing</a></div>
 <header class="nav" aria-label="Primary navigation">
 <a class="brand brandWithLogo" href="#top" aria-label="SOLYNX LLC Digital Media and Tech department home">
 <img class="brandMascot" src="/digital-media-tech/assets/solynx-lynx-logo.png" alt="" aria-hidden="true"/>
@@ -62,9 +55,21 @@
 </a>
 </div>
 <div class="heroFrame" aria-label="Sean and Amber, the internal specialist team behind SOLYNX Digital Media and Tech">
-<div class="heroAperture" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><b>S+A</b></div>
+<div class="heroLens" aria-hidden="true">
+<div class="heroLensReflection"><img src="/digital-media-tech/assets/solynx-lynx-logo.png" alt=""/></div>
+<svg class="heroIris" viewBox="0 0 360 360" focusable="false">
+<defs><linearGradient id="irisMetal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#49645c"/><stop offset=".5" stop-color="#202d29"/><stop offset="1" stop-color="#b69757"/></linearGradient></defs>
+<g class="heroIrisBlades" fill="url(#irisMetal)" stroke="#bea16b" stroke-width=".8">
+<path d="M180 125 228 152 348 180 A168 168 0 0 0 264 35Z"/>
+<path d="M180 125 228 152 348 180 A168 168 0 0 0 264 35Z" transform="rotate(60 180 180)"/>
+<path d="M180 125 228 152 348 180 A168 168 0 0 0 264 35Z" transform="rotate(120 180 180)"/>
+<path d="M180 125 228 152 348 180 A168 168 0 0 0 264 35Z" transform="rotate(180 180 180)"/>
+<path d="M180 125 228 152 348 180 A168 168 0 0 0 264 35Z" transform="rotate(240 180 180)"/>
+<path d="M180 125 228 152 348 180 A168 168 0 0 0 264 35Z" transform="rotate(300 180 180)"/>
+</g></svg>
+</div>
 <span>INTERNAL SPECIALIST TEAM</span>
-<h2>Sean <i>&amp;</i><br/>Amber</h2>
+<h2 class="heroTeamNames">Sean <i>&amp;</i><br/>Amber</h2>
 <p>Media craft, technical production, and intelligent systems—inside SOLYNX LLC.</p>
 </div>
 </div>
@@ -93,12 +98,12 @@
 <h2>Choose the work.<br/><em>Build the scope.</em></h2>
 </div>
 <div>
-<p id="rateModeDescription">Amber’s supplied current menu, presented for review in the SOLYNX department format. Choose services to build a planning summary.</p>
-<span class="menuStatus">DRAFT PRICING / REVIEW ONLY</span>
+<p id="rateModeDescription">Choose the services that fit your project, then share your details for a personalized pricing conversation. No subscription required.</p>
+<span class="menuStatus">YOUR PROJECT / YOUR QUOTE</span>
 </div>
 </div>
 <div class="menuBuilderGrid">
-<div class="menuCatalog" id="media-menu-catalog" role="tabpanel" aria-labelledby="currentRateTab">
+<div class="menuCatalog" id="media-menu-catalog" aria-label="Available media services">
 <section class="scopeGroup" aria-labelledby="capture-title">
 <div class="scopeGroupHead">
 <span>01 / CAPTURE + CREATE</span>
@@ -111,22 +116,22 @@
 <h4>Video production</h4>
 <p>Interviews, brand stories, testimonials, event coverage, and process-driven visuals captured by Sean and Amber together.</p>
 <div class="scopeOptions" role="group" aria-label="Video production options">
-<button class="scopeOption" type="button" data-scope-id="video-half" data-selection-group="video-duration" data-scope-label="Two-camera half day — up to 4 hours" data-current-display="$1,600" data-regional-display="$1,800" data-current-onetime="1600" data-regional-onetime="1800" aria-pressed="false"><span><b>Two-camera half day</b><small>Up to 4 hours</small></span><strong class="scopePrice">$1,600</strong><em>Add <i aria-hidden="true">+</i></em></button>
-<button class="scopeOption" type="button" data-scope-id="video-full" data-selection-group="video-duration" data-scope-label="Two-camera full day — up to 8 hours" data-current-display="$2,800" data-regional-display="$3,000" data-current-onetime="2800" data-regional-onetime="3000" aria-pressed="false"><span><b>Two-camera full day</b><small>Up to 8 hours</small></span><strong class="scopePrice">$2,800</strong><em>Add <i aria-hidden="true">+</i></em></button>
+<button class="scopeOption" type="button" data-scope-id="video-half" data-selection-group="video-duration" data-scope-label="Two-camera half day — up to 4 hours" aria-pressed="false"><span><b>Two-camera half day</b><small>Up to 4 hours</small></span><strong class="scopePrice">Request pricing</strong><em>Add <i aria-hidden="true">+</i></em></button>
+<button class="scopeOption" type="button" data-scope-id="video-full" data-selection-group="video-duration" data-scope-label="Two-camera full day — up to 8 hours" aria-pressed="false"><span><b>Two-camera full day</b><small>Up to 8 hours</small></span><strong class="scopePrice">Request pricing</strong><em>Add <i aria-hidden="true">+</i></em></button>
 </div>
 <p class="scopeFinePrint">Professional cameras, standard audio, and lighting included. Capture only; editing is selected separately. Extra crew and specialty requirements are quoted.</p>
 </article>
 <article class="scopeCard">
 <span class="scopeKicker">PEOPLE / PRODUCTS / PLACES</span>
 <h4>Photography</h4>
-<p class="modeCopy" data-copy-current="One photographer. Finished-image count and included photo editing to be defined." data-copy-regional="Proposed: one location, 20 finished images, standard color and exposure. One photographer; editing shared as appropriate.">One photographer. Finished-image count and included photo editing to be defined.</p>
-<button class="scopeOption scopeOptionSingle" type="button" data-scope-id="photography" data-scope-label="Photography — up to 2 hours" data-current-display="Starting at $500" data-regional-display="Starting at $750" data-current-onetime="500" data-regional-onetime="750" aria-pressed="false"><span><b>Photography session</b><small>Up to 2 hours</small></span><strong class="scopePrice">Starting at $500</strong><em>Add <i aria-hidden="true">+</i></em></button>
+<p class="modeCopy">One photographer. Finished-image count and included photo editing to be defined.</p>
+<button class="scopeOption scopeOptionSingle" type="button" data-scope-id="photography" data-scope-label="Photography — up to 2 hours" aria-pressed="false"><span><b>Photography session</b><small>Up to 2 hours</small></span><strong class="scopePrice">Request pricing</strong><em>Add <i aria-hidden="true">+</i></em></button>
 </article>
 <article class="scopeCard">
 <span class="scopeKicker">AERIAL COVERAGE / SEAN</span>
 <h4>Drone services</h4>
 <p>Aerial capture built around an approved shot list. Weather, airspace, location, ownership, and portfolio rights must be cleared.</p>
-<button class="scopeOption scopeOptionSingle" type="button" data-scope-id="drone" data-scope-label="Drone services — up to 2 hours on site" data-current-display="Starting at $350" data-regional-display="Starting at $450" data-current-onetime="350" data-regional-onetime="450" aria-pressed="false"><span><b>Aerial capture session</b><small>Up to 2 hours on site</small></span><strong class="scopePrice">Starting at $350</strong><em>Add <i aria-hidden="true">+</i></em></button>
+<button class="scopeOption scopeOptionSingle" type="button" data-scope-id="drone" data-scope-label="Drone services — up to 2 hours on site" aria-pressed="false"><span><b>Aerial capture session</b><small>Up to 2 hours on site</small></span><strong class="scopePrice">Request pricing</strong><em>Add <i aria-hidden="true">+</i></em></button>
 </article>
 </div>
 </section>
@@ -139,24 +144,24 @@
 <div class="scopeCardGrid finishGrid">
 <article class="scopeCard scopeCardWide">
 <span class="scopeKicker">POST-PRODUCTION / AMBER</span>
-<div class="editingTitle"><div><h4>Editing with intention.</h4><p>Bring us your footage, or let us finish what we film together. We estimate the complete project after reviewing your assets and deliverables—not just the final runtime.</p></div><div class="editingRate"><strong>$125</strong><span>/ hour</span></div></div>
+<div class="editingTitle"><div><h4>Editing with intention.</h4><p>Bring us your footage, or let us finish what we film together. We estimate the complete project after reviewing your assets and deliverables—not just the final runtime.</p></div><div class="editingRate"><span>Quoted for your project</span></div></div>
 <div class="scopeOptions" role="group" aria-label="Editing and finishing options">
-<button class="scopeOption" type="button" data-scope-id="editing-half" data-selection-group="editing-block" data-scope-label="Half-day editing block — up to 4 editing hours" data-current-display="$500" data-regional-display="$500" data-current-onetime="500" data-regional-onetime="500" aria-pressed="false"><span><b>Half-day editing block</b><small>Up to 4 editing hours</small></span><strong class="scopePrice">$500</strong><em>Add <i aria-hidden="true">+</i></em></button>
-<button class="scopeOption" type="button" data-scope-id="editing-full" data-selection-group="editing-block" data-scope-label="Full-day editing block — up to 8 editing hours" data-current-display="$1,000" data-regional-display="$1,000" data-current-onetime="1000" data-regional-onetime="1000" aria-pressed="false"><span><b>Full-day editing block</b><small>Up to 8 editing hours</small></span><strong class="scopePrice">$1,000</strong><em>Add <i aria-hidden="true">+</i></em></button>
+<button class="scopeOption" type="button" data-scope-id="editing-half" data-selection-group="editing-block" data-scope-label="Half-day editing block — up to 4 editing hours" aria-pressed="false"><span><b>Half-day editing block</b><small>Up to 4 editing hours</small></span><strong class="scopePrice">Request pricing</strong><em>Add <i aria-hidden="true">+</i></em></button>
+<button class="scopeOption" type="button" data-scope-id="editing-full" data-selection-group="editing-block" data-scope-label="Full-day editing block — up to 8 editing hours" aria-pressed="false"><span><b>Full-day editing block</b><small>Up to 8 editing hours</small></span><strong class="scopePrice">Request pricing</strong><em>Add <i aria-hidden="true">+</i></em></button>
 </div>
 <div class="scopeTags" aria-label="Included editing considerations"><span>Story + footage selection</span><span>Color + audio finishing</span><span>Titles, captions + formats</span></div>
-<p class="scopeFinePrint">Work beyond the agreed estimate requires approval. 24-hour rush delivery: +50%, when scope and scheduling allow. Editable project files generally excluded; collaboration exceptions agreed in advance.</p>
+<p class="scopeFinePrint">Work beyond the agreed estimate requires approval. Rush delivery is quoted separately when scope and scheduling allow. Editable project files generally excluded; collaboration exceptions agreed in advance.</p>
 </article>
 <article class="scopeCard recurringCard">
 <span class="scopeKicker">PREPAID MONTHLY EDITING / AMBER</span>
 <h4>A little consistency goes a long way.</h4>
 <p>Reserve Amber’s editing time with a prepaid monthly plan. Filming is separate.</p>
 <div class="scopeOptions" role="group" aria-label="Recurring media options">
-<button class="scopeOption" type="button" data-scope-id="editing-10" data-selection-group="monthly-editing" data-scope-label="10 prepaid editing hours per month" data-current-display="$1,200/mo" data-regional-display="$1,200/mo" data-current-monthly="1200" data-regional-monthly="1200" aria-pressed="false"><span><b>10 hours</b><small>$120 per hour · Amber</small></span><strong class="scopePrice">$1,200/mo</strong><em>Add <i aria-hidden="true">+</i></em></button>
-<button class="scopeOption" type="button" data-scope-id="editing-20" data-selection-group="monthly-editing" data-scope-label="20 prepaid editing hours per month" data-current-display="$2,300/mo" data-regional-display="$2,300/mo" data-current-monthly="2300" data-regional-monthly="2300" aria-pressed="false"><span><b>20 hours</b><small>$115 per hour · Amber</small></span><strong class="scopePrice">$2,300/mo</strong><em>Add <i aria-hidden="true">+</i></em></button>
-<button class="scopeOption" type="button" data-scope-id="editing-40" data-selection-group="monthly-editing" data-scope-label="40 prepaid editing hours per month" data-current-display="$4,400/mo" data-regional-display="$4,400/mo" data-current-monthly="4400" data-regional-monthly="4400" aria-pressed="false"><span><b>40 hours</b><small>$110 per hour · Amber</small></span><strong class="scopePrice">$4,400/mo</strong><em>Add <i aria-hidden="true">+</i></em></button>
+<button class="scopeOption" type="button" data-scope-id="editing-10" data-selection-group="monthly-editing" data-scope-label="10 prepaid editing hours per month" aria-pressed="false"><span><b>10 hours</b><small>Monthly editing · Amber</small></span><strong class="scopePrice">Request pricing</strong><em>Add <i aria-hidden="true">+</i></em></button>
+<button class="scopeOption" type="button" data-scope-id="editing-20" data-selection-group="monthly-editing" data-scope-label="20 prepaid editing hours per month" aria-pressed="false"><span><b>20 hours</b><small>Monthly editing · Amber</small></span><strong class="scopePrice">Request pricing</strong><em>Add <i aria-hidden="true">+</i></em></button>
+<button class="scopeOption" type="button" data-scope-id="editing-40" data-selection-group="monthly-editing" data-scope-label="40 prepaid editing hours per month" aria-pressed="false"><span><b>40 hours</b><small>Monthly editing · Amber</small></span><strong class="scopePrice">Request pricing</strong><em>Add <i aria-hidden="true">+</i></em></button>
 </div>
-<p class="scopeFinePrint">Choose one plan. Rollover, overages, renewal, and turnaround terms remain to be finalized for this draft.</p>
+<p class="scopeFinePrint">Choose one plan. Rollover, overages, renewal, and turnaround terms are confirmed in your proposal.</p>
 </article>
 </div>
 </section>
@@ -164,29 +169,29 @@
 <div class="scopeGroupHead compact">
 <span>03 / FIND YOUR DIRECTION</span>
 <h3 id="direction-title">Creative consulting</h3>
-<p class="modeCopy" data-copy-current="Content direction and production planning. Session structure and pricing to be defined." data-copy-regional="Proposed: Sean + Amber clarify goals, content priorities, and next steps. Includes preparation and a concise written plan.">Content direction and production planning. Session structure and pricing to be defined.</p>
+<p class="modeCopy">Content direction and production planning. Session structure and pricing are tailored to your project.</p>
 </div>
-<button class="scopeOption consultationOption" type="button" data-scope-id="consulting" data-scope-label="Creative consulting session" data-current-display="Pricing to be defined" data-regional-display="$300" data-regional-onetime="300" aria-pressed="false"><span><b>Add creative consultation</b><small>Content direction + production planning</small></span><strong class="scopePrice">Pricing to be defined</strong><em>Add <i aria-hidden="true">+</i></em></button>
+<button class="scopeOption consultationOption" type="button" data-scope-id="consulting" data-scope-label="Creative consulting session" aria-pressed="false"><span><b>Add creative consultation</b><small>Content direction + production planning</small></span><strong class="scopePrice">Request pricing</strong><em>Add <i aria-hidden="true">+</i></em></button>
 </section>
-<section class="scopeGroup regionalOnly" data-mode-only="regional" hidden aria-labelledby="additions-title">
+<section class="scopeGroup" aria-labelledby="additions-title">
 <div class="scopeGroupHead">
-<span>04 / PROPOSED ADDITIONS</span>
+<span>04 / MORE WAYS TO CREATE</span>
 <h3 id="additions-title">Make your footage work harder.</h3>
-<p>These regional additions are proposals for review. Final scope shapes the quote.</p>
+<p>Explore a focused project or ongoing content session. We confirm scope and availability with your quote.</p>
 </div>
 <div class="scopeCardGrid">
-<article class="scopeCard"><span class="scopeKicker">NEW IDEA</span><h4>Footage assessment</h4><p>Review up to 60 minutes of supplied footage, identify usable assets, and prepare an edit estimate. No finished video included.</p><button class="scopeOption scopeOptionSingle" type="button" data-scope-id="regional-assessment" data-scope-label="Footage assessment — up to 3 editing hours" data-mode-only="regional" data-regional-display="Starting at $375" data-regional-onetime="375" aria-pressed="false"><span><b>Footage assessment</b><small>Up to 3 editing hours</small></span><strong class="scopePrice">Starting at $375</strong><em>Add <i aria-hidden="true">+</i></em></button></article>
-<article class="scopeCard"><span class="scopeKicker">NEW IDEA</span><h4>Social repurpose set</h4><p>Three 15–30 second vertical clips from one approved master up to 10 minutes; captions and one consolidated revision round within the block.</p><button class="scopeOption scopeOptionSingle" type="button" data-scope-id="regional-social" data-scope-label="Social repurpose set — three vertical clips" data-mode-only="regional" data-regional-display="Starting at $750" data-regional-onetime="750" aria-pressed="false"><span><b>Social repurpose set</b><small>Up to 6 editing hours</small></span><strong class="scopePrice">Starting at $750</strong><em>Add <i aria-hidden="true">+</i></em></button></article>
+<article class="scopeCard"><span class="scopeKicker">PROJECT OPTION</span><h4>Footage assessment</h4><p>Review up to 60 minutes of supplied footage, identify usable assets, and prepare an edit estimate. No finished video included.</p><button class="scopeOption scopeOptionSingle" type="button" data-scope-id="regional-assessment" data-scope-label="Footage assessment — up to 3 editing hours" aria-pressed="false"><span><b>Footage assessment</b><small>Up to 3 editing hours</small></span><strong class="scopePrice">Request pricing</strong><em>Add <i aria-hidden="true">+</i></em></button></article>
+<article class="scopeCard"><span class="scopeKicker">PROJECT OPTION</span><h4>Social repurpose set</h4><p>Three 15–30 second vertical clips from one approved master up to 10 minutes; captions and one consolidated revision round within the block.</p><button class="scopeOption scopeOptionSingle" type="button" data-scope-id="regional-social" data-scope-label="Social repurpose set — three vertical clips" aria-pressed="false"><span><b>Social repurpose set</b><small>Up to 6 editing hours</small></span><strong class="scopePrice">Request pricing</strong><em>Add <i aria-hidden="true">+</i></em></button></article>
 </div>
 <div class="projectPackageGrid">
-<article><span>START WITH A PROJECT</span><h4>Customer story</h4><p>Two-camera half day + 10 edit hours at $125. Target: one 60–90 second testimonial, one location, one speaker, one revision within the edit allowance. Scope review first.</p><button class="scopeOption packageOption" type="button" data-scope-id="customer-story" data-scope-label="Customer story project" data-mode-only="regional" data-selection-kind="package" data-regional-display="$3,050+" data-regional-onetime="3050" aria-pressed="false"><span><b>Customer story</b><small>Project starting point</small></span><strong class="scopePrice">$3,050+</strong><em>Start <i aria-hidden="true">+</i></em></button></article>
-<article><span>START WITH A PROJECT</span><h4>Monthly content session</h4><p>One two-camera half day each month + 20 prepaid edit hours. $1,800 production + $2,300 editing. Output list agreed monthly; no unlimited videos.</p><button class="scopeOption packageOption" type="button" data-scope-id="monthly-content" data-scope-label="Monthly content session" data-mode-only="regional" data-selection-kind="package" data-regional-display="$4,100/mo" data-regional-monthly="4100" aria-pressed="false"><span><b>Monthly content session</b><small>Project starting point</small></span><strong class="scopePrice">$4,100/mo</strong><em>Start <i aria-hidden="true">+</i></em></button></article>
+<article><span>START WITH A PROJECT</span><h4>Customer story</h4><p>Two-camera half day + 10 edit hours. Target: one 60–90 second testimonial, one location, one speaker, one revision within the edit allowance. Scope review first.</p><button class="scopeOption packageOption" type="button" data-scope-id="customer-story" data-scope-label="Customer story project" data-selection-kind="package" aria-pressed="false"><span><b>Customer story</b><small>Project starting point</small></span><strong class="scopePrice">Request pricing</strong><em>Start <i aria-hidden="true">+</i></em></button></article>
+<article><span>START WITH A PROJECT</span><h4>Monthly content session</h4><p>One two-camera half day each month + 20 prepaid edit hours. Output list agreed monthly; no unlimited videos.</p><button class="scopeOption packageOption" type="button" data-scope-id="monthly-content" data-scope-label="Monthly content session" data-selection-kind="package" aria-pressed="false"><span><b>Monthly content session</b><small>Project starting point</small></span><strong class="scopePrice">Request pricing</strong><em>Start <i aria-hidden="true">+</i></em></button></article>
 </div>
 </section>
 <section class="alphaConcept" aria-labelledby="alpha-title">
 <div><span>THE COMPLETE PRODUCTION / CONCEPT</span><h3 id="alpha-title">Go Alpha.</h3><p>Video. Photography. Drone. Editing.<br/>One coordinated project with Sean and Amber.</p></div>
-<div class="alphaPrice"><span>FROM</span><strong>$8,000</strong></div>
-<button class="scopeOption alphaOption" type="button" data-scope-id="alpha" data-scope-label="Alpha complete-production concept" data-selection-kind="package" data-current-display="From $8,000" data-regional-display="From $8,000" data-current-onetime="8000" data-regional-onetime="8000" aria-pressed="false"><span><b>Explore Alpha</b><small>Scope to confirm before quote</small></span><em>Add <i aria-hidden="true">+</i></em></button>
+<div class="alphaPrice"><span>TAILORED TO YOU</span><strong>Let’s talk.</strong></div>
+<button class="scopeOption alphaOption" type="button" data-scope-id="alpha" data-scope-label="Alpha complete-production concept" data-selection-kind="package" aria-pressed="false"><span><b>Explore Alpha</b><small>Scope to confirm before quote</small></span><em>Add <i aria-hidden="true">+</i></em></button>
 <p>Proposed starting point. Shoot schedule, deliverable quantities, and editing allowance still need definition. Photography and drone require dedicated time and cannot be assumed simultaneous with two-operator video coverage.</p>
 </section>
 </div>
@@ -195,16 +200,12 @@
 <h3 id="project-title">Build something useful.</h3>
 <p class="projectEmpty" id="projectEmpty">Choose services from the menu. Your selection will appear here.</p>
 <ul class="projectList" id="projectList" aria-live="polite"></ul>
-<div class="projectRateSet"><span>Rate set</span><strong id="projectRateSet">Current menu</strong></div>
 <div class="projectCount"><span>Selected items</span><strong id="scopeCount">0</strong></div>
-<div class="projectTotals">
-<div><span>One-time starting subtotal</span><strong id="oneTimeTotal">$0</strong></div>
-<div><span>Recurring monthly</span><strong id="monthlyTotal">$0/mo</strong></div>
-</div>
+<p class="projectNote">Pricing is prepared for your project after we review your requirements.</p>
 <div class="scopeLeadGate" id="scope-lead-gate">
-<span>PROJECT BRIEF / REVIEW FLOW</span>
-<h4>Save the scope with your details.</h4>
-<p id="scopeLeadExplanation">A project brief can be saved only after the SOLYNX intake confirms receipt. Until that connection is verified, nothing is submitted or downloaded here.</p>
+<span>LET’S BUILD YOUR PROJECT</span>
+<h4>Request your project pricing.</h4>
+<p id="scopeLeadExplanation">Share your details and selected services so Sean and Amber can review your project. Pricing is being finalized; this requests a personalized follow-up, not an instant price reveal.</p>
 <form id="scopeLeadForm" novalidate>
 <input name="website" type="text" tabindex="-1" autocomplete="off" hidden aria-hidden="true">
 <label>Full name <input name="fullName" autocomplete="name" required maxlength="120" placeholder="Your name"></label>
@@ -214,29 +215,29 @@
 <label>Project description <textarea name="description" required maxlength="1200" rows="3" placeholder="What are we making, and why now?"></textarea></label>
 <div class="scopeLeadPair"><label>Location <input name="location" maxlength="160" placeholder="City / shoot location"></label><label>Timeline <input name="timeline" maxlength="160" placeholder="Ideal timing"></label></div>
 <p class="scopeLeadConsent">Your selected items and project details accompany the inquiry. This requests a scoped quote, not a purchase or consent to marketing messages. See the <a href="/privacy.html">SOLYNX privacy policy</a>.</p>
-<button id="scopeSubmit" type="submit" disabled>Submit brief / INTAKE NOT CONNECTED <span aria-hidden="true">↗</span></button>
-<button id="scopeDownload" type="button" disabled>Download submitted brief / LOCKED</button>
-<p class="scopeLeadStatus" id="scopeLeadStatus" role="status">DRAFT · Receiver not verified · No information is submitted or saved.</p>
+<button id="scopeSubmit" type="submit" disabled>Request pricing / FORM NOT CONNECTED <span aria-hidden="true">↗</span></button>
+<button id="scopeDownload" type="button" disabled>Download brief after confirmation</button>
+<p class="scopeLeadStatus" id="scopeLeadStatus" role="status">Preview: online inquiries are not connected yet. Nothing is submitted or saved through this form.</p>
 </form>
+<p><a href="mailto:digitalmedia@solynx.solutions?subject=Digital%20Media%20Pricing%20Inquiry">Email the Digital Media team instead ↗</a></p>
 </div>
 <button class="scopeReset" id="scopeReset" type="button" disabled>Clear selection</button>
-<p class="projectNote">Planning amounts only—not a quote or commercial approval. Taxes, travel, licensing, usage, and added scope are excluded unless written into the final agreement. No booking, payment, or production connection is created here.</p>
+<p class="projectNote">Your selection is an inquiry, not a booking. Scope, pricing, travel, usage rights, and timing are confirmed in a written proposal.</p>
 </aside>
 </div>
 <p class="menuBoundary">Media projects can be booked independently of a SOLYNX subscription. Clients on Prowler, Nexus, or Apex may also hire the department for a separate media scope; Apex remains an optional, broader engagement, not a requirement for custom media. Travel, licensing, usage, additional revisions, and ongoing management are excluded unless expressly included in the approved scope.</p>
 </section>
 <section class="reviewBoundary" id="review-boundary" aria-labelledby="review-boundary-title">
-<div class="reviewBoundaryIntro"><span class="sectionLabel">REVIEW BOUNDARY / NO LIVE SYSTEMS</span><h2 id="review-boundary-title">See the path.<br/><em>Keep every gate closed.</em></h2><p>The current menu reproduces the supplied working rates. The regional proposal is a separate planning set for review. Neither state represents final commercial approval, and changing tabs clears the scope so rates cannot be mixed.</p></div>
-<div class="addonReview"><span>INDEPENDENT MEDIA / REVIEW PATH</span><p><strong>Start with the work, not a subscription.</strong> Choose an à-la-carte media scope whether or not you already use a SOLYNX plan. A Prowler, Nexus, or Apex relationship can continue alongside it; Apex is optional for a larger integrated engagement.</p><small>The menu is a planning guide, not an instant purchase. Sean and Amber review deliverables, rights, timing, travel, and final terms before a quote is approved. No payment link or calendar is live.</small></div>
-<ol class="draftFlow" aria-label="Future independent media inquiry and booking flow">
-<li><span>01</span><b>Choose media services</b><small>Standalone or alongside a SOLYNX plan</small></li>
-<li><span>02</span><b>Share a project brief</b><small>Scope and contact details</small></li>
-<li><span>03</span><b>Review a quote</b><small>Rights · travel · deliverables</small></li>
-<li><span>04</span><b>Approve and pay</b><small>PAYMENT LINK NOT LIVE</small></li>
-<li><span>05</span><b>Complete intake</b><small>CONNECTION PENDING VERIFICATION</small></li>
-<li><span>06</span><b>Calendar booking</b><small>CALENDAR NOT CONNECTED</small></li>
+<div class="reviewBoundaryIntro"><span class="sectionLabel">A PROJECT BUILT AROUND YOU</span><h2 id="review-boundary-title">Choose the work.<br/><em>Let’s shape the details.</em></h2><p>Tell us what you have in mind. Sean and Amber review your services, timing, and goals before preparing a personalized quote.</p></div>
+<div class="addonReview"><span>INDEPENDENT MEDIA</span><p><strong>Start with the work, not a subscription.</strong> Choose an à-la-carte media project whether or not you use a SOLYNX plan. A subscription and creative project can work together, with scope and pricing confirmed separately.</p><small>Your inquiry does not make a booking or take a payment.</small></div>
+<ol class="draftFlow" aria-label="Project inquiry and booking steps">
+<li><span>01</span><b>Choose services</b><small>Pick the work you need</small></li>
+<li><span>02</span><b>Share your details</b><small>Tell us about your project</small></li>
+<li><span>03</span><b>Discuss the scope</b><small>Deliverables · timing · rights</small></li>
+<li><span>04</span><b>Receive pricing</b><small>A personalized proposal</small></li>
+<li><span>05</span><b>Confirm the plan</b><small>Agree the details in writing</small></li>
+<li><span>06</span><b>Schedule the work</b><small>Subject to availability</small></li>
 </ol>
-<div class="draftStateRow"><span>DRAFT BOOKING FLOW</span><span>PAYMENT LINK NOT LIVE</span><span>CALENDAR NOT CONNECTED</span></div>
 </section>
 <section class="statement">
 <div class="sectionLabel">THE DEPARTMENT</div>
@@ -474,6 +475,6 @@
 </div>
 </footer>
 </main>
-<script src="/digital-media-tech/menu.js?v=20260916-motion" defer></script>
+<script src="/digital-media-tech/menu.js?v=20260917-inquiry-r1" defer></script>
 </body>
 </html>

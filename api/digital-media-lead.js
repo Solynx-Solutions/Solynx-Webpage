@@ -2,27 +2,25 @@
  * workflow, owner, origin, and activation flag are supplied and verified. */
 const CRM_BASE = 'https://services.leadconnectorhq.com';
 const { createHash } = require('node:crypto');
-// Labels and planning amounts mirror the public menu; never treat them as a quote.
-// Each entry is [label, current one-time, current monthly, regional one-time, regional monthly].
+// Inquiry catalog contains labels only. Unapproved prices are never issued or saved.
 const CATALOG = {
-  'video-half': ['Two-camera half day', 1600, 0, 1800, 0],
-  'video-full': ['Two-camera full day', 2800, 0, 3000, 0],
-  photography: ['Photography session', 500, 0, 750, 0],
-  drone: ['Aerial capture session', 350, 0, 450, 0],
-  'editing-half': ['Half-day editing block', 500, 0, 500, 0],
-  'editing-full': ['Full-day editing block', 1000, 0, 1000, 0],
-  'editing-10': ['10 prepaid editing hours', 0, 1200, 0, 1200],
-  'editing-20': ['20 prepaid editing hours', 0, 2300, 0, 2300],
-  'editing-40': ['40 prepaid editing hours', 0, 4400, 0, 4400],
-  consulting: ['Creative consulting session', null, 0, 300, 0],
-  'regional-assessment': ['Footage assessment', null, null, 375, 0],
-  'regional-social': ['Social repurpose set', null, null, 750, 0],
-  'customer-story': ['Customer story project', null, null, 3050, 0],
-  'monthly-content': ['Monthly content session', null, null, 0, 4100],
-  alpha: ['Alpha complete-production concept', 8000, 0, 8000, 0]
+  'video-half': 'Two-camera half day',
+  'video-full': 'Two-camera full day',
+  photography: 'Photography session',
+  drone: 'Aerial capture session',
+  'editing-half': 'Half-day editing block',
+  'editing-full': 'Full-day editing block',
+  'editing-10': '10 prepaid editing hours',
+  'editing-20': '20 prepaid editing hours',
+  'editing-40': '40 prepaid editing hours',
+  consulting: 'Creative consulting session',
+  'regional-assessment': 'Footage assessment',
+  'regional-social': 'Social repurpose set',
+  'customer-story': 'Customer story project',
+  'monthly-content': 'Monthly content session',
+  alpha: 'Alpha complete-production concept'
 };
 const VALID_ITEMS = new Set(Object.keys(CATALOG));
-const REGIONAL_ONLY = new Set(['regional-assessment', 'regional-social', 'customer-story', 'monthly-content']);
 
 function configured() {
   return process.env.SOLYNX_MEDIA_INTAKE_ENABLED === 'true' &&
@@ -149,13 +147,12 @@ module.exports = async function digitalMediaLead(req, res) {
   const description = clean(body.description, 1200);
   const location = clean(body.location, 160);
   const timeline = clean(body.timeline, 160);
-  const mode = body.mode === 'regional' ? 'Regional proposal' : body.mode === 'current' ? 'Current menu' : '';
+  const mode = body.mode === 'inquiry' ? 'inquiry' : '';
   const items = Array.isArray(body.items) ? body.items : [];
   if (!fullName || !validEmail(email) || !business || !description || !mode ||
       !items.length || items.length > VALID_ITEMS.size ||
       items.some((item) => typeof item !== 'string' || !VALID_ITEMS.has(item)) ||
       new Set(items).size !== items.length ||
-      (mode === 'Current menu' && items.some((item) => REGIONAL_ONLY.has(item))) ||
       (items.some((item) => ['alpha', 'customer-story', 'monthly-content'].includes(item)) && items.length > 1) ||
       [['video-half', 'video-full'], ['editing-half', 'editing-full'],
         ['editing-10', 'editing-20', 'editing-40']].some((group) =>
@@ -163,14 +160,6 @@ module.exports = async function digitalMediaLead(req, res) {
     return reply(res, 400, { error: 'Complete the required fields and choose a valid scope.' });
   }
 
-  const regional = mode === 'Regional proposal';
-  const totals = items.reduce((sum, id) => {
-    const item = CATALOG[id];
-    sum.oneTime += item[regional ? 3 : 1] || 0;
-    sum.monthly += item[regional ? 4 : 2] || 0;
-    return sum;
-  }, { oneTime: 0, monthly: 0 });
-  const unknownPrice = items.some((id) => CATALOG[id][regional ? 3 : 1] === null);
   // The matching CRM note is a secondary audit marker; the durable reservation
   // below is the concurrency guard, including for parallel serverless requests.
   const intakeKey = createHash('sha256').update(JSON.stringify({
@@ -181,10 +170,8 @@ module.exports = async function digitalMediaLead(req, res) {
   const brief = [
     'SOLYNX Digital Media & Tech inquiry',
     'Intake marker: ' + marker,
-    'Rate set: ' + mode,
-    'Selected services: ' + items.map((id) => CATALOG[id][0] + ' [' + id + ']').join('; '),
-    'Planning one-time starting subtotal: $' + totals.oneTime.toLocaleString('en-US') + (unknownPrice ? ' plus unpriced scope' : ''),
-    'Planning recurring monthly: $' + totals.monthly.toLocaleString('en-US') + '/mo',
+    'Pricing: personalized quote requested; no approved rates issued.',
+    'Selected services: ' + items.map((id) => CATALOG[id] + ' [' + id + ']').join('; '),
     'Business: ' + business,
     'Project: ' + description,
     'Location: ' + (location || 'Not provided'),
