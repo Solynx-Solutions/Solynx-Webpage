@@ -90,3 +90,14 @@ main>.menuReviewBar{margin:0;padding:10px 4vw;background:#111210;color:var(--pap
 @keyframes teamNameDrift{from{transform:translateX(-3px)}to{transform:translateX(7px)}}
 @media(max-width:820px){.heroLens{width:85vw;right:-38vw}}
 @media(prefers-reduced-motion:reduce){.heroIrisBlades,.heroFrame .heroTeamNames{animation:none;transform:none}}
+
+/* Keep the full lynx mark inside the footer frame and make the brand a home link. */
+.footerLockup{text-decoration:none;color:inherit}
+.footerLockup:focus-visible{outline:2px solid var(--solynx-gold);outline-offset:6px}
+.footerLynxCrop img{transform:scale(2.2) translateY(9%)}
+.scopeLegal{font-size:12px;line-height:1.55;color:#676760}
+.scopeLegal a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.departmentFooter .footerLegal{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:12px 20px}
+.departmentFooter .footerLegal a{font:11px 'IBM Plex Mono',monospace;color:#d6d2c6;letter-spacing:.3px;text-decoration:none}
+.departmentFooter .footerLegal a:hover{text-decoration:underline}
+@media(max-width:820px){.departmentFooter .footerLegal{justify-content:flex-start}}
