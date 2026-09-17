@@ -17,12 +17,12 @@
     var projectEmpty = document.getElementById('projectEmpty');
     var scopeCount = document.getElementById('scopeCount');
     var navScopeCount = document.getElementById('navScopeCount');
-    var scopeSubmit = document.getElementById('scopeSubmit');
+    const scopeSubmit = /** @type {HTMLButtonElement | null} */ (document.querySelector('button#scopeSubmit'));
     var scopeLeadStatus = document.getElementById('scopeLeadStatus');
-    var scopeReset = document.getElementById('scopeReset');
+    const scopeReset = /** @type {HTMLButtonElement | null} */ (document.querySelector('button#scopeReset'));
     var selected = new Map();
 
-    if (!optionButtons.length || !projectList || !scopeCount || !scopeSubmit || !scopeReset) return;
+    if (!optionButtons.length || !projectList || !scopeCount || !(scopeSubmit instanceof HTMLButtonElement) || !(scopeReset instanceof HTMLButtonElement)) return;
 
     function buttonAction(button, selectedState) {
         var action = button.querySelector('em');
@@ -104,9 +104,10 @@
     });
 
     scopeReset.addEventListener('click', function () { clearAll(); render(); });
-    var nativeFrame = document.getElementById('scopeNativeForm');
-    var nativeLink = document.getElementById('scopeNativeLink');
+    const nativeFrame = document.getElementById('scopeNativeForm');
+    const nativeLink = document.getElementById('scopeNativeLink');
     var nativeFallback = document.getElementById('scopeNativeFallback');
+    if (!(nativeFrame instanceof HTMLIFrameElement) || !(nativeLink instanceof HTMLAnchorElement) || !nativeFallback || !scopeLeadStatus) return;
     scopeSubmit.addEventListener('click', function () {
         if (!selected.size) return;
         var brief = 'Selected services:\n' + Array.from(selected.values()).map(function (item) { return '- ' + item.label; }).join('\n');

@@ -49,6 +49,8 @@ function reply(res, status, data) {
 }
 
 function clean(value, max) {
+  // Control characters are intentionally removed from incoming form strings.
+  // eslint-disable-next-line no-control-regex
   return typeof value === 'string' ? value.trim().replace(/[\u0000-\u001f\u007f]/g, ' ').slice(0, max) : '';
 }
 
