@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#08111f">
+  <title>SOLYNX — Tonight and What Comes Next</title>
+  <style>
+    :root{
+      --bg:#08111f;
+      --bg2:#0d1727;
+      --panel:#101c2d;
+      --text:#f5f7fb;
+      --muted:#aeb8c7;
+      --line:rgba(255,255,255,.12);
+      --orange:#ff9000;
+      --gold:#f0b64d;
+      --teal:#2dd4bf;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 15% 0%,rgba(45,212,191,.10),transparent 32%),
+        radial-gradient(circle at 85% 10%,rgba(255,144,0,.12),transparent 28%),
+        linear-gradient(180deg,var(--bg) 0%,#07101a 100%);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit}
+    .wrap{width:min(var(--max),calc(100% - 36px));margin:0 auto}
+    header{
+      position:sticky;top:0;z-index:20;
+      backdrop-filter:blur(18px);
+      background:rgba(8,17,31,.84);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand img{height:34px;width:auto;display:block}
+    .nav small{color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+    .hero{padding:92px 0 70px}
+    .eyebrow{color:var(--orange);text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;font-weight:800}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(3.1rem,8vw,7.3rem);line-height:.92;letter-spacing:-.055em;max-width:980px;margin:18px 0 24px}
+    .hero-copy{font-size:clamp(1.05rem,2.2vw,1.35rem);color:#d7deea;max-width:800px}
+    .people{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px}
+    .pill{border:1px solid var(--line);background:rgba(255,255,255,.035);padding:8px 12px;border-radius:999px;color:#dfe5ee;font-size:.9rem}
+    .section{padding:76px 0;border-top:1px solid var(--line)}
+    .section-head{display:grid;grid-template-columns:180px 1fr;gap:28px;margin-bottom:38px}
+    .num{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);font-weight:800}
+    h2{font-size:clamp(2rem,4.5vw,4rem);line-height:1.02;letter-spacing:-.04em;margin-bottom:12px}
+    .lede{font-size:1.1rem;color:var(--muted);max-width:760px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.025));border:1px solid var(--line);border-radius:18px;padding:28px;min-height:220px}
+    .card .tag{color:var(--teal);font-size:.78rem;text-transform:uppercase;letter-spacing:.15em;font-weight:800}
+    .card h3{font-size:1.4rem;margin:10px 0 12px}
+    .card p{color:var(--muted)}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .roadmap{display:grid;gap:14px}
+    .step{display:grid;grid-template-columns:56px 1fr;gap:18px;padding:22px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.025)}
+    .step-no{font-size:1.2rem;font-weight:900;color:var(--orange)}
+    .step h3{margin:0 0 6px}
+    .step p{margin:0;color:var(--muted)}
+    .people-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .person{padding:22px;border-top:2px solid rgba(255,144,0,.7);background:rgba(255,255,255,.025);border-radius:0 0 14px 14px}
+    .person strong{display:block;font-size:1.05rem;margin-bottom:8px}
+    .person span{color:var(--muted)}
+    .thankyou{margin-top:28px;padding:30px;border:1px solid rgba(240,182,77,.35);background:linear-gradient(135deg,rgba(240,182,77,.08),rgba(255,255,255,.02));border-radius:18px}
+    .questions{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .question{padding:24px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.025)}
+    .question b{color:var(--orange);display:block;margin-bottom:8px}
+    .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;padding:13px 18px;border-radius:999px;font-weight:800}
+    .btn.primary{background:var(--orange);color:#08111f}
+    .btn.secondary{border:1px solid var(--line);background:rgba(255,255,255,.035)}
+    footer{padding:34px 0 50px;color:var(--muted);border-top:1px solid var(--line);font-size:.92rem}
+    @media (max-width:900px){
+      .cards,.questions,.people-grid,.split{grid-template-columns:1fr}
+      .section-head{grid-template-columns:1fr;gap:8px}
+      .hero{padding-top:64px}
+      .nav small{display:none}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="https://www.solynx.solutions/" aria-label="SOLYNX home">
+      <img src="/assets/images/SLX-WRD.png" alt="SOLYNX">
+    </a>
+    <small>Private team conversation · September 17, 2026</small>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">A conversation for tonight · September 17, 2026</div>
+      <h1>From separate services to one connected experience.</h1>
+      <p class="hero-copy"><strong>We build the next chapter together.</strong> Tonight is a chance to see where SOLYNX is heading, how Sean and Amber’s creative work fits, and what we need to make real together.</p>
+      <div class="cta-row"><a class="btn primary" href="#direction">Start the conversation</a></div>
+      <div class="people">
+        <span class="pill">Rafael</span><span class="pill">Zeus</span><span class="pill">Mel</span><span class="pill">Chris</span><span class="pill">Sean</span><span class="pill">Amber</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="direction">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="num">01 / The Direction</div>
+        <div><h2>One team. A connected path for clients.</h2><p class="lede">SOLYNX is bringing business visibility, customer conversations, practical technology, and strong creative work into one coordinated experience. Each service should stand on its own; together, they should help a client move from being discovered to winning and serving more customers.</p></div>
+      </div>
+      <div class="cards">
+        <article class="card"><div class="tag">Be Found</div><h3>Presence & visibility</h3><p>Websites, local search, listings, and clear proof of what a business does.</p></article>
+        <article class="card"><div class="tag">Start a Conversation</div><h3>Leads & follow-up</h3><p>Simple inquiry paths, reliable routing, and a human who takes responsibility for the next step.</p></article>
+        <article class="card"><div class="tag">Show the Story</div><h3>Media & trust</h3><p>Photography, film, drone, and editing that reveal the people and craft behind a business.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="num">02 / Sean + Amber</div>
+        <div><h2>Creative is part of the system.</h2><p class="lede">Sean and Amber lead SOLYNX Digital Media & Tech delivery. Their work gives clients authentic material to use across a website, social channels, campaigns, and follow-up. The goal is a clear production process and memorable work, not content for content’s sake.</p></div>
+      </div>
+      <div class="split">
+        <article class="card"><div class="tag">The Offer</div><h3>Two ways to work together</h3><p>A client can request a standalone production project, or pair creative services with broader SOLYNX support when that combination genuinely fits. Every scope gets a real quote; rates, costs, deliverables, and responsibilities are still being settled internally.</p></article>
+        <article class="card"><div class="tag">The Current Front Door</div><h3>Digital Media & Tech</h3><p>The live page now invites visitors to select services and inquire. We can show it tonight and gather clear feedback before expanding the offer.</p><div class="cta-row"><a class="btn secondary" href="https://www.solynx.solutions/digital-media-tech/" target="_blank" rel="noopener">View Digital Media & Tech ↗</a></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="num">03 / What Comes Next</div>
+        <div><h2>Make the promise repeatable.</h2><p class="lede">These are the near-term decisions that turn a compelling idea into dependable delivery.</p></div>
+      </div>
+      <div class="roadmap">
+        <div class="step"><div class="step-no">01</div><div><h3>Agree on scope and economics</h3><p>Define shoot time, travel, editing, revisions, usage rights, equipment allowance, and delivery costs before setting prices or bundle discounts.</p></div></div>
+        <div class="step"><div class="step-no">02</div><div><h3>Prove the inquiry handoff</h3><p>Confirm who receives each Digital Media request, who answers it, and how it moves into a quote and production brief.</p></div></div>
+        <div class="step"><div class="step-no">03</div><div><h3>Choose work we can show</h3><p>Select real, rights-cleared examples; name the source owner and final reviewer before publishing footage or claims.</p></div></div>
+        <div class="step"><div class="step-no">04</div><div><h3>Launch, measure, improve</h3><p>Track qualified inquiries, booked jobs, response time, delivery hours, revisions, and the real cost of each project. Adjust offers from evidence.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="num">04 / The People</div>
+        <div><h2>Many strengths, one direction.</h2><p class="lede">The roles below describe where the current work sits. Tonight is a chance to refine how we coordinate, not to assign titles or compensation in a web page.</p></div>
+      </div>
+      <div class="people-grid">
+        <div class="person"><strong>Rafael</strong><span>Company direction, client relationships, and commercial decisions.</span></div>
+        <div class="person"><strong>Sean + Amber</strong><span>Creative production and Digital Media & Tech delivery.</span></div>
+        <div class="person"><strong>Zeus</strong><span>Coastal relationships and opportunities around Santa Cruz and Monterey.</span></div>
+        <div class="person"><strong>Mel</strong><span>Team communication and coordination across projects.</span></div>
+        <div class="person"><strong>Chris</strong><span>Technical implementation and product development.</span></div>
+        <div class="person"><strong>Kevin</strong><span>A later start, and still part of the future we’re building. We’ll bring him into the conversation as his work comes online.</span></div>
+      </div>
+      <div class="thankyou"><div class="tag">Thank You</div><h3>This only works because you are here.</h3><p>Zeus, Mel, Chris, Sean, and Amber: thank you for bringing your ideas, work, patience, and care to SOLYNX. Kevin is part of that story too, even though he cannot join us tonight. We have a lot to build, and I’m grateful we get to build it with people who care about doing it well.</p><p><strong>— Rafael</strong></p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="num">05 / Around the Table</div>
+        <div><h2>Three things to decide together.</h2><p class="lede">Use these as conversation starters. There is no need to settle every detail over dinner.</p></div>
+      </div>
+      <div class="questions">
+        <div class="question"><b>01</b>What should a client understand about SOLYNX after one minute with us?</div>
+        <div class="question"><b>02</b>Where can Sean and Amber’s work make the biggest difference in the first 30 days?</div>
+        <div class="question"><b>03</b>What must we define or verify before we promise a price, timeline, or result?</div>
+      </div>
+      <div class="cta-row">
+        <a class="btn secondary" href="https://www.solynx.solutions/digital-media-tech/" target="_blank" rel="noopener">View Digital Media & Tech ↗</a>
+        <a class="btn primary" href="https://www.solynx.solutions/" target="_blank" rel="noopener">Visit SOLYNX ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">Private team conversation · SOLYNX LLC · September 17, 2026.</div></footer>
+</body>
+</html>
