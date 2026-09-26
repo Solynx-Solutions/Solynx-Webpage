@@ -233,13 +233,12 @@
 						<button type="submit" class="button button-gradient" id="form-submit-btn">Start My SOLYNX
 							Experience</button>
 
-						<p class="demo-note">You may receive a call, SMS, and email as part of this live simulation.
-							Standard messaging rates may apply.</p>
-
-						<p class="form-consent">
-							By submitting, you agree to receive the SOLYNX live experience through phone, SMS, and
-							email. This is a demonstration of lead capture and follow-up automation.
-						</p>
+                        <label class="form-consent" for="sms-consent">
+                            <input id="sms-consent" name="consent_sms" type="checkbox" style="width:auto;display:inline" />
+                            I agree to receive text messages from SOLYNX LLC about this requested demonstration and follow-up. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is optional and is not a condition of purchase.
+                            <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a>
+                        </label>
+                        <p class="demo-note">We will follow up about your request by email. Text messages are sent only if you opt in above.</p>
 
 						<p class="form-status" id="form-status" aria-live="polite"></p>
 					</form>
@@ -791,13 +790,14 @@
 							phone: formData.get("phone"),
 							business: formData.get("business"),
 							industry: formData.get("industry"),
-							automate_first: formData.get("automate_first")
+							automate_first: formData.get("automate_first"),
+                            consent_sms: formData.get("consent_sms") === "on"
 						})
 					});
 
 					if (!response.ok) throw new Error("Request failed");
 
-					formStatus.textContent = "✓ Response sequence activated — check your phone, SMS, and email.";
+					formStatus.textContent = "✓ Request received. We will follow up by email and, if you opted in, text message.";
 					formStatus.dataset.state = "success";
 					form.reset();
 
