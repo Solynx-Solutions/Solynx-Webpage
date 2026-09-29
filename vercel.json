@@ -20,6 +20,22 @@
     ],
     "rewrites": [
         {
+            "source": "/insights",
+            "destination": "/insights/index.html"
+        },
+        {
+            "source": "/insights/",
+            "destination": "/insights/index.html"
+        },
+        {
+            "source": "/insights/b/connected-business-systems-service-businesses",
+            "destination": "/insights/b/connected-business-systems-service-businesses/index.html"
+        },
+        {
+            "source": "/insights/b/connected-business-systems-service-businesses/",
+            "destination": "/insights/b/connected-business-systems-service-businesses/index.html"
+        },
+        {
             "source": "/digital-media-tech",
             "destination": "/digital-media-tech/index.html"
         },
