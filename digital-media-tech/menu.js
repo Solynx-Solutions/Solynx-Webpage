@@ -111,10 +111,17 @@
     scopeSubmit.addEventListener('click', function () {
         if (!selected.size) return;
         var brief = 'Selected services:\n' + Array.from(selected.values()).map(function (item) { return '- ' + item.label; }).join('\n');
-        var url = 'https://link.solynx.solutions/widget/form/1NHtVDOSdhAUtCKRcvo8?project_brief=' + encodeURIComponent(brief);
-        nativeFrame.src = url;
+        var url = new URL('https://link.solynx.solutions/widget/form/1NHtVDOSdhAUtCKRcvo8');
+        url.searchParams.set('project_brief', brief);
+        var campaign = new URLSearchParams(window.location.search);
+        ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (key) {
+            var value = campaign.get(key);
+            // Only campaign slugs; never forward arbitrary query or contact fields.
+            if (value && /^[a-zA-Z0-9_-]{1,80}$/.test(value)) url.searchParams.set(key, value);
+        });
+        nativeFrame.src = url.href;
         nativeFrame.hidden = false;
-        nativeLink.href = url;
+        nativeLink.href = url.href;
         nativeFallback.hidden = false;
         scopeLeadStatus.textContent = 'Your selections are included below. Complete and submit the form to send your inquiry. Opening it alone does not save or submit anything.';
         scopeSubmit.textContent = 'Refresh form with current selection ↗';
