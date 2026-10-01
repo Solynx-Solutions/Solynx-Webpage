@@ -107,6 +107,7 @@
     const nativeFrame = document.getElementById('scopeNativeForm');
     const nativeLink = document.getElementById('scopeNativeLink');
     var nativeFallback = document.getElementById('scopeNativeFallback');
+    var inquiryOpenRecorded = false;
     if (!(nativeFrame instanceof HTMLIFrameElement) || !(nativeLink instanceof HTMLAnchorElement) || !nativeFallback || !scopeLeadStatus) return;
     scopeSubmit.addEventListener('click', function () {
         if (!selected.size) return;
@@ -123,6 +124,18 @@
         nativeFrame.hidden = false;
         nativeLink.href = url.href;
         nativeFallback.hidden = false;
+        // Opening the form is intent, never a submitted lead or purchase.
+        // No brief, service labels, contact details or URL values enter analytics.
+        if (!inquiryOpenRecorded) {
+            var analyticsWindow = /** @type {Window & {dataLayer?: object[]}} */ (window);
+            analyticsWindow.dataLayer = analyticsWindow.dataLayer || [];
+            analyticsWindow.dataLayer.push({
+                event: 'media_inquiry_open',
+                form_id: '1NHtVDOSdhAUtCKRcvo8',
+                selected_count: selected.size
+            });
+            inquiryOpenRecorded = true;
+        }
         scopeLeadStatus.textContent = 'Your selections are included below. Complete and submit the form to send your inquiry. Opening it alone does not save or submit anything.';
         scopeSubmit.textContent = 'Refresh form with current selection ↗';
     });
