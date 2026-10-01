@@ -9,5 +9,5 @@
     "types": ["node"],
     "skipLibCheck": true
   },
-  "include": ["digital-media-tech/menu.js", "api/digital-media-lead.js"]
+  "include": ["digital-media-tech/menu.js", "digital-media-tech/native-attribution-bridge.js", "api/digital-media-lead.js"]
 }
