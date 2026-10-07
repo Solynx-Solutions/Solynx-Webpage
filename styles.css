@@ -3085,3 +3085,4 @@ footer:has(img[src*="SLX-WRD.png"]) p, footer:has(img[src*="SLX-WRD.png"]) a, fo
 footer:has(img[src*="SLX-WRD.png"]) img[src*="SLX-WRD.png"] { mix-blend-mode:normal!important; filter:none!important; animation:none!important; opacity:1!important; height:auto; max-width:220px; }
 footer:has(img[src*="SLX-WRD.png"]) .voice-text { background:none; -webkit-text-fill-color:#163744; color:#163744; }
 footer:has(img[src*="SLX-WRD.png"]) a:focus-visible { outline:3px solid #075c70; outline-offset:4px; }
+footer:has(img[src*="SLX-WRD.png"]) span, footer:has(img[src*="SLX-WRD.png"]) h3, footer:has(img[src*="SLX-WRD.png"]) h4 { color:#163744!important; }
