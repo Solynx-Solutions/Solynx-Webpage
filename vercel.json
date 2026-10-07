@@ -19,6 +19,8 @@
         }
     ],
     "rewrites": [
+        {"source":"/insights/b/real-footage-human-creativity-ai","destination":"/insights/b/real-footage-human-creativity-ai/index.html"},
+        {"source":"/insights/b/real-footage-human-creativity-ai/","destination":"/insights/b/real-footage-human-creativity-ai/index.html"},
         {
             "source": "/insights",
             "destination": "/insights/index.html"
