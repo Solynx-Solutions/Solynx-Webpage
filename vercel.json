@@ -214,6 +214,22 @@
             "destination": "/connect/zeus/save/index.html"
         },
         {
+            "source": "/connect/oscar",
+            "destination": "/connect/oscar/index.html"
+        },
+        {
+            "source": "/connect/oscar/",
+            "destination": "/connect/oscar/index.html"
+        },
+        {
+            "source": "/connect/oscar/save",
+            "destination": "/connect/oscar/index.html"
+        },
+        {
+            "source": "/connect/oscar/save/",
+            "destination": "/connect/oscar/index.html"
+        },
+        {
             "source": "/connect/zeus",
             "destination": "/connect/zeus/index.html"
         },
