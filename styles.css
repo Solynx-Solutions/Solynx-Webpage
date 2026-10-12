@@ -3086,3 +3086,6 @@ footer:has(img[src*="SLX-WRD.png"]) img[src*="SLX-WRD.png"] { mix-blend-mode:nor
 footer:has(img[src*="SLX-WRD.png"]) .voice-text { background:none; -webkit-text-fill-color:#163744; color:#163744; }
 footer:has(img[src*="SLX-WRD.png"]) a:focus-visible { outline:3px solid #075c70; outline-offset:4px; }
 footer:has(img[src*="SLX-WRD.png"]) span, footer:has(img[src*="SLX-WRD.png"]) h3, footer:has(img[src*="SLX-WRD.png"]) h4 { color:#163744!important; }
+
+/* Keep the methodology labels intact on narrow screens. */
+.about-pillars .pillar h4{font-size:clamp(18px,4.5vw,24px);white-space:nowrap;word-break:normal;overflow-wrap:normal}

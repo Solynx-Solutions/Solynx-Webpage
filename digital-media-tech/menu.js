@@ -27,8 +27,8 @@
     function buttonAction(button, selectedState) {
         var action = button.querySelector('em');
         if (!action) return;
-        var verb = button.classList.contains('packageOption') || button.classList.contains('alphaOption') ? 'Start' : 'Add';
-        action.innerHTML = selectedState ? 'Added <i aria-hidden="true">✓</i>' : verb + ' <i aria-hidden="true">+</i>';
+        action.innerHTML = selectedState ? '<i aria-hidden="true">✓</i>' : '<i aria-hidden="true">+</i>';
+        button.setAttribute('aria-label', (selectedState ? 'Remove ' : 'Add ') + button.getAttribute('data-scope-label'));
     }
 
     function clearButton(button) {
@@ -86,6 +86,7 @@
     }
 
     optionButtons.forEach(function (button) {
+        buttonAction(button, false);
         button.addEventListener('click', function () {
             var details = detailsFor(button);
             if (selected.has(details.id)) { clearButton(button); render(); return; }
