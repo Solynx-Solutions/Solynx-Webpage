@@ -201,6 +201,10 @@
             margin-top: 32px;
         }
 
+        /* Tracy hero CTAs only: 44px minimum target and visible keyboard focus. Scoped by ID; no page-wide change. */
+        #hero-cta-scout, #hero-cta-kevin, #hero-cta-calculator { display:inline-flex; align-items:center; justify-content:center; min-height:44px; }
+        #hero-cta-scout:focus-visible, #hero-cta-kevin:focus-visible, #hero-cta-calculator:focus-visible { outline:3px solid #fff; outline-offset:3px; }
+
         /* ── Hero ──────────────────────────────────────────────── */
         .hero {
             padding: 88px 0 72px;
@@ -483,7 +487,8 @@
                 appointment, estimate, or sale.
             </p>
             <div class="btn-cta-row">
-                <a href="/connect/kevin/" class="btn btn-primary" id="hero-cta-kevin">Find My Missed Opportunities</a>
+                <a href="https://link.solynx.solutions/payment-link/69e0107480425dc02fbc8805" class="btn btn-primary" id="hero-cta-scout">Explore Scout &mdash; Opens Checkout</a>
+                <a href="/connect/kevin/" class="btn btn-secondary" id="hero-cta-kevin">Find My Missed Opportunities</a>
                 <a href="/#llc-audit" class="btn btn-secondary" id="hero-cta-calculator">Calculate Missed Lead Cost</a>
             </div>
         </div>
