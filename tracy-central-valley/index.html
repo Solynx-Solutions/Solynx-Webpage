@@ -204,8 +204,8 @@
         }
 
         /* Tracy hero CTAs only: 44px minimum target and visible keyboard focus. Scoped by ID; no page-wide change. */
-        #hero-cta-scout, #hero-cta-rafael, #hero-cta-calculator { display:inline-flex; align-items:center; justify-content:center; min-height:44px; }
-        #hero-cta-scout:focus-visible, #hero-cta-rafael:focus-visible, #hero-cta-calculator:focus-visible { outline:3px solid #fff; outline-offset:3px; }
+        #hero-cta-scout, #hero-cta-rafael, #hero-cta-chris, #hero-cta-calculator { display:inline-flex; align-items:center; justify-content:center; min-height:44px; }
+        #hero-cta-scout:focus-visible, #hero-cta-rafael:focus-visible, #hero-cta-chris:focus-visible, #hero-cta-calculator:focus-visible { outline:3px solid #fff; outline-offset:3px; }
         #hero-cta-scout { color:#0b1220; } /* dark label on the orange gradient: about 7.0-7.8:1 vs about 2.4-2.7:1 for white (measured on preview) */
 
         /* ── Hero ──────────────────────────────────────────────── */
@@ -499,6 +499,7 @@ footer:has(img[src*="SLX-WRD.png"]) a:focus-visible { outline:3px solid #075c70;
             <div class="btn-cta-row">
                 <a href="https://link.solynx.solutions/payment-link/69e0107480425dc02fbc8805" class="btn btn-primary" id="hero-cta-scout">Explore Scout &mdash; Opens Checkout</a>
                 <a href="/connect/rafael/" class="btn btn-secondary" id="hero-cta-rafael">Connect with Rafael Solano</a>
+                <a href="tel:+12098045969" class="btn btn-secondary" id="hero-cta-chris">Call Chris Weigart</a>
                 <a href="/#llc-audit" class="btn btn-secondary" id="hero-cta-calculator">Calculate Missed Lead Cost</a>
             </div>
         </div>
@@ -658,6 +659,21 @@ footer:has(img[src*="SLX-WRD.png"]) a:focus-visible { outline:3px solid #075c70;
                     <p><a href="/connect/rafael/">View Rafael's contact page</a></p>
                 </div>
                 <a href="/connect/rafael/" class="btn btn-primary" id="rafael-cta-connect">Connect with Rafael Solano</a>
+            </div>
+            <div class="zeus-card" style="margin-top:20px;">
+                <p class="zeus-name">Chris Weigart</p>
+                <p class="zeus-role">Business Optimization Consultant &mdash; SOLYNX LLC</p>
+                <p class="zeus-bio">
+                    Chris combines strategic insight with practical execution to help organizations operate cleaner,
+                    faster, and more intelligently.
+                </p>
+                <div class="zeus-contact-block">
+                    <p><strong>Chris Weigart</strong></p>
+                    <p>Business Optimization Consultant &mdash; SOLYNX LLC</p>
+                    <p><a href="tel:+12098045969">Call Chris: (209) 804-5969</a></p>
+                    <p><a href="/connect/chris/">View Chris's contact page</a></p>
+                </div>
+                <a href="tel:+12098045969" class="btn btn-primary" id="chris-cta-connect">Call Chris at (209) 804-5969</a>
             </div>
         </div>
     </section>
