@@ -17,6 +17,12 @@
     var projectEmpty = document.getElementById('projectEmpty');
     var scopeCount = document.getElementById('scopeCount');
     var navScopeCount = document.getElementById('navScopeCount');
+    var navProjectLink = document.getElementById('navProjectLink');
+    var projectPanel = document.getElementById('project-summary');
+    var selectionAssist = document.getElementById('selectionAssist');
+    var selectionAssistLink = document.getElementById('selectionAssistLink');
+    var selectionAssistCount = document.getElementById('selectionAssistCount');
+    var selectionAnnouncement = document.getElementById('selectionAnnouncement');
     const scopeSubmit = /** @type {HTMLButtonElement | null} */ (document.querySelector('button#scopeSubmit'));
     var scopeLeadStatus = document.getElementById('scopeLeadStatus');
     const scopeReset = /** @type {HTMLButtonElement | null} */ (document.querySelector('button#scopeReset'));
@@ -27,7 +33,7 @@
     function buttonAction(button, selectedState) {
         var action = button.querySelector('em');
         if (!action) return;
-        action.innerHTML = selectedState ? '<i aria-hidden="true">✓</i>' : '<i aria-hidden="true">+</i>';
+        action.innerHTML = selectedState ? '<i aria-hidden="true">✓</i><span>Selected</span>' : '<i aria-hidden="true">+</i><span>Add</span>';
         button.setAttribute('aria-label', (selectedState ? 'Remove ' : 'Add ') + button.getAttribute('data-scope-label'));
     }
 
@@ -80,6 +86,9 @@
         var count = items.length;
         scopeCount.textContent = String(count);
         if (navScopeCount) navScopeCount.textContent = String(count);
+        if (navProjectLink) navProjectLink.setAttribute('aria-label', 'View your project, ' + count + ' selected ' + (count === 1 ? 'item' : 'items'));
+        if (selectionAssist) selectionAssist.hidden = count === 0;
+        if (selectionAssistCount) selectionAssistCount.textContent = count + ' selected';
         projectEmpty.hidden = count > 0;
         scopeReset.disabled = count === 0;
         scopeSubmit.disabled = count === 0;
@@ -89,7 +98,12 @@
         buttonAction(button, false);
         button.addEventListener('click', function () {
             var details = detailsFor(button);
-            if (selected.has(details.id)) { clearButton(button); render(); return; }
+            if (selected.has(details.id)) {
+                clearButton(button);
+                render();
+                if (selectionAnnouncement) selectionAnnouncement.textContent = details.label + ' removed. ' + selected.size + ' selected ' + (selected.size === 1 ? 'item' : 'items') + '.';
+                return;
+            }
             if (details.kind === 'package') {
                 clearAll();
             } else {
@@ -101,6 +115,14 @@
             button.setAttribute('aria-pressed', 'true');
             buttonAction(button, true);
             render();
+            if (selectionAnnouncement) selectionAnnouncement.textContent = details.label + ' selected. ' + selected.size + ' selected ' + (selected.size === 1 ? 'item' : 'items') + '. Use View your project to review the selection.';
+        });
+    });
+
+    [navProjectLink, selectionAssistLink].forEach(function (link) {
+        if (!link || !projectPanel) return;
+        link.addEventListener('click', function () {
+            window.setTimeout(function () { projectPanel.focus({ preventScroll: true }); }, 0);
         });
     });
 

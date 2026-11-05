@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="https://www.solynx.solutions/digital-media-tech/assets/solynx-lynx-logo.png">
-<link rel="stylesheet" href="https://www.solynx.solutions/digital-media-tech/styles.css?v=20260917-inquiry-aperture-r3">
+<link rel="stylesheet" href="/digital-media-tech/styles.css?v=20261105-selection-ux1">
 
 <style>.packagePreview{padding:80px 4vw;border-block:1px solid #34372d;background:#11130f;color:#ece9df}.packagePreview h2{font-size:clamp(36px,5vw,70px);letter-spacing:-.05em;line-height:1.05;margin:22px 0}.packagePreview .packageGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:35px}.packagePreview .card{padding:30px;border:1px solid #4b4d3b;background:#181c15}.packagePreview .card:last-child{border-color:#bc9c52}.packagePreview .label{font:11px monospace;letter-spacing:1.3px;color:#bc9c52}.packagePreview h3{font-size:30px;margin:20px 0}.packagePreview .price{font-size:36px;color:#bc9c52;margin:20px 0}.packagePreview p{line-height:1.65;margin:15px 0;max-width:740px}.packagePreview .muted{font-size:13px;color:#adad9f}@media(max-width:800px){.packagePreview .packageGrid{grid-template-columns:1fr}}</style><style>.possibilityGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.possibilityGrid video{width:100%;aspect-ratio:16/9;background:#000}.possibilityGrid article{border:1px solid #635d43;padding:16px;background:#20261f}.possibilityGrid h3{font-size:26px;margin:16px 0}.possibilityGrid p{line-height:1.6}.possibilityGrid a{display:inline-block;color:#dbc588;margin-top:16px}.possibilityJourney{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;border-top:1px solid #635d43;margin-top:40px;padding-top:26px}.conceptNote{font-size:12px;opacity:.75;margin-top:22px}@media(max-width:760px){.possibilityGrid,.possibilityJourney{grid-template-columns:1fr}}</style><style id="scope-promo-style">.scopeVideoHero{position:relative;isolation:isolate;min-height:620px;box-sizing:border-box;padding:70px 40px 100px!important;overflow:hidden;margin-bottom:64px!important;background:#101915}.scopeVideoHero>video,.scopeHeroShade{position:absolute;inset:0;width:100%;height:100%;z-index:-2;object-fit:cover}.scopeHeroShade{z-index:-1;background:linear-gradient(90deg,rgba(6,13,10,.83),rgba(6,13,10,.48)),linear-gradient(0deg,rgba(6,13,10,.65),transparent)}.scopeVideoHero>div:not(.scopeHeroShade):not(.scopeHeroControls){position:relative;z-index:1}.scopeVideoHero .scopeHeroControls{position:absolute;left:40px;bottom:24px;display:flex;gap:12px;z-index:2}.scopeHeroControls button{background:rgba(0,0,0,.6);color:#fff;border:1px solid #bba45d;padding:10px 14px;cursor:pointer;font:inherit;font-size:13px}.scopeHeroControls button:focus-visible{outline:3px solid #fff;outline-offset:3px}.scopeVideoHero p{color:#eee!important}@media(max-width:700px){.scopeVideoHero{min-height:560px;padding:40px 20px 95px!important}.scopeVideoHero .scopeHeroControls{left:20px}.scopeVideoHero h2{font-size:clamp(42px,10vw,72px)!important}}</style><style>/* SOLYNX Infrastructure section + decorative drone — namespace: slx-refresh. No global/bare-element selectors. */
 .slx-refresh-infra {
@@ -78,7 +78,7 @@
 <a href="#proof">Proof in progress</a>
 <a href="#plans">Plans</a>
 </nav>
-<a class="navCta" href="#project-summary">Your project <span class="navScopeCount" id="navScopeCount">0</span>
+<a class="navCta" id="navProjectLink" href="#project-summary" aria-label="View your project, 0 selected items">Your project <span class="navScopeCount" id="navScopeCount" aria-hidden="true">0</span>
 </a>
 </header>
 <section class="hero" id="top">
@@ -264,6 +264,10 @@
 <button class="scopeReset" id="scopeReset" type="button" disabled>Clear selection</button>
 <p class="projectNote">Your selection is an inquiry, not a booking. Scope, pricing, travel, usage rights, and timing are confirmed in a written proposal.</p>
 </aside>
+</div>
+<div class="selectionAssist" id="selectionAssist" hidden>
+<p id="selectionAnnouncement" class="srOnly" role="status" aria-live="polite"></p>
+<a id="selectionAssistLink" href="#project-summary">View your project <span id="selectionAssistCount">0 selected</span></a>
 </div>
 <p class="menuBoundary">Media projects can be booked independently of a SOLYNX subscription. Clients on Prowler, Nexus, or Apex may also hire the department for a separate media scope; Apex remains an optional, broader engagement, not a requirement for custom media. Travel, licensing, usage, additional revisions, and ongoing management are excluded unless expressly included in the approved scope.</p>
 </section>
@@ -521,7 +525,7 @@
 </div>
 </footer>
 </main>
-<script src="https://www.solynx.solutions/digital-media-tech/menu.js?v=20260917-native-r2" defer></script>
+<script src="/digital-media-tech/menu.js?v=20261105-selection-ux1" defer></script>
 <script src="/digital-media-tech/native-attribution-bridge.js?v=20261020-bridge1" defer></script>
 <script>(()=>{const v=document.getElementById('scopeHeroVideo'),p=document.getElementById('scopeHeroPause'),s=document.getElementById('scopeHeroSound');if(matchMedia('(prefers-reduced-motion: reduce)').matches){v.autoplay=false;v.pause();}const sync=()=>p.textContent=v.paused?'Play video':'Pause video';v.addEventListener('play',sync);v.addEventListener('pause',sync);p.onclick=()=>{if(v.paused)v.play().catch(()=>{});else v.pause();};s.onclick=()=>{v.muted=!v.muted;s.textContent=v.muted?'Turn sound on':'Mute sound';s.setAttribute('aria-pressed',String(!v.muted));};sync();})();</script><span class="slx-refresh-drone" aria-hidden="true" data-slx-scroll="float">
   <svg viewbox="0 0 64 64" width="48" height="48" focusable="false" aria-hidden="true">

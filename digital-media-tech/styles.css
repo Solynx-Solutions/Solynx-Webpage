@@ -104,3 +104,12 @@ main>.menuReviewBar{margin:0;padding:10px 4vw;background:#111210;color:var(--pap
 
 /* Clear single-symbol service selection control. */
 .scopeOption em{display:grid;place-items:center;flex:0 0 44px;width:44px;min-height:44px;letter-spacing:0}.scopeOption em i{font-size:32px;line-height:1}.scopeOption>span{min-width:0}
+.srOnly{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.selectionAssist{position:fixed;right:24px;bottom:24px;z-index:30}
+.selectionAssist[hidden]{display:none}
+.selectionAssist a{display:flex;align-items:center;gap:14px;padding:14px 18px;border:1px solid var(--solynx-gold);background:#ece9df;color:#171815;box-shadow:0 18px 50px rgba(0,0,0,.35);font:600 10px 'IBM Plex Mono';letter-spacing:.75px;text-transform:uppercase;text-decoration:none}
+.selectionAssist a span{padding-left:14px;border-left:1px solid #aaa89f;color:#4b7671;font-size:8px}
+.selectionAssist a:focus-visible{outline:3px solid var(--solynx-teal);outline-offset:3px}
+.scopeOption[aria-pressed="true"] em{min-width:70px}
+.scopeOption em span{font-size:7px;letter-spacing:.8px;text-transform:uppercase}
+@media(max-width:820px){.selectionAssist{left:12px;right:12px;bottom:12px}.selectionAssist a{justify-content:space-between}}
