@@ -6,12 +6,28 @@ const sample = {
   fullName: 'Example Person',
   email: 'example@example.test',
   business: 'Example Business',
+  phone: '831-555-0100',
+  preferredContact: 'text',
   description: 'A short film inquiry.',
   location: 'Santa Cruz',
   timeline: 'Next month',
   mode: 'inquiry',
-  items: ['video-half']
+  items: ['video-half'],
+  selections: [{ id: 'video-half', quantity: 1, kind: 'service' }],
+  packageChoice: null,
+  marketingConsent: false
 };
+
+const packageIds = new Set(['launch-reel', 'story-session', 'signature-production', 'customer-story', 'monthly-content']);
+function withItems(items) {
+  const packageChoice = items.find((item) => packageIds.has(item)) || null;
+  return {
+    ...sample,
+    items,
+    selections: items.map((id) => ({ id, quantity: 1, kind: packageIds.has(id) ? 'package' : 'service' })),
+    packageChoice
+  };
+}
 
 function response() {
   return {
@@ -73,12 +89,18 @@ test('rejects wrong origin and invalid selection before CRM writes', async () =>
   await handler(request('POST', { ...sample, mode: 'current' }), wrongRateSet);
   assert.equal(wrongRateSet.statusCode, 400);
   const mixedPackage = response();
-  await handler(request('POST', { ...sample, items: ['alpha', 'video-half'] }), mixedPackage);
+  await handler(request('POST', { ...sample, items: ['launch-reel', 'video-half'] }), mixedPackage);
   assert.equal(mixedPackage.statusCode, 400);
+  const invalidPreference = response();
+  await handler(request('POST', { ...sample, preferredContact: 'sms-consent' }), invalidPreference);
+  assert.equal(invalidPreference.statusCode, 400);
+  const missingPhone = response();
+  await handler(request('POST', { ...sample, phone: '' }), missingPhone);
+  assert.equal(missingPhone.statusCode, 400);
   assert.equal(calls, 0);
 });
 
-test('confirms contact, brief, task, and workflow before unlocking the brief', async () => {
+test('confirms contact, brief, task, and workflow before returning only matching approved prices', async () => {
   configure();
   const paths = [];
   const payloads = [];
@@ -97,7 +119,8 @@ test('confirms contact, brief, task, and workflow before unlocking the brief', a
   const result = response();
   await handler(request('POST'), result);
   assert.equal(result.statusCode, 201);
-  assert.deepEqual(result.body, { saved: true });
+  assert.equal(result.body.saved, true);
+  assert.deepEqual(result.body.prices, {});
   assert.deepEqual(paths, [
     '/contacts/upsert',
     '/contacts/test-contact/notes',
@@ -109,9 +132,53 @@ test('confirms contact, brief, task, and workflow before unlocking the brief', a
     locationId: 'test-location', name: sample.fullName, email: sample.email
   });
   assert.match(payloads[2].body, /Selected services: Two-camera half day \[video-half\]/);
-  assert.match(payloads[2].body, /personalized quote requested/);
+  assert.match(payloads[2].body, /Preferred project contact: Text message/);
+  assert.match(payloads[2].body, /not SMS or marketing consent/);
   assert.doesNotMatch(payloads[2].body, /\$|subtotal|Rate set/);
   assert.match(payloads[2].body, /Intake marker: SOLYNX-DM-INTAKE:[a-f0-9]{64}/);
+});
+
+test('returns a matching individual-service price but no unrelated rate', async () => {
+  configure();
+  let calls = 0;
+  global.fetch = guarded(async () => {
+    calls += 1;
+    const bodies = [
+      { contact: { id: 'test-contact', locationId: 'test-location', email: sample.email } },
+      { notes: [] },
+      { note: { id: 'test-note' } },
+      { task: { id: 'test-task' } },
+      { succeeded: true }
+    ];
+    return { ok: true, json: async () => bodies[calls - 1] };
+  });
+  const result = response();
+  await handler(request('POST', withItems(['photography'])), result);
+  assert.equal(result.statusCode, 201);
+  assert.deepEqual(Object.keys(result.body.prices), ['photography']);
+  assert.equal(result.body.prices.photography.amount, 1000);
+});
+
+test('accepts all three displayed packages without assigning an unrelated approved rate', async () => {
+  for (const packageId of ['launch-reel', 'story-session', 'signature-production']) {
+    configure();
+    let calls = 0;
+    global.fetch = guarded(async () => {
+      calls += 1;
+      const bodies = [
+        { contact: { id: 'test-contact', locationId: 'test-location', email: sample.email } },
+        { notes: [] },
+        { note: { id: 'test-note' } },
+        { task: { id: 'test-task' } },
+        { succeeded: true }
+      ];
+      return { ok: true, json: async () => bodies[calls - 1] };
+    });
+    const result = response();
+    await handler(request('POST', withItems([packageId])), result);
+    assert.equal(result.statusCode, 201, packageId);
+    assert.deepEqual(result.body.prices, {}, packageId);
+  }
 });
 
 test('accepts consulting as a pricing inquiry', async () => {
@@ -129,9 +196,9 @@ test('accepts consulting as a pricing inquiry', async () => {
     return { ok: true, json: async () => bodies[payloads.length - 1] };
   });
   const result = response();
-  await handler(request('POST', { ...sample, items: ['consulting'] }), result);
+  await handler(request('POST', withItems(['consulting'])), result);
   assert.equal(result.statusCode, 201);
-  assert.match(payloads[2].body, /personalized quote requested/);
+  assert.match(payloads[2].body, /approved standalone rates may be shown/);
 });
 
 test('does not report full success when downstream workflow is unconfirmed', async () => {
@@ -154,6 +221,7 @@ test('does not report full success when downstream workflow is unconfirmed', asy
   try { await handler(request('POST'), result); } finally { console.error = oldError; }
   assert.equal(result.statusCode, 502);
   assert.equal(result.body.saved, undefined);
+  assert.equal(result.body.prices, undefined);
 });
 
 test('each missing configuration value keeps submissions closed without network writes', async () => {

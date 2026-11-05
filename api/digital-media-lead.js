@@ -2,7 +2,7 @@
  * workflow, owner, origin, and activation flag are supplied and verified. */
 const CRM_BASE = 'https://services.leadconnectorhq.com';
 const { createHash } = require('node:crypto');
-// Inquiry catalog contains labels only. Unapproved prices are never issued or saved.
+// Inquiry catalog contains only service labels accepted by this bounded intake.
 const CATALOG = {
   'video-half': 'Two-camera half day',
   'video-full': 'Two-camera full day',
@@ -18,9 +18,27 @@ const CATALOG = {
   'regional-social': 'Social repurpose set',
   'customer-story': 'Customer story project',
   'monthly-content': 'Monthly content session',
-  alpha: 'Alpha complete-production concept'
+  'launch-reel': 'Launch Reel package',
+  'story-session': 'Story Session package',
+  'signature-production': 'Signature Production package',
+  'website-loop': 'Website hero loop',
+  'promo-edit': 'Promo / testimonial editing'
 };
 const VALID_ITEMS = new Set(Object.keys(CATALOG));
+const PACKAGE_ITEMS = new Set(['launch-reel', 'story-session', 'signature-production', 'customer-story', 'monthly-content']);
+
+// Rafael approved these exact one-time standalone customer prices on 2026-11-05.
+// Keep price data server-side and return it only after the full intake transaction
+// below is confirmed; the readiness endpoint intentionally reveals no rates.
+const APPROVED_STANDALONE_PRICES = Object.freeze({
+  alpha: Object.freeze({ label: 'Alpha package', amount: 7000, display: '$7,000' }),
+  lite: Object.freeze({ label: 'Lite package', amount: 4000, display: '$4,000' }),
+  starter: Object.freeze({ label: 'Starter package', amount: 2750, display: '$2,750' }),
+  'website-loop': Object.freeze({ label: 'Website hero loop', amount: 750, display: '$750' }),
+  'promo-edit': Object.freeze({ label: 'Promo / testimonial editing', amount: 1200, display: '$1,200' }),
+  drone: Object.freeze({ label: 'Drone aerial production', amount: 1000, display: '$1,000' }),
+  photography: Object.freeze({ label: 'Photography', amount: 1000, display: '$1,000' })
+});
 
 function configured() {
   return process.env.SOLYNX_MEDIA_INTAKE_ENABLED === 'true' &&
@@ -146,16 +164,26 @@ module.exports = async function digitalMediaLead(req, res) {
   const email = clean(body.email, 254).toLowerCase();
   const business = clean(body.business, 160);
   const phone = clean(body.phone, 40);
+  const preferredContact = clean(body.preferredContact, 16);
   const description = clean(body.description, 1200);
   const location = clean(body.location, 160);
   const timeline = clean(body.timeline, 160);
   const mode = body.mode === 'inquiry' ? 'inquiry' : '';
   const items = Array.isArray(body.items) ? body.items : [];
-  if (!fullName || !validEmail(email) || !business || !description || !mode ||
+  const selections = Array.isArray(body.selections) ? body.selections : [];
+  const marketingConsent = body.marketingConsent === true;
+  const packageChoice = typeof body.packageChoice === 'string' ? body.packageChoice : null;
+  const selectionsValid = selections.length === items.length && selections.every((selection, index) =>
+    selection && selection.id === items[index] && selection.quantity === 1 &&
+    selection.kind === (PACKAGE_ITEMS.has(selection.id) ? 'package' : 'service'));
+  const expectedPackage = items.find((item) => PACKAGE_ITEMS.has(item)) || null;
+  if (!fullName || !validEmail(email) || !business || !phone ||
+      !['email', 'phone', 'text'].includes(preferredContact) || !description || !mode ||
       !items.length || items.length > VALID_ITEMS.size ||
       items.some((item) => typeof item !== 'string' || !VALID_ITEMS.has(item)) ||
       new Set(items).size !== items.length ||
-      (items.some((item) => ['alpha', 'customer-story', 'monthly-content'].includes(item)) && items.length > 1) ||
+      !selectionsValid || packageChoice !== expectedPackage ||
+      (items.some((item) => ['launch-reel', 'story-session', 'signature-production', 'customer-story', 'monthly-content'].includes(item)) && items.length > 1) ||
       [['video-half', 'video-full'], ['editing-half', 'editing-full'],
         ['editing-10', 'editing-20', 'editing-40']].some((group) =>
         group.filter((item) => items.includes(item)).length > 1)) {
@@ -165,20 +193,26 @@ module.exports = async function digitalMediaLead(req, res) {
   // The matching CRM note is a secondary audit marker; the durable reservation
   // below is the concurrency guard, including for parallel serverless requests.
   const intakeKey = createHash('sha256').update(JSON.stringify({
-    email, business, phone, description, location, timeline, mode, items: [...items].sort()
+    email, business, phone, preferredContact, description, location, timeline, mode,
+    selections: selections.map(({ id, quantity, kind }) => ({ id, quantity, kind })).sort((a, b) => a.id.localeCompare(b.id)),
+    packageChoice, marketingConsent
   })).digest('hex');
   const marker = 'SOLYNX-DM-INTAKE:' + intakeKey;
 
   const brief = [
     'SOLYNX Digital Media & Tech inquiry',
     'Intake marker: ' + marker,
-    'Pricing: personalized quote requested; no approved rates issued.',
-    'Selected services: ' + items.map((id) => CATALOG[id] + ' [' + id + ']').join('; '),
+    'Pricing: approved standalone rates may be shown after this confirmed save; final scope still requires written review.',
+    'Selected services: ' + selections.map((selection) => CATALOG[selection.id] + ' [' + selection.id + '] x' + selection.quantity).join('; '),
+    'Package choice: ' + (packageChoice ? CATALOG[packageChoice] + ' [' + packageChoice + ']' : 'None'),
     'Business: ' + business,
     'Project: ' + description,
     'Location: ' + (location || 'Not provided'),
     'Timeline: ' + (timeline || 'Not provided'),
     'Phone: ' + (phone || 'Not provided'),
+    'Preferred project contact: ' + ({ email: 'Email', phone: 'Phone call', text: 'Text message' }[preferredContact]),
+    'Contact preference only; not SMS or marketing consent and no message was triggered.',
+    'Optional marketing updates requested: ' + (marketingConsent ? 'Yes; record only, no DND change or automatic enrollment.' : 'No; checkbox remained unchecked.'),
     'Planning selections only; no price or production commitment. Rights and final scope require review.'
   ].join('\n');
 
@@ -218,7 +252,10 @@ module.exports = async function digitalMediaLead(req, res) {
     if (!task || !task.task || !task.task.id) throw new Error('CRM did not confirm the follow-up task');
     const enrollment = await crm(contactPath + '/workflow/' + encodeURIComponent(process.env.SOLYNX_MEDIA_WORKFLOW_ID), {});
     if (!enrollment || enrollment.succeeded !== true) throw new Error('CRM did not confirm workflow enrollment');
-    return reply(res, 201, { saved: true });
+    const matchingPrices = Object.fromEntries(items
+      .filter((item) => Object.hasOwn(APPROVED_STANDALONE_PRICES, item))
+      .map((item) => [item, APPROVED_STANDALONE_PRICES[item]]));
+    return reply(res, 201, { saved: true, prices: matchingPrices });
   } catch (error) {
     console.error('Digital Media intake incomplete:', error.message);
     return reply(res, 502, { error: 'We could not confirm every intake step. Part of your brief may have been saved. Please do not resubmit; contact digitalmedia@solynx.solutions for a status check.' });
