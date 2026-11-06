@@ -55,7 +55,11 @@ function configure() {
 }
 
 function guarded(crmFetch, guard = async () => ({ result: 'OK' }), preferenceReadback) {
+  let savedBrief;
   return async (url, options) => {
+    if (new URL(url).pathname === '/contacts/upsert') {
+      savedBrief = JSON.parse(options.body).customFields.find((field) => field.id === 'Rxdr92kGy9c0gUSI1OAm').field_value;
+    }
     if (new URL(url).hostname === 'test-guard.upstash.io') {
       if (JSON.parse(options.body)[0] === 'EVAL') return { ok: true, json: async () => ({ result: 1 }) };
       assert.deepEqual(JSON.parse(options.body).slice(-1), ['NX']);
@@ -64,12 +68,59 @@ function guarded(crmFetch, guard = async () => ({ result: 'OK' }), preferenceRea
     if (new URL(url).pathname === '/contacts/test-contact' && options.method === 'GET') {
       return { ok: true, json: async () => preferenceReadback || ({ contact: {
         id: 'test-contact', locationId: 'test-location', email: sample.email,
-        customFields: [{ id: 'nc7ol8ikHNC3O9oHehjp', value: 'Text message' }]
+        customFields: [{ id: 'nc7ol8ikHNC3O9oHehjp', value: 'Text message' },
+          { id: 'Rxdr92kGy9c0gUSI1OAm', value: savedBrief }]
       } }) };
     }
     return crmFetch(url, options);
   };
 }
+
+test('qualification and campaign facts persist in the established brief field without consent mutation', async () => {
+  configure();
+  const payloads = [];
+  global.fetch = guarded(async (_url, options) => {
+    payloads.push(options.body ? JSON.parse(options.body) : null);
+    const bodies = [
+      { contact: { id: 'test-contact', locationId: 'test-location', email: sample.email } },
+      { notes: [] }, { note: { id: 'test-note' } }, { task: { id: 'test-task' } }, { succeeded: true }
+    ];
+    return { ok: true, json: async () => bodies[payloads.length - 1] };
+  });
+  const result = response();
+  await handler(request('POST', { ...sample,
+    qualifiers: { intendedUse: 'Recruiting', deliveryChannels: 'Website', usageRights: 'Need review', unknown: 'private' },
+    attribution: { utm_source: 'facebook', utm_campaign: 'media-coast', locale: 'en', market: 'Santa Cruz', email: 'private@example.test', url: 'https://example.test/?phone=private' }
+  }), result);
+  assert.equal(result.statusCode, 201);
+  const brief = payloads[0].customFields.find((field) => field.id === 'Rxdr92kGy9c0gUSI1OAm').field_value;
+  assert.equal(brief, payloads[2].body);
+  assert.match(brief, /"intendedUse":"Recruiting"/);
+  assert.match(brief, /"utm_campaign":"media-coast"/);
+  assert.match(brief, /"market":"Santa Cruz"/);
+  assert.doesNotMatch(brief, /private|unknown/);
+  assert.equal(payloads[0].dnd, undefined);
+  assert.equal(payloads[0].dndSettings, undefined);
+  assert.equal(payloads[0].customFields.some((field) => field.id === 'ek6Hsa57E4qcEpGFy9UC'), false);
+});
+
+test('missing persisted project brief stops all note, task and workflow writes', async () => {
+  configure();
+  let calls = 0;
+  global.fetch = guarded(async () => {
+    calls += 1;
+    return { ok: true, json: async () => ({ contact: { id: 'test-contact', locationId: 'test-location', email: sample.email } }) };
+  }, undefined, { contact: { id: 'test-contact', locationId: 'test-location', email: sample.email,
+    customFields: [{ id: 'nc7ol8ikHNC3O9oHehjp', value: 'Text message' }] } });
+  const result = response();
+  const originalError = console.error;
+  console.error = () => {};
+  try { await handler(request('POST'), result); } finally { console.error = originalError; }
+  assert.equal(result.statusCode, 502);
+  assert.equal(calls, 1);
+  assert.equal(result.body.saved, undefined);
+  assert.equal(result.body.prices, undefined);
+});
 
 test('intake remains closed without an activation gate', async () => {
   delete process.env.SOLYNX_MEDIA_INTAKE_ENABLED;
@@ -136,7 +187,8 @@ test('confirms contact, brief, task, and workflow before returning only matching
   ]);
   assert.deepEqual(payloads[0], {
     locationId: 'test-location', name: sample.fullName, email: sample.email,
-    customFields: [{ id: 'nc7ol8ikHNC3O9oHehjp', field_value: 'Text message' }]
+    customFields: [{ id: 'nc7ol8ikHNC3O9oHehjp', field_value: 'Text message' },
+      { id: 'Rxdr92kGy9c0gUSI1OAm', field_value: payloads[2].body }]
   });
   assert.match(payloads[2].body, /Selected services: Two-camera half day \[video-half\]/);
   assert.match(payloads[2].body, /Preferred project contact: Text message/);

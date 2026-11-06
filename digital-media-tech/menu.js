@@ -21,7 +21,7 @@
     var scopeCount = document.getElementById('scopeCount');
     var navScopeCount = document.getElementById('navScopeCount');
     var navProjectLink = document.getElementById('navProjectLink');
-    var projectPanel = document.getElementById('project-summary');
+    var projectPanel = /** @type {HTMLDetailsElement | null} */ (document.getElementById('project-summary'));
     var selectionAssist = document.getElementById('selectionAssist');
     var selectionAssistLink = document.getElementById('selectionAssistLink');
     var selectionAssistCount = document.getElementById('selectionAssistCount');
@@ -40,6 +40,7 @@
     var receiverReady = false;
     var submitting = false;
     var saveConfirmed = false;
+    var submissionUncertain = false;
 
     if (!optionButtons.length || !projectList || !projectEmpty || !scopeCount ||
         !(scopeLeadForm instanceof HTMLFormElement) || !(scopeSubmit instanceof HTMLButtonElement) ||
@@ -141,7 +142,7 @@
         if (selectionAssistCount) selectionAssistCount.textContent = count + ' selected';
         projectEmpty.hidden = count > 0;
         scopeReset.disabled = count === 0;
-        scopeSubmit.disabled = !receiverReady || count === 0 || submitting || saveConfirmed;
+        scopeSubmit.disabled = !receiverReady || count === 0 || submitting || saveConfirmed || submissionUncertain;
         if (projectTotals) projectTotals.hidden = approvedPrices === null;
         if (oneTimeTotal) oneTimeTotal.textContent = money(pricedTotal);
     }
@@ -212,9 +213,21 @@
         render();
     }
 
+    function campaignAttribution() {
+        var query = new URLSearchParams(window.location.search);
+        var campaign = {};
+        // Match the established native bridge's public campaign-slug contract.
+        // Never forward the raw URL, private query keys, click IDs or fragments.
+        ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (key) {
+            var value = query.get(key);
+            if (value && /^[a-zA-Z0-9_-]{1,80}$/.test(value)) campaign[key] = value;
+        });
+        return campaign;
+    }
+
     scopeLeadForm.addEventListener('submit', async function (event) {
         event.preventDefault();
-        if (!receiverReady || submitting || saveConfirmed || !selected.size) return;
+        if (!receiverReady || submitting || saveConfirmed || submissionUncertain || !selected.size) return;
         if (!scopeLeadForm.reportValidity()) return;
         var form = new FormData(scopeLeadForm);
         var payload = {
@@ -228,6 +241,10 @@
             timeline: form.get('timeline'),
             website: form.get('website'),
             marketingConsent: form.get('marketingConsent') === 'yes',
+            qualifiers: Object.fromEntries(['intendedUse', 'deliveryChannels', 'footageReadiness', 'usageRights', 'decisionProcess']
+                .map(function (key) { return [key, String(form.get(key) || '').trim().slice(0, 300)]; })
+                .filter(function (entry) { return entry[1]; })),
+            attribution: campaignAttribution(),
             mode: 'inquiry',
             items: Array.from(selected.keys()),
             selections: Array.from(selected.values()).map(function (item) {
@@ -236,6 +253,7 @@
             packageChoice: (Array.from(selected.values()).find(function (item) { return item.kind === 'package'; }) || {}).id || null
         };
         submitting = true;
+        submissionUncertain = true;
         render();
         scopeLeadStatus.textContent = 'Saving your contact and project brief with SOLYNX…';
         try {
@@ -245,6 +263,8 @@
                 body: JSON.stringify(payload)
             });
             var result = await response.json();
+            // These responses are returned before any CRM write by this receiver.
+            if (!response.ok && [400, 403, 413, 429, 503].includes(response.status)) submissionUncertain = false;
             if (!response.ok || result.saved !== true) throw new Error(result.error || 'Save not confirmed.');
             saveConfirmed = true;
             acceptPrices(result.prices);
@@ -252,7 +272,9 @@
             scopeSubmit.textContent = 'Contact saved';
             Array.prototype.slice.call(scopeLeadForm.querySelectorAll('input, textarea')).forEach(function (field) { field.disabled = true; });
         } catch (error) {
-            scopeLeadStatus.textContent = error.message || 'We could not confirm the save. Please email digitalmedia@solynx.solutions.';
+            scopeLeadStatus.textContent = submissionUncertain && !saveConfirmed ?
+                'We could not confirm every intake step. Part of your brief may have been saved. Please do not resubmit; email digitalmedia@solynx.solutions for a status check.' :
+                error.message || 'We could not confirm the save. Please email digitalmedia@solynx.solutions.';
         } finally {
             submitting = false;
             render();

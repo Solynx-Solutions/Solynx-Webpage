@@ -125,3 +125,60 @@ main>.menuReviewBar{margin:0;padding:10px 4vw;background:#111210;color:var(--pap
 
 /* Rights-safe portfolio ledger; no item is presented as published proof. */
 .proofLedger{list-style:none;padding:0;margin:28px 0;display:grid;gap:1px;background:#4a4943;border:1px solid #4a4943}.proofLedger li{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:16px;background:#22221f}.proofLedger b{color:var(--solynx-gold);font-size:12px}.proofLedger span{color:#b4b1a7;font-size:12px;line-height:1.55}@media(max-width:600px){.proofLedger li{grid-template-columns:1fr;gap:6px}}
+.scopeQualification{border-top:1px solid #555248;padding-top:12px}.scopeQualification>summary{font:600 11px/1.5 'IBM Plex Mono',monospace;color:var(--paper);cursor:pointer}.scopeQualification>summary:focus-visible{outline:2px solid var(--solynx-gold);outline-offset:4px}.scopeQualification>label{margin-top:12px}
+
+/* Amber's confirmed readability, spacing and direct-service-navigation feedback. */
+.nav nav,.navCta,.menuReviewBar>span,.menuReviewBar>a,.eyebrow,.sectionLabel,
+.definitionKey,.definitionNote,.heroFrame>span,.heroServiceRail span,.menuStatus,
+.scopeGroupHead>span,.scopeKicker,.projectKicker,.projectSummaryCount,
+.projectList li small,.projectTotals span,.projectTotals p,.roles span,.rolesCenter small,
+.planHead span,.planHead b,.planGrid article>a,.mediaFrames article>span,.mediaFrames small,
+.draftFlow span,.draftFlow small,.selectionAssist a,.selectionAssist a span{font-size:12px;line-height:1.5;letter-spacing:.6px}
+.scopeOption b,.projectList li b{font-size:15px;line-height:1.45}
+.scopeOption small,.scopePrice,.scopeOption em span{font-size:12px;line-height:1.5}
+.scopeCard .scopeFinePrint{font-size:13px!important;line-height:1.6;color:#aaa89f!important}
+.scopeLeadGate>p,.scopeLeadConsent,.scopeLeadStatus,.marketingConsent span,.projectNote,.menuBoundary,.scopeLegal,.priceNextStep a{font-size:14px;line-height:1.6}
+.scopeLeadGate>span,.scopeLeadGate label,.scopeLeadGate label small,.scopeLeadGate button,.scopeQualification>summary,.contactPreference legend,.approvedPricebook>span{font-size:12px;line-height:1.5}
+.scopeLeadGate input,.scopeLeadGate textarea{font-size:16px;line-height:1.5;padding:12px 14px}
+.scopeLeadGate form{gap:16px}
+.projectTotals[hidden]{display:none!important}
+/* Center the authentic mark's visible bounds, accounting for its transparent canvas. */
+.heroLensReflection img{left:50%;top:50%;transform-origin:52% 41.4%;transform:translate(-52%,-41.4%) scale(2.8)}
+.serviceMenu .serviceMenuIntro{gap:36px;align-items:center}
+.serviceMenu .serviceMenuIntro h2{margin:16px 0 0;font-size:clamp(42px,5.5vw,80px);line-height:1}
+.serviceMenu .serviceMenuIntro p{font-size:16px;line-height:1.6}
+.serviceMenu .scopeVideoHero{min-height:0;aspect-ratio:16/6;padding:0!important;margin-top:28px;margin-bottom:32px!important}
+.serviceMenu .scopeVideoHero .scopeHeroControls{left:20px;bottom:20px}
+.menuCatalog{scroll-margin-top:24px}
+.statement,.services,.fit,.process,.cta,.premiumPlans,.mediaStage,.reviewBoundary,.serviceMenu.menuBuilder{padding-top:64px;padding-bottom:64px}
+#media-packages.packagePreview{padding-block:64px}
+#media-packages .label{font-size:12px;line-height:1.5}
+.statement>div:last-child>p{margin-top:28px}
+.services>h2,.proof h2,.cta h2{margin-top:28px;margin-bottom:40px}
+.serviceGrid article{min-height:0;padding-top:24px;padding-bottom:16px}
+.proof{min-height:0}.proofCopy{padding:64px 5vw}
+.roles{padding-block:48px}
+.menuBuilderGrid{margin-top:32px}
+.scopeGroup{padding-top:24px;padding-bottom:28px}
+.scopeGroupHead{gap:24px;margin-bottom:20px}
+.scopeCard{min-height:0;padding:24px}
+.scopeCard h4{margin-top:20px;margin-bottom:14px}
+.scopeOptions{margin-top:20px}
+.mediaStageHead h2{margin-top:20px}
+.mediaFrames{margin-top:28px}.mediaFrames article{min-height:0}.mediaFrames .frameAtmosphere{height:100px;min-height:0}
+.planGrid{margin-top:36px}.planGrid article{min-height:0;padding:30px}.planGrid h3{margin-top:24px}.planGrid ul{margin-block:24px}
+.addonReview{margin-top:28px}.draftFlow{margin-top:32px}.draftFlow li{min-height:150px;padding:18px}
+@media(max-width:820px){
+ .statement,.services,.fit,.process,.cta,.premiumPlans,.mediaStage,.reviewBoundary,.serviceMenu.menuBuilder,.proofCopy{padding-top:48px;padding-bottom:48px}
+ #media-packages.packagePreview{padding-block:48px}#media-packages .packageGrid{gap:18px;margin-top:24px}
+ .heroComposition{padding-top:64px;padding-bottom:64px;min-height:0}.hero{min-height:0}
+ .heroMessage>p{font-size:16px}.heroServiceRail{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .heroServiceRail span{padding:10px 6px}.heroServiceRail span:last-child{grid-column:2}
+ .serviceMenu .serviceMenuIntro{gap:20px}.serviceMenu .serviceMenuIntro h2{font-size:clamp(40px,9vw,64px)}
+ .serviceMenu .scopeVideoHero{aspect-ratio:16/9;margin-top:24px;margin-bottom:24px!important}
+ .serviceMenu .scopeVideoHero .scopeHeroControls{left:12px;bottom:12px;gap:8px}.scopeHeroControls button{font-size:12px;padding:9px}
+ .scopeCard{padding:20px}.scopeGroupHead{gap:16px}.scopeOption{padding:14px;gap:10px}
+ .mediaFrames .frameAtmosphere{height:56px}.mediaFrames{gap:12px}
+ .draftFlow{grid-template-columns:1fr 1fr;gap:1px}.draftFlow li{min-height:128px;padding:14px}.draftFlow b{font-size:22px;margin-top:16px}.draftFlow small{margin-top:10px}
+ .planGrid article{padding:24px}.planGrid h3{margin-top:20px}
+}

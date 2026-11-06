@@ -22,9 +22,15 @@ test('approved prices are absent from public markup and client script before con
   assert.match(source, /approvedPricebook\.hidden = false/);
 });
 
-test('campaign and private query values are not forwarded by the pricing gate', () => {
-  assert.doesNotMatch(source, /utm_source|utm_medium|utm_campaign|utm_content|utm_term/);
-  assert.doesNotMatch(source, /window\.location\.search|URLSearchParams/);
+test('pricing gate forwards only established public campaign slugs and named optional qualifications', () => {
+  assert.match(source, /attribution: campaignAttribution\(\)/);
+  assert.match(source, /\^\[a-zA-Z0-9_-\]\{1,80\}\$/);
+  assert.doesNotMatch(source, /location\.href|document\.referrer|query\.entries|query\.forEach|Object\.fromEntries\(query/);
+  for (const key of ['intendedUse', 'deliveryChannels', 'footageReadiness', 'usageRights', 'decisionProcess']) {
+    assert.match(markup, new RegExp('name="' + key + '" maxlength="300"'));
+  }
+  assert.match(source, /qualifiers: Object\.fromEntries/);
+  assert.doesNotMatch(markup, /name="(?:intendedUse|deliveryChannels|footageReadiness|usageRights|decisionProcess)"[^>]*required/);
 });
 
 test('preferred contact method is submitted only as preference data', () => {

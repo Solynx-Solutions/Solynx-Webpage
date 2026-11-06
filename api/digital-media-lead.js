@@ -4,6 +4,7 @@ const CRM_BASE = 'https://services.leadconnectorhq.com';
 const { createHash } = require('node:crypto');
 // Existing SOLYNX contact field; preference is independent of consent and DND.
 const PREFERRED_CONTACT_FIELD = 'nc7ol8ikHNC3O9oHehjp';
+const PROJECT_BRIEF_FIELD = 'Rxdr92kGy9c0gUSI1OAm';
 const CONTACT_PREFERENCES = Object.freeze({ email: 'Email', phone: 'Phone call', text: 'Text message' });
 // Inquiry catalog contains only service labels accepted by this bounded intake.
 const CATALOG = {
@@ -77,6 +78,17 @@ function clean(value, max) {
 
 function validEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) && value.length <= 254;
+}
+
+// Store only named qualification/attribution inputs, never an arbitrary URL or
+// query string that could carry personal data. These are review facts, not scores.
+function reviewDetails(body) {
+  const pick = (source, keys, max) => Object.fromEntries(keys.map((key) =>
+    [key, clean(source && source[key], max)]).filter(([, value]) => value));
+  return {
+    qualifiers: pick(body.qualifiers, ['intendedUse', 'deliveryChannels', 'footageReadiness', 'usageRights', 'decisionProcess'], 300),
+    attribution: pick(body.attribution, ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'locale', 'market'], 160)
+  };
 }
 
 async function crm(path, body, method = 'POST') {
@@ -175,6 +187,7 @@ module.exports = async function digitalMediaLead(req, res) {
   const items = Array.isArray(body.items) ? body.items : [];
   const selections = Array.isArray(body.selections) ? body.selections : [];
   const marketingConsent = body.marketingConsent === true;
+  const details = reviewDetails(body);
   const packageChoice = typeof body.packageChoice === 'string' ? body.packageChoice : null;
   const selectionsValid = selections.length === items.length && selections.every((selection, index) =>
     selection && selection.id === items[index] && selection.quantity === 1 &&
@@ -198,7 +211,9 @@ module.exports = async function digitalMediaLead(req, res) {
   const intakeKey = createHash('sha256').update(JSON.stringify({
     email, business, phone, preferredContact, description, location, timeline, mode,
     selections: selections.map(({ id, quantity, kind }) => ({ id, quantity, kind })).sort((a, b) => a.id.localeCompare(b.id)),
-    packageChoice, marketingConsent
+    packageChoice, marketingConsent,
+    // Preserve legacy reservation keys for callers without the new fields.
+    ...(Object.keys(details.qualifiers).length || Object.keys(details.attribution).length ? { details } : {})
   })).digest('hex');
   const marker = 'SOLYNX-DM-INTAKE:' + intakeKey;
 
@@ -216,6 +231,8 @@ module.exports = async function digitalMediaLead(req, res) {
     'Preferred project contact: ' + ({ email: 'Email', phone: 'Phone call', text: 'Text message' }[preferredContact]),
     'Contact preference only; not SMS or marketing consent and no message was triggered.',
     'Optional marketing updates requested: ' + (marketingConsent ? 'Yes; record only, no DND change or automatic enrollment.' : 'No; checkbox remained unchecked.'),
+    'Qualification answers: ' + JSON.stringify(details.qualifiers),
+    'Campaign attribution: ' + JSON.stringify(details.attribution),
     'Planning selections only; no price or production commitment. Rights and final scope require review.'
   ].join('\n');
 
@@ -231,7 +248,10 @@ module.exports = async function digitalMediaLead(req, res) {
       locationId: process.env.SOLYNX_MEDIA_LOCATION_ID,
       name: fullName,
       email,
-      customFields: [{ id: PREFERRED_CONTACT_FIELD, field_value: CONTACT_PREFERENCES[preferredContact] }]
+      customFields: [
+        { id: PREFERRED_CONTACT_FIELD, field_value: CONTACT_PREFERENCES[preferredContact] },
+        { id: PROJECT_BRIEF_FIELD, field_value: brief }
+      ]
     });
     const contact = saved && saved.contact;
     if (!contact || !contact.id || contact.locationId !== process.env.SOLYNX_MEDIA_LOCATION_ID ||
@@ -245,7 +265,8 @@ module.exports = async function digitalMediaLead(req, res) {
         persisted.locationId !== process.env.SOLYNX_MEDIA_LOCATION_ID ||
         clean(persisted.email, 254).toLowerCase() !== email ||
         !Array.isArray(persisted.customFields) || !persisted.customFields.some((field) =>
-          field.id === PREFERRED_CONTACT_FIELD && field.value === CONTACT_PREFERENCES[preferredContact])) {
+          field.id === PREFERRED_CONTACT_FIELD && field.value === CONTACT_PREFERENCES[preferredContact]) ||
+        !persisted.customFields.some((field) => field.id === PROJECT_BRIEF_FIELD && field.value === brief)) {
       throw new Error('CRM did not confirm the saved contact preference');
     }
     const existing = await crm(contactPath + '/notes', undefined, 'GET');
