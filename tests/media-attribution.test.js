@@ -31,10 +31,10 @@ test('preferred contact method is submitted only as preference data', () => {
   assert.match(markup, /name="preferredContact"[^>]+value="email"/);
   assert.match(markup, /name="preferredContact"[^>]+value="phone"/);
   assert.match(markup, /name="preferredContact"[^>]+value="text"/);
-  assert.match(markup, /not SMS or marketing consent and does not send a text/);
+  assert.match(markup, /does not subscribe you to marketing texts or send a text automatically/);
   assert.match(source, /preferredContact: form\.get\('preferredContact'\)/);
   assert.match(markup, /name="marketingConsent" type="checkbox"/);
-  assert.match(markup, /does not change a DND setting or enroll you in SMS/);
+  assert.match(markup, /existing communication preferences remain in place/);
   assert.match(source, /marketingConsent: form\.get\('marketingConsent'\) === 'yes'/);
 });
 
@@ -52,7 +52,7 @@ test('package-first navigation has selectable packages and a separate individual
 test('unverified package-to-rate mappings are not published', () => {
   assert.doesNotMatch(markup, /Starter\s*\/\s*Launch Reel|Lite\s*\/\s*Story Session|Alpha flagship\s*—\s*Signature Production/);
   assert.doesNotMatch(markup, /data-scope-id="(?:alpha|lite|starter)"/);
-  assert.match(source, /canonical price mapping is still being confirmed/);
+  assert.match(source, /provide a written quote for the work you selected/);
 });
 
 test('integrated project drawer carries exact selections without a duplicate chooser', () => {

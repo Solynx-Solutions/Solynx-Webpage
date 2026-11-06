@@ -207,7 +207,7 @@
         });
         if (approvedPriceNote) approvedPriceNote.textContent = expected.length ?
             'Only approved prices matching your selected individual services are shown. Final scope, travel, usage rights, timing, and any work outside the listed service are confirmed in a written proposal.' :
-            'Your package selection was saved. Its canonical price mapping is still being confirmed, so no unrelated standalone rate is shown.';
+            'Your selection was saved. Sean and Amber will review the details and provide a written quote for the work you selected.';
         approvedPricebook.hidden = false;
         render();
     }
