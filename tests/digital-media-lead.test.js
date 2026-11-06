@@ -54,12 +54,18 @@ function configure() {
   process.env.SOLYNX_MEDIA_GUARD_REST_TOKEN = 'test-guard-token';
 }
 
-function guarded(crmFetch, guard = async () => ({ result: 'OK' })) {
+function guarded(crmFetch, guard = async () => ({ result: 'OK' }), preferenceReadback) {
   return async (url, options) => {
     if (new URL(url).hostname === 'test-guard.upstash.io') {
       if (JSON.parse(options.body)[0] === 'EVAL') return { ok: true, json: async () => ({ result: 1 }) };
       assert.deepEqual(JSON.parse(options.body).slice(-1), ['NX']);
       return { ok: true, json: guard };
+    }
+    if (new URL(url).pathname === '/contacts/test-contact' && options.method === 'GET') {
+      return { ok: true, json: async () => preferenceReadback || ({ contact: {
+        id: 'test-contact', locationId: 'test-location', email: sample.email,
+        customFields: [{ id: 'nc7ol8ikHNC3O9oHehjp', value: 'Text message' }]
+      } }) };
     }
     return crmFetch(url, options);
   };
@@ -129,7 +135,8 @@ test('confirms contact, brief, task, and workflow before returning only matching
     '/contacts/test-contact/workflow/test-workflow'
   ]);
   assert.deepEqual(payloads[0], {
-    locationId: 'test-location', name: sample.fullName, email: sample.email
+    locationId: 'test-location', name: sample.fullName, email: sample.email,
+    customFields: [{ id: 'nc7ol8ikHNC3O9oHehjp', field_value: 'Text message' }]
   });
   assert.match(payloads[2].body, /Selected services: Two-camera half day \[video-half\]/);
   assert.match(payloads[2].body, /Preferred project contact: Text message/);
@@ -397,4 +404,27 @@ test('throttle rejection stops reservation and all CRM writes', async () => {
   assert.equal(res.headers['Retry-After'], '3600');
   assert.equal(calls, 1);
   assert.equal(res.body.saved, undefined);
+});
+
+test('preferred-contact readback mismatch stops notes, tasks, enrollment and prices', async () => {
+  configure();
+  let writes = 0;
+  global.fetch = guarded(async (_url, options) => {
+    writes += 1;
+    const payload = JSON.parse(options.body);
+    assert.deepEqual(payload.customFields, [{ id: 'nc7ol8ikHNC3O9oHehjp', field_value: 'Text message' }]);
+    assert.equal(Object.hasOwn(payload, 'dnd'), false);
+    assert.equal(Object.hasOwn(payload, 'dndSettings'), false);
+    return { ok: true, json: async () => ({ contact: { id: 'test-contact', locationId: 'test-location', email: sample.email } }) };
+  }, async () => ({ result: 'OK' }), { contact: {
+    id: 'test-contact', locationId: 'test-location', email: sample.email,
+    customFields: [{ id: 'nc7ol8ikHNC3O9oHehjp', value: 'Email' }]
+  } });
+  const res = response();
+  const oldError = console.error;
+  console.error = () => {};
+  try { await handler(request('POST'), res); } finally { console.error = oldError; }
+  assert.equal(res.statusCode, 502);
+  assert.equal(res.body.prices, undefined);
+  assert.equal(writes, 1);
 });

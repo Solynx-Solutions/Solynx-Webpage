@@ -2,6 +2,9 @@
  * workflow, owner, origin, and activation flag are supplied and verified. */
 const CRM_BASE = 'https://services.leadconnectorhq.com';
 const { createHash } = require('node:crypto');
+// Existing SOLYNX contact field; preference is independent of consent and DND.
+const PREFERRED_CONTACT_FIELD = 'nc7ol8ikHNC3O9oHehjp';
+const CONTACT_PREFERENCES = Object.freeze({ email: 'Email', phone: 'Phone call', text: 'Text message' });
 // Inquiry catalog contains only service labels accepted by this bounded intake.
 const CATALOG = {
   'video-half': 'Two-camera half day',
@@ -227,7 +230,8 @@ module.exports = async function digitalMediaLead(req, res) {
     const saved = await crm('/contacts/upsert', {
       locationId: process.env.SOLYNX_MEDIA_LOCATION_ID,
       name: fullName,
-      email
+      email,
+      customFields: [{ id: PREFERRED_CONTACT_FIELD, field_value: CONTACT_PREFERENCES[preferredContact] }]
     });
     const contact = saved && saved.contact;
     if (!contact || !contact.id || contact.locationId !== process.env.SOLYNX_MEDIA_LOCATION_ID ||
@@ -235,6 +239,15 @@ module.exports = async function digitalMediaLead(req, res) {
       throw new Error('CRM did not confirm the expected contact save');
     }
     const contactPath = '/contacts/' + encodeURIComponent(contact.id);
+    const readback = await crm(contactPath, undefined, 'GET');
+    const persisted = readback && readback.contact;
+    if (!persisted || persisted.id !== contact.id ||
+        persisted.locationId !== process.env.SOLYNX_MEDIA_LOCATION_ID ||
+        clean(persisted.email, 254).toLowerCase() !== email ||
+        !Array.isArray(persisted.customFields) || !persisted.customFields.some((field) =>
+          field.id === PREFERRED_CONTACT_FIELD && field.value === CONTACT_PREFERENCES[preferredContact])) {
+      throw new Error('CRM did not confirm the saved contact preference');
+    }
     const existing = await crm(contactPath + '/notes', undefined, 'GET');
     if (!existing || !Array.isArray(existing.notes)) throw new Error('CRM did not confirm the note ledger');
     if (existing.notes.some((entry) => typeof entry.body === 'string' && entry.body.includes(marker))) {
@@ -253,7 +266,9 @@ module.exports = async function digitalMediaLead(req, res) {
     const enrollment = await crm(contactPath + '/workflow/' + encodeURIComponent(process.env.SOLYNX_MEDIA_WORKFLOW_ID), {});
     if (!enrollment || enrollment.succeeded !== true) throw new Error('CRM did not confirm workflow enrollment');
     const matchingPrices = Object.fromEntries(items
-      .filter((item) => Object.hasOwn(APPROVED_STANDALONE_PRICES, item))
+      // Drone's edited outputs conflict in the source; keep its approved rate
+      // reserved until that scope decision is resolved.
+      .filter((item) => item !== 'drone' && Object.hasOwn(APPROVED_STANDALONE_PRICES, item))
       .map((item) => [item, APPROVED_STANDALONE_PRICES[item]]));
     return reply(res, 201, { saved: true, prices: matchingPrices });
   } catch (error) {
