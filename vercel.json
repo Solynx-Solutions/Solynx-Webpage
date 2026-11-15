@@ -2,6 +2,9 @@
     "github": {
         "enabled": true
     },
+    "functions": {
+        "api/plan-fit.py": {"excludeFiles": "{assets,digital-media-tech,documents,_archive,connect,insights,tests,tools,js,css,business-card,plan-fit-assets}/**"}
+    },
     "headers": [
         {
             "source": "/connect/:file*.vcf",
