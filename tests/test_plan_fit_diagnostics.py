@@ -331,5 +331,74 @@ class GuardedPipelineFailureLoggingTests(unittest.TestCase):
                     plan_fit._guarded_note(self.seed, "plan-fit:note:v1:", "marker", ["line"], CONTACT)
 
 
+VERIFIED_MEL_OWNER_ID = "P2zWdglPveqnaNAzUWJM"  # MAX-verified Mel C. Minan (mel@solynx.solutions), SOLYNX location
+
+
+class MelOwnerIdentityTests(unittest.TestCase):
+    """MEL_OWNER_ID must be the MAX-verified work id for Mel C. Minan
+    (mel@solynx.solutions) in the exact SOLYNX location — not the prior
+    Gmail-identity id. Pinned against the literal string, and against the
+    literal value actually placed on the wire in the task-create payload,
+    so a future edit of the constant can't silently drift without failing
+    a test that doesn't just compare the constant to itself."""
+
+    def test_constant_is_the_verified_work_id(self):
+        self.assertEqual(plan_fit.MEL_OWNER_ID, VERIFIED_MEL_OWNER_ID)
+
+    def test_guarded_task_sends_the_verified_work_id_as_assigned_to(self):
+        contact = {"person": "Jamie Rios", "business": "Rios Roofing", "email": "jamie@riosroofing.com"}
+        os.environ["PLAN_FIT_CRM_TOKEN"] = SECRET_TOKEN
+        os.environ["PLAN_FIT_GUARD_REST_URL"] = SECRET_URL
+        os.environ["PLAN_FIT_GUARD_REST_TOKEN"] = "guard-secret-token"
+        redis_store = {}
+        sent_task_payloads = []
+
+        def redis_default(command):
+            op = command[0]
+            if op == "GET":
+                return redis_store.get(command[1])
+            if op == "SET":
+                key, value = command[1], command[2]
+                if "NX" in command and key in redis_store:
+                    return None
+                redis_store[key] = value
+                return "OK"
+            if op == "EVAL":
+                key = command[-1]
+                count = redis_store.get(key, 0) + 1
+                redis_store[key] = count
+                return count
+            raise AssertionError(f"Unexpected redis command: {command}")
+
+        def fake_urlopen(request, timeout=5):
+            url = request.full_url
+            payload = json.loads(request.data.decode()) if request.data else None
+            if url == SECRET_URL:
+                return _FakeResponse({"result": redis_default(payload)})
+            if url.endswith("/contacts/upsert"):
+                return _FakeResponse({"contact": {"id": "contact-1", "locationId": plan_fit.LOCATION_ID}})
+            if url.endswith("/tasks") and payload is None:
+                return _FakeResponse({"tasks": []})
+            if url.endswith("/tasks"):
+                sent_task_payloads.append(payload)
+                task = {"id": "task-1", "assignedTo": payload["assignedTo"],
+                        "contactId": "contact-1", "title": payload["title"]}
+                return _FakeResponse({"task": task})
+            raise AssertionError(f"Unexpected URL: {url}")
+
+        try:
+            with patch.object(plan_fit, "urlopen", side_effect=fake_urlopen):
+                receipt = plan_fit.record_callback([0, 0, 0, 0, 0], contact, {}, "555-010-2020")
+        finally:
+            for key in ("PLAN_FIT_CRM_TOKEN", "PLAN_FIT_GUARD_REST_URL", "PLAN_FIT_GUARD_REST_TOKEN"):
+                os.environ.pop(key, None)
+
+        self.assertEqual(receipt, "task-1")
+        self.assertEqual(len(sent_task_payloads), 1)
+        # Literal comparison, not plan_fit.MEL_OWNER_ID, so this fails if the
+        # on-the-wire value and the constant ever drift apart.
+        self.assertEqual(sent_task_payloads[0]["assignedTo"], "P2zWdglPveqnaNAzUWJM")
+
+
 if __name__ == "__main__":
     unittest.main()
