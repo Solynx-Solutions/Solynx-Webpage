@@ -3,12 +3,16 @@ from urllib.parse import parse_qs
 from html import escape
 import re
 import json
+import logging
 import os
 from hashlib import sha256
 from datetime import datetime, timedelta, timezone
 from urllib.request import Request, urlopen
-from urllib.error import URLError
+from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit
+
+PLAN_FIT_USER_AGENT = "SOLYNX-Plan-Finder/1.0"
+_LOGGER = logging.getLogger("plan_fit")
 
 PLANS = [
     ("Scout", "Lead Capture Foundation", "Capture and organize inquiries in one CRM.", "$297/month · $2,970/year"),
@@ -255,21 +259,46 @@ def _guard_env():
         guard = os.environ.get("KV_REST_API_URL", "").rstrip("/")
         guard_token = os.environ.get("KV_REST_API_TOKEN")
     if not token or not guard_token or not re.fullmatch(r"https://[a-z0-9-]+\.upstash\.io", guard):
+        # Booleans only: presence/shape flags, never the underlying values.
+        _LOGGER.error(
+            "plan-fit stage=guard_env status=config_missing crm_token_present=%s "
+            "guard_url_present=%s guard_url_valid=%s guard_token_present=%s",
+            bool(token), bool(guard), bool(re.fullmatch(r"https://[a-z0-9-]+\.upstash\.io", guard or "")), bool(guard_token),
+        )
         raise ConnectionError("Plan intake unavailable")
     return token, guard, guard_token
 
-def _call(url, credential, body=None):
+def _log_failure(stage, status):
+    """Fixed stage/status pair only. Never log credentials, request/response
+    bodies, PII, full URLs, identities, or exception reprs."""
+    _LOGGER.error("plan-fit stage=%s status=%s", stage, status)
+
+def _call(url, credential, body=None, *, stage):
+    """stage identifies the calling service/step (e.g. "crm.notes_lookup")
+    for safe failure logging via _log_failure."""
     request = Request(url, data=json.dumps(body).encode() if body is not None else None,
-                      headers={"Authorization":"Bearer "+credential,"Content-Type":"application/json","Version":"v3"})
+                      headers={"Authorization":"Bearer "+credential,"Content-Type":"application/json",
+                               "Version":"v3","User-Agent":PLAN_FIT_USER_AGENT})
     try:
         with urlopen(request,timeout=5) as response:
             return json.load(response)
-    except (URLError, OSError, ValueError) as error:
+    except HTTPError as error:
+        _log_failure(stage, error.code)
+        raise ConnectionError("Receiver unavailable") from error
+    except URLError as error:
+        _log_failure(stage, "transport_failure")
+        raise ConnectionError("Receiver unavailable") from error
+    except OSError as error:
+        _log_failure(stage, "transport_failure")
+        raise ConnectionError("Receiver unavailable") from error
+    except ValueError as error:
+        _log_failure(stage, "invalid_response")
         raise ConnectionError("Receiver unavailable") from error
 
 def _redis(guard, guard_token, command):
-    response = _call(guard, guard_token, command)
+    response = _call(guard, guard_token, command, stage="guard.redis")
     if "error" in response or "result" not in response:
+        _log_failure("guard.redis", "redis_response_invalid")
         raise ConnectionError("Guard unavailable")
     return response["result"]
 
@@ -280,14 +309,17 @@ def _lock_or_replay(guard, guard_token, key):
     if receipt and receipt.startswith("done:"):
         return receipt[5:]
     if _redis(guard, guard_token, ["SET", key, "pending", "NX", "EX", 180]) != "OK":
+        _log_failure("guard.lock", "lock_busy")
         raise ConnectionError("Request in progress")
     return None
 
 def _throttle(guard, guard_token, identity):
     throttle = "local c=redis.call('INCR',KEYS[1]);if c==1 then redis.call('EXPIRE',KEYS[1],3600) end;return c"
     if _redis(guard, guard_token, ["EVAL", throttle, 1, "plan-fit:rate:all"]) > 60:
+        _log_failure("guard.throttle_global", "rate_limited")
         raise ConnectionError("Request limit reached")
     if _redis(guard, guard_token, ["EVAL", throttle, 1, "plan-fit:rate:"+sha256(identity.encode()).hexdigest()]) > 5:
+        _log_failure("guard.throttle_identity", "rate_limited")
         raise ConnectionError("Request limit reached")
 
 def _upsert_contact(token, contact):
@@ -295,9 +327,10 @@ def _upsert_contact(token, contact):
     payload = {"locationId":LOCATION_ID,"name":contact["person"],"email":identity,"companyName":contact["business"]}
     if contact.get("phone"):
         payload["phone"] = contact["phone"]
-    contact_record = _call(CRM_BASE+"/upsert",token,payload).get("contact",{})
+    contact_record = _call(CRM_BASE+"/upsert",token,payload,stage="crm.upsert_contact").get("contact",{})
     cid = contact_record.get("id","")
     if contact_record.get("locationId") != LOCATION_ID or not re.fullmatch(r"[a-zA-Z0-9_-]+",cid):
+        _log_failure("crm.upsert_contact", "receipt_invalid")
         raise ConnectionError("Contact receipt missing")
     return cid
 
@@ -313,17 +346,20 @@ def _guarded_note(seed, key_prefix, marker, body_lines, contact):
     _throttle(guard, guard_token, identity)
     cid = _upsert_contact(token, contact)
     path = CRM_BASE+"/"+cid+"/notes"
-    notes = _call(path,token).get("notes")
+    notes = _call(path,token,stage="crm.notes_lookup").get("notes")
     if not isinstance(notes,list):
+        _log_failure("crm.notes_lookup", "lookup_invalid")
         raise ConnectionError("Note lookup unavailable")
     previous = next((note for note in notes if note.get("body","").startswith(marker)),None)
     if previous is None:
-        note = _call(path,token,{"body": marker+"\n"+"\n".join(body_lines)}).get("note",{})
+        note = _call(path,token,{"body": marker+"\n"+"\n".join(body_lines)},stage="crm.notes_create").get("note",{})
     else:
         note = previous
     if note.get("contactId")!=cid or not note.get("id"):
+        _log_failure("crm.notes_create", "receipt_invalid")
         raise ConnectionError("Note receipt missing")
     if _redis(guard, guard_token, ["SET",key,"done:"+note["id"],"EX",86400])!="OK":
+        _log_failure("guard.confirm_note", "confirmation_failed")
         raise ConnectionError("Could not confirm receipt")
     return note["id"]
 
@@ -339,18 +375,21 @@ def _guarded_task(seed, key_prefix, title, body_lines, contact):
     _throttle(guard, guard_token, identity)
     cid = _upsert_contact(token, contact)
     path = CRM_BASE+"/"+cid+"/tasks"
-    tasks = _call(path,token).get("tasks")
+    tasks = _call(path,token,stage="crm.tasks_lookup").get("tasks")
     if not isinstance(tasks,list):
+        _log_failure("crm.tasks_lookup", "lookup_invalid")
         raise ConnectionError("Task lookup unavailable")
     previous = next((task for task in tasks if task.get("title")==title),None)
     if previous is None:
         due = (datetime.now(timezone.utc)+timedelta(days=1)).isoformat()
-        task = _call(path,token,{"title":title,"body":"\n".join(body_lines),"dueDate":due,"completed":False,"assignedTo":MEL_OWNER_ID}).get("task",{})
+        task = _call(path,token,{"title":title,"body":"\n".join(body_lines),"dueDate":due,"completed":False,"assignedTo":MEL_OWNER_ID},stage="crm.tasks_create").get("task",{})
     else:
         task = previous
     if task.get("assignedTo")!=MEL_OWNER_ID or task.get("contactId")!=cid or not task.get("id"):
+        _log_failure("crm.tasks_create", "receipt_invalid")
         raise ConnectionError("Assigned task receipt missing")
     if _redis(guard, guard_token, ["SET",key,"done:"+task["id"],"EX",86400])!="OK":
+        _log_failure("guard.confirm_task", "confirmation_failed")
         raise ConnectionError("Could not confirm receipt")
     return task["id"]
 
