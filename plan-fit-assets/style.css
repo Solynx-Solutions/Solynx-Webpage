@@ -9,6 +9,7 @@ h1,legend { font:700 clamp(2rem,5vw,3.8rem)/1.05 system-ui,sans-serif; letter-sp
 h2 { font-size:1.4rem; line-height:1.2 }
 p { max-width:55ch }
 .tag { color:#ffb44c; font-weight:650; margin:0 0 18px }
+.demo-banner { background:#3a2a05; color:#ffd166; border:1px solid #ffb44c; border-radius:6px; padding:10px 14px; max-width:none }
 button,.button { font:inherit; font-weight:700; display:inline-block; border:1px solid #e78607; border-radius:7px; background:#e78607; color:#080e1c; padding:12px 20px; cursor:pointer; text-decoration:none; margin:10px 0 }
 .secondary { background:transparent; color:#fff }
 :focus-visible { outline:3px solid #14b8a6; outline-offset:3px }

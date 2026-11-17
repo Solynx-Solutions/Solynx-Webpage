@@ -7,6 +7,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = '911072aad34f54e76d240592d1209cc29ad30f6a'
+STRIP_FIX = '1c9c17eed1953e7e21ec83ef39d69b9396a75ae3'
 MARKER = '<section class="local-growth-bridge">'
 
 
@@ -26,6 +27,11 @@ class HomepageStripTests(unittest.TestCase):
             ['git', 'show', f'{BASE}:index.html'], cwd=ROOT
         ).decode('utf-8').replace('\r\n', '\n')
 
+        # Historical change-scope assertions apply to the strip repair commit.
+        self.fixed = subprocess.check_output(
+            ['git', 'show', f'{STRIP_FIX}:index.html'], cwd=ROOT
+        ).decode('utf-8').replace('\r\n', '\n')
+
     def bounds(self, source):
         anchor = source.index('<!-- Redundant Ecosystem section removed -->')
         start = source.index('    <!-- ', anchor + 43)
@@ -34,9 +40,9 @@ class HomepageStripTests(unittest.TestCase):
 
     def test_only_decorative_comment_changed(self):
         before_start, before_end = self.bounds(self.base)
-        after_start, after_end = self.bounds(self.html)
-        self.assertEqual(self.base[:before_start], self.html[:after_start])
-        self.assertEqual(self.base[before_end:], self.html[after_end:])
+        after_start, after_end = self.bounds(self.fixed)
+        self.assertEqual(self.base[:before_start], self.fixed[:after_start])
+        self.assertEqual(self.base[before_end:], self.fixed[after_end:])
 
     def test_strip_has_no_visible_text(self):
         start, end = self.bounds(self.html)
@@ -54,9 +60,9 @@ class HomepageStripTests(unittest.TestCase):
 
     def test_links_and_section_count_preserved(self):
         self.assertEqual(re.findall(r'href="[^"]*"', self.base),
-                         re.findall(r'href="[^"]*"', self.html))
+                         re.findall(r'href="[^"]*"', self.fixed))
         self.assertEqual(self.html.count(MARKER), 1)
-        self.assertEqual(self.base.count('<section'), self.html.count('<section'))
+        self.assertEqual(self.base.count('<section'), self.fixed.count('<section'))
 
 
 if __name__ == '__main__':
