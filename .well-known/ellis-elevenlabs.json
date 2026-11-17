@@ -1,0 +1,8 @@
+{
+  "client_id": "https://www.solynx.solutions/.well-known/ellis-elevenlabs.json",
+  "client_name": "Ellis staging",
+  "redirect_uris": ["https://ellis-runway-stage-585452594130.us-west1.run.app/elevenlabs/callback"],
+  "grant_types": ["authorization_code"],
+  "response_types": ["code"],
+  "token_endpoint_auth_method": "none"
+}
