@@ -17,6 +17,16 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="css/mobile-nav.css">
 
+    <!-- Keep the GHL chat available without covering page content (e.g. the
+         pricing-entry CTA) before a visitor asks for it. Same rule already
+         proven on index.html via css/google-reviews-preview.css; pulled in
+         directly here rather than importing that unrelated stylesheet. -->
+    <style>
+        html:not(.solynx-chat-requested) .lc_text-widget--prompt {
+            display: none !important;
+        }
+    </style>
+
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
@@ -1069,6 +1079,18 @@
         </div>
     </section>
 
+    <!-- =============================================
+         PRICING ENTRY SECTION
+         ============================================= -->
+    <section id="pricing" class="pricing-section">
+        <div class="container section-header text-center">
+            <p class="section-eyebrow">SOLYNX plans</p>
+            <h2 class="section-title">Find Your Plan &amp; Pricing</h2>
+            <p class="section-sub">Answer a few questions about your business to see your recommended package and pricing.</p>
+            <a class="btn btn-gradient" href="/plan-fit">Find My Plan &amp; Pricing →</a>
+        </div>
+    </section>
+
     <!-- ============================================================
          PACKAGE COMPARISON TABLE
          ============================================================ -->
@@ -1801,19 +1823,67 @@
         data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
         data-widget-id="69b725f66660242869549e80"></script>
     <script>
-        // Suppress GHL all-in-one floating chat widget auto-open on services page
+        // Keep only the launcher visible until a visitor chooses to open chat.
+        // The prior 500ms-poll version used the same selectors as index.html
+        // but still left the greeting visible on desktop (QA screenshot
+        // services-pricing-desktop-corrected.png): a fixed-interval poll can
+        // lose the race against a widget that inserts its DOM (incl. inside
+        // a shadow root) between ticks, or re-creates the node after our
+        // display:none was applied. A MutationObserver reacts on the same
+        // tick the node is inserted instead of waiting up to 500ms, and
+        // still watches for recreated nodes going forward. The 500ms poll
+        // is kept only as a secondary safety net for attribute-only
+        // mutations the observer's childList/subtree watch would miss.
+        // Selectors are unchanged from index.html's version — broadening
+        // them to guessed alternatives was deliberately not done here: the
+        // actual widget bundle (widgets.leadconnectorhq.com/chat-widget/
+        // loader.js) returns 403 to every request from this sandbox, so
+        // its real rendered class/id names could not be inspected and
+        // confirmed before this change.
         (function () {
-            function forceClose() {
-                if (window.LeadConnector) {
-                    if (typeof window.LeadConnector.closeWidget === 'function') window.LeadConnector.closeWidget();
-                    if (typeof window.LeadConnector.close === 'function') window.LeadConnector.close();
+            var chatRequested = false;
+
+            function suppressGreeting(root) {
+                if (chatRequested) {
+                    root.querySelectorAll('#lc_text-widget--box.active').forEach(function (box) {
+                        box.style.removeProperty('display');
+                    });
                 }
-                if (window.LC_API && typeof window.LC_API.close_chat === 'function') window.LC_API.close_chat();
-                document.querySelectorAll('iframe[src*="leadconnectorhq"]').forEach(function (f) {
-                    try { f.contentWindow.postMessage(JSON.stringify({ action: 'close' }), '*'); } catch (e) { }
+
+                root.querySelectorAll('.lc_text-widget--prompt').forEach(function (prompt) {
+                    if (chatRequested) {
+                        if (prompt.dataset.solynxSuppressed === 'true') {
+                            prompt.style.removeProperty('display');
+                            delete prompt.dataset.solynxSuppressed;
+                        }
+                    } else if (prompt.style.getPropertyValue('display') !== 'none') {
+                        prompt.style.setProperty('display', 'none', 'important');
+                        prompt.dataset.solynxSuppressed = 'true';
+                    }
+                });
+
+                root.querySelectorAll('#lc_text-widget--btn').forEach(function (launcher) {
+                    if (launcher.dataset.solynxClickBound === 'true') return;
+                    launcher.dataset.solynxClickBound = 'true';
+                    launcher.addEventListener('click', function () {
+                        chatRequested = true;
+                        document.documentElement.classList.add('solynx-chat-requested');
+                        window.setTimeout(function () { suppressGreeting(document); }, 0);
+                    }, { once: true });
+                });
+
+                root.querySelectorAll('*').forEach(function (element) {
+                    if (element.shadowRoot) suppressGreeting(element.shadowRoot);
                 });
             }
-            [600, 1200, 2500, 4000, 5500].forEach(function (ms) { setTimeout(forceClose, ms); });
+
+            suppressGreeting(document);
+            window.setInterval(function () { suppressGreeting(document); }, 500);
+
+            if (window.MutationObserver) {
+                new MutationObserver(function () { suppressGreeting(document); })
+                    .observe(document.documentElement, { childList: true, subtree: true });
+            }
         })();
     </script>
 

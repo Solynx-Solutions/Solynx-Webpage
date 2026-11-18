@@ -1895,7 +1895,7 @@ img.footer-logo {
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--color-accent);
+    color: var(--color-accent-alt);
     margin-bottom: 12px;
 }
 
