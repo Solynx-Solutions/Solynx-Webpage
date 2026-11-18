@@ -1,0 +1,16 @@
+/* SOLYNX early-bird offer card — Connect pages (orange/navy/blue) */
+.slx-earlybird-card{margin:36px auto 8px;max-width:420px;width:calc(100% - 24px);box-sizing:border-box;
+  background:linear-gradient(145deg,#0e1624,#1a2540);border:1px solid #ff7a1855;
+  border-radius:16px;padding:22px 20px;text-align:center;
+  box-shadow:0 0 30px rgba(255,122,24,.12),0 0 60px rgba(0,225,255,.06);}
+.slx-earlybird-inner{display:flex;flex-direction:column;gap:10px;align-items:center;}
+.slx-earlybird-tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;
+  color:#ff7a18;text-transform:uppercase;}
+.slx-earlybird-card h2{font-size:1.05rem;line-height:1.35;margin:0;color:#fff;}
+.slx-earlybird-card p{font-size:.85rem;line-height:1.5;margin:0;color:rgba(255,255,255,.75);max-width:340px;}
+.slx-earlybird-cta{display:inline-flex;align-items:center;gap:6px;margin-top:6px;
+  background:#00e1ff;color:#001018;font-weight:700;font-size:.85rem;padding:11px 20px;
+  border-radius:8px;text-decoration:none;transition:.2s;}
+.slx-earlybird-cta:hover{background:#39edff;transform:translateY(-2px);}
+@media (max-width:400px){.slx-earlybird-card{padding:18px 14px;margin:28px auto 8px;}}
+@media (max-width:320px){.slx-earlybird-card{padding:16px 12px;}}

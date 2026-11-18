@@ -1,0 +1,16 @@
+/* SOLYNX early-bird offer section — Digital Media & Tech (darkgold) */
+.slx-earlybird-media{padding:56px 5vw;background:#161a12;border-top:1px solid #4b4d3b;
+  border-bottom:1px solid #4b4d3b;color:#ece9df;}
+.slx-earlybird-media-inner{max-width:760px;margin:0 auto;text-align:left;}
+.slx-earlybird-media-tag{display:inline-block;font:700 11px/1.4 monospace;letter-spacing:.1em;
+  color:#bc9c52;margin-bottom:14px;}
+.slx-earlybird-media h2{font-size:clamp(1.6rem,3.2vw,2.2rem);line-height:1.15;margin:0 0 14px;color:#fff;}
+.slx-earlybird-media p{line-height:1.65;margin:0 0 22px;max-width:620px;color:#cfc9b5;}
+.slx-earlybird-media-actions{display:flex;flex-wrap:wrap;gap:14px;}
+.slx-earlybird-media-link{display:inline-flex;align-items:center;gap:8px;
+  background:#bc9c52;color:#161a12;font-weight:700;padding:13px 22px;border-radius:999px;
+  text-decoration:none;transition:.2s;}
+.slx-earlybird-media-link:hover{background:#dbc588;transform:translateY(-2px);}
+.slx-earlybird-media-link--ghost{background:transparent;color:#dbc588;border:1px solid #bc9c52;}
+.slx-earlybird-media-link--ghost:hover{background:rgba(188,156,82,.12);}
+@media (max-width:760px){.slx-earlybird-media{padding:40px 6vw;}}
