@@ -73,6 +73,12 @@ a{color:inherit;text-decoration:none}
   font-size:13px;line-height:1.6;color:var(--hm-muted);max-width:520px;margin:0;
 }
 
+.hmSecondaryLink{
+  display:inline-block;font-size:13px;font-weight:600;color:var(--hm-gold);
+  border-bottom:1px solid currentColor;padding-bottom:2px;margin-top:18px;
+}
+.hmSecondaryLink:hover,.hmSecondaryLink:focus-visible{color:var(--hm-paper)}
+
 .hmSection{
   padding:8vw 4vw;max-width:1200px;margin:0 auto;border-top:1px solid var(--hm-line);
 }
@@ -123,7 +129,11 @@ a{color:inherit;text-decoration:none}
   display:flex;align-items:center;gap:12px;min-width:0;
   padding:6px 4px;border-radius:4px;
 }
-.hmFooterLogo{height:34px;width:auto;display:block;object-fit:contain}
+.hmFooterLogoPill{
+  display:inline-flex;align-items:center;flex:0 0 auto;
+  background:#f5f2ea;border-radius:8px;padding:6px 10px;
+}
+.hmFooterLogo{height:28px;width:auto;display:block;object-fit:contain}
 .hmPoweredBy{font-size:14px;font-weight:600;white-space:nowrap}
 .hmFooterLegal{display:flex;gap:20px;font-size:13px}
 .hmFooterLegal a:hover,.hmFooterLegal a:focus-visible{color:var(--hm-gold)}

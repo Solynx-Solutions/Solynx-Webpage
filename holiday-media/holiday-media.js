@@ -8,7 +8,7 @@
 
     function buildInquiryUrl() {
         var url = new URL(FORM_BASE);
-        url.searchParams.set('project_brief', 'Holiday media inquiry: holiday party, company celebration, or work event coverage, captured now for 2027 booking.');
+        url.searchParams.set('project_brief', 'Holiday media inquiry: holiday party, company celebration, or work event coverage, captured now and ready to use in 2027.');
         var campaign = new URLSearchParams(window.location.search);
         // Only allowlisted campaign slugs are forwarded; never arbitrary query or contact fields.
         UTM_KEYS.forEach(function (key) {
