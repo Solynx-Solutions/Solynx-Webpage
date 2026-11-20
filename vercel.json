@@ -3,7 +3,7 @@
         "enabled": true
     },
     "functions": {
-        "api/plan-fit.py": {"excludeFiles": "{assets,digital-media-tech,documents,_archive,connect,insights,tests,tools,js,css,business-card,plan-fit-assets}/**"}
+        "api/plan-fit.py": {"excludeFiles": "{assets,digital-media-tech,documents,_archive,connect,insights,tests,tools,js,css,business-card,plan-fit-assets,holiday-media}/**"}
     },
     "headers": [
         {
@@ -50,6 +50,14 @@
         {
             "source": "/digital-media-tech/",
             "destination": "/digital-media-tech/index.html"
+        },
+        {
+            "source": "/holiday-media",
+            "destination": "/holiday-media/index.html"
+        },
+        {
+            "source": "/holiday-media/",
+            "destination": "/holiday-media/index.html"
         },
         {
             "source": "/",
