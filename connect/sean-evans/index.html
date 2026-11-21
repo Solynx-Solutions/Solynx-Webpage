@@ -18,7 +18,14 @@
 .connectBio p:last-child{margin-bottom:0}
 .connectFooterBrand{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#fff;text-decoration:none}
 .connectFooterBrand img{height:22px;width:auto;display:block}
-.connectFooterBrand span{font-size:.72rem;letter-spacing:.05em;color:rgba(255,255,255,.75)}</style>
+.connectFooterBrand span{font-size:.72rem;letter-spacing:.05em;color:rgba(255,255,255,.75)}
+.connectPortfolioTeaser{max-width:520px;margin:1.25rem auto;border-radius:16px;overflow:hidden;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+.connectPortfolioTeaser__gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px}
+.connectPortfolioTeaser__gallery img{display:block;width:100%;height:auto;border-radius:8px}
+.connectPortfolioTeaser__copy{padding:0 1.25rem 1rem}
+.connectPortfolioTeaser__copy h2{margin:0 0 .25rem;font-size:1rem;letter-spacing:.02em}
+.connectPortfolioTeaser__copy p{margin:0 0 .75rem;opacity:.8;font-size:.9rem}
+.connectPortfolioTeaser__copy a{display:inline-flex;align-items:center;gap:.4rem;color:inherit;text-decoration:none;font-weight:600;font-size:.9rem}</style>
 </head>
 <body>
 <main class="connectPage connectPage--dark">
@@ -53,6 +60,18 @@
       <a class="connectAction" href="/digital-media-tech/#sean-portfolio"><span>View featured photography</span><b aria-hidden="true">→</b></a>
     </div>
     <p class="shareStatus" aria-live="polite" data-share-status></p>
+  </section>
+  <section class="connectPortfolioTeaser" aria-labelledby="portfolio-teaser-heading">
+    <div class="connectPortfolioTeaser__gallery">
+      <img src="/digital-media-tech/assets/sean-bocci-food.jpg" alt="A plated dish photographed for a restaurant, photography by Sean Evans" loading="lazy">
+      <img src="/digital-media-tech/assets/sean-sccu-commercial.jpg" alt="Commercial vehicle photography by Sean Evans" loading="lazy">
+      <img src="/digital-media-tech/assets/sean-stacked-rose.jpg" width="974" height="548" alt="A red rose lit from the side in a clear glass bottle against a softly blurred background, photography by Sean Evans" loading="lazy">
+    </div>
+    <div class="connectPortfolioTeaser__copy">
+      <h2 id="portfolio-teaser-heading">Authentic photography</h2>
+      <p>A glimpse of Sean's selected work.</p>
+      <a href="/digital-media-tech/portfolio/#sean-evans-collection">View portfolio<b aria-hidden="true">→</b></a>
+    </div>
   </section>
   <section class="connectUtility" aria-label="Phone setup guidance">
     <div class="utilityCard"><strong>SAVE ON YOUR PHONE</strong><p>Use Save contact to open Sean's SOLYNX business card in your phone's contacts app.</p></div>
