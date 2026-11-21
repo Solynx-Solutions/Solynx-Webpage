@@ -13,6 +13,26 @@
   <link rel="stylesheet" href="/connect/team-connect.css">
   <script defer src="/connect/team-connect.js"></script>
 <link rel="stylesheet" href="/connect/early-bird-connect.css">
+<style>
+.connectPortfolioTeaser{max-width:520px;margin:1.25rem auto;border-radius:16px;overflow:hidden;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+.connectPortfolioTeaser img{display:block;width:100%;height:auto;object-fit:cover}
+.connectPortfolioTeaser__copy{padding:1rem 1.25rem}
+.connectPortfolioTeaser__copy h2{margin:0 0 .25rem;font-size:1rem;letter-spacing:.02em}
+.connectPortfolioTeaser__copy p{margin:0 0 .75rem;opacity:.8;font-size:.9rem}
+.connectPortfolioTeaser__copy a{display:inline-flex;align-items:center;gap:.4rem;color:inherit;text-decoration:none;font-weight:600;font-size:.9rem}
+.connectBio{margin:18px auto 0;max-width:470px;color:var(--muted);font-size:.95rem;line-height:1.6;text-align:left}
+.connectBio p{margin:0 0 .9em}
+.connectBio p:last-child{margin-bottom:0}
+.connectPortfolioTeaser__gallery{display:flex;flex-direction:column;gap:12px}
+.connectPortfolioTeaser__gallery img{display:block;width:100%;height:auto;object-fit:contain;border-radius:0}
+.connectPortfolioTeaser__primary{width:100%}
+.connectPortfolioTeaser__secondary{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:0 1.25rem}
+.connectPortfolioTeaser__secondary img{max-width:180px}
+.connectPortfolioTeaser__secondary figcaption{margin:0;font-size:.78rem;opacity:.75}
+.connectFooterBrand{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#fff;text-decoration:none}
+.connectFooterBrand img{height:22px;width:auto;display:block}
+.connectFooterBrand span{font-size:.72rem;letter-spacing:.05em;color:rgba(255,255,255,.75)}
+</style>
 </head>
 <body>
 <main class="connectPage connectPage--dark">
@@ -33,15 +53,36 @@
       <p class="identityLabel">SOLYNX CONNECT</p><h1 id="connect-name">Amber Hagle</h1>
       <p class="identityTitle">Director of Visual Media &amp; Brand Production</p>
       <ul aria-label="Specialties"><li>Cinematography</li><li>Photography</li><li>Editing</li><li>Visual Storytelling</li></ul>
+      <div class="connectBio">
+        <p>Amber Hagle is a Santa Cruz–based filmmaker, photographer, and video editor with an intuitive ability to understand a client's vision and translate it into compelling visual stories.</p>
+        <p>Over eight and a half years with Women Rocking Business, she created content for entrepreneurs building businesses of their own. Her work also includes projects for Food Revolution Network, Clover, and Project Sanctuary, a nonprofit supporting military and veteran families through therapeutic retreats and ongoing family support.</p>
+        <p>At SOLYNX, Amber combines creative direction, visual storytelling, and an understanding of what attracts customers to help businesses reach their next stage of growth — from the first conversation through filming and the final edit, identifying what makes each business distinctive and shaping content around its audience and goals.</p>
+      </div>
     </div>
     <div class="connectActions" aria-label="Contact actions">
       <a class="connectAction connectAction--primary" href="/connect/amber-hagle.vcf"><span>Save contact</span><b aria-hidden="true">↓</b></a>
       <a class="connectAction" href="mailto:amber@solynx.solutions"><span>Email</span><b aria-hidden="true">↗</b></a>
       <button class="connectAction" type="button" data-share data-share-text="Amber Hagle at SOLYNX LLC"><span>Share</span><b aria-hidden="true">↗</b></button>
       <a class="connectAction" href="/digital-media-tech/"><span>Visit Digital Media &amp; Tech</span><b aria-hidden="true">→</b></a>
+      <a class="connectAction" href="/digital-media-tech/portfolio/"><span>View photography portfolio</span><b aria-hidden="true">→</b></a>
     </div>
     <p class="shareStatus" aria-live="polite" data-share-status></p>
   </section>
+  <section class="connectPortfolioTeaser" aria-labelledby="portfolio-teaser-heading">
+    <div class="connectPortfolioTeaser__gallery">
+      <img class="connectPortfolioTeaser__primary" src="/digital-media-tech/assets/amber-golden-gate74.jpg" width="1606" height="903" alt="A wide scenic view of the Golden Gate Bridge and San Francisco Bay hillsides, photography by Amber Hagle" loading="lazy">
+      <figure class="connectPortfolioTeaser__secondary">
+        <img src="/digital-media-tech/assets/amber-berry-swirl.jpg" width="602" height="903" alt="A swirled orange cocktail garnished with a strawberry, photography by Amber Hagle" loading="lazy">
+        <figcaption>Orange cocktail with a strawberry garnish</figcaption>
+      </figure>
+    </div>
+    <div class="connectPortfolioTeaser__copy">
+      <h2 id="portfolio-teaser-heading">Authentic photography</h2>
+      <p>A glimpse of Amber's selected work.</p>
+      <a href="/digital-media-tech/portfolio/">View portfolio<b aria-hidden="true">→</b></a>
+    </div>
+  </section>
+
   <section class="connectUtility" aria-label="Phone setup guidance">
     <div class="utilityCard"><strong>SAVE ON YOUR PHONE</strong><p>Use Save contact to open Amber's SOLYNX business card in your phone's contacts app.</p></div>
     <details class="homeScreenGuide"><summary>Add to Home Screen</summary><div class="guideSteps"><p><strong>iPhone</strong><span>Open in Safari → Share → Add to Home Screen.</span></p><p><strong>Android</strong><span>Open in Chrome → Menu → Add to Home screen.</span></p></div></details>
@@ -56,7 +97,7 @@
         </div>
     </section>
 
-  <footer class="connectFooter"><a href="mailto:amber@solynx.solutions">amber@solynx.solutions</a><p>SOLYNX LLC BUSINESS CONTACT<br>NO PERSONAL PHONE NUMBER PUBLISHED</p></footer>
+  <footer class="connectFooter"><a href="mailto:amber@solynx.solutions">amber@solynx.solutions</a><p>SOLYNX LLC BUSINESS CONTACT<br>NO PERSONAL PHONE NUMBER PUBLISHED</p><a class="connectFooterBrand" href="https://solynx.solutions" aria-label="Powered by SOLYNX LLC"><img src="/assets/customer-refresh-20261008/solynx-logo.png" alt="" aria-hidden="true"><span>Powered by SOLYNX</span></a></footer>
 </main>
 </body>
 </html>
