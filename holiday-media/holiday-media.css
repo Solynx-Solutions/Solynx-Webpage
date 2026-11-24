@@ -267,3 +267,12 @@ a{color:inherit;text-decoration:none}
 
 .hmOfferTitle span{display:block;white-space:nowrap}
 @media(max-width:360px){.hmOfferTitle{font-size:clamp(22px,7.2vw,28px)}}
+
+.hmOfferBody{max-width:none}
+.hmOfferBody > p{max-width:720px}
+.hmOfferBody .hmCard p{font-size:14.5px;line-height:1.65;margin:0 0 12px}
+.hmOfferBody .hmCard p:last-child{margin-bottom:0}
+#holiday-offer-terms{margin-top:24px;padding:18px 22px;border:1px solid rgba(255,255,255,.15);border-radius:12px;color:#cbd5e1}
+#holiday-offer-terms summary{cursor:pointer;color:#f8fafc;font-weight:700}
+#holiday-offer-terms ul{line-height:1.65;padding-left:20px}
+#holiday-offer-terms li + li{margin-top:12px}
